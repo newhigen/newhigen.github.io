@@ -1,1 +1,0 @@
-# newhigen.github.io
