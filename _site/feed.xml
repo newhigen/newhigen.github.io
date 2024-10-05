@@ -1,4 +1,48 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-10-05T13:00:50+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">newhigen</title><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/welcome-to-jekyll" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2024-08-09T23:10:06+09:00</published><updated>2024-08-09T23:10:06+09:00</updated><id>http://localhost:4000/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/welcome-to-jekyll"><![CDATA[<p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-10-05T13:36:04+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">newhigen</title><entry><title type="html">유용한 맥OS 앱들</title><link href="http://localhost:4000/useful-macos-apps" rel="alternate" type="text/html" title="유용한 맥OS 앱들" /><published>2024-10-05T13:06:00+09:00</published><updated>2024-10-05T13:06:00+09:00</updated><id>http://localhost:4000/useful-macos-apps</id><content type="html" xml:base="http://localhost:4000/useful-macos-apps"><![CDATA[<p>구매 여부 표시</p>
+<ul>
+  <li>무료: (표시 X)</li>
+  <li>무료, 광고 제거는 유료: 📣</li>
+  <li>유료: 💵</li>
+</ul>
+
+<h1 id="앱">앱</h1>
+
+<h2 id="추천">추천</h2>
+<ol>
+  <li><a href="https://rectangleapp.com/">Rectangle</a>: 편리하게 키보드로 윈도우 사이즈 조절</li>
+  <li><a href="https://alt-tab-macos.netlify.app/">AltTab</a>: 윈도우 같은 알트탭</li>
+  <li><a href="https://shottr.cc/">Shottr</a>: 📣 스크린샷 및 간단한 편집에 아주 좋음</li>
+  <li><a href="https://github.com/p0deje/Maccy">Maccy</a>: 복사(클립보드) 저장 (App Store 유료, GitHub 무료)</li>
+  <li><a href="https://github.com/sbarex/QLMarkdown">QLMarkdown</a>: Quick Look에 Markdown 지원</li>
+  <li><a href="https://github.com/sbarex/SourceCodeSyntaxHighlight">SourceCodeSyntaxHighlight</a>: Quick Look에 코드 하이라이트</li>
+</ol>
+
+<h2 id="굿">굿</h2>
+
+<ol>
+  <li><a href="https://sindresorhus.com/speediness">Speediness</a>: 인터넷 속도 측정</li>
+  <li><a href="https://pilotmoon.com/scrollreverser/">Scroll Reverser</a>: 스크롤 방향 조정</li>
+  <li><a href="https://cyberduck.io/download/">Cyberduck</a>: 📣 FTP, SFTP 클라이언트</li>
+</ol>
+
+<h1 id="메뉴바">메뉴바</h1>
+
+<ol>
+  <li><a href="https://github.com/jordanbaird/Ice">Ice</a>: 메뉴바 아이콘 정리</li>
+  <li><a href="https://github.com/pakerwreah/Calendr">Calendr</a>: 날짜, 달력</li>
+  <li><a href="https://sindresorhus.com/battery-indicator">Battery Indicator</a>: 💵 배터리 및 충전 시간 표시</li>
+  <li><a href="https://kyome.io/runcat/index.html?lang=en">RunCat</a>: 컴퓨터 성능 부하 표시</li>
+  <li><a href="https://apps.apple.com/us/app/onigiri-minimal-timer/id1639917298?mt=12">Onigiri</a>: 💵 심플한 타이머</li>
+  <li><a href="https://apps.apple.com/us/app/tinystopwatch/id1447754003?mt=12">TinyStopwatch</a>: 심플한 스톱워치</li>
+</ol>
+
+<h1 id="collection-of-apps">Collection of Apps</h1>
+
+<ol>
+  <li>(추천) <a href="https://sindresorhus.com/apps">Quality crafted apps</a>: 아주 많은 간단하지만 유용한 맥 앱들 모음 (유료도 있지만 무료도 많음)</li>
+  <li><a href="https://github.com/sindresorhus/quick-look-plugins">Quick Look plugins</a>: Quick Look에 유용한 플러그인들 모음</li>
+  <li><a href="https://macmenubar.com/">MacMenubar</a>: 메뉴바 앱들에 대한 정보 모음 (하지만 정렬이 안됐고 outdated 됐거나 품질이 좋지 않은 앱들도 있음)</li>
+</ol>]]></content><author><name></name></author><category term="macOS" /><summary type="html"><![CDATA[구매 여부 표시 무료: (표시 X) 무료, 광고 제거는 유료: 📣 유료: 💵]]></summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/welcome-to-jekyll" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2024-08-09T23:10:06+09:00</published><updated>2024-08-09T23:10:06+09:00</updated><id>http://localhost:4000/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/welcome-to-jekyll"><![CDATA[<p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
 
 <p>Jekyll requires blog post files to be named according to the following format:</p>
 
