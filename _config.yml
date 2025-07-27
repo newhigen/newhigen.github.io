@@ -32,6 +32,7 @@ plugins:
   - jekyll-feed
   - jekyll-paginate-v2
   - jekyll-sitemap
+  - jekyll-seo-tag
 
 theme: minima
 remote_theme: "jekyll/minima@1e8a445"
