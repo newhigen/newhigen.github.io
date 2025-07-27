@@ -768,5 +768,8 @@ table td {
     width: calc(50% - 15px);
   }
 }
+body {
+  font-family: "Noto Serif KR", serif;
+}
 
 /*# sourceMappingURL=style.css.map */
