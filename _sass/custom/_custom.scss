@@ -1,0 +1,45 @@
+body {
+    background-color: #f0f0f0;
+}
+.wrapper { // Minima 테마에서 content를 감싸는 클래스일 수 있음
+    background-color: #f0f0f0; // wrapper 안쪽 배경은 흰색으로 유지하고 싶을 때
+}
+
+/* 포스팅 목록 스타일 */
+.post-list li {
+    padding: 0;
+    margin-bottom: 10px;
+}
+.post-item-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+.post-item-link:hover h2 {
+    text-decoration: underline;
+}
+.post-item-wrapper {
+    display: flex;
+    align-items: baseline;
+}
+.post-meta-date {
+    font-size: 0.9em;
+    color: #888;
+    white-space: nowrap;
+    margin-right: 20px;
+    min-width: 80px; /* 날짜 영역 너비 조절 */
+    text-align: left;
+}
+.post-title-right {
+    font-size: 1.2em;
+    margin: 0;
+    font-weight: normal;
+    flex-grow: 1;
+    text-align: right;
+}
+/* 작은 화면 */
+@media (max-width: 768px) {
+    .post-item-wrapper { flex-direction: column; align-items: flex-start; }
+    .post-meta-date { margin-bottom: 5px; margin-right: 0; min-width: auto; }
+    .post-title-right { text-align: left; font-size: 1.1em; }
+}
