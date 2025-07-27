@@ -18,22 +18,23 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-# title: newhigen
-email:
-# description: >- # this means to ignore newlines until "baseurl:"
-#   newhigen blog
+title: newhigen
+description: " "
+# email: newhigen@gmail.com
 
 domain: newhigen.github.io       # if you want to force HTTPS, specify the domain without the http at the start, e.g. example.com
 url: https://newhigen.github.io  # the base hostname and protocol for your site, e.g. http://example.com
 baseurl: ""      # place folder name if the site is served in a subfolder
-# github_username: newhigen
+github_username: newhigen
 
 # Build settings
-theme: minima
 plugins:
   - jekyll-feed
   - jekyll-paginate-v2
   - jekyll-sitemap
+
+theme: minima
+remote_theme: "jekyll/minima@1e8a445"
 
 pagination:
   enabled: true
