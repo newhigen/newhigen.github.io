@@ -4,6 +4,7 @@ title: 유용한 맥OS 앱들
 date: 2024-10-05 13:06:00 +0900
 categories: macOS
 permalink: useful-macos-apps
+hidden: true
 ---
 
 구매 여부 표시
