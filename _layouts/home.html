@@ -24,6 +24,7 @@ layout: base
   <ul class="post-list">
     {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
     {%- for post in posts -%}
+    {%- unless post.hidden -%}
     <li>
       <span class="post-meta">{{ post.date | date: "%Y · %m" }}</span> &nbsp;&nbsp;
       <!-- {{ post.date | date: "%Y. %m. %d" }} &nbsp; -->
@@ -34,6 +35,7 @@ layout: base
         {%- endif -%}
       </a>
     </li>
+    {%- endunless -%}
     {%- endfor -%}
   </ul>
 
