@@ -1,3 +1,39 @@
 body {
-  font-family: 'Noto Serif KR', serif;
+  font-family:
+    'Freesentation-3Light', serif;
+}
+
+// 기본 링크 색상
+a {
+  color: black;
+  /* 초록색 (예시: Bootstrap의 success 색상) */
+}
+
+// 마우스를 올렸을 때 링크 색상 (선택 사항)
+a:hover {
+  color: black;
+  /* 조금 더 진한 초록색 */
+  text-decoration: underline;
+  /* 밑줄 추가 */
+}
+
+// 방문한 링크 색상 (선택 사항)
+a:visited {
+  color: black;
+  /* 방문 후에도 동일한 초록색 유지 */
+}
+
+// 다른 요소 안의 링크 색상 (예: 본문 내용)
+.post-content a {
+  color: black;
+}
+
+.page-content a {
+  color: black;
+}
+
+// 헤더/푸터 링크 색상이 별도로 지정되어 있다면 오버라이드
+.site-header a,
+.site-footer a {
+  color: black;
 }
