@@ -207,8 +207,9 @@
   list-style: none;
 }
 
+// ↓↓↓ post 사이 간격 줄임
 .post-list>li {
-  margin-bottom: 30px;
+  margin-bottom: 14px;
 }
 
 .post-meta {
