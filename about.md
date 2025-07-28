@@ -4,4 +4,4 @@ title: About
 permalink: /about/
 ---
 
-_To Be Updated_
+_To be updated_
