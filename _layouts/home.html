@@ -45,6 +45,9 @@ layout: base
         {{ post.excerpt }}
         {%- endif -%}
       </a>
+      {% if page.title == "Home" %}
+      <span class="post-categories"> &nbsp;&nbsp;&nbsp; {{ post.categories }}</span>
+      {% endif %}
     </li>
     {%- endunless -%}
     {%- endfor -%}
