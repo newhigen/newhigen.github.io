@@ -20,15 +20,20 @@
       </label>
 
       <div class="trigger">
-        <div class="nav-group nav-group-left">
-          <a class="page-link" href="{{ '/' | relative_url }}">Home</a>
+        <div class="nav-group-left">
+          <a class="page-link{% if page.url == '/' %} active{% endif %}" href="{{ '/' | relative_url }}">
+            Home
+          </a>
         </div>
-        <div class="nav-group nav-group-center">
-          <a class="page-link" href="{{ '/thoughts/' | relative_url }}">Thoughts</a>
-          <a class="page-link" href="{{ '/book/' | relative_url }}">Book</a>
+        <div class="nav-group-center">
+          <a class="page-link{% if page.url contains '/thoughts/' %} active{% endif %}"
+            href="{{ '/thoughts/' | relative_url }}">Thoughts</a>
+          <a class="page-link{% if page.url contains '/book/' %} active{% endif %}"
+            href="{{ '/book/' | relative_url }}">Book</a>
         </div>
-        <div class="nav-group nav-group-right">
-          <a class="page-link" href="{{ '/about/' | relative_url }}">About</a>
+        <div class="nav-group-right">
+          <a class="page-link{% if page.url contains '/about/' %} active{% endif %}"
+            href="{{ '/about/' | relative_url }}">{{ site.title }}</a>
         </div>
       </div>
     </nav>

@@ -105,3 +105,10 @@ a:visited {
     font-size: 1.1rem;
   }
 }
+
+/* Active nav link style */
+.page-link.active {
+  text-decoration: underline;
+  color: #555555;
+  /* 활성화된 링크는 검은색으로 표시 */
+}
