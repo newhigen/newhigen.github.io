@@ -2,7 +2,7 @@
 layout: post
 title: 유용한 맥OS 앱들
 date: 2024-10-05 13:06:00 +0900
-categories: macOS
+categories: thoughts
 permalink: useful-macos-apps
 hidden: true
 ---

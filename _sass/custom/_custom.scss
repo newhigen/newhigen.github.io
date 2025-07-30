@@ -1,39 +1,114 @@
 body {
   font-family:
     'Freesentation-3Light', serif;
+  font-size: 1.25rem;
+}
+
+.post-link {
+  font-size: 1.1rem;
+}
+
+.post-categories {
+  font-size: 0.8rem;
+  color: #828282;
 }
 
 // 기본 링크 색상
 a {
   color: black;
-  /* 초록색 (예시: Bootstrap의 success 색상) */
 }
 
-// 마우스를 올렸을 때 링크 색상 (선택 사항)
 a:hover {
   color: black;
-  /* 조금 더 진한 초록색 */
   text-decoration: underline;
-  /* 밑줄 추가 */
 }
 
-// 방문한 링크 색상 (선택 사항)
 a:visited {
   color: black;
-  /* 방문 후에도 동일한 초록색 유지 */
 }
 
-// 다른 요소 안의 링크 색상 (예: 본문 내용)
-.post-content a {
-  color: black;
-}
-
-.page-content a {
-  color: black;
-}
-
-// 헤더/푸터 링크 색상이 별도로 지정되어 있다면 오버라이드
+.post-content a,
+.page-content a,
 .site-header a,
 .site-footer a {
   color: black;
+}
+
+/* Footnotes */
+.footnotes {
+  font-size: 0.9rem;
+  color: #828282;
+}
+
+.footnotes a {
+  color: #828282;
+}
+
+.footnotes ol {
+  list-style-type: none;
+  counter-reset: footnote-counter;
+  padding-left: 0;
+}
+
+.footnotes li {
+  counter-increment: footnote-counter;
+  margin-bottom: 5px;
+}
+
+.footnotes li::before {
+  content: "[" counter(footnote-counter) "]";
+  margin-right: 10px;
+}
+
+.footnotes p {
+  display: inline;
+}
+
+/* --- Custom Navigation Styles using text-align --- */
+@media screen and (min-width: 600px) {
+  .site-nav {
+    width: 100%;
+    float: none;
+  }
+
+  /* 1. Center the text for all inline children */
+  .site-nav .trigger {
+    text-align: center;
+  }
+
+  /* 2. Float the left and right groups */
+  .nav-group-left {
+    float: left;
+  }
+
+  .nav-group-right {
+    float: right;
+  }
+
+  /* 3. The center group will sit in the middle.
+     Make it inline-block to contain its elements properly. */
+  .nav-group-center {
+    display: inline-block;
+  }
+
+  /* 4. Style the links */
+  .nav-group-center .page-link {
+    display: inline-block;
+    /* Make links sit side-by-side */
+    margin: 0 15px;
+    /* Space between center links */
+  }
+
+  .site-nav .page-link {
+    display: inline-block;
+    color: #828282;
+    font-size: 1.1rem;
+  }
+}
+
+/* Active nav link style */
+.page-link.active {
+  text-decoration: underline;
+  color: #555555;
+  /* 활성화된 링크는 검은색으로 표시 */
 }

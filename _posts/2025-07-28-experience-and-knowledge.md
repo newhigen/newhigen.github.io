@@ -2,7 +2,7 @@
 layout: post
 title: 경험 + 지식 = 숙련
 date: 2025-07-28 22:35:00 +0900
-categories: 성장
+categories: thoughts
 permalink: experience-and-knowledge
 ---
 

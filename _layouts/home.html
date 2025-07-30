@@ -3,18 +3,27 @@ layout: base
 ---
 
 <div class="home">
-  {%- if page.title -%}
-  <h1 class="page-heading">{{ page.title }}</h1>
-  {%- endif -%}
+
 
   {{ content }}
 
-
-  {% if site.paginate %}
-  {% assign posts = paginator.posts %}
-  {% else %}
-  {% assign posts = site.posts %}
-  {% endif %}
+  <!-- 홈 페이지인 경우 모든 포스트 표시 -->
+  {%- if page.title == "Home" -%}
+  {%- assign posts = site.posts -%}
+  {%- else -%}
+  <!-- 홈 페이지가 아닌 경우 해당 카테고리의 포스트만 표시 -->
+  {%- assign page_category = page.title | downcase -%}
+  {%- assign filtered_posts = site.categories[page_category] -%}
+  {%- if page_category and filtered_posts -%}
+  {%- assign posts = filtered_posts -%}
+  {%- else -%}
+  {%- if site.paginate -%}
+  {%- assign posts = paginator.posts -%}
+  {%- else -%}
+  {%- assign posts = site.posts -%}
+  {%- endif -%}
+  {%- endif -%}
+  {%- endif -%}
 
 
   {%- if posts.size > 0 -%}
@@ -34,6 +43,9 @@ layout: base
         {{ post.excerpt }}
         {%- endif -%}
       </a>
+      {% if page.title == "Home" %}
+      <span class="post-categories"> &nbsp;&nbsp;&nbsp; {{ post.categories }}</span>
+      {% endif %}
     </li>
     {%- endunless -%}
     {%- endfor -%}
