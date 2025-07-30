@@ -42,3 +42,40 @@ a:visited {
 .site-footer a {
   color: black;
 }
+
+/* Footnotes */
+.footnotes {
+  font-size: 0.9rem;
+  color: #828282;
+  /* gray */
+}
+
+.footnotes a {
+  color: #828282;
+  /* gray */
+}
+
+.footnotes ol {
+  list-style-type: none;
+  /* 기본 숫자 제거 */
+  counter-reset: footnote-counter;
+  /* 카운터 초기화 */
+  padding-left: 0;
+}
+
+.footnotes li {
+  counter-increment: footnote-counter;
+  /* 카운터 증가 */
+  margin-bottom: 5px;
+}
+
+.footnotes li::before {
+  content: "[" counter(footnote-counter) "]";
+  /* `[1]` 형식으로 표시 */
+  margin-right: 10px;
+}
+
+.footnotes p {
+  display: inline;
+  /* 각주 내용이 숫자 옆에 오도록 설정 */
+}
