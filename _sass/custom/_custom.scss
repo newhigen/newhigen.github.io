@@ -127,3 +127,16 @@ a:visited {
     font-size: 1.1rem;
   }
 }
+
+/* Custom Blockquote Style */
+blockquote {
+  font-style: normal;
+  /* 이탤릭체 비활성화 */
+  border-left: 4px solid #e0e0e0;
+  /* 왼쪽 테두리 */
+  padding-left: 15px;
+  /* 안쪽 여백 */
+  margin-left: 0;
+  color: #666;
+  /* 글자색 약간 어둡게 */
+}
