@@ -117,3 +117,13 @@ a:visited {
   color: #555555;
   /* 활성화된 링크는 검은색으로 표시 */
 }
+
+/* Mobile navigation bar style override */
+@media screen and (max-width: 600px) {
+  .site-nav {
+    background-color: rgba(255, 255, 255, 0.6); // half transparent white
+    backdrop-filter: blur(8px); // blur effect
+    border: 1px dashed #e0e0e0;
+    font-size: 1.1rem;
+  }
+}
