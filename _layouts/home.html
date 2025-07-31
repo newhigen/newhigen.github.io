@@ -43,6 +43,17 @@ layout: base
         {{ post.excerpt }}
         {%- endif -%}
       </a>
+      {%- if post.categories contains "book" -%}
+      {%- assign author = post.author | default: post.authors -%}
+      {%- assign pub_year = post.publication_year | default: post['publication-year'] -%}
+      {%- if author or pub_year -%}
+      <div class="post-meta-details">
+        {%- if author %}{{ author | join: ", " }}{% endif -%}
+        {%- if author and pub_year %}, {% endif -%}
+        {%- if pub_year %}{{ pub_year }}{% endif -%}
+      </div>
+      {%- endif -%}
+      {%- endif -%}
       {% if page.title == "Home" %}
       <span class="post-categories"> &nbsp;&nbsp;&nbsp; {{ post.categories }}</span>
       {% endif %}
