@@ -14,7 +14,10 @@ permalink: experience-and-knowledge
 경험이나 지식을 적절하게 번갈아 쌓으며 숙련의 단계에 서서히 도달한다.
 
 - '나만의 개발 공부법 찾기'[^1]의 공부법 소용돌이 모델이 잘 묘사한다.
+  - <img src="../assets/images/experience-and-knowledge.jpeg" alt="경험과 지식의 관계를 나타내는 다이어그램" width="200" />
+
 - '균형 있는 역량 삼각형'[^2]과 비슷하지만 여기서는 숙련도도 경험과 지식과 함께 역량을 위한 3가지 요소로 표현한다.
+
 
 ---
 
