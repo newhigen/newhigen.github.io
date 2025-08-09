@@ -35,11 +35,15 @@ publication_year: 2005
 3. 긴밀하게 관련 지어지면 ‘더 잘 아는’ 상태
    * 단서를 활용: (1) 글 밖 지식, (2) 직접 만든 가정
 
+<img src="../assets/images/hint.jpg" alt="단서" width="200"" />
+
 ### 문맥
 
 “문맥”: 일이나 정보 등이 놓인 배경과 상황 ≈ ‘무슨 이야기’ ⇒ 스키마를 활성화(priming)
 
 * 배경은 time-dependency ↓, 상황은 time-dependency ↑
+
+<img src="../assets/images/context.jpg" alt="문맥" width="250"/>
 
 문맥에서 의미를 끌어냄 즉 적혀있지 않는 내용도 더 잘 이해함
 
