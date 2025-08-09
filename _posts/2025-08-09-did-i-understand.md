@@ -35,7 +35,7 @@ publication_year: 2005
 3. 긴밀하게 관련 지어지면 ‘더 잘 아는’ 상태
    * 단서를 활용: (1) 글 밖 지식, (2) 직접 만든 가정
 
-<img src="../assets/images/hint.jpg" alt="단서" width="200"" />
+<img src="../assets/images/hint.jpg" alt="단서" width="200" />
 
 ### 문맥
 
