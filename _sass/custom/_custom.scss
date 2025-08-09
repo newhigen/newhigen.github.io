@@ -152,6 +152,13 @@ b {
   /* 폰트가 지원하는 가장 두꺼운 굵기 */
 }
 
+ul {
+  margin-block-start: 0em;
+}
+
+p {
+  // margin-bottom: 0px;  #TODO: 매번 br하는 것은 귀찮지만 li 전에 빈 공간은 없애고 싶다.
+}
 
 /* Book author and year style */
 .post-meta-details {
@@ -181,4 +188,8 @@ big_dots_for_extra {
   margin-top: 20px;
   font-size: 2rem;
   color: #828282;
+}
+
+my {
+  color: #1864ab;
 }
