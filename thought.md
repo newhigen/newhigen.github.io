@@ -1,5 +1,5 @@
 ---
 layout: home
-title: Thought
+title: 생각
 permalink: /thought/
 ---

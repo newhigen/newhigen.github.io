@@ -2,7 +2,7 @@
 layout: post
 title: 독서법
 date: 2025-08-03
-categories: book
+categories: 책
 permalink: how-to-read
 ---
 
