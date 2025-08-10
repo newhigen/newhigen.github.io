@@ -2,7 +2,7 @@
 layout: post
 title: 확증편향 부수기 (1)
 date: 2025-08-04
-categories: thought
+categories: 생각
 permalink: breaking-bias
 ---
 

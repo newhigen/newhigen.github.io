@@ -37,14 +37,14 @@ layout: base
     <li>
       <span class="post-meta">{{ post.date | date: "%Y · %m" }}</span> &nbsp;&nbsp;
       <!-- {{ post.date | date: "%Y. %m. %d" }} &nbsp; -->
-      <a href="{{ post.url | relative_url }}" class="post-link">
+      <a href="{{ post.url | relative_url }}" class="post-link" style="color: black;">
         {{ post.title | escape }}
         {%- if site.excerpt_length > 0 -%}
         {{ post.excerpt }}
         {%- endif -%}
       </a>
       {% if page.title == "Home" %}
-      <span class="post-categories"> &nbsp;&nbsp;&nbsp; {{ post.categories }}</span>
+      <span class="post-categories"> &nbsp; {{ post.categories }}</span>
       {% endif %}
     </li>
     {%- endunless -%}

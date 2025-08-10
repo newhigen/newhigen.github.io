@@ -2,7 +2,7 @@
 layout: post
 title: INFJ 의사의 병원 일기
 date: 2025-08-10
-categories: book
+categories: 책
 author: 최은경
 permalink: infj-doctor
 publication_year: 2025

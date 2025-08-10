@@ -2,7 +2,7 @@
 layout: post
 title: 안다는 착각
 date: 2025-08-09
-categories: book
+categories: 책
 author: 니시바야시 가츠히코
 permalink: did-i-understand
 publication_year: 2005

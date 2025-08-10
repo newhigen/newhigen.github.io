@@ -2,7 +2,7 @@
 layout: post
 title: 전문가의 표정
 date: 2025-08-03
-categories: thought
+categories: 생각
 permalink: stare-at-professional
 ---
 
