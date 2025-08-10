@@ -20,8 +20,7 @@ permalink: experience-and-knowledge
 
 
 ---
-
-참고 자료
+다른 자료와의 연결
 
 [^1]: [5. 나만의 개발 공부법 찾기 _ 빠르게 성장하고 싶은 주니어 개발자를 위한 소프트 스킬 5가지, 토스 SLASH 24](https://youtu.be/JyAiWo4ghVg?feature=shared&t=1436)
 [^2]: [프롤로그 \(p.13\) _ 개발자로 살아남기, 박종천](https://product.kyobobook.co.kr/detail/S000001953766)

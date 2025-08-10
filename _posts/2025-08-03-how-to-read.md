@@ -51,8 +51,7 @@ permalink: how-to-read
   - “If you want to have a deep and balanced understanding of a smaller range of topics … you should read books from the same topic until you reach a point where you get not enough new information (this is often after about 3-5 books for me). Try to pick books that represent different perspectives.”[^12]
 
 ---
-
-참고 자료
+다른 자료와의 연결
 
 [^1]: [책 잘 읽는 방법 by 김봉진 - 책](https://product.kyobobook.co.kr/detail/S000001899585)
 [^2]: [아직도 책을 꼭 사서 읽는 이유? by 유현준 - 영상](https://www.youtube.com/watch?v=RverOA2gM6U)
