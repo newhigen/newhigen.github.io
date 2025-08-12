@@ -9,7 +9,7 @@ permalink: /books_read/
 
 1. [INFJ 의사의 병원 일기 →]({% post_url 2025-08-10-infj-doctor %})
 2. [안다는 착각 →]({% post_url 2025-08-09-did-i-understand %})
-3. 노트의 품격
+3. [노트의 품격 →]({% post_url 2025-08-12-note-premium %})
 4. 왜 나는 항상 결심만 할까?
 5. 달리기를 말할 때 내가 하고 싶은 이야기
 6. [단 한 번의 삶 →]({% post_url 2025-08-10-one-life %})
