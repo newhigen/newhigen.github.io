@@ -166,10 +166,10 @@ INFJ는 의미 있는 해결책과 완결성을 추구한다.<br>
 
 [^1]: [80:20 학습법 \| 피터 홀린스 - 교보문고](https://product.kyobobook.co.kr/detail/S000215553249)
 [^2]: [Moral Decision-Making Under Uncertainty (Stanford Encyclopedia of Philosophy)](https://plato.stanford.edu/entries/moral-decision-uncertainty/)
-[^3]: [안다는 착각 (book)]({% post_url 2025-08-09-did-i-understand %})
-[^4]: [경험 + 지식 = 숙련 (thought)]({% post_url 2025-07-28-experience-and-knowledge %})
+[^3]: [안다는 착각 (책)]({% post_url 2025-08-09-did-i-understand %})
+[^4]: [경험 + 지식 = 숙련 (생각)]({% post_url 2025-07-28-experience-and-knowledge %})
 [^5]: [실용주의 사고와 학습 \| 앤디 헌트 - 교보문고](https://product.kyobobook.co.kr/detail/S000001766246)
 [^6]: [왜 나는 항상 결심만 할까 \| 켈리 맥고니걸 - 교보문고](https://product.kyobobook.co.kr/detail/S000000733034)
-[^7]: [달리기를 말할 때 내가 하고 싶은 이야기 \| 무라카미 하루키 - 교보문고](https://product.kyobobook.co.kr/detail/S000001068777)
+[^7]: [달리기를 말할 때 내가 하고 싶은 이야기 (책)]({% post_url 2025-08-12-running-story %})
 [^8]: 'Layers of cheese' _ [The Swiss Cheese Model for Quality Engineering \| by Imran Qureshi \| Slalom Build \| Medium](https://medium.com/slalom-build/the-swiss-cheese-model-for-quality-engineering-ba05d26feb7e)
 [^9]: 평온을 비는 기도 _ 라인홀드 니버
