@@ -92,8 +92,8 @@ function createHeatmap() {
                 let level = 0;
                 if (count > 0) {
                     if (count === 1) level = 1;
-                    else if (count <= 3) level = 2;
-                    else if (count <= 5) level = 3;
+                    else if (count <= 2) level = 2;
+                    else if (count <= 3) level = 3;
                     else level = 4;
                 }
 
@@ -197,8 +197,8 @@ function generateBooksList() {
                 // 포스트가 있는 경우 링크 생성
                 const link = document.createElement('a');
                 link.href = `/${book.post}/`;
-                link.textContent = `${book.title} →`;
-                link.style.cssText = 'color: black; text-decoration: none;';
+                link.textContent = book.title;
+                link.style.cssText = 'color: black; text-decoration: none; background: linear-gradient(to bottom, transparent 50%, #d0ebff 50%);';
                 link.className = 'book-link';
                 listItem.appendChild(link);
             } else {

@@ -16,10 +16,10 @@ permalink: /books_read/
     <span>0권</span>
     <div class="heatmap-legend-item">
       <div class="heatmap-legend-cell" style="background-color: #ebedf0;"></div>
-      <div class="heatmap-legend-cell" style="background-color: #9be9a8;"></div>
-      <div class="heatmap-legend-cell" style="background-color: #40c463;"></div>
-      <div class="heatmap-legend-cell" style="background-color: #30a14e;"></div>
-      <div class="heatmap-legend-cell" style="background-color: #216e39;"></div>
+      <div class="heatmap-legend-cell" style="background-color: #d0ebff;"></div>
+      <div class="heatmap-legend-cell" style="background-color: #74c0fc;"></div>
+      <div class="heatmap-legend-cell" style="background-color: #1971c2;"></div>
+      <div class="heatmap-legend-cell" style="background-color: #0c4a6e;"></div>
     </div>
     <span>4권 이상</span>
   </div>
