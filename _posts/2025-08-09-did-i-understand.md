@@ -6,6 +6,8 @@ categories: 책
 author: 니시바야시 가츠히코
 permalink: did-i-understand
 publication_year: 2005
+category: book
+read_date: 2025-08
 ---
 
 ## **소개**

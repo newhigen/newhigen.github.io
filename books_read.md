@@ -54,3 +54,5 @@ permalink: /books_read/
 
 1. 메이크타임
 2. 진작 이렇게 책을 읽었더라면
+
+{% include contribution_graph.html %}
