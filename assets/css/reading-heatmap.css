@@ -127,7 +127,7 @@
 }
 
 .book-link:hover {
-    text-decoration: underline !important;
+    background: linear-gradient(to bottom, transparent 50%, #8bbae5 50%) !important;
 }
 
 .book-tooltip {
