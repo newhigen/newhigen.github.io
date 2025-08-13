@@ -170,7 +170,7 @@ function generateBooksList() {
 
         // 책 목록 생성
         const bookList = document.createElement('ul');
-        bookList.style.cssText = 'margin-bottom: 30px; font-size: 14px; line-height: 1.4; list-style: none; padding-left: 0; margin-left: -10px;';
+        bookList.style.cssText = 'margin-bottom: 30px; font-size: 14px; line-height: 1.4; list-style: none; padding-left: 0; margin-left: 0px;';
 
         let currentMonth = null;
         booksByYear[year].forEach((book, index) => {
