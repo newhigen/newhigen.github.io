@@ -130,6 +130,38 @@
     text-decoration: underline !important;
 }
 
+.book-tooltip {
+    position: fixed;
+    background: #24292e;
+    color: white;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    max-width: 300px;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    pointer-events: none;
+}
+
+.tooltip-header {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #f6f8fa;
+    border-bottom: 1px solid #586069;
+    padding-bottom: 4px;
+}
+
+.tooltip-content {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.tooltip-book {
+    margin: 2px 0;
+    line-height: 1.4;
+    color: #e1e4e8;
+}
+
 @media (max-width: 768px) {
     .heatmap-container {
         padding: 16px;

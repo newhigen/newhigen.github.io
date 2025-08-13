@@ -37,7 +37,7 @@ function generateHeatmapData() {
 function createHeatmap() {
     const container = document.getElementById('reading-heatmap');
     const currentYear = new Date().getFullYear();
-    const startYear = 2023;
+    const startYear = 2022;
 
     // 히트맵과 라벨을 감싸는 컨테이너
     const heatmapWrapper = document.createElement('div');
@@ -101,15 +101,20 @@ function createHeatmap() {
                     cell.classList.add(`level-${level}`);
                 }
 
-                // 툴팁 추가
+                // 책 목록 표시 기능 추가
                 if (count > 0) {
                     const booksInMonth = booksList.filter(book =>
                         book.year === year && book.month === month
                     );
-                    const bookTitles = booksInMonth.map(book => book.title).join(', ');
-                    cell.title = `${year}년 ${monthNames[month - 1]}: ${count}권 읽음\n${bookTitles}`;
-                } else {
-                    cell.title = `${year}년 ${monthNames[month - 1]}: 0권 읽음`;
+
+                    // hover 이벤트 추가
+                    cell.addEventListener('mouseenter', function () {
+                        showBookList(cell, booksInMonth, year, monthNames[month - 1]);
+                    });
+
+                    cell.addEventListener('mouseleave', function () {
+                        hideBookList();
+                    });
                 }
             }
 
@@ -160,14 +165,33 @@ function generateBooksList() {
         // 년도 헤더 생성
         const yearHeader = document.createElement('h2');
         yearHeader.textContent = year;
+        yearHeader.style.cssText = 'font-size: 18px; margin-bottom: 10px;';
         container.appendChild(yearHeader);
 
         // 책 목록 생성
-        const bookList = document.createElement('ol');
-        bookList.style.cssText = 'margin-bottom: 30px;';
+        const bookList = document.createElement('ul');
+        bookList.style.cssText = 'margin-bottom: 30px; font-size: 14px; line-height: 1.4; list-style: none; padding-left: 0; margin-left: -10px;';
 
+        let currentMonth = null;
         booksByYear[year].forEach((book, index) => {
             const listItem = document.createElement('li');
+
+            // 같은 월인지 확인
+            const isSameMonth = currentMonth === book.month;
+            currentMonth = book.month;
+
+            if (!isSameMonth) {
+                // 월 표시 추가 (왼쪽에)
+                const monthSpan = document.createElement('span');
+                monthSpan.textContent = `${book.month}월 `;
+                monthSpan.style.cssText = 'color: #586069; font-size: 12px; margin-right: 8px; display: inline-block; width: 25px; text-align: right;';
+                listItem.appendChild(monthSpan);
+            } else {
+                // 같은 월이면 빈 공간 추가 (정렬 유지)
+                const emptySpan = document.createElement('span');
+                emptySpan.style.cssText = 'display: inline-block; width: 25px; margin-right: 8px;';
+                listItem.appendChild(emptySpan);
+            }
 
             if (book.post) {
                 // 포스트가 있는 경우 링크 생성
@@ -179,7 +203,9 @@ function generateBooksList() {
                 listItem.appendChild(link);
             } else {
                 // 포스트가 없는 경우 일반 텍스트
-                listItem.textContent = book.title;
+                const titleSpan = document.createElement('span');
+                titleSpan.textContent = book.title;
+                listItem.appendChild(titleSpan);
             }
 
             bookList.appendChild(listItem);
@@ -187,6 +213,52 @@ function generateBooksList() {
 
         container.appendChild(bookList);
     });
+}
+
+// 책 목록 표시 함수
+function showBookList(cell, books, year, month) {
+    // 기존 툴팁 제거
+    hideBookList();
+
+    // 툴팁 컨테이너 생성
+    const tooltip = document.createElement('div');
+    tooltip.className = 'book-tooltip';
+    tooltip.innerHTML = `
+    <div class="tooltip-header">${year}년 ${month}: ${books.length}권</div>
+    <div class="tooltip-content">
+      ${books.map(book => `<div class="tooltip-book">• ${book.title}</div>`).join('')}
+    </div>
+  `;
+
+    // 위치 계산
+    const rect = cell.getBoundingClientRect();
+    let left = rect.left;
+    let top = rect.bottom + 5;
+
+    // 화면 밖으로 나가지 않도록 조정
+    const tooltipWidth = 300;
+    const tooltipHeight = Math.min(books.length * 20 + 60, 200);
+
+    if (left + tooltipWidth > window.innerWidth) {
+        left = window.innerWidth - tooltipWidth - 10;
+    }
+
+    if (top + tooltipHeight > window.innerHeight) {
+        top = rect.top - tooltipHeight - 5;
+    }
+
+    tooltip.style.left = left + 'px';
+    tooltip.style.top = top + 'px';
+
+    document.body.appendChild(tooltip);
+}
+
+// 책 목록 숨기기 함수
+function hideBookList() {
+    const existingTooltip = document.querySelector('.book-tooltip');
+    if (existingTooltip) {
+        existingTooltip.remove();
+    }
 }
 
 // 총 책 수 계산
