@@ -1,0 +1,116 @@
+.heatmap-container {
+    margin: 30px 0;
+    padding: 24px;
+    background: #ffffff;
+    border: 1px solid #e1e4e8;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.heatmap {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 16px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    justify-content: center;
+}
+
+.heatmap-column {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: fit-content;
+}
+
+.heatmap-cell {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    background-color: #ebedf0;
+    border: 1px solid #e1e4e8;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.heatmap-cell:hover {
+    transform: scale(1.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+    position: relative;
+}
+
+.heatmap-cell.level-1 {
+    background-color: #9be9a8;
+    border-color: #9be9a8;
+}
+
+.heatmap-cell.level-2 {
+    background-color: #40c463;
+    border-color: #40c463;
+}
+
+.heatmap-cell.level-3 {
+    background-color: #30a14e;
+    border-color: #30a14e;
+}
+
+.heatmap-cell.level-4 {
+    background-color: #216e39;
+    border-color: #216e39;
+}
+
+.heatmap-legend {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #586069;
+    justify-content: center;
+}
+
+.heatmap-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.heatmap-legend-cell {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    border: 1px solid #e1e4e8;
+}
+
+.heatmap-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #24292e;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.year-label {
+    font-size: 11px;
+    color: #586069;
+    text-align: center;
+    margin-top: 8px;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .heatmap-container {
+        padding: 16px;
+        margin: 20px 0;
+    }
+
+    .heatmap-cell {
+        width: 14px;
+        height: 14px;
+    }
+
+    .heatmap-legend {
+        flex-direction: column;
+        gap: 4px;
+    }
+}
