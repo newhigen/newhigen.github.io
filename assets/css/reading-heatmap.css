@@ -8,14 +8,14 @@
 }
 
 .heatmap {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 16px;
-  overflow-x: auto;
-  padding-bottom: 8px;
-  justify-content: center;
-  align-items: flex-start;
-  width: 100%;
+    display: flex;
+    gap: 4px;
+    margin-bottom: 16px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
 }
 
 .month-labels {
@@ -124,6 +124,10 @@
     font-weight: 400;
     height: 14px;
     line-height: 14px;
+}
+
+.book-link:hover {
+    text-decoration: underline !important;
 }
 
 @media (max-width: 768px) {

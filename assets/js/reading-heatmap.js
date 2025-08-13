@@ -175,6 +175,7 @@ function generateBooksList() {
                 link.href = `/${book.post}/`;
                 link.textContent = `${book.title} →`;
                 link.style.cssText = 'color: black; text-decoration: none;';
+                link.className = 'book-link';
                 listItem.appendChild(link);
             } else {
                 // 포스트가 없는 경우 일반 텍스트
