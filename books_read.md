@@ -4,53 +4,29 @@ title: 읽은 책들
 permalink: /books_read/
 ---
 
+<link rel="stylesheet" href="{{ '/assets/css/reading-heatmap.css' | relative_url }}">
 
-## 2025
+<div class="heatmap-container">
+  <div class="heatmap-title">📚 독서 히트맵</div>
+  <div id="reading-heatmap"></div>
+  <div class="heatmap-stats" style="text-align: center; margin: 16px 0; font-size: 14px; color: #586069;">
+    <span id="total-books">총 41권의 책을 읽었습니다</span>
+  </div>
+  <div class="heatmap-legend">
+    <span>0권</span>
+    <div class="heatmap-legend-item">
+      <div class="heatmap-legend-cell" style="background-color: #ebedf0;"></div>
+      <div class="heatmap-legend-cell" style="background-color: #d0ebff;"></div>
+      <div class="heatmap-legend-cell" style="background-color: #74c0fc;"></div>
+      <div class="heatmap-legend-cell" style="background-color: #1971c2;"></div>
+      <div class="heatmap-legend-cell" style="background-color: #0c4a6e;"></div>
+    </div>
+    <span>4권 이상</span>
+  </div>
+</div>
 
-1. [INFJ 의사의 병원 일기 →]({% post_url 2025-08-10-infj-doctor %})
-2. [안다는 착각 →]({% post_url 2025-08-09-did-i-understand %})
-3. [노트의 품격 →]({% post_url 2025-08-12-note-premium %})
-4. 왜 나는 항상 결심만 할까?
-5. [달리기를 말할 때 내가 하고 싶은 이야기 →]({% post_url 2025-08-12-running-story %})
-6. [단 한 번의 삶 →]({% post_url 2025-08-10-one-life %})
-7. [내게 남은 스물다섯 번의 계절 →]({% post_url 2025-07-31-25-seasons %})
-8. 무엇이 1등 팀을 만드는가?
-9.  나 홀로 유럽
-10. 진홍색 연구
-11. 그리고 아무도 없었다
-12. 모든 것은 예측 가능하다
-13. 주문하신 대만 간식 나왔습니다
-14. 연직 약사가 알려주는 영양제 특강
-15. 우리는 왜 잠을 자야할까
-16. 더 머니북
-17. (사용자를) 생각하게 하지 마!
-18. 책 잘 읽는 방법
-19. 80:20 학습법
-20. 비만코드
-21. 불안한 완벽주의자를 위한 책
-22. 아티스트의 탁구 노트
+<div id="books-list">
+  <!-- 책 목록이 여기에 동적으로 생성됩니다 -->
+</div>
 
-## 2024
-
-1. 어린왕자
-2. 이방인
-3. 죽음의 수용소에서
-4. 오늘을 사는 이유
-5. 그림으로 배우는 HTTP & Network Basics
-6. 피플웨어
-7. Tidy First?
-8. 제텔카스텐
-9.  1만 시간의 재발견
-10. 가상 면접 사례로 배우는 머신러닝 시스템 설계 기초
-11. 거인의 노트
-12. 이동진 독서법
-13. 개발자의 글쓰기
-14. 이펙티브 엔지니어
-15. Deep Work
-16. 함께 자라기
-17. 유난한 도전
-
-## 2023
-
-1. 메이크타임
-2. 진작 이렇게 책을 읽었더라면
+<script src="{{ '/assets/js/reading-heatmap.js' | relative_url }}"></script>
