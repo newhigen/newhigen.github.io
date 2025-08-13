@@ -170,7 +170,7 @@ function generateBooksList() {
 
         // 책 목록 생성
         const bookList = document.createElement('ul');
-        bookList.style.cssText = 'margin-bottom: 30px; font-size: 14px; line-height: 1.4; list-style: none; padding-left: 0; margin-left: -10px;';
+        bookList.style.cssText = 'margin-bottom: 30px; font-size: 14px; line-height: 1.4; list-style: none; padding-left: 0; margin-left: 0px;';
 
         let currentMonth = null;
         booksByYear[year].forEach((book, index) => {
@@ -196,7 +196,7 @@ function generateBooksList() {
             if (book.post) {
                 // 포스트가 있는 경우 링크 생성
                 const link = document.createElement('a');
-                link.href = `/${book.post}/`;
+                link.href = `/${book.post}`;
                 link.textContent = book.title;
                 link.style.cssText = 'color: black; text-decoration: none; background: linear-gradient(to bottom, transparent 50%, #d0ebff 50%);';
                 link.className = 'book-link';
