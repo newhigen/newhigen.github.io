@@ -50,9 +50,14 @@ function createHeatmap() {
     const monthNames = ['1월', '2월', '3월', '4월', '5월', '6월',
         '7월', '8월', '9월', '10월', '11월', '12월'];
 
+    // 화면 크기에 따라 셀 크기 결정
+    const isMobile = window.innerWidth <= 768;
+    const cellSize = isMobile ? 14 : 16;
+    const fontSize = isMobile ? 9 : 10;
+
     for (let i = 0; i < 12; i++) {
         const monthLabel = document.createElement('div');
-        monthLabel.style.cssText = 'height: 16px; line-height: 16px; text-align: right; font-size: 10px; color: #586069; font-weight: 500; padding-right: 8px; display: flex; align-items: center; justify-content: flex-end; margin: 0; box-sizing: border-box;';
+        monthLabel.style.cssText = `height: ${cellSize}px; line-height: ${cellSize}px; text-align: right; font-size: ${fontSize}px; color: #586069; font-weight: 500; padding-right: 8px; display: flex; align-items: center; justify-content: flex-end; margin: 0; box-sizing: border-box;`;
         monthLabel.textContent = monthNames[i];
         monthLabels.appendChild(monthLabel);
     }
@@ -70,6 +75,8 @@ function createHeatmap() {
         for (let month = 1; month <= 12; month++) {
             const cell = document.createElement('div');
             cell.className = 'heatmap-cell';
+            cell.style.width = `${cellSize}px`;
+            cell.style.height = `${cellSize}px`;
 
             // 현재 날짜 확인
             const currentDate = new Date();
