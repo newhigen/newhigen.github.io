@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Appreciation as Word (feat. Motivation for Blogging)
+title: Appreciation as Word
 date: 2025-08-14
 categories: 생각
 permalink: appreciation-as-word
