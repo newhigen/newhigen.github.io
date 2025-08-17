@@ -82,9 +82,15 @@ document.addEventListener('DOMContentLoaded', function () {
             // 검색어가 포함된 부분 찾기
             let matchedText = '';
             const searchTermLower = searchTerm.toLowerCase();
+            const isTitleMatch = post.title.toLowerCase().includes(searchTermLower);
 
-            if (post.title.toLowerCase().includes(searchTermLower)) {
-                matchedText = post.title;
+            if (isTitleMatch) {
+                // 제목에서 찾아진 경우 내용 표시하지 않음
+                return `
+                    <div class="search-result" onclick="window.location.href='${post.url}'">
+                        <div class="search-result-title">${highlightText(post.title, searchTerm)}</div>
+                    </div>
+                `;
             } else if (post.excerpt.toLowerCase().includes(searchTermLower)) {
                 matchedText = post.excerpt;
             } else if (post.content.toLowerCase().includes(searchTermLower)) {

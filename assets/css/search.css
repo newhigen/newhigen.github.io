@@ -78,7 +78,7 @@
 }
 
 .search-result {
-    padding: 3px 12px;
+    padding: 0px 12px;
     border-bottom: 1px solid #f0f0f0;
     cursor: pointer;
 }
@@ -113,7 +113,7 @@
 
 /* 검색 결과 없음 메시지 */
 #search-results>div {
-    padding: 20px;
+    padding: 10px;
     text-align: center;
     color: #666;
 }
