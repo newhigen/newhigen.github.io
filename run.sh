@@ -1,3 +1,3 @@
 cd ~/dev/newhigen.github.io
 
-bundle exec jekyll serve
+bundle exec jekyll serve --livereload
