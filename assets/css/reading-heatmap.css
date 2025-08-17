@@ -156,7 +156,7 @@
     background: linear-gradient(to bottom, transparent 70%, #8bbae5 50%) !important;
 }
 
-/* 짧은 후기 링크 스타일 (300자 이하) */
+/* 짧은 후기 링크 스타일 */
 .book-link.short-post {
     background: linear-gradient(to bottom, transparent 70%, #d0ebff 90%) !important;
 }
@@ -165,7 +165,7 @@
     background: linear-gradient(to bottom, transparent 70%, #74c0fc 90%) !important;
 }
 
-/* 일반 후기 링크 스타일 (300자 초과) */
+/* 일반 후기 링크 스타일 */
 .book-link:not(.short-post) {
     background: linear-gradient(to bottom, transparent 70%, #d0bfff 90%) !important;
 }
