@@ -283,6 +283,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const searchTermLower = searchTerm.toLowerCase();
         const isTitleMatch = post.title.toLowerCase().includes(searchTermLower);
 
+        // Fuzzy 매치에서 제목에 비슷한 단어가 있는지 확인
+        const isTitleFuzzyMatch = !isTitleMatch && post.similarWords &&
+            post.similarWords.some(word => post.title.toLowerCase().includes(word.toLowerCase()));
+
         // 발견 횟수 계산 (정확한 매치만)
         const titleMatches = (post.title.match(new RegExp(searchTerm, 'gi')) || []).length;
         const excerptMatches = (post.excerpt.match(new RegExp(searchTerm, 'gi')) || []).length;
@@ -298,13 +302,17 @@ document.addEventListener('DOMContentLoaded', function () {
             `일치하는 단어 수: ${totalMatches}` :
             fuzzyInfo;
 
-        if (isTitleMatch) {
-            // 제목에서 찾아진 경우 내용 표시하지 않음
+        if (isTitleMatch || isTitleFuzzyMatch) {
+            // 제목에서 찾아진 경우 (정확한 매치 또는 fuzzy 매치) 내용 표시하지 않음
+            const highlightedTitle = totalMatches > 0 ?
+                highlightText(post.title, searchTerm) :
+                highlightFuzzyText(post.title, searchTerm, post.similarWords);
+
             return `
                 <div class="search-result" onclick="window.location.href='${post.url}'">
                     <div class="search-result-date">${post.date}</div>
                     <div class="search-result-count">${countDisplay}</div>
-                    <div class="search-result-title">${highlightText(post.title, searchTerm)}</div>
+                    <div class="search-result-title">${highlightedTitle}</div>
                 </div>
             `;
         } else if (post.excerpt.toLowerCase().includes(searchTermLower)) {
