@@ -130,6 +130,25 @@
     background: linear-gradient(to bottom, transparent 50%, #8bbae5 50%) !important;
 }
 
+/* 짧은 포스트 링크 스타일 */
+.book-link.short-post {
+    background: linear-gradient(to bottom, transparent 50%, #fff3cd 50%) !important;
+    border-bottom: 1px solid #ffeaa7;
+}
+
+.book-link.short-post:hover {
+    background: linear-gradient(to bottom, transparent 50%, #ffeaa7 50%) !important;
+    border-bottom: 2px solid #fdcb6e;
+}
+
+/* 짧은 포스트 표시 아이콘 */
+.book-link.short-post::after {
+    content: "📝";
+    font-size: 10px;
+    margin-left: 4px;
+    opacity: 0.7;
+}
+
 .book-tooltip {
     position: fixed;
     background: #24292e;

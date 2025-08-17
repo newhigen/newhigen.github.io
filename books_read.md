@@ -25,6 +25,10 @@ permalink: /books_read/
   </div>
 </div>
 
+<div style="margin: 20px 0; padding: 12px; background-color: #f8f9fa; border-radius: 6px; font-size: 13px; color: #586069;">
+  <strong>📝 짧은 포스트:</strong> 300자 이하의 포스트는 노란색 하이라이트로 표시됩니다.
+</div>
+
 <div id="books-list">
   <!-- 책 목록이 여기에 동적으로 생성됩니다 -->
 </div>
