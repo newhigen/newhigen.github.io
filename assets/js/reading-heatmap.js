@@ -1,12 +1,16 @@
 // 책 데이터를 동적으로 로드하고 히트맵 데이터 생성
 let readingData = {};
 let booksList = [];
+let postLengths = {}; // 포스트 글자수 저장
 
 // JSON 파일에서 책 데이터 로드
 async function loadBooksData() {
     try {
         const response = await fetch('/assets/data/books.json');
         booksList = await response.json();
+
+        // 포스트 글자수 계산
+        await calculatePostLengths();
 
         // 히트맵 데이터 생성
         generateHeatmapData();
@@ -22,6 +26,48 @@ async function loadBooksData() {
     } catch (error) {
         console.error('책 데이터를 로드하는 중 오류가 발생했습니다:', error);
     }
+}
+
+// 포스트 글자수 계산
+async function calculatePostLengths() {
+    const promises = booksList
+        .filter(book => book.post)
+        .map(async (book) => {
+            try {
+                const response = await fetch(`/${book.post}/`);
+                if (response.ok) {
+                    const html = await response.text();
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+
+                    // 포스트 본문 내용 추출 (front matter 제외)
+                    const postContent = doc.querySelector('.post-content');
+                    if (postContent) {
+                        const text = postContent.textContent || postContent.innerText || '';
+                        // 공백과 특수문자 제거 후 글자수 계산 (한글, 영문, 숫자만 포함)
+                        const cleanText = text.replace(/\s+/g, '').replace(/[^\uAC00-\uD7AF\u1100-\u11FF\u3130-\u318F\u0041-\u005A\u0061-\u007A\u0030-\u0039]/g, '');
+                        postLengths[book.post] = cleanText.length;
+                        console.log(`포스트 ${book.post}: ${cleanText.length}자`);
+                    } else {
+                        console.warn(`포스트 ${book.post}의 본문을 찾을 수 없습니다.`);
+                        postLengths[book.post] = 0;
+                    }
+                } else {
+                    console.warn(`포스트 ${book.post}를 불러올 수 없습니다. (${response.status})`);
+                    postLengths[book.post] = 0;
+                }
+            } catch (error) {
+                console.warn(`포스트 ${book.post}의 글자수를 계산할 수 없습니다:`, error);
+                postLengths[book.post] = 0;
+            }
+        });
+
+    await Promise.all(promises);
+}
+
+// 포스트가 짧은 포스트인지 확인 (300자 이하)
+function isShortPost(postName) {
+    return postLengths[postName] && postLengths[postName] <= 300;
 }
 
 // 책 목록에서 히트맵 데이터 생성
@@ -205,8 +251,19 @@ function generateBooksList() {
                 const link = document.createElement('a');
                 link.href = `/${book.post}`;
                 link.textContent = book.title;
+
+                // 짧은 포스트인지 확인하여 하이라이트 색상 결정
+                const isShort = isShortPost(book.post);
+
                 link.style.cssText = 'color: black; text-decoration: none; background: linear-gradient(to bottom, transparent 50%, #d0ebff 50%);';
                 link.className = 'book-link';
+
+                // 짧은 포스트인 경우 스타일과 툴팁 추가
+                if (isShort) {
+                    link.classList.add('short-post');
+                    link.title = '짧은 포스트 (300자 이하)';
+                }
+
                 listItem.appendChild(link);
             } else {
                 // 포스트가 없는 경우 일반 텍스트
