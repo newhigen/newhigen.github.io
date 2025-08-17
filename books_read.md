@@ -9,9 +9,6 @@ permalink: /books_read/
 <div class="heatmap-container">
   <div class="heatmap-title">📅&nbsp;&nbsp;독서 달력</div>
   <div id="reading-heatmap"></div>
-  <div class="heatmap-stats" style="text-align: center; margin: 16px 0; font-size: 14px; color: #586069;">
-    <span id="total-books"></span>
-  </div>
   <div class="heatmap-legend">
     <span>0권</span>
     <div class="heatmap-legend-item">
@@ -22,6 +19,9 @@ permalink: /books_read/
       <div class="heatmap-legend-cell" style="background-color: #0c4a6e;"></div>
     </div>
     <span>4권 이상</span>
+  </div>
+  <div class="heatmap-stats" style="text-align: center; margin: 8px 0 0 0; font-size: 14px; color: #586069;">
+    <span id="total-books"></span>
   </div>
 </div>
 
