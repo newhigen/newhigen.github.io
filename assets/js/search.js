@@ -211,9 +211,13 @@ document.addEventListener('DOMContentLoaded', function () {
         if (results.length === 0) {
             searchResults.innerHTML = `
                 <div class="search-section-divider">일치하는 단어 찾기</div>
-                <div style="padding: 20px; text-align: center; color: #666;">검색 결과가 없습니다.</div>
+                <div class="search-section search-section-exact">
+                    <div style="padding: 20px; text-align: center; color: #666;">검색 결과가 없습니다.</div>
+                </div>
                 <div class="search-section-divider">비슷한 단어 찾기</div>
-                <div style="padding: 20px; text-align: center; color: #666;">검색 결과가 없습니다.</div>
+                <div class="search-section search-section-fuzzy">
+                    <div style="padding: 20px; text-align: center; color: #666;">검색 결과가 없습니다.</div>
+                </div>
             `;
             searchResults.classList.add('has-results');
             document.querySelector('.search-content').classList.add('has-results');
@@ -239,19 +243,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // 정확한 매치 결과 (항상 표시)
         html += '<div class="search-section-divider">일치하는 단어 찾기</div>';
+        html += '<div class="search-section search-section-exact">';
         if (exactMatches.length > 0) {
             html += exactMatches.map(post => createResultHTML(post, searchTerm, true)).join('');
         } else {
             html += '<div style="padding: 20px; text-align: center; color: #666;">검색 결과가 없습니다.</div>';
         }
+        html += '</div>';
 
         // Fuzzy 매치 결과 (항상 표시)
         html += '<div class="search-section-divider">비슷한 단어 찾기</div>';
+        html += '<div class="search-section search-section-fuzzy">';
         if (fuzzyMatches.length > 0) {
             html += fuzzyMatches.map(post => createResultHTML(post, searchTerm, false)).join('');
         } else {
             html += '<div style="padding: 20px; text-align: center; color: #666;">검색 결과가 없습니다.</div>';
         }
+        html += '</div>';
 
         searchResults.innerHTML = html;
         searchResults.classList.add('has-results');
