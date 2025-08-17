@@ -308,8 +308,28 @@
 }
 
 /* ========================================
-   9. 2컬럼 책 목록 반응형 디자인
+   9. 책 목록 섹션 스타일
    ======================================== */
+
+.books-note {
+    margin: 30px auto 0 auto;
+    padding: 12px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #586069;
+    display: block;
+    width: fit-content;
+}
+
+#books-list {
+    margin-top: 0;
+}
+
+#books-list h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
 @media (max-width: 768px) {
     #books-list>div {

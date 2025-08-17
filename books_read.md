@@ -24,8 +24,7 @@ permalink: /books_read/
     <span id="total-books"></span>
   </div>
 </div>
-
-<div style="margin: 0; padding: 12px; background-color: #f8f9fa; border-radius: 6px; font-size: 13px; color: #586069;">
+<div class="books-note">
   <strong style="background: linear-gradient(to bottom, transparent 70%, #74c0fc 90%);">후기 있는 책</strong>
 </div>
 
