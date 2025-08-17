@@ -299,19 +299,23 @@ function generateBooksList() {
                 link.href = `/${book.post}`;
                 link.textContent = book.title;
 
-                // 짧은 포스트인지 확인하여 하이라이트 색상 결정
-                const isShort = isShortPost(book.post);
-
                 link.style.cssText = 'text-decoration: none;';
-                link.className = 'book-link';
 
-                // 짧은 포스트인 경우 스타일과 툴팁 추가
+                // 짧은 포스트인 경우 태그를 별도 요소로 추가
+                const isShort = isShortPost(book.post);
                 if (isShort) {
-                    link.classList.add('short-post');
-                    link.title = '짧은 포스트';
-                }
+                    link.className = 'book-link no-highlight';
+                    listItem.appendChild(link);
 
-                listItem.appendChild(link);
+                    // 태그를 별도 요소로 추가
+                    const tag = document.createElement('span');
+                    tag.className = 'short-post-tag';
+                    tag.textContent = '짧은 글';
+                    listItem.appendChild(tag);
+                } else {
+                    link.className = 'book-link';
+                    listItem.appendChild(link);
+                }
             } else {
                 // 포스트가 없는 경우 일반 텍스트
                 const titleSpan = document.createElement('span');
