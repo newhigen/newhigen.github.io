@@ -204,3 +204,48 @@ img {
   border: 1px solid #ccc;
   border-radius: 6px;
 }
+
+/* 날짜와 카테고리 정렬 */
+.post-meta {
+  display: inline-block;
+  width: 60px;
+  text-align: right;
+  margin-right: 5px;
+}
+
+.post-categories {
+  display: inline-block;
+  width: 50px;
+  text-align: right;
+  font-weight: 500;
+  color: #666666;
+}
+
+/* 포스트 날짜 (맨 위 오른쪽) */
+.post-date-top {
+  text-align: right;
+  font-size: 0.9rem;
+  color: #666666;
+}
+
+.post-date-top .meta-label {
+  color: #666666;
+  font-weight: 500;
+}
+
+/* 포스트 제목과 카테고리 태그 */
+.post-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.category-tag {
+  font-size: 0.9rem;
+  color: #666666;
+  background-color: #f5f5f5;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-weight: 400;
+}

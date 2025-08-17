@@ -1,0 +1,6 @@
+{% capture words %}
+{{ content | number_of_words | minus: 0 }}
+{% endcapture %}
+{% unless words contains '-' %}
+{{ words | plus: 100 | divided_by: 100 | append: 'm read' }}
+{% endunless %}

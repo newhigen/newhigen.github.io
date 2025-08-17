@@ -75,7 +75,7 @@
    3. 히트맵 레이아웃 요소들
    ======================================== */
 
-.month-labels {
+.year-labels {
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -84,12 +84,11 @@
     justify-content: flex-start;
 }
 
-.heatmap-column {
+.heatmap-row {
     display: flex;
-    flex-direction: column;
     gap: 4px;
-    min-width: fit-content;
     align-items: center;
+    min-width: fit-content;
     justify-content: flex-start;
 }
 
@@ -156,22 +155,46 @@
     background: linear-gradient(to bottom, transparent 70%, #8bbae5 50%) !important;
 }
 
-/* 짧은 후기 링크 스타일 */
-.book-link.short-post {
-    background: linear-gradient(to bottom, transparent 70%, #d0ebff 90%) !important;
-}
-
-.book-link.short-post:hover {
+/* 후기 링크 스타일 */
+.book-link {
     background: linear-gradient(to bottom, transparent 70%, #74c0fc 90%) !important;
 }
 
-/* 일반 후기 링크 스타일 */
-.book-link:not(.short-post) {
-    background: linear-gradient(to bottom, transparent 70%, #d0bfff 90%) !important;
+.book-link:hover {
+    background: linear-gradient(to bottom, transparent 70%, #1971c2 90%) !important;
 }
 
-.book-link:not(.short-post):hover {
-    background: linear-gradient(to bottom, transparent 70%, #9775fa 90%) !important;
+/* 짧은 글 태그는 하이라이트에서 제외 */
+.book-link .short-post-tag {
+    background: none !important;
+    background-image: none !important;
+    background-color: #6ba3e8 !important;
+}
+
+/* 짧은 글 링크도 일반 글과 동일한 하이라이트 적용 */
+.book-link.no-highlight {
+    background: linear-gradient(to bottom, transparent 70%, #74c0fc 90%) !important;
+}
+
+.book-link.no-highlight:hover {
+    background: linear-gradient(to bottom, transparent 70%, #1971c2 90%) !important;
+}
+
+/* 짧은 글 태그 스타일 (홈페이지와 동일) */
+.short-post-tag {
+    display: inline-block;
+    font-size: 0.5rem;
+    color: #ffffff;
+    background-color: #6ba3e8;
+    padding: 1px 3px;
+    margin-left: 3px;
+    border-radius: 2px;
+    border: none;
+    font-weight: 400;
+    vertical-align: middle;
+    opacity: 0.7;
+    position: relative;
+    z-index: 1;
 }
 
 /* ========================================
@@ -225,10 +248,14 @@
         height: 14px;
     }
 
-    .month-labels div {
+    .year-labels div {
         height: 14px !important;
         line-height: 14px !important;
         font-size: 9px !important;
+    }
+
+    .heatmap-row {
+        gap: 2px;
     }
 
     .heatmap-legend {
@@ -236,5 +263,41 @@
         gap: 8px;
         flex-wrap: wrap;
         justify-content: center;
+    }
+}
+
+/* ========================================
+   8. 매우 좁은 화면 (모바일 세로)
+   ======================================== */
+
+@media (max-width: 480px) {
+    .heatmap-container {
+        padding: 12px;
+        margin: 15px 0;
+    }
+
+    .heatmap-cell {
+        width: 12px;
+        height: 12px;
+    }
+
+    .year-labels div {
+        height: 12px !important;
+        line-height: 12px !important;
+        font-size: 8px !important;
+    }
+
+    .heatmap-row {
+        gap: 1px;
+    }
+
+    .heatmap-legend {
+        font-size: 10px;
+        gap: 6px;
+    }
+
+    .heatmap-legend-cell {
+        width: 10px;
+        height: 10px;
     }
 }
