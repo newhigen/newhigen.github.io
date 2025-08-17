@@ -220,6 +220,18 @@ img {
   color: #666666;
 }
 
+/* 모바일에서 긴 제목 말줄임표 처리 */
+@media screen and (max-width: 768px) {
+  .post-link {
+    max-width: calc(100vw - 200px);
+    /* 날짜+카테고리+여백 고려 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+  }
+}
+
 /* 포스트 날짜 (맨 위 오른쪽) */
 .post-date-top {
   text-align: right;
