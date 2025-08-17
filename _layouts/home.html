@@ -144,51 +144,45 @@ layout: base
   // 홈페이지 짧은 글 태그 자동 처리
   // ========================================
 
+  let postMetadata = {}; // 포스트 메타데이터
+
   /**
-   * 포스트가 짧은 포스트인지 확인 (포스트 내용 길이로 판단)
-   * @param {string} postUrl - 포스트 URL
-   * @returns {Promise<boolean>} 짧은 포스트 여부
+   * 포스트가 짧은 포스트인지 확인 (JSON 메타데이터 사용)
+   * @param {string} postName - 포스트 이름
+   * @returns {boolean} 짧은 포스트 여부
    */
-  async function isShortPost(postUrl) {
-    try {
-      // 포스트 내용을 가져와서 길이 확인
-      const response = await fetch(postUrl);
-      const html = await response.text();
+  function isShortPost(postName) {
+    // JSON 메타데이터에서 확인
+    return postMetadata[postName] ? postMetadata[postName].is_short : false;
+  }
 
-      // HTML에서 본문 내용 추출 (post-content 클래스 내부)
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(html, 'text/html');
-      const contentElement = doc.querySelector('.post-content');
-
-      if (contentElement) {
-        // HTML 태그 제거하고 순수 텍스트만 추출
-        const textContent = contentElement.textContent || contentElement.innerText || '';
-        const cleanText = textContent.replace(/\s+/g, ' ').trim();
-
-        // 500자 미만이면 짧은 글
-        return cleanText.length < 500;
-      }
-
-      return false;
-    } catch (error) {
-      console.error(`포스트 길이 확인 중 오류: ${postUrl}`, error);
-      return false;
-    }
+  /**
+   * 포스트 URL에서 포스트 이름 추출
+   * @param {string} postUrl - 포스트 URL
+   * @returns {string} 포스트 이름
+   */
+  function extractPostName(postUrl) {
+    // URL에서 마지막 부분 추출 (예: /health-newbie/ -> health-newbie)
+    const match = postUrl.match(/\/([^\/]+)\/?$/);
+    return match ? match[1] : '';
   }
 
   /**
    * 홈페이지의 모든 포스트 링크에 대해 짧은 글 태그 처리
    */
   async function processShortPostTags() {
-    const postLinks = document.querySelectorAll('.post-link[data-post-url]');
+    try {
+      // 포스트 메타데이터 로드
+      const response = await fetch('/assets/data/post_metadata.json');
+      postMetadata = await response.json();
 
-    for (const link of postLinks) {
-      const postUrl = link.getAttribute('data-post-url');
+      const postLinks = document.querySelectorAll('.post-link[data-post-url]');
 
-      try {
-        const isShort = await isShortPost(postUrl);
+      for (const link of postLinks) {
+        const postUrl = link.getAttribute('data-post-url');
+        const postName = extractPostName(postUrl);
 
-        if (isShort) {
+        if (postName && isShortPost(postName)) {
           // 짧은 글 스타일 적용
           link.classList.add('short-post');
 
@@ -198,9 +192,9 @@ layout: base
           tag.textContent = '짧은 글';
           link.parentNode.insertBefore(tag, link.nextSibling);
         }
-      } catch (error) {
-        console.error(`짧은 글 태그 처리 중 오류: ${postUrl}`, error);
       }
+    } catch (error) {
+      console.error('짧은 글 태그 처리 중 오류:', error);
     }
   }
 

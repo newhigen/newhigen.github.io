@@ -40,6 +40,8 @@ install:
 # 블로그 빌드
 build:
 	@echo "🔨 블로그 빌드 중..."
+	@echo "📝 포스트 메타데이터 생성 중..."
+	ruby _scripts/generate_post_metadata.rb
 	bundle exec jekyll build
 
 # 로컬 서버 실행
