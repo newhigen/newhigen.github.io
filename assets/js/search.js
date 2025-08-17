@@ -205,7 +205,12 @@ document.addEventListener('DOMContentLoaded', function () {
     // 결과 표시
     function displayResults(results, searchTerm) {
         if (results.length === 0) {
-            searchResults.innerHTML = '<div style="padding: 20px; text-align: center; color: #666;">검색 결과가 없습니다.</div>';
+            searchResults.innerHTML = `
+                <div class="search-section-divider">일치하는 단어 찾기</div>
+                <div style="padding: 20px; text-align: center; color: #666;">검색 결과가 없습니다.</div>
+                <div class="search-section-divider">비슷한 단어 찾기</div>
+                <div style="padding: 20px; text-align: center; color: #666;">검색 결과가 없습니다.</div>
+            `;
             searchResults.classList.add('has-results');
             document.querySelector('.search-content').classList.add('has-results');
             return;
@@ -228,16 +233,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let html = '';
 
-        // 정확한 매치 결과
+        // 정확한 매치 결과 (항상 표시)
+        html += '<div class="search-section-divider">일치하는 단어 찾기</div>';
         if (exactMatches.length > 0) {
-            html += '<div class="search-section-divider">일치하는 단어 찾기</div>';
             html += exactMatches.map(post => createResultHTML(post, searchTerm, true)).join('');
+        } else {
+            html += '<div style="padding: 20px; text-align: center; color: #666;">검색 결과가 없습니다.</div>';
         }
 
-        // Fuzzy 매치 결과
+        // Fuzzy 매치 결과 (항상 표시)
+        html += '<div class="search-section-divider">비슷한 단어 찾기</div>';
         if (fuzzyMatches.length > 0) {
-            html += '<div class="search-section-divider">비슷한 단어 찾기</div>';
             html += fuzzyMatches.map(post => createResultHTML(post, searchTerm, false)).join('');
+        } else {
+            html += '<div style="padding: 20px; text-align: center; color: #666;">검색 결과가 없습니다.</div>';
         }
 
         searchResults.innerHTML = html;
