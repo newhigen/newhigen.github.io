@@ -137,6 +137,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         const searchTerm = query.toLowerCase();
+        console.log('검색어:', searchTerm);
+        console.log('검색 데이터 개수:', searchData.length);
         const results = searchData.map(post => {
             const title = post.title.toLowerCase();
             const excerpt = post.excerpt.toLowerCase();
@@ -158,6 +160,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 similarWords: fuzzyResult.similarWords
             };
         }).filter(post => post.exactMatch || post.fuzzySimilarity > 0);
+
+        console.log('검색 결과 개수:', results.length);
 
         // 검색 결과 정렬 (우선순위: 정확한 매치 > 제목 매치 > 발견 횟수 > Fuzzy 유사도 > 날짜)
         results.sort((a, b) => {
