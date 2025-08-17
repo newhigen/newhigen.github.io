@@ -129,6 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 // 제목에서 찾아진 경우 내용 표시하지 않음
                 return `
                     <div class="search-result" onclick="window.location.href='${post.url}'">
+                        <div class="search-result-date">${post.date}</div>
                         <div class="search-result-count">일치하는 단어 수: ${totalMatches}</div>
                         <div class="search-result-title">${highlightText(post.title, searchTerm)}</div>
                     </div>
@@ -146,6 +147,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             return `
                 <div class="search-result" onclick="window.location.href='${post.url}'">
+                    <div class="search-result-date">${post.date}</div>
                     <div class="search-result-count">일치하는 단어 수: ${totalMatches}</div>
                     <div class="search-result-title">${highlightText(post.title, searchTerm)}</div>
                     <div class="search-result-excerpt">${highlightText(matchedText || post.excerpt, searchTerm)}</div>

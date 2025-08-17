@@ -129,6 +129,15 @@
     text-align: center;
 }
 
+.search-result-date {
+    position: absolute;
+    top: 4px;
+    left: 8px;
+    color: #666;
+    font-size: 10px;
+    font-weight: normal;
+}
+
 /* 검색어 하이라이트 스타일 */
 .search-result mark {
     background-color: #ffeb3b;
