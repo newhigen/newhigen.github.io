@@ -219,13 +219,11 @@ function createHeatmap() {
         // 년도별 책 수 계산
         const yearBooks = booksList.filter(book => book.year === year).length;
 
-        // 년도별 책 수 표시 (행 끝에) - 모바일에서는 숨김
-        if (!isMobile) {
-            const yearCount = document.createElement('div');
-            yearCount.style.cssText = `font-size: ${fontSize}px; color: #586069; font-weight: 400; text-align: right; min-width: 30px;`;
-            yearCount.textContent = `${yearBooks}권`;
-            row.appendChild(yearCount);
-        }
+        // 년도별 책 수 표시 (행 끝에) - 모든 화면에서 표시
+        const yearCount = document.createElement('div');
+        yearCount.style.cssText = `font-size: ${fontSize}px; color: #586069; font-weight: 400; text-align: right; min-width: 30px;`;
+        yearCount.textContent = `${yearBooks}권`;
+        row.appendChild(yearCount);
 
         heatmapRows.appendChild(row);
     }
