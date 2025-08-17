@@ -8,11 +8,11 @@ require 'open3'
 
 class BlogMonitor
   def initialize
-    @blog_root = File.dirname(__FILE__)
+    @blog_root = File.dirname(File.dirname(__FILE__))  # _tools의 상위 디렉토리
     @site_dir = File.join(@blog_root, '_site')
     @posts_dir = File.join(@blog_root, '_posts')
     @config_file = File.join(@blog_root, '_config.yml')
-    @report_file = File.join(@blog_root, 'blog_health_report.json')
+    @report_file = File.join(@blog_root, 'assets', 'data', 'blog_health_report.json')
   end
 
   def generate_health_report

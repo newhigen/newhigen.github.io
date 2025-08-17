@@ -43,22 +43,22 @@ clean:
 # 전체 테스트 실행
 test:
 	@echo "🧪 전체 테스트 실행 중..."
-	ruby test_suite.rb
+	ruby _tools/test_suite.rb
 
 # 블로그 상태 모니터링
 monitor:
 	@echo "🔍 블로그 상태 모니터링 중..."
-	ruby blog_monitor.rb
+	ruby _tools/blog_monitor.rb
 
 # CI 체크 실행
 ci:
 	@echo "🔍 CI 체크 실행 중..."
-	./ci_check.sh
+	./_scripts/ci_check.sh
 
 # 새 포스트 생성
 new-post:
 	@echo "📝 새 포스트 생성 중..."
-	ruby new_post.rb
+	ruby _tools/new_post.rb
 
 # 배포 준비 및 체크
 deploy: test ci monitor

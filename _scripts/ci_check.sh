@@ -114,7 +114,7 @@ fi
 # 7. 링크 검증 (간단한 버전)
 echo "🔗 링크 검증..."
 if command -v ruby &> /dev/null; then
-    if ruby test_suite.rb 2>/dev/null | grep -q "모든 테스트가 통과했습니다"; then
+    if ruby _tools/test_suite.rb 2>/dev/null | grep -q "모든 테스트가 통과했습니다"; then
         log_success "링크 검증 통과"
     else
         log_warning "일부 링크에 문제가 있을 수 있습니다"

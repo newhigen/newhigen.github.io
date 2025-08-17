@@ -5,3 +5,12 @@
 Gemfile.lock
 
 _site/
+
+# Blog maintenance tools
+assets/data/blog_health_report.json
+_tools/*.log
+_scripts/*.log
+
+# Temporary files
+*.tmp
+*.temp
