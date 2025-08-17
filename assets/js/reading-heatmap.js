@@ -40,10 +40,7 @@ function parseCSV(csv) {
                 value = parseInt(value) || 0;
             }
 
-            // boolean 변환
-            if (headers[j] === 'isShort') {
-                value = value === 'true';
-            }
+
 
             obj[headers[j]] = value;
         }
@@ -85,13 +82,35 @@ async function loadBooksData() {
 // ========================================
 
 /**
- * 포스트가 짧은 포스트인지 확인 (JSON 파일의 isShort 속성 사용)
+ * 포스트가 짧은 포스트인지 확인 (포스트 내용 길이로 판단)
  * @param {string} postName - 포스트 URL
- * @returns {boolean} 짧은 포스트 여부
+ * @returns {Promise<boolean>} 짧은 포스트 여부
  */
-function isShortPost(postName) {
-    const book = booksList.find(book => book.post === postName);
-    return book ? book.isShort === true : false;
+async function isShortPost(postName) {
+    try {
+        // 포스트 내용을 가져와서 길이 확인
+        const response = await fetch(`/${postName}/`);
+        const html = await response.text();
+
+        // HTML에서 본문 내용 추출 (post-content 클래스 내부)
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const contentElement = doc.querySelector('.post-content');
+
+        if (contentElement) {
+            // HTML 태그 제거하고 순수 텍스트만 추출
+            const textContent = contentElement.textContent || contentElement.innerText || '';
+            const cleanText = textContent.replace(/\s+/g, ' ').trim();
+
+            // 500자 미만이면 짧은 글
+            return cleanText.length < 500;
+        }
+
+        return false;
+    } catch (error) {
+        console.error(`포스트 길이 확인 중 오류: ${postName}`, error);
+        return false;
+    }
 }
 
 // ========================================
@@ -314,20 +333,23 @@ function generateBooksList() {
                 link.style.cssText = 'text-decoration: none;';
 
                 // 짧은 포스트인 경우 태그를 별도 요소로 추가
-                const isShort = isShortPost(book.post);
-                if (isShort) {
-                    link.className = 'book-link no-highlight';
-                    listItem.appendChild(link);
+                link.className = 'book-link';
+                listItem.appendChild(link);
 
-                    // 태그를 별도 요소로 추가
-                    const tag = document.createElement('span');
-                    tag.className = 'short-post-tag';
-                    tag.textContent = '짧은 글';
-                    listItem.appendChild(tag);
-                } else {
-                    link.className = 'book-link';
-                    listItem.appendChild(link);
-                }
+                // 비동기로 짧은 글 여부 확인
+                isShortPost(book.post).then(isShort => {
+                    if (isShort) {
+                        link.className = 'book-link no-highlight';
+
+                        // 태그를 별도 요소로 추가
+                        const tag = document.createElement('span');
+                        tag.className = 'short-post-tag';
+                        tag.textContent = '짧은 글';
+                        listItem.appendChild(tag);
+                    }
+                }).catch(error => {
+                    console.error(`짧은 글 확인 중 오류: ${book.post}`, error);
+                });
             } else {
                 // 포스트가 없는 경우 일반 텍스트
                 const titleSpan = document.createElement('span');
