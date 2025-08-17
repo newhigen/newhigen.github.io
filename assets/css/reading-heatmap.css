@@ -75,7 +75,7 @@
    3. 히트맵 레이아웃 요소들
    ======================================== */
 
-.month-labels {
+.year-labels {
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -84,12 +84,11 @@
     justify-content: flex-start;
 }
 
-.heatmap-column {
+.heatmap-row {
     display: flex;
-    flex-direction: column;
     gap: 4px;
-    min-width: fit-content;
     align-items: center;
+    min-width: fit-content;
     justify-content: flex-start;
 }
 
@@ -249,10 +248,14 @@
         height: 14px;
     }
 
-    .month-labels div {
+    .year-labels div {
         height: 14px !important;
         line-height: 14px !important;
         font-size: 9px !important;
+    }
+
+    .heatmap-row {
+        gap: 2px;
     }
 
     .heatmap-legend {
@@ -260,5 +263,41 @@
         gap: 8px;
         flex-wrap: wrap;
         justify-content: center;
+    }
+}
+
+/* ========================================
+   8. 매우 좁은 화면 (모바일 세로)
+   ======================================== */
+
+@media (max-width: 480px) {
+    .heatmap-container {
+        padding: 12px;
+        margin: 15px 0;
+    }
+
+    .heatmap-cell {
+        width: 12px;
+        height: 12px;
+    }
+
+    .year-labels div {
+        height: 12px !important;
+        line-height: 12px !important;
+        font-size: 8px !important;
+    }
+
+    .heatmap-row {
+        gap: 1px;
+    }
+
+    .heatmap-legend {
+        font-size: 10px;
+        gap: 6px;
+    }
+
+    .heatmap-legend-cell {
+        width: 10px;
+        height: 10px;
     }
 }

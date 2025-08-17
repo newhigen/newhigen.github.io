@@ -126,36 +126,38 @@ function createHeatmap() {
 
     // 히트맵과 라벨을 감싸는 컨테이너
     const heatmapWrapper = document.createElement('div');
-    heatmapWrapper.style.cssText = 'display: flex; align-items: flex-start; gap: 8px; justify-content: center;';
+    heatmapWrapper.style.cssText = 'display: flex; align-items: flex-start; gap: 8px; justify-content: center; flex-wrap: wrap;';
 
-    // 월별 라벨 추가 (왼쪽에 세로로 배치)
-    const monthLabels = document.createElement('div');
-    monthLabels.className = 'month-labels';
+    // 년도별 라벨 추가 (왼쪽에 세로로 배치)
+    const yearLabels = document.createElement('div');
+    yearLabels.className = 'year-labels';
 
     const monthNames = ['1월', '2월', '3월', '4월', '5월', '6월',
         '7월', '8월', '9월', '10월', '11월', '12월'];
 
     // 화면 크기에 따라 셀 크기 결정
     const isMobile = window.innerWidth <= 768;
-    const cellSize = isMobile ? 14 : 16;
-    const fontSize = isMobile ? 9 : 10;
+    const isSmallMobile = window.innerWidth <= 480;
+    const cellSize = isSmallMobile ? 12 : (isMobile ? 14 : 16);
+    const fontSize = isSmallMobile ? 8 : (isMobile ? 9 : 10);
 
-    // 월 라벨 생성
-    for (let i = 0; i < 12; i++) {
-        const monthLabel = document.createElement('div');
-        monthLabel.style.cssText = `height: ${cellSize}px; line-height: ${cellSize}px; text-align: right; font-size: ${fontSize}px; color: #586069; font-weight: 500; padding-right: 8px; display: flex; align-items: center; justify-content: flex-end; margin: 0; box-sizing: border-box;`;
-        monthLabel.textContent = monthNames[i];
-        monthLabels.appendChild(monthLabel);
+    // 년도 라벨 생성 (내림차순: 2025 → 2024)
+    for (let year = currentYear; year >= startYear; year--) {
+        const yearLabel = document.createElement('div');
+        yearLabel.style.cssText = `height: ${cellSize}px; line-height: ${cellSize}px; text-align: right; font-size: ${fontSize}px; color: #586069; font-weight: 500; padding-right: 8px; display: flex; align-items: center; justify-content: flex-end; margin: 0; box-sizing: border-box;`;
+        yearLabel.textContent = `${year}`;
+        yearLabels.appendChild(yearLabel);
     }
 
-    // 히트맵 컬럼들을 담을 컨테이너
-    const heatmapColumns = document.createElement('div');
-    heatmapColumns.style.cssText = 'display: flex; gap: 4px; align-items: flex-start; justify-content: flex-start;';
+    // 히트맵 행들을 담을 컨테이너
+    const heatmapRows = document.createElement('div');
+    heatmapRows.style.cssText = 'display: flex; flex-direction: column; gap: 4px; align-items: flex-start; justify-content: flex-start;';
 
-    // 년도별로 컬럼 생성
-    for (let year = startYear; year <= currentYear; year++) {
-        const column = document.createElement('div');
-        column.className = 'heatmap-column';
+    // 년도별로 행 생성 (내림차순: 2025 → 2024)
+    for (let year = currentYear; year >= startYear; year--) {
+        const row = document.createElement('div');
+        row.className = 'heatmap-row';
+        row.style.cssText = 'display: flex; gap: 4px; align-items: center;';
 
         // 12개월 셀 생성
         for (let month = 1; month <= 12; month++) {
@@ -167,7 +169,7 @@ function createHeatmap() {
             // 현재 날짜 확인
             const currentDate = new Date();
             const currentYear = currentDate.getFullYear();
-            const currentMonth = currentDate.getMonth() + 1; // getMonth()는 0부터 시작
+            const currentMonth = currentDate.getMonth() + 1;
 
             // 미래의 달인지 확인
             const isFutureMonth = (year > currentYear) || (year === currentYear && month > currentMonth);
@@ -211,29 +213,25 @@ function createHeatmap() {
                 }
             }
 
-            column.appendChild(cell);
+            row.appendChild(cell);
         }
 
         // 년도별 책 수 계산
         const yearBooks = booksList.filter(book => book.year === year).length;
 
-        // 년도 라벨 추가
-        const yearLabel = document.createElement('div');
-        yearLabel.className = 'year-label';
-        yearLabel.textContent = `${year}`;
-        column.appendChild(yearLabel);
+        // 년도별 책 수 표시 (행 끝에) - 모바일에서는 숨김
+        if (!isMobile) {
+            const yearCount = document.createElement('div');
+            yearCount.style.cssText = `font-size: ${fontSize}px; color: #586069; font-weight: 400; text-align: right; min-width: 30px;`;
+            yearCount.textContent = `${yearBooks}권`;
+            row.appendChild(yearCount);
+        }
 
-        // 년도별 책 수 표시
-        const yearCount = document.createElement('div');
-        yearCount.className = 'year-count';
-        yearCount.textContent = `${yearBooks}권`;
-        column.appendChild(yearCount);
-
-        heatmapColumns.appendChild(column);
+        heatmapRows.appendChild(row);
     }
 
-    heatmapWrapper.appendChild(monthLabels);
-    heatmapWrapper.appendChild(heatmapColumns);
+    heatmapWrapper.appendChild(yearLabels);
+    heatmapWrapper.appendChild(heatmapRows);
     container.appendChild(heatmapWrapper);
 }
 
