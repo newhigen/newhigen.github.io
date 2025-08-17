@@ -238,8 +238,8 @@ function createHeatmap() {
 // ========================================
 
 /**
- * 책 목록을 년도별로 정렬하여 화면에 표시합니다.
- * 짧은 포스트와 일반 포스트를 구분하여 표시합니다.
+ * 책 목록을 2컬럼으로 나누어 화면에 표시합니다.
+ * 왼쪽: 올해(2025), 오른쪽: 나머지 년도들
  */
 function generateBooksList() {
     const container = document.getElementById('books-list');
@@ -256,13 +256,29 @@ function generateBooksList() {
 
     // 년도별로 정렬 (최신순)
     const sortedYears = Object.keys(booksByYear).sort((a, b) => b - a);
+    const currentYear = new Date().getFullYear();
+
+    // 2컬럼 컨테이너 생성
+    const twoColumnContainer = document.createElement('div');
+    twoColumnContainer.style.cssText = 'display: flex; gap: 40px; justify-content: center;';
+
+    // 왼쪽 컬럼 (올해)
+    const leftColumn = document.createElement('div');
+    leftColumn.style.cssText = 'flex: 1; max-width: 400px;';
+
+    // 오른쪽 컬럼 (나머지 년도들)
+    const rightColumn = document.createElement('div');
+    rightColumn.style.cssText = 'flex: 1; max-width: 400px;';
 
     sortedYears.forEach(year => {
+        const isCurrentYear = parseInt(year) === currentYear;
+        const targetColumn = isCurrentYear ? leftColumn : rightColumn;
+
         // 년도 헤더 생성
         const yearHeader = document.createElement('h2');
-        yearHeader.textContent = year;
+        yearHeader.textContent = isCurrentYear ? `${year} (올해)` : year;
         yearHeader.style.cssText = 'font-size: 18px; margin-bottom: 10px;';
-        container.appendChild(yearHeader);
+        targetColumn.appendChild(yearHeader);
 
         // 책 목록 생성
         const bookList = document.createElement('ul');
@@ -322,8 +338,13 @@ function generateBooksList() {
             bookList.appendChild(listItem);
         });
 
-        container.appendChild(bookList);
+        targetColumn.appendChild(bookList);
     });
+
+    // 컬럼들을 메인 컨테이너에 추가
+    twoColumnContainer.appendChild(leftColumn);
+    twoColumnContainer.appendChild(rightColumn);
+    container.appendChild(twoColumnContainer);
 }
 
 // ========================================

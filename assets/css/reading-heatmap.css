@@ -301,3 +301,18 @@
         height: 10px;
     }
 }
+
+/* ========================================
+   9. 2컬럼 책 목록 반응형 디자인
+   ======================================== */
+
+@media (max-width: 768px) {
+    #books-list>div {
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+
+    #books-list>div>div {
+        max-width: 100% !important;
+    }
+}
