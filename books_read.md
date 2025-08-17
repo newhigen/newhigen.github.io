@@ -7,7 +7,7 @@ permalink: /books_read/
 <link rel="stylesheet" href="{{ '/assets/css/reading-heatmap.css' | relative_url }}">
 
 <div class="heatmap-container">
-  <div class="heatmap-title">📚 독서 히트맵</div>
+  <div class="heatmap-title">📅&nbsp;&nbsp;독서 달력</div>
   <div id="reading-heatmap"></div>
   <div class="heatmap-stats" style="text-align: center; margin: 16px 0; font-size: 14px; color: #586069;">
     <span id="total-books"></span>
