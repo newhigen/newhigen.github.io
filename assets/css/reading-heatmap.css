@@ -270,6 +270,12 @@
         flex-wrap: wrap;
         justify-content: center;
     }
+
+    /* 히트맵 래퍼 중앙 정렬 보장 */
+    #reading-heatmap>div {
+        justify-content: center !important;
+        width: 100% !important;
+    }
 }
 
 /* ========================================
@@ -279,7 +285,9 @@
 @media (max-width: 480px) {
     .heatmap-container {
         padding: 12px;
-        margin: 15px 0;
+        margin: 15px auto;
+        width: fit-content;
+        text-align: center;
     }
 
     .heatmap-cell {
@@ -305,6 +313,16 @@
     .heatmap-legend-cell {
         width: 10px;
         height: 10px;
+    }
+
+    /* 히트맵 래퍼 강제 중앙 정렬 */
+    #reading-heatmap>div {
+        justify-content: center !important;
+        width: 100% !important;
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: 8px !important;
+        flex-wrap: wrap !important;
     }
 }
 

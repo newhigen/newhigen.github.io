@@ -126,7 +126,7 @@ function createHeatmap() {
 
     // 히트맵과 라벨을 감싸는 컨테이너
     const heatmapWrapper = document.createElement('div');
-    heatmapWrapper.style.cssText = 'display: flex; align-items: flex-start; gap: 8px; justify-content: center; flex-wrap: wrap;';
+    heatmapWrapper.style.cssText = 'display: flex; align-items: flex-start; gap: 8px; justify-content: center; flex-wrap: wrap; width: 100%;';
 
     // 년도별 라벨 추가 (왼쪽에 세로로 배치)
     const yearLabels = document.createElement('div');
