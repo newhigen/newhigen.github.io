@@ -208,17 +208,37 @@ img {
 /* 날짜와 카테고리 정렬 */
 .post-meta {
   display: inline-block;
-  width: 60px;
+  width: 45px;
   text-align: right;
-  margin-right: 5px;
 }
 
 .post-categories {
   display: inline-block;
-  width: 50px;
+  width: 35px;
   text-align: right;
   font-weight: 500;
   color: #666666;
+}
+
+/* 모바일에서 긴 제목 말줄임표 처리 */
+@media screen and (max-width: 768px) {
+  .post-link {
+    max-width: calc(100vw - 200px);
+    /* 날짜+카테고리+여백 고려 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: bottom;
+  }
+
+  .post-categories {
+    vertical-align: center;
+  }
+
+  .post-meta {
+    vertical-align: center;
+  }
 }
 
 /* 포스트 날짜 (맨 위 오른쪽) */

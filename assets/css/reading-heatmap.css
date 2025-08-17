@@ -7,18 +7,21 @@
    ======================================== */
 
 .heatmap-container {
-    margin: 30px 0;
+    margin: 0px auto;
     padding: 24px;
     background: #ffffff;
     border: 1px solid #e1e4e8;
     border-radius: 8px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    display: block;
+    width: fit-content;
+    text-align: center;
 }
 
 .heatmap {
     display: flex;
     gap: 4px;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
     overflow-x: auto;
     padding-bottom: 8px;
     justify-content: center;
@@ -93,10 +96,10 @@
 }
 
 .heatmap-title {
-    font-size: 16px;
+    font-size: 1.2rem;
     font-weight: 600;
     color: #24292e;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     text-align: center;
 }
 
@@ -131,6 +134,8 @@
     font-size: 12px;
     color: #586069;
     justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .heatmap-legend-item {
@@ -143,7 +148,6 @@
     width: 12px;
     height: 12px;
     border-radius: 2px;
-    border: 1px solid #e1e4e8;
 }
 
 /* ========================================
@@ -184,15 +188,15 @@
 .short-post-tag {
     display: inline-block;
     font-size: 0.5rem;
-    color: #ffffff;
-    background-color: #6ba3e8;
+    color: #666666;
+    background-color: #f0f0f0;
     padding: 1px 3px;
     margin-left: 3px;
     border-radius: 2px;
     border: none;
     font-weight: 400;
     vertical-align: middle;
-    opacity: 0.7;
+    opacity: 0.8;
     position: relative;
     z-index: 1;
 }
@@ -240,7 +244,9 @@
 @media (max-width: 768px) {
     .heatmap-container {
         padding: 16px;
-        margin: 20px 0;
+        margin: 20px auto;
+        display: block;
+        width: fit-content;
     }
 
     .heatmap-cell {
@@ -299,5 +305,64 @@
     .heatmap-legend-cell {
         width: 10px;
         height: 10px;
+    }
+}
+
+/* ========================================
+   9. 책 목록 섹션 스타일
+   ======================================== */
+
+.heatmap-note {
+    margin: 10px auto 20px auto;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #586069;
+    display: block;
+    width: fit-content;
+    text-align: center;
+}
+
+.books-note {
+    margin: 30px auto 0 auto;
+    padding: 12px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #586069;
+    display: block;
+    width: fit-content;
+}
+
+#books-list {
+    margin-top: 0;
+}
+
+#books-list h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    #books-list>div {
+        flex-direction: column !important;
+        gap: 0px !important;
+    }
+
+    #books-list>div>div {
+        max-width: 100% !important;
+    }
+
+    #books-list>div>div:first-child {
+        order: 1;
+    }
+
+    #books-list>div>div:last-child {
+        order: 2;
+    }
+
+    #books-list ul {
+        margin-bottom: 15px !important;
     }
 }

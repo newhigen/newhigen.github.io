@@ -28,8 +28,8 @@ layout: base
         {%- when "Sat" -%}{%- assign korean_weekday = "토" -%}
         {%- when "Sun" -%}{%- assign korean_weekday = "일" -%}
         {%- endcase -%}
-        <time class="dt-published" datetime="{{ pdate }}" itemprop="datePublished">
-          {{ page.date | date: "%Y-%-m-%-d" }} ({{ korean_weekday }})
+        <time class="dt-published" style="color: #aaa;" datetime="{{ pdate }}" itemprop="datePublished">
+          {{ page.date | date: "%Y. %-m. %-d" }} ({{ korean_weekday }})
         </time>
         {%- if page.modified_date -%}
         <span class="bullet-divider">•</span>
@@ -45,8 +45,8 @@ layout: base
         {%- when "Sat" -%}{%- assign mod_korean_weekday = "토" -%}
         {%- when "Sun" -%}{%- assign mod_korean_weekday = "일" -%}
         {%- endcase -%}
-        <time class="dt-modified" datetime="{{ mdate }}" itemprop="dateModified">
-          {{ page.modified_date | date: "%Y-%-m -%-d" }} ({{ mod_korean_weekday }})
+        <time class="dt-modified" style="color: #aaa;" datetime="{{ mdate }}" itemprop="dateModified">
+          {{ page.modified_date | date: "%Y. %-m. %-d" }} ({{ mod_korean_weekday }})
         </time>
         {%- endif -%}
       </div>

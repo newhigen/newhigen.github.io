@@ -8,12 +8,12 @@ permalink: /books_read/
 
 <div class="heatmap-container">
   <div class="heatmap-title">📅&nbsp;&nbsp;독서 달력</div>
-  <div id="reading-heatmap"></div>
-  <div class="heatmap-stats" style="text-align: center; margin: 16px 0; font-size: 14px; color: #586069;">
-    <span id="total-books"></span>
+  <div class="heatmap-note">
+    <strong>💡</strong> 달력 위에 마우스를 올리면 그 달에 읽은 책들을 볼 수 있어요
   </div>
+  <div id="reading-heatmap"></div>
   <div class="heatmap-legend">
-    <span>0권</span>
+    <span style="color: rgb(142, 150, 162);">0권</span>
     <div class="heatmap-legend-item">
       <div class="heatmap-legend-cell" style="background-color: #ebedf0;"></div>
       <div class="heatmap-legend-cell" style="background-color: #d0ebff;"></div>
@@ -21,11 +21,13 @@ permalink: /books_read/
       <div class="heatmap-legend-cell" style="background-color: #1971c2;"></div>
       <div class="heatmap-legend-cell" style="background-color: #0c4a6e;"></div>
     </div>
-    <span>4권 이상</span>
+    <span style="color:rgb(142, 150, 162);">4권 이상</span>
+  </div>
+  <div class="heatmap-stats" style="text-align: center; margin: 8px 0 0 0; font-size: 14px; color: #586069;">
+    <span id="total-books"></span>
   </div>
 </div>
-
-<div style="margin: 20px 0; padding: 12px; background-color: #f8f9fa; border-radius: 6px; font-size: 13px; color: #586069;">
+<div class="books-note">
   <strong style="background: linear-gradient(to bottom, transparent 70%, #74c0fc 90%);">후기 있는 책</strong>
 </div>
 
