@@ -1,34 +1,56 @@
-// 책 데이터를 동적으로 로드하고 히트맵 데이터 생성
-let readingData = {};
-let booksList = [];
-let postLengths = {}; // 포스트 글자수 저장
+/* ========================================
+   독서 히트맵 JavaScript
+   ======================================== */
 
-// JSON 파일에서 책 데이터 로드
+// ========================================
+// 1. 전역 변수 및 데이터 관리
+// ========================================
+
+let readingData = {};        // 히트맵 데이터 (년월별 책 개수)
+let booksList = [];          // 전체 책 목록
+let postLengths = {};        // 포스트별 글자수 저장
+
+// ========================================
+// 2. 초기화 및 데이터 로드
+// ========================================
+
+/**
+ * 페이지 로드 시 실행되는 메인 함수
+ * 모든 데이터를 로드하고 UI를 초기화합니다.
+ */
 async function loadBooksData() {
     try {
+        // 1. JSON 파일에서 책 데이터 로드
         const response = await fetch('/assets/data/books.json');
         booksList = await response.json();
 
-        // 포스트 글자수 계산
+        // 2. 포스트 글자수 계산
         await calculatePostLengths();
 
-        // 히트맵 데이터 생성
+        // 3. 히트맵 데이터 생성
         generateHeatmapData();
 
-        // 히트맵 생성
+        // 4. 히트맵 생성
         createHeatmap();
 
-        // 책 목록 생성
+        // 5. 책 목록 생성
         generateBooksList();
 
-        // 총 책 수 업데이트
+        // 6. 총 책 수 업데이트
         updateTotalBooks();
     } catch (error) {
         console.error('책 데이터를 로드하는 중 오류가 발생했습니다:', error);
     }
 }
 
-// 포스트 글자수 계산
+// ========================================
+// 3. 포스트 글자수 계산
+// ========================================
+
+/**
+ * 모든 포스트의 글자수를 계산하여 저장합니다.
+ * 짧은 포스트(300자 이하) 구분에 사용됩니다.
+ */
 async function calculatePostLengths() {
     const promises = booksList
         .filter(book => book.post)
@@ -65,12 +87,23 @@ async function calculatePostLengths() {
     await Promise.all(promises);
 }
 
-// 포스트가 짧은 포스트인지 확인 (300자 이하)
+/**
+ * 포스트가 짧은 포스트인지 확인 (300자 이하)
+ * @param {string} postName - 포스트 URL
+ * @returns {boolean} 짧은 포스트 여부
+ */
 function isShortPost(postName) {
     return postLengths[postName] && postLengths[postName] <= 300;
 }
 
-// 책 목록에서 히트맵 데이터 생성
+// ========================================
+// 4. 히트맵 데이터 생성
+// ========================================
+
+/**
+ * 책 목록에서 히트맵 데이터를 생성합니다.
+ * 년월별로 읽은 책의 개수를 계산합니다.
+ */
 function generateHeatmapData() {
     readingData = {};
 
@@ -80,6 +113,14 @@ function generateHeatmapData() {
     });
 }
 
+// ========================================
+// 5. 히트맵 UI 생성
+// ========================================
+
+/**
+ * 히트맵을 생성하고 화면에 표시합니다.
+ * GitHub 스타일의 히트맵을 구현합니다.
+ */
 function createHeatmap() {
     const container = document.getElementById('reading-heatmap');
     const currentYear = new Date().getFullYear();
@@ -101,6 +142,7 @@ function createHeatmap() {
     const cellSize = isMobile ? 14 : 16;
     const fontSize = isMobile ? 9 : 10;
 
+    // 월 라벨 생성
     for (let i = 0; i < 12; i++) {
         const monthLabel = document.createElement('div');
         monthLabel.style.cssText = `height: ${cellSize}px; line-height: ${cellSize}px; text-align: right; font-size: ${fontSize}px; color: #586069; font-weight: 500; padding-right: 8px; display: flex; align-items: center; justify-content: flex-end; margin: 0; box-sizing: border-box;`;
@@ -197,7 +239,14 @@ function createHeatmap() {
     container.appendChild(heatmapWrapper);
 }
 
-// 책 목록 생성
+// ========================================
+// 6. 책 목록 생성
+// ========================================
+
+/**
+ * 책 목록을 년도별로 정렬하여 화면에 표시합니다.
+ * 짧은 포스트와 일반 포스트를 구분하여 표시합니다.
+ */
 function generateBooksList() {
     const container = document.getElementById('books-list');
     if (!container) return;
@@ -279,7 +328,17 @@ function generateBooksList() {
     });
 }
 
-// 책 목록 표시 함수
+// ========================================
+// 7. 툴팁 기능
+// ========================================
+
+/**
+ * 히트맵 셀에 마우스를 올렸을 때 해당 월의 책 목록을 표시합니다.
+ * @param {HTMLElement} cell - 히트맵 셀 요소
+ * @param {Array} books - 해당 월의 책 목록
+ * @param {number} year - 년도
+ * @param {string} month - 월 이름
+ */
 function showBookList(cell, books, year, month) {
     // 기존 툴팁 제거
     hideBookList();
@@ -317,7 +376,9 @@ function showBookList(cell, books, year, month) {
     document.body.appendChild(tooltip);
 }
 
-// 책 목록 숨기기 함수
+/**
+ * 툴팁을 숨깁니다.
+ */
 function hideBookList() {
     const existingTooltip = document.querySelector('.book-tooltip');
     if (existingTooltip) {
@@ -325,12 +386,21 @@ function hideBookList() {
     }
 }
 
-// 총 책 수 계산
+// ========================================
+// 8. 통계 정보 업데이트
+// ========================================
+
+/**
+ * 총 책 수를 계산합니다.
+ * @returns {number} 총 책 수
+ */
 function calculateTotalBooks() {
     return booksList.length;
 }
 
-// 총 책 수 업데이트
+/**
+ * 화면에 총 책 수를 표시합니다.
+ */
 function updateTotalBooks() {
     const totalBooks = calculateTotalBooks();
     const totalBooksElement = document.getElementById('total-books');
@@ -338,6 +408,10 @@ function updateTotalBooks() {
         totalBooksElement.textContent = `총 ${totalBooks}권의 책을 읽었습니다`;
     }
 }
+
+// ========================================
+// 9. 이벤트 리스너
+// ========================================
 
 // 페이지 로드 시 책 데이터 로드
 document.addEventListener('DOMContentLoaded', function () {
