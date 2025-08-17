@@ -46,6 +46,83 @@ document.addEventListener('DOMContentLoaded', function () {
         return text.replace(regex, '<mark style="background-color: #ffeb3b; padding: 1px 2px; border-radius: 2px;">$1</mark>');
     }
 
+    // Fuzzy search 함수 (Levenshtein distance 기반)
+    function fuzzySearch(text, searchTerm) {
+        const words = text.toLowerCase().split(/\s+/);
+        const searchWords = searchTerm.toLowerCase().split(/\s+/);
+        let totalSimilarity = 0;
+        let similarWords = [];
+
+        for (const searchWord of searchWords) {
+            let bestMatch = null;
+            let bestDistance = Infinity;
+
+            for (const word of words) {
+                const distance = levenshteinDistance(word, searchWord);
+                const maxLength = Math.max(word.length, searchWord.length);
+                const similarity = 1 - (distance / maxLength);
+
+                if (similarity > 0.7 && distance < bestDistance) { // 70% 이상 유사한 경우
+                    bestMatch = word;
+                    bestDistance = distance;
+                }
+            }
+
+            if (bestMatch) {
+                totalSimilarity += (1 - (bestDistance / Math.max(bestMatch.length, searchWord.length)));
+                similarWords.push(bestMatch);
+            }
+        }
+
+        return {
+            similarity: totalSimilarity,
+            similarWords: similarWords
+        };
+    }
+
+    // Levenshtein distance 계산 함수
+    function levenshteinDistance(str1, str2) {
+        const matrix = [];
+        const len1 = str1.length;
+        const len2 = str2.length;
+
+        for (let i = 0; i <= len2; i++) {
+            matrix[i] = [i];
+        }
+
+        for (let j = 0; j <= len1; j++) {
+            matrix[0][j] = j;
+        }
+
+        for (let i = 1; i <= len2; i++) {
+            for (let j = 1; j <= len1; j++) {
+                if (str2.charAt(i - 1) === str1.charAt(j - 1)) {
+                    matrix[i][j] = matrix[i - 1][j - 1];
+                } else {
+                    matrix[i][j] = Math.min(
+                        matrix[i - 1][j - 1] + 1,
+                        matrix[i][j - 1] + 1,
+                        matrix[i - 1][j] + 1
+                    );
+                }
+            }
+        }
+
+        return matrix[len2][len1];
+    }
+
+    // Fuzzy 하이라이트 함수
+    function highlightFuzzyText(text, searchTerm, similarWords) {
+        if (!similarWords || similarWords.length === 0) return text;
+
+        let result = text;
+        for (const word of similarWords) {
+            const regex = new RegExp(`(${word})`, 'gi');
+            result = result.replace(regex, '<mark class="fuzzy">$1</mark>');
+        }
+        return result;
+    }
+
     // 검색 실행
     function performSearch(query) {
         if (!query.trim()) {
@@ -56,17 +133,29 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         const searchTerm = query.toLowerCase();
-        const results = searchData.filter(post => {
+        const results = searchData.map(post => {
             const title = post.title.toLowerCase();
             const excerpt = post.excerpt.toLowerCase();
             const content = post.content.toLowerCase();
+            const fullText = `${post.title} ${post.excerpt} ${post.content}`.toLowerCase();
 
-            return title.includes(searchTerm) ||
+            // 정확한 매치 확인
+            const exactMatch = title.includes(searchTerm) ||
                 excerpt.includes(searchTerm) ||
                 content.includes(searchTerm);
-        });
 
-        // 검색 결과 정렬 (우선순위: 제목 > 발견 횟수 > 날짜)
+            // Fuzzy search
+            const fuzzyResult = fuzzySearch(fullText, searchTerm);
+
+            return {
+                ...post,
+                exactMatch: exactMatch,
+                fuzzySimilarity: fuzzyResult.similarity,
+                similarWords: fuzzyResult.similarWords
+            };
+        }).filter(post => post.exactMatch || post.fuzzySimilarity > 0);
+
+        // 검색 결과 정렬 (우선순위: 정확한 매치 > 제목 매치 > 발견 횟수 > Fuzzy 유사도 > 날짜)
         results.sort((a, b) => {
             const aTitle = a.title.toLowerCase();
             const bTitle = b.title.toLowerCase();
@@ -75,14 +164,18 @@ document.addEventListener('DOMContentLoaded', function () {
             const aExcerpt = a.excerpt.toLowerCase();
             const bExcerpt = b.excerpt.toLowerCase();
 
-            // 1. 제목에서 발견 여부 (제목에서 발견된 것이 우선)
+            // 1. 정확한 매치 여부
+            if (a.exactMatch && !b.exactMatch) return -1;
+            if (!a.exactMatch && b.exactMatch) return 1;
+
+            // 2. 제목에서 발견 여부
             const aTitleMatch = aTitle.includes(searchTerm);
             const bTitleMatch = bTitle.includes(searchTerm);
 
             if (aTitleMatch && !bTitleMatch) return -1;
             if (!aTitleMatch && bTitleMatch) return 1;
 
-            // 2. 발견 횟수 계산
+            // 3. 발견 횟수 계산 (정확한 매치만)
             const aMatches = (aTitle.match(new RegExp(searchTerm, 'gi')) || []).length +
                 (aExcerpt.match(new RegExp(searchTerm, 'gi')) || []).length +
                 (aContent.match(new RegExp(searchTerm, 'gi')) || []).length;
@@ -92,10 +185,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 (bContent.match(new RegExp(searchTerm, 'gi')) || []).length;
 
             if (aMatches !== bMatches) {
-                return bMatches - aMatches; // 발견 횟수가 많은 것이 우선
+                return bMatches - aMatches;
             }
 
-            // 3. 날짜 (최신이 우선)
+            // 4. Fuzzy 유사도
+            if (a.fuzzySimilarity !== b.fuzzySimilarity) {
+                return b.fuzzySimilarity - a.fuzzySimilarity;
+            }
+
+            // 5. 날짜 (최신이 우선)
             const aDate = new Date(a.date || '1970-01-01');
             const bDate = new Date(b.date || '1970-01-01');
             return bDate - aDate;
@@ -113,51 +211,102 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        const html = results.map(post => {
-            // 검색어가 포함된 부분 찾기
-            let matchedText = '';
-            const searchTermLower = searchTerm.toLowerCase();
-            const isTitleMatch = post.title.toLowerCase().includes(searchTermLower);
-
-            // 발견 횟수 계산
+        // 정확한 매치와 fuzzy 매치 분리
+        const exactMatches = results.filter(post => {
             const titleMatches = (post.title.match(new RegExp(searchTerm, 'gi')) || []).length;
             const excerptMatches = (post.excerpt.match(new RegExp(searchTerm, 'gi')) || []).length;
             const contentMatches = (post.content.match(new RegExp(searchTerm, 'gi')) || []).length;
-            const totalMatches = titleMatches + excerptMatches + contentMatches;
+            return titleMatches + excerptMatches + contentMatches > 0;
+        });
 
-            if (isTitleMatch) {
-                // 제목에서 찾아진 경우 내용 표시하지 않음
-                return `
-                    <div class="search-result" onclick="window.location.href='${post.url}'">
-                        <div class="search-result-date">${post.date}</div>
-                        <div class="search-result-count">일치하는 단어 수: ${totalMatches}</div>
-                        <div class="search-result-title">${highlightText(post.title, searchTerm)}</div>
-                    </div>
-                `;
-            } else if (post.excerpt.toLowerCase().includes(searchTermLower)) {
-                matchedText = post.excerpt;
-            } else if (post.content.toLowerCase().includes(searchTermLower)) {
-                // 내용에서 검색어 주변 텍스트 추출
-                const contentLower = post.content.toLowerCase();
-                const index = contentLower.indexOf(searchTermLower);
-                const start = Math.max(0, index - 50);
-                const end = Math.min(post.content.length, index + searchTerm.length + 50);
-                matchedText = '...' + post.content.substring(start, end) + '...';
-            }
+        const fuzzyMatches = results.filter(post => {
+            const titleMatches = (post.title.match(new RegExp(searchTerm, 'gi')) || []).length;
+            const excerptMatches = (post.excerpt.match(new RegExp(searchTerm, 'gi')) || []).length;
+            const contentMatches = (post.content.match(new RegExp(searchTerm, 'gi')) || []).length;
+            return titleMatches + excerptMatches + contentMatches === 0 && post.similarWords && post.similarWords.length > 0;
+        });
 
-            return `
-                <div class="search-result" onclick="window.location.href='${post.url}'">
-                    <div class="search-result-date">${post.date}</div>
-                    <div class="search-result-count">일치하는 단어 수: ${totalMatches}</div>
-                    <div class="search-result-title">${highlightText(post.title, searchTerm)}</div>
-                    <div class="search-result-excerpt">${highlightText(matchedText || post.excerpt, searchTerm)}</div>
-                </div>
-            `;
-        }).join('');
+        let html = '';
+
+        // 정확한 매치 결과
+        if (exactMatches.length > 0) {
+            html += '<div class="search-section-divider">일치하는 단어 찾기</div>';
+            html += exactMatches.map(post => createResultHTML(post, searchTerm, true)).join('');
+        }
+
+        // Fuzzy 매치 결과
+        if (fuzzyMatches.length > 0) {
+            html += '<div class="search-section-divider">비슷한 단어 찾기</div>';
+            html += fuzzyMatches.map(post => createResultHTML(post, searchTerm, false)).join('');
+        }
 
         searchResults.innerHTML = html;
         searchResults.classList.add('has-results');
         document.querySelector('.search-content').classList.add('has-results');
+    }
+
+    // 결과 HTML 생성 함수
+    function createResultHTML(post, searchTerm, isExactMatch) {
+        // 검색어가 포함된 부분 찾기
+        let matchedText = '';
+        const searchTermLower = searchTerm.toLowerCase();
+        const isTitleMatch = post.title.toLowerCase().includes(searchTermLower);
+
+        // 발견 횟수 계산 (정확한 매치만)
+        const titleMatches = (post.title.match(new RegExp(searchTerm, 'gi')) || []).length;
+        const excerptMatches = (post.excerpt.match(new RegExp(searchTerm, 'gi')) || []).length;
+        const contentMatches = (post.content.match(new RegExp(searchTerm, 'gi')) || []).length;
+        const totalMatches = titleMatches + excerptMatches + contentMatches;
+
+        // Fuzzy 매치 정보
+        const fuzzyInfo = post.similarWords && post.similarWords.length > 0 ?
+            `비슷한 단어 수: ${post.similarWords.length} (${post.similarWords.join(', ')})` : '';
+
+        // 카운트 표시 (정확한 매치가 있으면 그것을, 없으면 fuzzy 정보를)
+        const countDisplay = totalMatches > 0 ?
+            `일치하는 단어 수: ${totalMatches}` :
+            fuzzyInfo;
+
+        if (isTitleMatch) {
+            // 제목에서 찾아진 경우 내용 표시하지 않음
+            return `
+                <div class="search-result" onclick="window.location.href='${post.url}'">
+                    <div class="search-result-date">${post.date}</div>
+                    <div class="search-result-count">${countDisplay}</div>
+                    <div class="search-result-title">${highlightText(post.title, searchTerm)}</div>
+                </div>
+            `;
+        } else if (post.excerpt.toLowerCase().includes(searchTermLower)) {
+            matchedText = post.excerpt;
+        } else if (post.content.toLowerCase().includes(searchTermLower)) {
+            // 내용에서 검색어 주변 텍스트 추출
+            const contentLower = post.content.toLowerCase();
+            const index = contentLower.indexOf(searchTermLower);
+            const start = Math.max(0, index - 50);
+            const end = Math.min(post.content.length, index + searchTerm.length + 50);
+            matchedText = '...' + post.content.substring(start, end) + '...';
+        } else if (post.similarWords && post.similarWords.length > 0) {
+            // Fuzzy 매치만 있는 경우
+            matchedText = post.excerpt;
+        }
+
+        // 하이라이트 적용 (정확한 매치가 있으면 그것을, 없으면 fuzzy 하이라이트)
+        const highlightedTitle = totalMatches > 0 ?
+            highlightText(post.title, searchTerm) :
+            highlightFuzzyText(post.title, searchTerm, post.similarWords);
+
+        const highlightedExcerpt = totalMatches > 0 ?
+            highlightText(matchedText || post.excerpt, searchTerm) :
+            highlightFuzzyText(matchedText || post.excerpt, searchTerm, post.similarWords);
+
+        return `
+            <div class="search-result" onclick="window.location.href='${post.url}'">
+                <div class="search-result-date">${post.date}</div>
+                <div class="search-result-count">${countDisplay}</div>
+                <div class="search-result-title">${highlightedTitle}</div>
+                <div class="search-result-excerpt">${highlightedExcerpt}</div>
+            </div>
+        `;
     }
 
     // 이벤트 리스너 등록
