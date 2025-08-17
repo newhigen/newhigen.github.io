@@ -229,6 +229,15 @@ img {
     text-overflow: ellipsis;
     white-space: nowrap;
     display: inline-block;
+    vertical-align: bottom;
+  }
+
+  .post-categories {
+    vertical-align: center;
+  }
+
+  .post-meta {
+    vertical-align: center;
   }
 }
 
