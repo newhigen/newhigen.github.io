@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', function () {
         searchPopup.classList.add('active');
         searchInput.focus();
         loadSearchData();
+        // 검색창 상자에서 결과 클래스 제거
+        document.querySelector('.search-content').classList.remove('has-results');
     }
 
     // 검색 팝업 닫기
@@ -22,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
         searchInput.value = '';
         searchResults.innerHTML = '';
         searchResults.classList.remove('has-results');
+        document.querySelector('.search-content').classList.remove('has-results');
     }
 
     // 검색 데이터 로드
@@ -48,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!query.trim()) {
             searchResults.innerHTML = '';
             searchResults.classList.remove('has-results');
+            document.querySelector('.search-content').classList.remove('has-results');
             return;
         }
 
@@ -70,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (results.length === 0) {
             searchResults.innerHTML = '<div style="padding: 20px; text-align: center; color: #666;">검색 결과가 없습니다.</div>';
             searchResults.classList.add('has-results');
+            document.querySelector('.search-content').classList.add('has-results');
             return;
         }
 
@@ -101,6 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         searchResults.innerHTML = html;
         searchResults.classList.add('has-results');
+        document.querySelector('.search-content').classList.add('has-results');
     }
 
     // 이벤트 리스너 등록
