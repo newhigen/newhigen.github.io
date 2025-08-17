@@ -25,6 +25,10 @@ document.addEventListener('DOMContentLoaded', function () {
         searchResults.innerHTML = '';
         searchResults.classList.remove('has-results');
         document.querySelector('.search-content').classList.remove('has-results');
+
+        // 검색창 크기 초기화
+        const searchContent = document.querySelector('.search-content');
+        searchContent.style.height = 'auto';
     }
 
     // 검색 데이터 로드
@@ -252,6 +256,24 @@ document.addEventListener('DOMContentLoaded', function () {
         searchResults.innerHTML = html;
         searchResults.classList.add('has-results');
         document.querySelector('.search-content').classList.add('has-results');
+
+        // 검색 결과 높이에 따라 검색창 크기 조정
+        setTimeout(() => {
+            const searchContent = document.querySelector('.search-content');
+            const searchResults = document.getElementById('search-results');
+            const searchHeader = document.querySelector('.search-header');
+
+            const headerHeight = searchHeader.offsetHeight;
+            const resultsHeight = searchResults.scrollHeight;
+            const totalHeight = headerHeight + resultsHeight;
+
+            // 최소 높이와 최대 높이 설정
+            const minHeight = headerHeight + 100; // 헤더 + 최소 여백
+            const maxHeight = window.innerHeight * 0.8; // 화면 높이의 80%
+
+            const targetHeight = Math.max(minHeight, Math.min(totalHeight, maxHeight));
+            searchContent.style.height = targetHeight + 'px';
+        }, 10);
     }
 
     // 결과 HTML 생성 함수

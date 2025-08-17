@@ -51,7 +51,8 @@
 }
 
 .search-content.has-results {
-    height: 80vh;
+    height: auto;
+    max-height: 80vh;
 }
 
 .search-header {
