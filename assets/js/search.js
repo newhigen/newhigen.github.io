@@ -210,11 +210,11 @@ document.addEventListener('DOMContentLoaded', function () {
     function displayResults(results, searchTerm) {
         if (results.length === 0) {
             searchResults.innerHTML = `
-                <div class="search-section-divider">일치하는 단어 찾기</div>
+                <div class="search-section-divider">일치하는 단어 찾기 (0개)</div>
                 <div class="search-section search-section-exact">
                     <div style="padding: 20px; text-align: center; color: #666;">검색 결과가 없습니다.</div>
                 </div>
-                <div class="search-section-divider">비슷한 단어 찾기</div>
+                <div class="search-section-divider">비슷한 단어 찾기 (0개)</div>
                 <div class="search-section search-section-fuzzy">
                     <div style="padding: 20px; text-align: center; color: #666;">검색 결과가 없습니다.</div>
                 </div>
@@ -242,20 +242,22 @@ document.addEventListener('DOMContentLoaded', function () {
         let html = '';
 
         // 정확한 매치 결과 (항상 표시)
-        html += '<div class="search-section-divider">일치하는 단어 찾기</div>';
+        const exactCount = exactMatches.length > 0 ? ` (${exactMatches.length}개)` : '';
+        html += `<div class="search-section-divider">일치하는 단어 찾기${exactCount}</div>`;
         html += '<div class="search-section search-section-exact">';
         if (exactMatches.length > 0) {
-            html += exactMatches.map(post => createResultHTML(post, searchTerm, true)).join('');
+            html += exactMatches.map((post, index) => createResultHTML(post, searchTerm, true, index + 1)).join('');
         } else {
             html += '<div style="padding: 20px; text-align: center; color: #666;">검색 결과가 없습니다.</div>';
         }
         html += '</div>';
 
         // Fuzzy 매치 결과 (항상 표시)
-        html += '<div class="search-section-divider">비슷한 단어 찾기</div>';
+        const fuzzyCount = fuzzyMatches.length > 0 ? ` (${fuzzyMatches.length}개)` : '';
+        html += `<div class="search-section-divider">비슷한 단어 찾기${fuzzyCount}</div>`;
         html += '<div class="search-section search-section-fuzzy">';
         if (fuzzyMatches.length > 0) {
-            html += fuzzyMatches.map(post => createResultHTML(post, searchTerm, false)).join('');
+            html += fuzzyMatches.map((post, index) => createResultHTML(post, searchTerm, false, exactMatches.length + index + 1)).join('');
         } else {
             html += '<div style="padding: 20px; text-align: center; color: #666;">검색 결과가 없습니다.</div>';
         }
@@ -285,7 +287,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // 결과 HTML 생성 함수
-    function createResultHTML(post, searchTerm, isExactMatch) {
+    function createResultHTML(post, searchTerm, isExactMatch, index) {
         // 검색어가 포함된 부분 찾기
         let matchedText = '';
         const searchTermLower = searchTerm.toLowerCase();
@@ -320,6 +322,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="search-result" onclick="window.location.href='${post.url}'">
                     <div class="search-result-date">${post.date}</div>
                     <div class="search-result-count">${countDisplay}</div>
+                    <div class="search-result-index">${index}</div>
                     <div class="search-result-title">${highlightedTitle}</div>
                 </div>
             `;
@@ -350,6 +353,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="search-result" onclick="window.location.href='${post.url}'">
                 <div class="search-result-date">${post.date}</div>
                 <div class="search-result-count">${countDisplay}</div>
+                <div class="search-result-index">${index}</div>
                 <div class="search-result-title">${highlightedTitle}</div>
                 <div class="search-result-excerpt">${highlightedExcerpt}</div>
             </div>

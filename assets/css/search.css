@@ -146,6 +146,15 @@
 .search-result-date {
     position: absolute;
     top: 4px;
+    left: 40px;
+    color: #666;
+    font-size: 10px;
+    font-weight: normal;
+}
+
+.search-result-index {
+    position: absolute;
+    top: 4px;
     left: 8px;
     color: #666;
     font-size: 10px;
