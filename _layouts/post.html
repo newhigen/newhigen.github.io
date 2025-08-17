@@ -13,6 +13,42 @@ layout: base
       ======================================== -->
 
   <header class="post-header">
+    <!-- 날짜 (맨 위 오른쪽) -->
+    <div class="post-date-top">
+      {%- assign pdate = page.date | date_to_xmlschema -%}
+      {%- assign weekday = page.date | date: "%a" -%}
+      {%- case weekday -%}
+      {%- when "Mon" -%}{%- assign korean_weekday = "월" -%}
+      {%- when "Tue" -%}{%- assign korean_weekday = "화" -%}
+      {%- when "Wed" -%}{%- assign korean_weekday = "수" -%}
+      {%- when "Thu" -%}{%- assign korean_weekday = "목" -%}
+      {%- when "Fri" -%}{%- assign korean_weekday = "금" -%}
+      {%- when "Sat" -%}{%- assign korean_weekday = "토" -%}
+      {%- when "Sun" -%}{%- assign korean_weekday = "일" -%}
+      {%- endcase -%}
+      <time class="dt-published" datetime="{{ pdate }}" itemprop="datePublished">
+        {{ page.date | date: "%Y년 %-m월 %-d일" }} ({{ korean_weekday }})
+      </time>
+      {%- if page.modified_date -%}
+      <span class="bullet-divider">•</span>
+      <span class="meta-label">수정:</span>
+      {%- assign mdate = page.modified_date | date_to_xmlschema %}
+      {%- assign mod_weekday = page.modified_date | date: "%a" -%}
+      {%- case mod_weekday -%}
+      {%- when "Mon" -%}{%- assign mod_korean_weekday = "월" -%}
+      {%- when "Tue" -%}{%- assign mod_korean_weekday = "화" -%}
+      {%- when "Wed" -%}{%- assign mod_korean_weekday = "수" -%}
+      {%- when "Thu" -%}{%- assign mod_korean_weekday = "목" -%}
+      {%- when "Fri" -%}{%- assign mod_korean_weekday = "금" -%}
+      {%- when "Sat" -%}{%- assign mod_korean_weekday = "토" -%}
+      {%- when "Sun" -%}{%- assign mod_korean_weekday = "일" -%}
+      {%- endcase -%}
+      <time class="dt-modified" datetime="{{ mdate }}" itemprop="dateModified">
+        {{ page.modified_date | date: "%Y년 %-m월 %-d일" }} ({{ mod_korean_weekday }})
+      </time>
+      {%- endif -%}
+    </div>
+
     <!-- 포스트 제목과 카테고리 태그 -->
     <div class="post-title-container">
       <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
@@ -41,36 +77,11 @@ layout: base
       {%- assign pub_year = page.publication_year | default: page['publication-year'] -%}
       {%- if pub_year -%}
       <span>
-        {%- if page.author %}{% if pub_year %}, {% endif %}{% endif -%}
-        {{ pub_year }}
+        {%- if page.author %} ({{ pub_year }}){% endif -%}
       </span>
       {%- endif -%}
     </div>
     {%- endif -%}
-
-    <!-- ========================================
-        1-2. 포스트 메타 정보 (작성일, 수정일)
-        ======================================== -->
-    <div class="post-meta">
-      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y (%a)" -%}
-      {% assign pdate = page.date | date_to_xmlschema %}
-
-      <!-- 작성일 -->
-      {%- if page.modified_date %}<span class="meta-label">Published:</span>{% endif %}
-      <time class="dt-published" datetime="{{ pdate }}" itemprop="datePublished">
-        {{ page.date | date: date_format }}
-      </time>
-
-      <!-- 수정일 (있는 경우만) -->
-      {%- if page.modified_date -%}
-      <span class="bullet-divider">•</span>
-      <span class="meta-label">Updated:</span>
-      {%- assign mdate = page.modified_date | date_to_xmlschema %}
-      <time class="dt-modified" datetime="{{ mdate }}" itemprop="dateModified">
-        {{ mdate | date: date_format }}
-      </time>
-      {%- endif -%}
-    </div>
   </header>
 
   <!-- ========================================
