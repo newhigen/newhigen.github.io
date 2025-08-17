@@ -14,14 +14,55 @@ let booksList = [];          // 전체 책 목록
 // ========================================
 
 /**
+ * CSV 문자열을 파싱하여 객체 배열로 변환합니다.
+ * @param {string} csv - CSV 문자열
+ * @returns {Array} 파싱된 객체 배열
+ */
+function parseCSV(csv) {
+    const lines = csv.trim().split('\n');
+    const headers = lines[0].split(',');
+    const result = [];
+
+    for (let i = 1; i < lines.length; i++) {
+        const values = lines[i].split(',');
+        const obj = {};
+
+        for (let j = 0; j < headers.length; j++) {
+            let value = values[j] || '';
+
+            // 따옴표로 감싸진 값 처리
+            if (value.startsWith('"') && value.endsWith('"')) {
+                value = value.slice(1, -1);
+            }
+
+            // 숫자 변환
+            if (headers[j] === 'year' || headers[j] === 'month') {
+                value = parseInt(value) || 0;
+            }
+
+            // boolean 변환
+            if (headers[j] === 'isShort') {
+                value = value === 'true';
+            }
+
+            obj[headers[j]] = value;
+        }
+        result.push(obj);
+    }
+
+    return result;
+}
+
+/**
  * 페이지 로드 시 실행되는 메인 함수
  * 모든 데이터를 로드하고 UI를 초기화합니다.
  */
 async function loadBooksData() {
     try {
-        // 1. JSON 파일에서 책 데이터 로드
-        const response = await fetch('/assets/data/books.json');
-        booksList = await response.json();
+        // 1. CSV 파일에서 책 데이터 로드
+        const response = await fetch('/assets/data/books.csv');
+        const csvText = await response.text();
+        booksList = parseCSV(csvText);
 
         // 2. 히트맵 데이터 생성
         generateHeatmapData();

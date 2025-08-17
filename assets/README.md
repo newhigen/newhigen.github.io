@@ -12,7 +12,7 @@ assets/
 ├── js/
 │   └── reading-heatmap.js    # 히트맵 기능
 ├── data/
-│   └── books.json           # 책 데이터
+│   └── books.csv            # 책 데이터
 └── images/                  # 이미지 파일들
 ```
 
@@ -49,17 +49,19 @@ assets/
 
 ### 책 데이터 추가/수정
 
-`assets/data/books.json` 파일에서 책 정보를 관리합니다:
+`assets/data/books.csv` 파일에서 책 정보를 관리합니다:
 
-```json
-{
-  "title": "책 제목",
-  "author": "저자명",
-  "year": 2024,
-  "month": 12,
-  "post": "post-url"  // 포스트가 있는 경우만
-}
+```csv
+title,year,month,post,isShort
+책 제목,2024,12,post-url,false
 ```
+
+**필드 설명:**
+- `title`: 책 제목 (필수)
+- `year`: 읽은 년도 (필수)
+- `month`: 읽은 월 (필수)
+- `post`: 관련 포스트 URL (선택사항, 비어있으면 빈 문자열)
+- `isShort`: 짧은 포스트 여부 (선택사항, true/false)
 
 ### 짧은 포스트 기준 변경
 
@@ -99,7 +101,7 @@ if (count > 0) {
 ## 🚀 사용법
 
 1. **books_read.md** 페이지에서 히트맵이 자동으로 로드됩니다
-2. 책 데이터는 `books.json`에서 관리됩니다
+2. 책 데이터는 `books.csv`에서 관리됩니다
 3. 포스트 글자수는 자동으로 계산되어 짧은 포스트를 구분합니다
 4. 히트맵에 마우스를 올리면 해당 월의 책 목록이 표시됩니다
 
@@ -107,7 +109,7 @@ if (count > 0) {
 
 - **reading-heatmap.css**: 모든 히트맵 관련 스타일
 - **reading-heatmap.js**: 히트맵 생성, 데이터 처리, 인터랙션
-- **books.json**: 책 데이터 저장소
+- **books.csv**: 책 데이터 저장소
 - **style.scss**: 기본 사이트 스타일 (Jekyll에서 컴파일됨)
 
 ---
