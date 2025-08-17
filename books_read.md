@@ -10,7 +10,7 @@ permalink: /books_read/
   <div class="heatmap-title">📚 독서 히트맵</div>
   <div id="reading-heatmap"></div>
   <div class="heatmap-stats" style="text-align: center; margin: 16px 0; font-size: 14px; color: #586069;">
-    <span id="total-books">총 41권의 책을 읽었습니다</span>
+    <span id="total-books"></span>
   </div>
   <div class="heatmap-legend">
     <span>0권</span>
@@ -26,7 +26,8 @@ permalink: /books_read/
 </div>
 
 <div style="margin: 20px 0; padding: 12px; background-color: #f8f9fa; border-radius: 6px; font-size: 13px; color: #586069;">
-  <strong style="background: linear-gradient(to bottom, transparent 50%, #fff3cd 50%);">짧은 글</strong>: 300자 이하의 글은 노란색 하이라이트로 표시됩니다.
+  <strong style="background: linear-gradient(to bottom, transparent 70%, #d0bfff 90%);">후기</strong>: 후기가 있는 책은 보라색으로 표시됩니다.<br>
+  <strong style="background: linear-gradient(to bottom, transparent 70%, #d0ebff 90%);">짧은 후기</strong>: 300자 이하의 후기는 하늘색으로 표시됩니다.
 </div>
 
 <div id="books-list">
