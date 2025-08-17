@@ -13,8 +13,13 @@ layout: base
       ======================================== -->
 
   <header class="post-header">
-    <!-- 포스트 제목 -->
-    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+    <!-- 포스트 제목과 카테고리 태그 -->
+    <div class="post-title-container">
+      <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+      {%- if page.categories -%}
+      <span class="category-tag">{{ page.categories | first }}</span>
+      {%- endif -%}
+    </div>
 
     <!-- ========================================
         1-1. 책 상세 정보 (책 카테고리인 경우만)
