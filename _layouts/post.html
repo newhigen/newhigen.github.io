@@ -1,20 +1,38 @@
 ---
 layout: base
 ---
+
+<!-- ========================================
+   포스트 상세 페이지 레이아웃
+   ======================================== -->
+
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
+  <!-- ========================================
+      1. 포스트 헤더 (제목, 메타 정보)
+      ======================================== -->
+
   <header class="post-header">
+    <!-- 포스트 제목 -->
     <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+
+    <!-- ========================================
+        1-1. 책 상세 정보 (책 카테고리인 경우만)
+        ======================================== -->
     {%- assign cats = page.categories | join: ',' | downcase -%}
     {%- if cats contains "책" -%}
     <div class="book-details">
+      <!-- 저자 정보 -->
       {%- if page.author %}
       {%- for author in page.author %}
       <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span class="p-author h-card" itemprop="name">{{ author }}</span></span>
+        <span class="p-author h-card" itemprop="name">{{ author }}</span>
+      </span>
       {%- if forloop.last == false %}, {% endif -%}
       {%- endfor -%}
       {%- endif -%}
+
+      <!-- 출판년도 -->
       {%- assign pub_year = page.publication_year | default: page['publication-year'] -%}
       {%- if pub_year -%}
       <span>
@@ -24,13 +42,21 @@ layout: base
       {%- endif -%}
     </div>
     {%- endif -%}
+
+    <!-- ========================================
+        1-2. 포스트 메타 정보 (작성일, 수정일)
+        ======================================== -->
     <div class="post-meta">
       {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y (%a)" -%}
       {% assign pdate = page.date | date_to_xmlschema %}
+
+      <!-- 작성일 -->
       {%- if page.modified_date %}<span class="meta-label">Published:</span>{% endif %}
       <time class="dt-published" datetime="{{ pdate }}" itemprop="datePublished">
         {{ page.date | date: date_format }}
       </time>
+
+      <!-- 수정일 (있는 경우만) -->
       {%- if page.modified_date -%}
       <span class="bullet-divider">•</span>
       <span class="meta-label">Updated:</span>
@@ -42,13 +68,25 @@ layout: base
     </div>
   </header>
 
+  <!-- ========================================
+      2. 포스트 본문
+      ======================================== -->
+
   <div class="post-content e-content" itemprop="articleBody">
     {{ content }}
   </div>
 
+  <!-- ========================================
+      3. 댓글 시스템 (Disqus)
+      ======================================== -->
+
   {%- if site.disqus.shortname -%}
   {%- include disqus_comments.html -%}
   {%- endif -%}
+
+  <!-- ========================================
+      4. 마이크로데이터 URL
+      ======================================== -->
 
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>

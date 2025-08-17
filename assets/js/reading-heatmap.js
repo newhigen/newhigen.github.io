@@ -1,76 +1,107 @@
-// 책 데이터를 동적으로 로드하고 히트맵 데이터 생성
-let readingData = {};
-let booksList = [];
-let postLengths = {}; // 포스트 글자수 저장
+/* ========================================
+   독서 히트맵 JavaScript
+   ======================================== */
 
-// JSON 파일에서 책 데이터 로드
+// ========================================
+// 1. 전역 변수 및 데이터 관리
+// ========================================
+
+let readingData = {};        // 히트맵 데이터 (년월별 책 개수)
+let booksList = [];          // 전체 책 목록
+
+// ========================================
+// 2. 초기화 및 데이터 로드
+// ========================================
+
+/**
+ * CSV 문자열을 파싱하여 객체 배열로 변환합니다.
+ * @param {string} csv - CSV 문자열
+ * @returns {Array} 파싱된 객체 배열
+ */
+function parseCSV(csv) {
+    const lines = csv.trim().split('\n');
+    const headers = lines[0].split(',');
+    const result = [];
+
+    for (let i = 1; i < lines.length; i++) {
+        const values = lines[i].split(',');
+        const obj = {};
+
+        for (let j = 0; j < headers.length; j++) {
+            let value = values[j] || '';
+
+            // 따옴표로 감싸진 값 처리
+            if (value.startsWith('"') && value.endsWith('"')) {
+                value = value.slice(1, -1);
+            }
+
+            // 숫자 변환
+            if (headers[j] === 'year' || headers[j] === 'month') {
+                value = parseInt(value) || 0;
+            }
+
+            // boolean 변환
+            if (headers[j] === 'isShort') {
+                value = value === 'true';
+            }
+
+            obj[headers[j]] = value;
+        }
+        result.push(obj);
+    }
+
+    return result;
+}
+
+/**
+ * 페이지 로드 시 실행되는 메인 함수
+ * 모든 데이터를 로드하고 UI를 초기화합니다.
+ */
 async function loadBooksData() {
     try {
-        const response = await fetch('/assets/data/books.json');
-        booksList = await response.json();
+        // 1. CSV 파일에서 책 데이터 로드
+        const response = await fetch('/assets/data/books.csv');
+        const csvText = await response.text();
+        booksList = parseCSV(csvText);
 
-        // 포스트 글자수 계산
-        await calculatePostLengths();
-
-        // 히트맵 데이터 생성
+        // 2. 히트맵 데이터 생성
         generateHeatmapData();
 
-        // 히트맵 생성
+        // 3. 히트맵 생성
         createHeatmap();
 
-        // 책 목록 생성
+        // 4. 책 목록 생성
         generateBooksList();
 
-        // 총 책 수 업데이트
+        // 5. 총 책 수 업데이트
         updateTotalBooks();
     } catch (error) {
         console.error('책 데이터를 로드하는 중 오류가 발생했습니다:', error);
     }
 }
 
-// 포스트 글자수 계산
-async function calculatePostLengths() {
-    const promises = booksList
-        .filter(book => book.post)
-        .map(async (book) => {
-            try {
-                const response = await fetch(`/${book.post}/`);
-                if (response.ok) {
-                    const html = await response.text();
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(html, 'text/html');
+// ========================================
+// 3. 포스트 길이 확인
+// ========================================
 
-                    // 포스트 본문 내용 추출 (front matter 제외)
-                    const postContent = doc.querySelector('.post-content');
-                    if (postContent) {
-                        const text = postContent.textContent || postContent.innerText || '';
-                        // 공백과 특수문자 제거 후 글자수 계산 (한글, 영문, 숫자만 포함)
-                        const cleanText = text.replace(/\s+/g, '').replace(/[^\uAC00-\uD7AF\u1100-\u11FF\u3130-\u318F\u0041-\u005A\u0061-\u007A\u0030-\u0039]/g, '');
-                        postLengths[book.post] = cleanText.length;
-                        console.log(`포스트 ${book.post}: ${cleanText.length}자`);
-                    } else {
-                        console.warn(`포스트 ${book.post}의 본문을 찾을 수 없습니다.`);
-                        postLengths[book.post] = 0;
-                    }
-                } else {
-                    console.warn(`포스트 ${book.post}를 불러올 수 없습니다. (${response.status})`);
-                    postLengths[book.post] = 0;
-                }
-            } catch (error) {
-                console.warn(`포스트 ${book.post}의 글자수를 계산할 수 없습니다:`, error);
-                postLengths[book.post] = 0;
-            }
-        });
-
-    await Promise.all(promises);
-}
-
-// 포스트가 짧은 포스트인지 확인 (300자 이하)
+/**
+ * 포스트가 짧은 포스트인지 확인 (JSON 파일의 isShort 속성 사용)
+ * @param {string} postName - 포스트 URL
+ * @returns {boolean} 짧은 포스트 여부
+ */
 function isShortPost(postName) {
-    return postLengths[postName] && postLengths[postName] <= 300;
+    const book = booksList.find(book => book.post === postName);
+    return book ? book.isShort === true : false;
 }
 
-// 책 목록에서 히트맵 데이터 생성
+// ========================================
+// 4. 히트맵 데이터 생성
+// ========================================
+
+/**
+ * 책 목록에서 히트맵 데이터를 생성합니다.
+ * 년월별로 읽은 책의 개수를 계산합니다.
+ */
 function generateHeatmapData() {
     readingData = {};
 
@@ -80,6 +111,14 @@ function generateHeatmapData() {
     });
 }
 
+// ========================================
+// 5. 히트맵 UI 생성
+// ========================================
+
+/**
+ * 히트맵을 생성하고 화면에 표시합니다.
+ * GitHub 스타일의 히트맵을 구현합니다.
+ */
 function createHeatmap() {
     const container = document.getElementById('reading-heatmap');
     const currentYear = new Date().getFullYear();
@@ -101,6 +140,7 @@ function createHeatmap() {
     const cellSize = isMobile ? 14 : 16;
     const fontSize = isMobile ? 9 : 10;
 
+    // 월 라벨 생성
     for (let i = 0; i < 12; i++) {
         const monthLabel = document.createElement('div');
         monthLabel.style.cssText = `height: ${cellSize}px; line-height: ${cellSize}px; text-align: right; font-size: ${fontSize}px; color: #586069; font-weight: 500; padding-right: 8px; display: flex; align-items: center; justify-content: flex-end; margin: 0; box-sizing: border-box;`;
@@ -197,7 +237,14 @@ function createHeatmap() {
     container.appendChild(heatmapWrapper);
 }
 
-// 책 목록 생성
+// ========================================
+// 6. 책 목록 생성
+// ========================================
+
+/**
+ * 책 목록을 년도별로 정렬하여 화면에 표시합니다.
+ * 짧은 포스트와 일반 포스트를 구분하여 표시합니다.
+ */
 function generateBooksList() {
     const container = document.getElementById('books-list');
     if (!container) return;
@@ -255,13 +302,13 @@ function generateBooksList() {
                 // 짧은 포스트인지 확인하여 하이라이트 색상 결정
                 const isShort = isShortPost(book.post);
 
-                link.style.cssText = 'color: black; text-decoration: none; background: linear-gradient(to bottom, transparent 50%, #d0ebff 50%);';
+                link.style.cssText = 'text-decoration: none;';
                 link.className = 'book-link';
 
                 // 짧은 포스트인 경우 스타일과 툴팁 추가
                 if (isShort) {
                     link.classList.add('short-post');
-                    link.title = '짧은 포스트 (300자 이하)';
+                    link.title = '짧은 포스트';
                 }
 
                 listItem.appendChild(link);
@@ -279,7 +326,17 @@ function generateBooksList() {
     });
 }
 
-// 책 목록 표시 함수
+// ========================================
+// 7. 툴팁 기능
+// ========================================
+
+/**
+ * 히트맵 셀에 마우스를 올렸을 때 해당 월의 책 목록을 표시합니다.
+ * @param {HTMLElement} cell - 히트맵 셀 요소
+ * @param {Array} books - 해당 월의 책 목록
+ * @param {number} year - 년도
+ * @param {string} month - 월 이름
+ */
 function showBookList(cell, books, year, month) {
     // 기존 툴팁 제거
     hideBookList();
@@ -317,7 +374,9 @@ function showBookList(cell, books, year, month) {
     document.body.appendChild(tooltip);
 }
 
-// 책 목록 숨기기 함수
+/**
+ * 툴팁을 숨깁니다.
+ */
 function hideBookList() {
     const existingTooltip = document.querySelector('.book-tooltip');
     if (existingTooltip) {
@@ -325,12 +384,21 @@ function hideBookList() {
     }
 }
 
-// 총 책 수 계산
+// ========================================
+// 8. 통계 정보 업데이트
+// ========================================
+
+/**
+ * 총 책 수를 계산합니다.
+ * @returns {number} 총 책 수
+ */
 function calculateTotalBooks() {
     return booksList.length;
 }
 
-// 총 책 수 업데이트
+/**
+ * 화면에 총 책 수를 표시합니다.
+ */
 function updateTotalBooks() {
     const totalBooks = calculateTotalBooks();
     const totalBooksElement = document.getElementById('total-books');
@@ -338,6 +406,10 @@ function updateTotalBooks() {
         totalBooksElement.textContent = `총 ${totalBooks}권의 책을 읽었습니다`;
     }
 }
+
+// ========================================
+// 9. 이벤트 리스너
+// ========================================
 
 // 페이지 로드 시 책 데이터 로드
 document.addEventListener('DOMContentLoaded', function () {

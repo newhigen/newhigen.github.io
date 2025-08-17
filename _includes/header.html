@@ -1,14 +1,28 @@
+<!-- ========================================
+   사이트 헤더 (네비게이션)
+   ======================================== -->
+
 <header class="site-header">
 
   <div class="wrapper">
+    <!-- ========================================
+        1. 네비게이션 페이지 목록 준비
+        ======================================== -->
+
     {%- assign default_paths = site.pages | map: "path" -%}
     {%- assign page_paths = site.header_pages | default: default_paths -%}
     {%- assign titles_size = site.pages | map: 'title' | join: '' | size -%}
-    <!-- <a class="site-title" rel="author" href="{{ '/' | relative_url }}">{{ site.title | escape }}</a> -->
-    <!-- Title 없애기 -->
+
+    <!-- ========================================
+        2. 네비게이션 메뉴 (페이지가 있는 경우만)
+        ======================================== -->
 
     {%- if titles_size > 0 -%}
     <nav class="site-nav">
+      <!-- ========================================
+            2-1. 모바일 메뉴 토글 버튼
+            ======================================== -->
+
       <input type="checkbox" id="nav-trigger" class="nav-trigger" />
       <label for="nav-trigger">
         <span class="menu-icon">
@@ -19,18 +33,27 @@
         </span>
       </label>
 
+      <!-- ========================================
+            2-2. 네비게이션 메뉴 그룹
+            ======================================== -->
+
       <div class="trigger">
+        <!-- 왼쪽 메뉴 그룹 -->
         <div class="nav-group-left">
           <a class="page-link{% if page.url == '/' %} active{% endif %}" href="{{ '/' | relative_url }}">
             Home
           </a>
         </div>
+
+        <!-- 중앙 메뉴 그룹 (카테고리) -->
         <div class="nav-group-center">
           <a class="page-link{% if page.url contains '/thought/' %} active{% endif %}"
             href="{{ '/thought/' | relative_url }}">#생각</a>
           <a class="page-link{% if page.url contains '/book/' %} active{% endif %}"
             href="{{ '/book/' | relative_url }}">#책</a>
         </div>
+
+        <!-- 오른쪽 메뉴 그룹 -->
         <div class="nav-group-right">
           <a class="page-link{% if page.url contains '/books_read/' %} active{% endif %}"
             href="{{ '/books_read/' | relative_url }}">읽은 책들</a>

@@ -1,3 +1,11 @@
+/* ========================================
+   독서 히트맵 CSS 스타일
+   ======================================== */
+
+/* ========================================
+   1. 히트맵 컨테이너 및 기본 레이아웃
+   ======================================== */
+
 .heatmap-container {
     margin: 30px 0;
     padding: 24px;
@@ -18,23 +26,9 @@
     width: 100%;
 }
 
-.month-labels {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    min-width: 40px;
-    padding-top: 0;
-    justify-content: flex-start;
-}
-
-.heatmap-column {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    min-width: fit-content;
-    align-items: center;
-    justify-content: flex-start;
-}
+/* ========================================
+   2. 히트맵 셀 및 색상 레벨
+   ======================================== */
 
 .heatmap-cell {
     width: 16px;
@@ -56,6 +50,7 @@
     position: relative;
 }
 
+/* 히트맵 색상 레벨 (책 읽은 개수별) */
 .heatmap-cell.level-1 {
     background-color: #d0ebff;
     border-color: #d0ebff;
@@ -76,26 +71,26 @@
     border-color: #0c4a6e;
 }
 
-.heatmap-legend {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    color: #586069;
-    justify-content: center;
-}
+/* ========================================
+   3. 히트맵 레이아웃 요소들
+   ======================================== */
 
-.heatmap-legend-item {
+.month-labels {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: 4px;
+    min-width: 40px;
+    padding-top: 0;
+    justify-content: flex-start;
 }
 
-.heatmap-legend-cell {
-    width: 12px;
-    height: 12px;
-    border-radius: 2px;
-    border: 1px solid #e1e4e8;
+.heatmap-column {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: fit-content;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .heatmap-title {
@@ -126,6 +121,37 @@
     line-height: 14px;
 }
 
+/* ========================================
+   4. 히트맵 범례
+   ======================================== */
+
+.heatmap-legend {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #586069;
+    justify-content: center;
+}
+
+.heatmap-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.heatmap-legend-cell {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    border: 1px solid #e1e4e8;
+}
+
+/* ========================================
+   5. 책 목록 링크 스타일
+   ======================================== */
+
+/* 기본 링크 호버 효과 */
 .book-link:hover {
     background: linear-gradient(to bottom, transparent 70%, #8bbae5 50%) !important;
 }
@@ -139,7 +165,7 @@
     background: linear-gradient(to bottom, transparent 70%, #74c0fc 90%) !important;
 }
 
-/* 후기 링크 스타일 */
+/* 일반 후기 링크 스타일 */
 .book-link:not(.short-post) {
     background: linear-gradient(to bottom, transparent 70%, #d0bfff 90%) !important;
 }
@@ -147,6 +173,10 @@
 .book-link:not(.short-post):hover {
     background: linear-gradient(to bottom, transparent 70%, #9775fa 90%) !important;
 }
+
+/* ========================================
+   6. 툴팁 스타일
+   ======================================== */
 
 .book-tooltip {
     position: fixed;
@@ -179,6 +209,10 @@
     line-height: 1.4;
     color: #e1e4e8;
 }
+
+/* ========================================
+   7. 반응형 디자인 (모바일)
+   ======================================== */
 
 @media (max-width: 768px) {
     .heatmap-container {
