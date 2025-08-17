@@ -69,19 +69,32 @@ layout: base
       <!-- ========================================
                2-2. 포스트 링크 및 제목
                ======================================== -->
-      <a href="{{ post.url | relative_url }}" class="post-link" style="color: black;">
+      {%- assign post_content = post.content | strip_html | strip_newlines -%}
+      {%- assign content_length = post_content | size -%}
+      {%- if content_length < 500 -%} {%- assign post_class="post-link short-post" -%} <a
+        href="{{ post.url | relative_url }}" class="{{ post_class }}" style="color: black;">
         {{ post.title | escape }}
+        <span class="short-post-tag">짧은 글</span>
         {%- if site.excerpt_length > 0 -%}
         {{ post.excerpt }}
         {%- endif -%}
-      </a>
+        </a>
+        {%- else -%}
+        {%- assign post_class = "post-link" -%}
+        <a href="{{ post.url | relative_url }}" class="{{ post_class }}" style="color: black;">
+          {{ post.title | escape }}
+          {%- if site.excerpt_length > 0 -%}
+          {{ post.excerpt }}
+          {%- endif -%}
+        </a>
+        {%- endif -%}
 
-      <!-- ========================================
+        <!-- ========================================
                2-3. 카테고리 표시 (홈페이지에서만)
                ======================================== -->
-      {% if page.title == "Home" %}
-      <span class="post-categories"> &nbsp; {{ post.categories }}</span>
-      {% endif %}
+        {% if page.title == "Home" %}
+        <span class="post-categories"> &nbsp; {{ post.categories }}</span>
+        {% endif %}
     </li>
     {%- endunless -%}
     {%- endfor -%}
