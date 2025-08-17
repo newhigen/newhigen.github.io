@@ -148,7 +148,6 @@
     width: 12px;
     height: 12px;
     border-radius: 2px;
-    border: 1px solid #e1e4e8;
 }
 
 /* ========================================
@@ -245,7 +244,9 @@
 @media (max-width: 768px) {
     .heatmap-container {
         padding: 16px;
-        margin: 20px 0;
+        margin: 20px auto;
+        display: block;
+        width: fit-content;
     }
 
     .heatmap-cell {
@@ -334,10 +335,22 @@
 @media (max-width: 768px) {
     #books-list>div {
         flex-direction: column !important;
-        gap: 20px !important;
+        gap: 0px !important;
     }
 
     #books-list>div>div {
         max-width: 100% !important;
+    }
+
+    #books-list>div>div:first-child {
+        order: 1;
+    }
+
+    #books-list>div>div:last-child {
+        order: 2;
+    }
+
+    #books-list ul {
+        margin-bottom: 15px !important;
     }
 }
