@@ -424,7 +424,7 @@ function updateTotalBooks() {
     const totalBooks = calculateTotalBooks();
     const totalBooksElement = document.getElementById('total-books');
     if (totalBooksElement) {
-        totalBooksElement.textContent = `총 ${totalBooks}권의 책을 읽었습니다`;
+        totalBooksElement.textContent = `총 ${totalBooks}권의 책을 읽었어요`;
     }
 }
 

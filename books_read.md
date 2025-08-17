@@ -8,6 +8,9 @@ permalink: /books_read/
 
 <div class="heatmap-container">
   <div class="heatmap-title">📅&nbsp;&nbsp;독서 달력</div>
+  <div class="heatmap-note">
+    <strong>💡</strong> 달력 위에 마우스를 올리면 그 달에 읽은 책들을 볼 수 있어요
+  </div>
   <div id="reading-heatmap"></div>
   <div class="heatmap-legend">
     <span style="color: rgb(142, 150, 162);">0권</span>
