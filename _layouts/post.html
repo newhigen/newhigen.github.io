@@ -13,40 +13,43 @@ layout: base
       ======================================== -->
 
   <header class="post-header">
-    <!-- 날짜 (맨 위 오른쪽) -->
-    <div class="post-date-top">
-      {%- assign pdate = page.date | date_to_xmlschema -%}
-      {%- assign weekday = page.date | date: "%a" -%}
-      {%- case weekday -%}
-      {%- when "Mon" -%}{%- assign korean_weekday = "월" -%}
-      {%- when "Tue" -%}{%- assign korean_weekday = "화" -%}
-      {%- when "Wed" -%}{%- assign korean_weekday = "수" -%}
-      {%- when "Thu" -%}{%- assign korean_weekday = "목" -%}
-      {%- when "Fri" -%}{%- assign korean_weekday = "금" -%}
-      {%- when "Sat" -%}{%- assign korean_weekday = "토" -%}
-      {%- when "Sun" -%}{%- assign korean_weekday = "일" -%}
-      {%- endcase -%}
-      <time class="dt-published" datetime="{{ pdate }}" itemprop="datePublished">
-        {{ page.date | date: "%Y년 %-m월 %-d일" }} ({{ korean_weekday }})
-      </time>
-      {%- if page.modified_date -%}
-      <span class="bullet-divider">•</span>
-      <span class="meta-label">수정:</span>
-      {%- assign mdate = page.modified_date | date_to_xmlschema %}
-      {%- assign mod_weekday = page.modified_date | date: "%a" -%}
-      {%- case mod_weekday -%}
-      {%- when "Mon" -%}{%- assign mod_korean_weekday = "월" -%}
-      {%- when "Tue" -%}{%- assign mod_korean_weekday = "화" -%}
-      {%- when "Wed" -%}{%- assign mod_korean_weekday = "수" -%}
-      {%- when "Thu" -%}{%- assign mod_korean_weekday = "목" -%}
-      {%- when "Fri" -%}{%- assign mod_korean_weekday = "금" -%}
-      {%- when "Sat" -%}{%- assign mod_korean_weekday = "토" -%}
-      {%- when "Sun" -%}{%- assign mod_korean_weekday = "일" -%}
-      {%- endcase -%}
-      <time class="dt-modified" datetime="{{ mdate }}" itemprop="dateModified">
-        {{ page.modified_date | date: "%Y년 %-m월 %-d일" }} ({{ mod_korean_weekday }})
-      </time>
-      {%- endif -%}
+    <div style="display: flex; justify-content: space-between; align-items: center; margin: 0; padding-bottom: 15px;">
+      <p style="color: #aaa; font-size: 0.9rem; margin: 0;">{% include reading-time.html %}</p>
+      <!-- 날짜 (아래 오른쪽) -->
+      <div class="post-date-top" style="margin: 0;">
+        {%- assign pdate = page.date | date_to_xmlschema -%}
+        {%- assign weekday = page.date | date: "%a" -%}
+        {%- case weekday -%}
+        {%- when "Mon" -%}{%- assign korean_weekday = "월" -%}
+        {%- when "Tue" -%}{%- assign korean_weekday = "화" -%}
+        {%- when "Wed" -%}{%- assign korean_weekday = "수" -%}
+        {%- when "Thu" -%}{%- assign korean_weekday = "목" -%}
+        {%- when "Fri" -%}{%- assign korean_weekday = "금" -%}
+        {%- when "Sat" -%}{%- assign korean_weekday = "토" -%}
+        {%- when "Sun" -%}{%- assign korean_weekday = "일" -%}
+        {%- endcase -%}
+        <time class="dt-published" datetime="{{ pdate }}" itemprop="datePublished">
+          {{ page.date | date: "%Y-%-m-%-d" }} ({{ korean_weekday }})
+        </time>
+        {%- if page.modified_date -%}
+        <span class="bullet-divider">•</span>
+        <span class="meta-label">수정:</span>
+        {%- assign mdate = page.modified_date | date_to_xmlschema %}
+        {%- assign mod_weekday = page.modified_date | date: "%a" -%}
+        {%- case mod_weekday -%}
+        {%- when "Mon" -%}{%- assign mod_korean_weekday = "월" -%}
+        {%- when "Tue" -%}{%- assign mod_korean_weekday = "화" -%}
+        {%- when "Wed" -%}{%- assign mod_korean_weekday = "수" -%}
+        {%- when "Thu" -%}{%- assign mod_korean_weekday = "목" -%}
+        {%- when "Fri" -%}{%- assign mod_korean_weekday = "금" -%}
+        {%- when "Sat" -%}{%- assign mod_korean_weekday = "토" -%}
+        {%- when "Sun" -%}{%- assign mod_korean_weekday = "일" -%}
+        {%- endcase -%}
+        <time class="dt-modified" datetime="{{ mdate }}" itemprop="dateModified">
+          {{ page.modified_date | date: "%Y-%-m -%-d" }} ({{ mod_korean_weekday }})
+        </time>
+        {%- endif -%}
+      </div>
     </div>
 
     <!-- 포스트 제목과 카테고리 태그 -->
