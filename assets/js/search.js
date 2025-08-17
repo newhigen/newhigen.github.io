@@ -66,6 +66,41 @@ document.addEventListener('DOMContentLoaded', function () {
                 content.includes(searchTerm);
         });
 
+        // 검색 결과 정렬 (우선순위: 제목 > 발견 횟수 > 날짜)
+        results.sort((a, b) => {
+            const aTitle = a.title.toLowerCase();
+            const bTitle = b.title.toLowerCase();
+            const aContent = a.content.toLowerCase();
+            const bContent = b.content.toLowerCase();
+            const aExcerpt = a.excerpt.toLowerCase();
+            const bExcerpt = b.excerpt.toLowerCase();
+
+            // 1. 제목에서 발견 여부 (제목에서 발견된 것이 우선)
+            const aTitleMatch = aTitle.includes(searchTerm);
+            const bTitleMatch = bTitle.includes(searchTerm);
+
+            if (aTitleMatch && !bTitleMatch) return -1;
+            if (!aTitleMatch && bTitleMatch) return 1;
+
+            // 2. 발견 횟수 계산
+            const aMatches = (aTitle.match(new RegExp(searchTerm, 'gi')) || []).length +
+                (aExcerpt.match(new RegExp(searchTerm, 'gi')) || []).length +
+                (aContent.match(new RegExp(searchTerm, 'gi')) || []).length;
+
+            const bMatches = (bTitle.match(new RegExp(searchTerm, 'gi')) || []).length +
+                (bExcerpt.match(new RegExp(searchTerm, 'gi')) || []).length +
+                (bContent.match(new RegExp(searchTerm, 'gi')) || []).length;
+
+            if (aMatches !== bMatches) {
+                return bMatches - aMatches; // 발견 횟수가 많은 것이 우선
+            }
+
+            // 3. 날짜 (최신이 우선)
+            const aDate = new Date(a.date || '1970-01-01');
+            const bDate = new Date(b.date || '1970-01-01');
+            return bDate - aDate;
+        });
+
         displayResults(results, searchTerm);
     }
 
@@ -84,10 +119,17 @@ document.addEventListener('DOMContentLoaded', function () {
             const searchTermLower = searchTerm.toLowerCase();
             const isTitleMatch = post.title.toLowerCase().includes(searchTermLower);
 
+            // 발견 횟수 계산
+            const titleMatches = (post.title.match(new RegExp(searchTerm, 'gi')) || []).length;
+            const excerptMatches = (post.excerpt.match(new RegExp(searchTerm, 'gi')) || []).length;
+            const contentMatches = (post.content.match(new RegExp(searchTerm, 'gi')) || []).length;
+            const totalMatches = titleMatches + excerptMatches + contentMatches;
+
             if (isTitleMatch) {
                 // 제목에서 찾아진 경우 내용 표시하지 않음
                 return `
                     <div class="search-result" onclick="window.location.href='${post.url}'">
+                        <div class="search-result-count">일치하는 단어 수: ${totalMatches}</div>
                         <div class="search-result-title">${highlightText(post.title, searchTerm)}</div>
                     </div>
                 `;
@@ -104,6 +146,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             return `
                 <div class="search-result" onclick="window.location.href='${post.url}'">
+                    <div class="search-result-count">일치하는 단어 수: ${totalMatches}</div>
                     <div class="search-result-title">${highlightText(post.title, searchTerm)}</div>
                     <div class="search-result-excerpt">${highlightText(matchedText || post.excerpt, searchTerm)}</div>
                 </div>
