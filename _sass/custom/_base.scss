@@ -1,0 +1,123 @@
+// ========================================
+// 기본 스타일 (공통)
+// ========================================
+
+@import 'variables';
+
+// 기본 body 스타일
+body {
+  font-family: $font-family-primary;
+  font-size: $font-size-base;
+}
+
+// 기본 링크 스타일
+a {
+  color: $primary-color;
+  
+  &:hover {
+    color: $primary-color;
+    text-decoration: underline;
+  }
+  
+  &:visited {
+    color: $primary-color;
+  }
+}
+
+// 공통 링크 스타일 (포스트, 페이지, 헤더, 푸터)
+.post-content a,
+.page-content a,
+.site-header a,
+.site-footer a {
+  color: $primary-color;
+}
+
+// 강조 텍스트
+strong,
+b {
+  font-family: $font-family-bold;
+}
+
+// 단락
+p {
+  // margin-bottom: 0px; // TODO: 매번 br하는 것은 귀찮지만 li 전에 빈 공간은 없애고 싶다.
+}
+
+// 목록
+ul {
+  margin-block-start: 0em;
+}
+
+// 이미지
+img {
+  border: 1px solid #ccc;
+  border-radius: $border-radius-lg;
+}
+
+// 인용구
+blockquote {
+  font-style: normal;
+  border-left: 4px solid $light-gray;
+  padding-left: $spacing-lg;
+  margin-left: 0;
+  color: $secondary-color;
+}
+
+// 각주
+.footnotes {
+  font-size: $font-size-small;
+  color: $muted-color;
+  
+  a {
+    color: $muted-color;
+  }
+  
+  ol {
+    list-style-type: none;
+    counter-reset: footnote-counter;
+    padding-left: 0;
+  }
+  
+  li {
+    counter-increment: footnote-counter;
+    margin-bottom: $spacing-sm;
+    
+    &::before {
+      content: "[" counter(footnote-counter) "]";
+      margin-right: $spacing-md;
+    }
+  }
+  
+  p {
+    display: inline;
+  }
+}
+
+// 커스텀 강조 요소들
+emphasis {
+  background-color: #fff9c4;
+  border-radius: $border-radius-sm;
+}
+
+best {
+  background-color: #ffe3e3;
+  border-radius: $border-radius-sm;
+}
+
+subtitle {
+  margin-left: $spacing-sm;
+  font-size: 1.0rem;
+  font-weight: bold;
+  color: $muted-color;
+}
+
+big_dots_for_extra {
+  display: block;
+  margin-top: $spacing-xl;
+  font-size: 2rem;
+  color: $muted-color;
+}
+
+my {
+  color: #099268;
+}
