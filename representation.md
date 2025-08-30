@@ -1,5 +1,5 @@
 ---
 layout: home
-title: 표상
+title: 효과적_모형
 permalink: /representation/
 ---
