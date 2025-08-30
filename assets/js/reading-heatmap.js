@@ -247,6 +247,9 @@ function generateBooksList() {
     const container = document.getElementById('books-list');
     if (!container) return;
 
+    // 책 인용 통계 가져오기
+    const citationStats = postMetadata['_book_citation_stats'] || {};
+
     // 년도별로 책 그룹화
     const booksByYear = {};
     booksList.forEach(book => {
@@ -307,36 +310,50 @@ function generateBooksList() {
                 listItem.appendChild(emptySpan);
             }
 
+            // 책 제목 컨테이너 생성
+            const titleContainer = document.createElement('span');
+            titleContainer.style.cssText = 'display: inline-flex; align-items: baseline; gap: 4px;';
+
             if (book.post) {
                 // 포스트가 있는 경우 링크 생성
                 const link = document.createElement('a');
                 link.href = `/${book.post}`;
                 link.textContent = book.title;
-
                 link.style.cssText = 'text-decoration: none;';
 
                 // 짧은 포스트인 경우 태그를 별도 요소로 추가
                 const isShort = isShortPost(book.post);
                 if (isShort) {
                     link.className = 'book-link no-highlight';
-                    listItem.appendChild(link);
+                    titleContainer.appendChild(link);
 
                     // 태그를 별도 요소로 추가
                     const tag = document.createElement('span');
                     tag.className = 'short-post-tag';
                     tag.textContent = '짧은 글';
-                    listItem.appendChild(tag);
+                    titleContainer.appendChild(tag);
                 } else {
                     link.className = 'book-link';
-                    listItem.appendChild(link);
+                    titleContainer.appendChild(link);
                 }
             } else {
                 // 포스트가 없는 경우 일반 텍스트
                 const titleSpan = document.createElement('span');
                 titleSpan.textContent = book.title;
-                listItem.appendChild(titleSpan);
+                titleContainer.appendChild(titleSpan);
             }
 
+            // 인용 횟수 표시
+            const citationCount = citationStats[book.title] || 0;
+            if (citationCount > 0) {
+                const citationSpan = document.createElement('sup');
+                citationSpan.textContent = citationCount;
+                citationSpan.style.cssText = 'color: #1971c2; font-size: 10px; font-weight: 600; margin-left: 2px;';
+                citationSpan.title = `${citationCount}개의 포스트에서 인용됨`;
+                titleContainer.appendChild(citationSpan);
+            }
+
+            listItem.appendChild(titleContainer);
             bookList.appendChild(listItem);
         });
 
