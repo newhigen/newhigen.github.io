@@ -1,0 +1,260 @@
+// ========================================
+// Table of Contents (TOC) 스타일
+// ========================================
+
+// TOC 컨테이너
+.toc-container {
+    position: fixed;
+    top: 100px; // 헤더 아래 여백
+    right: 15px;
+    width: 150px; // 너비 더 축소 (180px → 150px)
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.95); // 반투명 배경
+    backdrop-filter: blur(10px); // 블러 효과
+    border: 1px solid rgba(225, 228, 232, 0.8);
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 8px; // 패딩 축소 (12px → 8px)
+    font-size: 13px; // 기본 폰트 크기 축소 (14px → 13px)
+    line-height: 1.3; // 줄 간격 축소 (1.4 → 1.3)
+    transition: none; // 전환 효과 제거
+
+    // 모바일에서는 숨김
+    display: none;
+
+    // 데스크톱에서만 표시 (768px 이상)
+    @media (min-width: 768px) {
+        display: block;
+    }
+
+    // 숨겨진 상태 (기본 상태)
+    &.collapsed {
+        width: auto; // 자동 너비
+        min-width: 80px; // 최소 너비 증가 (60px → 80px)
+        padding: 8px; // 패딩 조정 (8px 12px → 8px)
+        overflow: visible; // 오버플로우 허용 (hidden → visible)
+        background: transparent; // 배경 투명하게
+        border: none; // 테두리 제거
+        box-shadow: none; // 그림자 제거
+
+        .toc-title,
+        .toc-list {
+            display: none; // 완전히 숨김
+        }
+
+        .toc-toggle {
+            position: absolute; // 위치 고정 유지
+            top: 8px; // 위치 고정 (펼친 상태와 동일)
+            right: 8px; // 위치 고정 (펼친 상태와 동일)
+            width: 32px; // 크기 고정 (펼친 상태와 동일)
+            height: 32px; // 크기 고정 (펼친 상태와 동일)
+            background: rgba(226, 226, 226, 0.7); // 통일된 색상
+            border: 1px solid rgba(225, 228, 232, 0.6); // 통일된 색상
+            border-radius: 3px; // 둥근 모서리
+            padding: 0; // 패딩 제거 (크기 고정을 위해)
+            font-size: 12px; // 폰트 크기
+            color: rgba(36, 41, 46, 0.7); // 통일된 색상
+            font-weight: 500;
+            cursor: pointer;
+            display: flex; // flex로 변경
+            align-items: center;
+            justify-content: center;
+            transition: none; // 전환 효과 제거
+            user-select: none; // 텍스트 선택 방지
+            -webkit-user-select: none; // Safari 지원
+            -moz-user-select: none; // Firefox 지원
+            -ms-user-select: none; // IE 지원
+
+            &:hover {
+                background: rgba(226, 226, 226, 0.7);
+                border-color: rgba(225, 228, 232, 0.8);
+                color: rgba(36, 41, 46, 0.9);
+            }
+        }
+    }
+
+    // 호버 시 더 불투명하게
+    &:hover {
+        background: rgba(255, 255, 255, 0.98);
+        border-color: rgba(225, 228, 232, 1);
+    }
+
+    // 스크롤바 스타일링
+    &::-webkit-scrollbar {
+        width: 4px; // 스크롤바 너비 축소 (6px → 4px)
+    }
+
+    &::-webkit-scrollbar-track {
+        background: rgba(241, 241, 241, 0.5);
+        border-radius: 2px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: rgba(193, 193, 193, 0.8);
+        border-radius: 2px;
+
+        &:hover {
+            background: rgba(168, 168, 168, 1);
+        }
+    }
+}
+
+// TOC 토글 버튼 (펼친 상태)
+.toc-toggle {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 32px; // 버튼 크기 고정
+    height: 32px; // 버튼 크기 고정
+    background: rgba(226, 226, 226, 0.7); // 통일된 색상
+    border: 1px solid rgba(225, 228, 232, 0.6); // 통일된 색상
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: none; // 전환 효과 제거
+    z-index: 1001;
+    font-size: 12px; // 폰트 크기
+    color: rgba(36, 41, 46, 0.7); // 통일된 색상
+    font-weight: 500;
+    user-select: none; // 텍스트 선택 방지
+    -webkit-user-select: none; // Safari 지원
+    -moz-user-select: none; // Firefox 지원
+    -ms-user-select: none; // IE 지원
+
+    &:hover {
+        background: rgba(226, 226, 226, 0.7);
+        border-color: rgba(225, 228, 232, 0.8);
+        color: rgba(36, 41, 46, 0.9);
+    }
+}
+
+// TOC 제목 (숨김)
+.toc-title {
+    display: none; // 제목 숨김
+}
+
+// TOC 목록
+.toc-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    padding-top: 40px; // 토글 버튼과 겹치지 않도록 상단 여백 증가 (30px → 40px)
+    transition: none; // 전환 효과 제거
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding-left: 0; // 기본 들여쓰기 제거
+    }
+}
+
+// TOC 항목
+.toc-item {
+    margin: 2px 0; // 상하 여백 축소 (4px → 2px)
+
+    a {
+        display: block;
+        padding: 3px 4px; // 패딩 축소 (3px 6px → 3px 4px)
+        color: #586069;
+        text-decoration: none;
+        border-radius: 3px;
+        transition: all 0.2s ease;
+        white-space: nowrap; // 텍스트 줄바꿈 방지
+        overflow: hidden; // 넘치는 텍스트 숨김
+        text-overflow: ellipsis; // 말줄임표 표시
+
+        &:hover {
+            background-color: rgba(246, 248, 250, 0.8);
+            color: #24292e;
+        }
+
+        &.active {
+            background-color: rgba(3, 102, 214, 0.9);
+            color: #fff;
+            font-weight: 500;
+        }
+    }
+}
+
+// TOC 레벨별 들여쓰기 및 스타일
+.toc-item.level-1 {
+    font-weight: 500;
+    margin-left: 0; // 레벨 1은 들여쓰기 없음
+
+    a {
+        font-size: 14px; // 레벨 1 폰트 크기 증가 (13px → 14px)
+        font-weight: 700; // 굵은 글씨 (600 → 700)
+        color: #24292e;
+
+        &.active {
+            background-color: rgba(3, 102, 214, 0.9);
+            color: #fff;
+            font-weight: 700; // 활성 상태에서도 굵은 글씨 유지
+        }
+    }
+}
+
+.toc-item.level-2 {
+    margin-left: 0; // 레벨 2는 들여쓰기 없음 (0px)
+
+    a {
+        font-size: 13px; // 레벨 2 폰트 크기 (12px → 13px)
+        font-weight: 600; // 중간 굵기 (500 → 600)
+        color: #24292e;
+
+        &.active {
+            background-color: rgba(3, 102, 214, 0.9);
+            color: #fff;
+            font-weight: 600; // 활성 상태에서도 굵은 글씨 유지
+        }
+    }
+}
+
+.toc-item.level-3 {
+    margin-left: 8px; // 레벨 3 들여쓰기 (0px → 8px)
+
+    a {
+        font-size: 12px; // 레벨 3 폰트 크기 (11px → 12px)
+        font-weight: 500; // 보통 굵기 (400 → 500)
+
+        &.active {
+            background-color: rgba(3, 102, 214, 0.9);
+            color: #fff;
+            font-weight: 500; // 활성 상태에서도 굵은 글씨 유지
+        }
+    }
+}
+
+.toc-item.level-4 {
+    margin-left: 16px; // 레벨 4 들여쓰기 (24px → 16px)
+
+    a {
+        font-size: 11px; // 레벨 4 폰트 크기 (10px → 11px)
+        font-weight: 400; // 보통 굵기
+        color: #6a737d; // 더 연한 색상
+
+        &.active {
+            background-color: rgba(3, 102, 214, 0.9);
+            color: #fff;
+            font-weight: 400; // 활성 상태에서도 굵은 글씨 유지
+        }
+    }
+}
+
+// 포스트 본문에 TOC가 있을 때만 여백 조정 (원래대로 복원)
+.post-content.has-toc {
+    @media (min-width: 768px) {
+        margin-right: 0; // TOC 공간 제거 (원래대로)
+    }
+}
+
+// 숨겨진 상태일 때는 여백 제거
+.post-content.has-toc-collapsed {
+    @media (min-width: 768px) {
+        margin-right: 0; // 여백 제거
+    }
+}

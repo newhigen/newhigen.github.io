@@ -1,0 +1,178 @@
+// ========================================
+// 네비게이션 스타일
+// ========================================
+
+@import 'variables';
+
+// 사이트 헤더
+.site-header {
+  min-height: 55.95px;
+  line-height: 54px;
+  position: relative;
+  padding-top: $spacing-xl;
+}
+
+// 사이트 제목
+.site-title {
+  font-size: 1.625rem;
+  font-weight: 300;
+  letter-spacing: -1px;
+  margin-bottom: 0;
+  float: left;
+  color: rgb(66.25, 66.25, 66.25);
+  
+  &:visited {
+    color: rgb(66.25, 66.25, 66.25);
+  }
+  
+  @media screen and (max-width: $breakpoint-mobile) {
+    padding-right: 45px;
+  }
+}
+
+// 사이트 네비게이션
+.site-nav {
+  position: absolute;
+  top: 9px;
+  right: 15px;
+  background-color: lightblue;
+  border: 1px solid $light-gray;
+  border-radius: $border-radius-sm;
+  text-align: right;
+  
+  // 모바일 네비게이션 스타일
+  @media screen and (max-width: $breakpoint-mobile) {
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    border: 1px dashed $light-gray;
+    font-size: 1.1rem;
+  }
+  
+  // 데스크톱 네비게이션 스타일
+  @media screen and (min-width: $breakpoint-mobile) {
+    position: static;
+    float: right;
+    border: none;
+    background-color: inherit;
+  }
+}
+
+// 네비게이션 트리거
+.site-nav .nav-trigger {
+  display: none;
+}
+
+// 메뉴 아이콘
+.site-nav .menu-icon {
+  float: right;
+  width: 36px;
+  height: 26px;
+  line-height: 0;
+  padding-top: $spacing-md;
+  text-align: center;
+  
+  > svg path {
+    fill: rgb(66.25, 66.25, 66.25);
+  }
+  
+  @media screen and (min-width: $breakpoint-mobile) {
+    display: none;
+  }
+}
+
+// 네비게이션 라벨
+.site-nav label[for=nav-trigger] {
+  display: block;
+  float: right;
+  width: 36px;
+  height: 36px;
+  z-index: 2;
+  cursor: pointer;
+  
+  @media screen and (min-width: $breakpoint-mobile) {
+    display: none;
+  }
+}
+
+// 네비게이션 트리거
+.site-nav input~.trigger {
+  clear: both;
+  display: none;
+  
+  @media screen and (min-width: $breakpoint-mobile) {
+    display: block;
+  }
+}
+
+.site-nav input:checked~.trigger {
+  display: block;
+  padding-bottom: $spacing-sm;
+}
+
+// 네비게이션 링크
+.site-nav .page-link {
+  color: #111111;
+  line-height: 1.5;
+  display: block;
+  padding: $spacing-sm $spacing-md;
+  margin-left: $spacing-xl;
+  
+  &:not(:last-child) {
+    margin-right: 0;
+  }
+  
+  @media screen and (min-width: $breakpoint-mobile) {
+    display: inline;
+    padding: 0;
+    margin-left: auto;
+    
+    &:not(:last-child) {
+      margin-right: $spacing-xl;
+    }
+  }
+}
+
+// 활성 네비게이션 링크
+.page-link.active {
+  text-decoration: underline;
+  color: #555555;
+}
+
+// 커스텀 네비게이션 스타일 (text-align 사용)
+@media screen and (min-width: $breakpoint-mobile) {
+  .site-nav {
+    width: 100%;
+    float: none;
+  }
+
+  // 1. 모든 인라인 자식들의 텍스트 중앙 정렬
+  .site-nav .trigger {
+    text-align: center;
+  }
+
+  // 2. 좌우 그룹 플로팅
+  .nav-group-left {
+    float: left;
+  }
+
+  .nav-group-right {
+    float: right;
+  }
+
+  // 3. 중앙 그룹이 중간에 위치하도록 설정
+  .nav-group-center {
+    display: inline-block;
+  }
+
+  // 4. 링크 스타일링
+  .nav-group-center .page-link {
+    display: inline-block;
+    margin: 0 $spacing-lg; // 중앙 링크 사이 간격
+  }
+
+  .site-nav .page-link {
+    display: inline-block;
+    color: $muted-color;
+    font-size: 1.1rem;
+  }
+}

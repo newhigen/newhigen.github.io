@@ -1,0 +1,155 @@
+// ========================================
+// 레이아웃 스타일
+// ========================================
+
+@import 'variables';
+
+// 페이지 컨텐츠
+.page-content {
+  padding: $spacing-xxl 0;
+  flex: 1 0 auto;
+}
+
+// 페이지 제목
+.page-heading {
+  font-size: 2rem;
+}
+
+// 사이트 푸터
+.site-footer {
+  border-top: 1px solid $light-gray;
+  padding: $spacing-xxl 0;
+}
+
+// 푸터 제목
+.footer-heading {
+  font-size: 1.125rem;
+  margin-bottom: $spacing-lg;
+}
+
+// 푸터 아이콘
+.feed-subscribe .svg-icon {
+  padding: $spacing-sm $spacing-sm 2px 0;
+}
+
+// 푸터 컬럼 래퍼
+.footer-col-wrapper,
+.social-links {
+  font-size: 0.9375rem;
+  color: $muted-color;
+}
+
+// 푸터 컬럼
+.footer-col {
+  margin-bottom: $spacing-lg;
+}
+
+// 푸터 컬럼 크기
+.footer-col-1,
+.footer-col-2 {
+  width: calc(50% - $spacing-lg);
+}
+
+.footer-col-3 {
+  width: calc(100% - $spacing-lg);
+}
+
+// 데스크톱 푸터 레이아웃
+@media screen and (min-width: $breakpoint-desktop) {
+  .footer-col-1 {
+    width: calc(35% - $spacing-lg);
+  }
+
+  .footer-col-2 {
+    width: calc(20% - $spacing-lg);
+  }
+
+  .footer-col-3 {
+    width: calc(45% - $spacing-lg);
+  }
+}
+
+// 태블릿 이상 푸터 레이아웃
+@media screen and (min-width: $breakpoint-mobile) {
+  .footer-col-wrapper {
+    display: flex;
+  }
+
+  .footer-col {
+    width: calc(100% - $spacing-lg);
+    padding: 0 $spacing-lg;
+  }
+
+  .footer-col:first-child {
+    padding-right: $spacing-lg;
+    padding-left: 0;
+  }
+
+  .footer-col:last-child {
+    padding-right: 0;
+    padding-left: $spacing-lg;
+  }
+}
+
+// 소셜 미디어 리스트
+.social-media-list,
+.pagination {
+  list-style: none;
+  margin-left: 0;
+  display: table;
+  margin: 0 auto;
+  
+  li {
+    float: left;
+    min-width: 45px;
+    min-height: 45px;
+    text-align: center;
+    margin: $spacing-sm $spacing-md $spacing-sm 0;
+    
+    &:last-of-type {
+      margin-right: 0;
+    }
+    
+    a {
+      display: block;
+      padding: $spacing-md 12px;
+      border: 1px solid $light-gray;
+      
+      &:hover {
+        border-color: rgb(219.25, 219.25, 219.25);
+      }
+    }
+  }
+}
+
+// 페이지네이션
+.pagination {
+  margin-bottom: $spacing-xxl;
+  
+  li {
+    a,
+    div {
+      min-width: 41px;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    
+    div {
+      display: block;
+      padding: 7.5px;
+      border: 1px solid transparent;
+      
+      &.pager-edge {
+        color: $light-gray;
+        border: 1px dashed;
+      }
+    }
+  }
+}
+
+// 반응형 레이아웃
+@media screen and (min-width: $breakpoint-desktop) {
+  .one-half {
+    width: calc(50% - $spacing-lg);
+  }
+}

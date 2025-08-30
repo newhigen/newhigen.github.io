@@ -1,0 +1,86 @@
+// ========================================
+// 포스트 목록 스타일 (홈페이지)
+// ========================================
+
+@import 'variables';
+
+// 포스트 목록 컨테이너
+.post-list {
+  margin-left: 0;
+  list-style: none;
+  
+  > li {
+    margin-bottom: $spacing-sm; // 포스트 사이 간격 줄임
+  }
+}
+
+// 포스트 목록 제목
+.post-list-heading {
+  font-size: 1.75rem;
+}
+
+// 포스트 링크
+.post-link {
+  font-size: 1rem;
+  color: $muted-color;
+  
+  &.short-post {
+    font-size: 1.05rem;
+    color: $secondary-color;
+  }
+}
+
+// 짧은 글 태그
+.short-post-tag {
+  display: inline-block;
+  font-size: $font-size-xxs;
+  color: $secondary-color;
+  background-color: $lighter-gray;
+  padding: 1px $spacing-sm;
+  margin-left: $spacing-sm;
+  border-radius: $border-radius-sm;
+  border: none;
+  font-weight: 400;
+  vertical-align: middle;
+  opacity: 0.8;
+}
+
+// 포스트 메타 정보 (날짜)
+.post-meta {
+  font-size: 14px;
+  color: $muted-color;
+  display: inline-block;
+  width: 45px;
+  text-align: right;
+}
+
+// 포스트 카테고리
+.post-categories {
+  font-size: $font-size-xs;
+  color: $muted-color;
+  display: inline-block;
+  width: 35px;
+  text-align: right;
+  font-weight: 500;
+  color: $secondary-color;
+}
+
+// 모바일 반응형
+@media screen and (max-width: $breakpoint-tablet) {
+  .post-link {
+    max-width: calc(100vw - 200px); // 날짜+카테고리+여백 고려
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: bottom;
+  }
+
+  .post-categories {
+    vertical-align: center;
+  }
+
+  .post-meta {
+    vertical-align: center;
+  }
+}

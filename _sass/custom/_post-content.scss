@@ -1,0 +1,154 @@
+// ========================================
+// 포스트 본문 스타일
+// ========================================
+
+@import 'variables';
+
+// 포스트 본문 컨테이너
+.post-content {
+  margin-bottom: $spacing-xxl;
+}
+
+// 포스트 제목
+.post-title,
+.post-content h1 {
+  margin-bottom: $spacing-md;
+  font-size: 2.625rem;
+  letter-spacing: -1px;
+  line-height: 1.15;
+  
+  @media screen and (min-width: $breakpoint-desktop) {
+    font-size: 2.625rem;
+  }
+}
+
+// 포스트 본문의 모든 제목들
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+  margin-top: $spacing-xxl;
+}
+
+// h2 제목
+.post-content h2 {
+  font-size: 1.75rem;
+  
+  @media screen and (min-width: $breakpoint-desktop) {
+    font-size: 2rem;
+  }
+}
+
+// h3 제목
+.post-content h3 {
+  font-size: 1.375rem;
+  
+  @media screen and (min-width: $breakpoint-desktop) {
+    font-size: 1.625rem;
+  }
+}
+
+// h4 제목
+.post-content h4 {
+  font-size: 1.25rem;
+}
+
+// h5 제목
+.post-content h5 {
+  font-size: 1.125rem;
+}
+
+// h6 제목
+.post-content h6 {
+  font-size: 1.0625rem;
+}
+
+// 포스트 헤더 (제목, 메타 정보)
+.post-header {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  text-align: center;
+}
+
+// 포스트 제목과 카테고리 태그 컨테이너
+.post-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-md;
+}
+
+// 카테고리 태그
+.category-tag {
+  font-size: $font-size-small;
+  color: $secondary-color;
+  background-color: $lightest-gray;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $border-radius;
+  font-weight: 400;
+}
+
+// 포스트 메타 정보 (날짜, 저자 등)
+.post-meta {
+  font-size: 14px;
+  color: $muted-color;
+  display: inline-block;
+  width: 50px;
+  text-align: right;
+  
+  .bullet-divider {
+    padding-inline: $spacing-lg;
+  }
+  
+  .meta-label {
+    font-weight: 600;
+  }
+  
+  .force-inline {
+    display: inline;
+    
+    &::before {
+      content: "•";
+      padding-inline: $spacing-sm;
+    }
+  }
+  
+  .post-authors {
+    margin-top: $spacing-sm;
+  }
+}
+
+// 포스트 헤더의 메타 정보
+.post-header .post-meta {
+  display: block;
+  width: auto;
+  text-align: center;
+  white-space: nowrap;
+}
+
+// 포스트 날짜 (맨 위 오른쪽)
+.post-date-top {
+  text-align: right;
+  font-size: $font-size-small;
+  color: $secondary-color;
+  
+  .meta-label {
+    color: $secondary-color;
+    font-weight: 500;
+  }
+}
+
+// 책 상세 정보 (책 카테고리인 경우)
+.book-details {
+  margin-bottom: $spacing-md;
+}
+
+// 포스트 메타 상세 정보
+.post-meta-details {
+  font-size: $font-size-small;
+  color: $muted-color;
+  margin-top: -$spacing-sm;
+  margin-bottom: $spacing-md;
+}
