@@ -42,8 +42,8 @@ layout: base
 
   <ul class="post-list">
     {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-    {%- assign current_year = "" -%}
-    {%- assign current_month = "" -%}
+    {%- assign current_year = 0 -%}
+    {%- assign current_month = 0 -%}
     {%- assign current_category = "" -%}
 
     {%- for post in posts -%}
@@ -52,19 +52,22 @@ layout: base
       <!-- ========================================
                  2-1. 날짜 표시 (년월별 그룹화)
                  ======================================== -->
-      {%- assign post_year = post.date | date: "%Y" -%}
-      {%- assign post_month = post.date | date: " %-m" -%}
+      {%- assign post_year = post.date | date: "%Y" | plus: 0 -%}
+      {%- assign post_month = post.date | date: "%-m" | plus: 0 -%}
       {%- assign post_category = post.categories | first -%}
 
-      {%- if post_year != current_year or post_month != current_month -%}
+      <!-- 월 표시 로직 개선: 항상 표시하되 중복 제거 -->
       {%- if post_year != current_year -%}
+      <!-- 새로운 년도인 경우 -->
       <span class="post-meta">{{ post_year }}.{{ post_month }}</span>
-      {%- else -%}
-      <span class="post-meta">{{ post_month }}</span>
-      {%- endif -%}
       {%- assign current_year = post_year -%}
       {%- assign current_month = post_month -%}
+      {%- elsif post_month != current_month -%}
+      <!-- 같은 년도지만 다른 월인 경우 -->
+      <span class="post-meta">{{ post_month }}</span>
+      {%- assign current_month = post_month -%}
       {%- else -%}
+      <!-- 같은 년월인 경우 숨김 처리 -->
       <span class="post-meta" style="visibility: hidden;">{{ post_year }}.{{ post_month }}</span>
       {%- endif -%}
 
@@ -141,65 +144,66 @@ layout: base
 
 <script>
   // ========================================
-  // 홈페이지 짧은 글 태그 자동 처리
+  // 포스트 목록 검색 기능
   // ========================================
 
-  let postMetadata = {}; // 포스트 메타데이터
+  document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.querySelector('.search-input');
+    const postList = document.querySelector('.post-list');
+    const postItems = document.querySelectorAll('.post-list li');
 
-  /**
-   * 포스트가 짧은 포스트인지 확인 (JSON 메타데이터 사용)
-   * @param {string} postName - 포스트 이름
-   * @returns {boolean} 짧은 포스트 여부
-   */
-  function isShortPost(postName) {
-    // JSON 메타데이터에서 확인
-    return postMetadata[postName] ? postMetadata[postName].is_short : false;
-  }
+    if (!searchInput || !postList) return;
 
-  /**
-   * 포스트 URL에서 포스트 이름 추출
-   * @param {string} postUrl - 포스트 URL
-   * @returns {string} 포스트 이름
-   */
-  function extractPostName(postUrl) {
-    // URL에서 마지막 부분 추출 (예: /health-newbie/ -> health-newbie)
-    const match = postUrl.match(/\/([^\/]+)\/?$/);
-    return match ? match[1] : '';
-  }
+    // 검색 기능
+    searchInput.addEventListener('input', function () {
+      const searchTerm = this.value.toLowerCase().trim();
 
-  /**
-   * 홈페이지의 모든 포스트 링크에 대해 짧은 글 태그 처리
-   */
-  async function processShortPostTags() {
-    try {
-      // 포스트 메타데이터 로드
-      const response = await fetch('/assets/data/post_metadata.json');
-      postMetadata = await response.json();
+      postItems.forEach(item => {
+        const postLink = item.querySelector('.post-link');
+        const postTitle = postLink ? postLink.textContent.toLowerCase() : '';
+        const postUrl = postLink ? postLink.getAttribute('data-post-url') : '';
 
-      const postLinks = document.querySelectorAll('.post-link[data-post-url]');
+        if (searchTerm === '' || postTitle.includes(searchTerm) || postUrl.includes(searchTerm)) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
 
-      for (const link of postLinks) {
-        const postUrl = link.getAttribute('data-post-url');
-        const postName = extractPostName(postUrl);
+      // 검색 결과가 없을 때 메시지 표시
+      const visibleItems = Array.from(postItems).filter(item => item.style.display !== 'none');
+      let noResultsMessage = document.querySelector('.no-results-message');
 
-        if (postName && isShortPost(postName)) {
-          // 짧은 글 스타일 적용
-          link.classList.add('short-post');
+      if (visibleItems.length === 0 && searchTerm !== '') {
+        if (!noResultsMessage) {
+          noResultsMessage = document.createElement('div');
+          noResultsMessage.className = 'no-results-message';
+          noResultsMessage.textContent = '검색 결과가 없습니다.';
+          noResultsMessage.style.cssText = 'text-align: center; color: #666; margin: 20px 0; font-style: italic;';
+          postList.appendChild(noResultsMessage);
+        }
+      } else if (noResultsMessage) {
+        noResultsMessage.remove();
+      }
+    });
 
-          // 짧은 글 태그 추가
-          const tag = document.createElement('span');
-          tag.className = 'short-post-tag';
-          tag.textContent = '짧은 글';
-          link.parentNode.insertBefore(tag, link.nextSibling);
+    // 검색창 포커스 시 전체 선택
+    searchInput.addEventListener('focus', function () {
+      this.select();
+    });
+
+    // Enter 키로 검색 실행
+    searchInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        const firstVisibleItem = Array.from(postItems).find(item => item.style.display !== 'none');
+        if (firstVisibleItem) {
+          const link = firstVisibleItem.querySelector('.post-link');
+          if (link) {
+            window.location.href = link.href;
+          }
         }
       }
-    } catch (error) {
-      console.error('짧은 글 태그 처리 중 오류:', error);
-    }
-  }
-
-  // 페이지 로드 시 짧은 글 태그 처리
-  document.addEventListener('DOMContentLoaded', function () {
-    processShortPostTags();
+    });
   });
 </script>
