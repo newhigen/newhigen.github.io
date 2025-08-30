@@ -136,6 +136,6 @@ publication_year: 2008
 ---
 다른 자료와의 연결
 
-[^1]: '다음에 잘할거야가 아닌 다음에도 똑같이 될 것이다’이다. _ [왜 나는 항상 결심만 할까 \| 켈리 맥고니걸 - 교보문고](https://product.kyobobook.co.kr/detail/S000000733034)
-[^2]: 의지력을 위한 중요한 2가지 운동과 수면 중 운동에 해당한다. 운동으로 에너지를 오히려 더 얻는다. _ [왜 나는 항상 결심만 할까 \| 켈리 맥고니걸 - 교보문고](https://product.kyobobook.co.kr/detail/S000000733034)
-[^3]: [Deep Work \| Newport, Cal - 교보문고](https://product.kyobobook.co.kr/detail/S000003275587)
+[^1]: [[도서] '다음에 잘할거야가 아닌 다음에도 똑같이 될 것이다' _ 왜 나는 항상 결심만 할까?, 켈리 맥고니걸, 2012](https://product.kyobobook.co.kr/detail/S000000733034)
+[^2]: [[도서] 의지력을 위한 중요한 2가지 운동과 수면 중 운동에 해당한다. 운동으로 에너지를 오히려 더 얻는다. _ 왜 나는 항상 결심만 할까?, 켈리 맥고니걸, 2012](https://product.kyobobook.co.kr/detail/S000000733034)
+[^3]: [[도서] Deep Work, Cal Newport, 2016](https://product.kyobobook.co.kr/detail/S000003275587)

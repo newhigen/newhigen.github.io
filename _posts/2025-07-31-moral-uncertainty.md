@@ -46,5 +46,5 @@ permalink: moral-uncertainty
 ---
 다른 자료와의 연결
 
-[^1]: [사전확률 _ 모든 것은 예측 가능하다 \| 톰 치버스 - 교보문고](https://product.kyobobook.co.kr/detail/S000215101862)
-[^2]: [Moral Decision-Making Under Uncertainty (Stanford Encyclopedia of Philosophy)](https://plato.stanford.edu/entries/moral-decision-uncertainty/)
+[^1]: [[도서] 사전확률 _ 모든 것은 예측 가능하다, 톰 치버스, 2023](https://product.kyobobook.co.kr/detail/S000215101862)
+[^2]: [[웹사이트] Moral Decision-Making Under Uncertainty, Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/moral-decision-uncertainty/)

@@ -75,10 +75,10 @@ Google에서는 peer bonus[^5]라는 프로그램이 있고, Microsoft에서는 
 
 다른 자료와의 연결
 
-[^1]: [The 5 Love Languages: The Secret to Love that Lasts](https://www.amazon.com/Love-Languages-Secret-that-Lasts/dp/080241270X)
-[^2]: [거인의 리더십 \| 신수정 - 교보문고](https://product.kyobobook.co.kr/detail/S000202342499)
-[^3]: [1만 시간의 재발견 \| 안데르스 에릭슨 - 교보문고](https://product.kyobobook.co.kr/detail/S000001892497)
-[^4]: [실용주의 사고와 학습 \| 앤디 헌트 - 교보문고](https://product.kyobobook.co.kr/detail/S000001766246)
-[^5]: [Google Open Source Peer Bonus program recognizes first group of 2024 recipients \| Google Open Source Blog](https://opensource.googleblog.com/2024/06/google-open-source-peer-bonus-program-first-group-2024-recipients.html)
-[^6]: [사내 칭찬 문화를 만드는 피어 보너스 제도 - 아기고래](https://www.babywhale.io/blog/peer-bonus)
-[^7]: [How to use Praise in Microsoft Teams - YouTube](https://www.youtube.com/watch?v=27v1PSKtTp4)
+[^1]: [[도서] The 5 Love Languages: The Secret to Love that Lasts, Gary Chapman, 1992](https://www.amazon.com/Love-Languages-Secret-that-Lasts/dp/080241270X)
+[^2]: [[도서] 거인의 리더십, 신수정, 2023](https://product.kyobobook.co.kr/detail/S000202342499)
+[^3]: [[도서] 1만 시간의 재발견, 안데르스 에릭슨, 2016](https://product.kyobobook.co.kr/detail/S000001892497)
+[^4]: [[도서] 실용주의 사고와 학습, 앤디 헌트, 1999](https://product.kyobobook.co.kr/detail/S000001766246)
+[^5]: [[블로그] Google Open Source Peer Bonus program recognizes first group of 2024 recipients, Google Open Source Blog, 2024](https://opensource.googleblog.com/2024/06/google-open-source-peer-bonus-program-first-group-2024-recipients.html)
+[^6]: [[블로그] 사내 칭찬 문화를 만드는 피어 보너스 제도, 아기고래, 2023](https://www.babywhale.io/blog/peer-bonus)
+[^7]: [[유튜브] How to use Praise in Microsoft Teams, Microsoft, 2023](https://www.youtube.com/watch?v=27v1PSKtTp4)

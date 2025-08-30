@@ -68,8 +68,8 @@ permalink: stare-at-professional
 ---
 다른 자료와의 연결
 
-[^1]: [Deep Work \| Newport, Cal - 교보문고](https://product.kyobobook.co.kr/detail/S000003275587)
-[^2]: [1만 시간의 재발견 \| 안데르스 에릭슨 - 교보문고](https://product.kyobobook.co.kr/detail/S000001892497)
-[^3]: [나랑 너는 급이 다르지ㅋㅋ 에 대한 솔직한 생각 털어보기 - YouTube](https://youtu.be/ayxKTS2pSe0?feature=shared&t=707)
-[^4]: [내게 남은 스물다섯 번의 계절 (책)]({% post_url 2025-07-31-25-seasons %})
-[^5]: [intimidating _ What exactly is infj stare? : r/infj - Reddit](https://www.reddit.com/r/infj/comments/151z68r/what_exactly_is_infj_stare/?show=original)
+[^1]: [[도서] Deep Work, Cal Newport, 2016](https://product.kyobobook.co.kr/detail/S000003275587)
+[^2]: [[도서] 1만 시간의 재발견, 안데르스 에릭슨, 2016](https://product.kyobobook.co.kr/detail/S000001892497)
+[^3]: [[유튜브] 나랑 너는 급이 다르지ㅋㅋ 에 대한 솔직한 생각 털어보기, 2023](https://youtu.be/ayxKTS2pSe0?feature=shared&t=707)
+[^4]: [[도서] 내게 남은 스물다섯 번의 계절, 스테판 셰퍼, 2025]({% post_url 2025-07-31-25-seasons %})
+[^5]: [[웹사이트] intimidating _ What exactly is infj stare?, r/infj, 2023](https://www.reddit.com/r/infj/comments/151z68r/what_exactly_is_infj_stare/?show=original)
