@@ -13,12 +13,12 @@ body {
 // 기본 링크 스타일
 a {
   color: $primary-color;
-  
+
   &:hover {
     color: $primary-color;
     text-decoration: underline;
   }
-  
+
   &:visited {
     color: $primary-color;
   }
@@ -32,9 +32,13 @@ a {
   color: $primary-color;
 }
 
-// 강조 텍스트
-strong,
-b {
+// 강조 텍스트 (UI 요소에서만 적용)
+.site-header strong,
+.site-header b,
+.site-footer strong,
+.site-footer b,
+.nav strong,
+.nav b {
   font-family: $font-family-bold;
 }
 
@@ -67,27 +71,27 @@ blockquote {
 .footnotes {
   font-size: $font-size-small;
   color: $muted-color;
-  
+
   a {
     color: $muted-color;
   }
-  
+
   ol {
     list-style-type: none;
     counter-reset: footnote-counter;
     padding-left: 0;
   }
-  
+
   li {
     counter-increment: footnote-counter;
     margin-bottom: $spacing-sm;
-    
+
     &::before {
       content: "[" counter(footnote-counter) "]";
       margin-right: $spacing-md;
     }
   }
-  
+
   p {
     display: inline;
   }
