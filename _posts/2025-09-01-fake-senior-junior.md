@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 시니어처럼 보이고 싶은 주니어 - 인지적 편향 부수기 (2)
-date: 2025-08-30
+date: 2025-09-01
 categories: 생각
 permalink: fake-senior-junior
 ---
