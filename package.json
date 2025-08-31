@@ -1,0 +1,21 @@
+{
+    "name": "newhigen-blog",
+    "version": "1.0.0",
+    "description": "Personal blog with screenshot tools",
+    "main": "index.js",
+    "scripts": {
+        "screenshot:pr": "node _scripts/screenshot_merger.js pr",
+        "screenshot:custom": "node _scripts/screenshot_merger.js custom",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "puppeteer": "^21.11.0"
+    },
+    "keywords": [
+        "blog",
+        "jekyll",
+        "screenshot"
+    ],
+    "author": "newhigen",
+    "license": "MIT"
+}
