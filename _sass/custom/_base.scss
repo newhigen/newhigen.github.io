@@ -45,6 +45,7 @@ a {
 // 단락
 p {
   // margin-bottom: 0px; // TODO: 매번 br하는 것은 귀찮지만 li 전에 빈 공간은 없애고 싶다.
+  line-height: 1;
 }
 
 // 목록
