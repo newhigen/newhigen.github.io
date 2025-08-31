@@ -8,6 +8,8 @@
 .post-list {
   margin-left: 0;
   list-style: none;
+  max-width: 800px; // 포스트 목록 최대 너비 제한
+  margin: 0 auto; // 가운데 정렬
 
   >li {
     margin-bottom: $spacing-sm; // 포스트 사이 간격 줄임

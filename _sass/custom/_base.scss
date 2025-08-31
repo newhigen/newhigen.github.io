@@ -4,6 +4,13 @@
 
 @import 'variables';
 
+// 사이트 전체 컨테이너 너비 확장
+.wrapper {
+  max-width: 1400px; // 사이트 전체 너비 확장 (기본 1200px → 1400px)
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
 // 기본 body 스타일
 body {
   font-family: $font-family-primary;

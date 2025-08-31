@@ -4,31 +4,18 @@
 
 @import 'variables';
 
-// 포스트 컨테이너 자체도 너비 제한
+// 포스트 컨테이너
 .post {
-  @media (min-width: 768px) {
-    max-width: calc(100vw - 200px) !important;
-    width: calc(100vw - 200px) !important;
-    margin-right: 0 !important;
-    padding-right: 0 !important;
-    box-sizing: border-box !important;
-  }
+  max-width: 1000px; // 너비 확장 (800px → 1000px)
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 // 포스트 본문 컨테이너
 .post-content {
   margin-bottom: $spacing-xxl;
   font-family: $font-family-post-content;
-
-  // 데스크톱에서 목차를 고려한 너비 조정
-  @media (min-width: 768px) {
-    max-width: calc(100vw - 200px) !important; // 목차 공간 확보 (150px + 15px + 35px 여백)
-    width: calc(100vw - 200px) !important; // 강제로 너비 설정
-    margin-right: 0 !important; // 오른쪽 여백 제거
-    padding-right: 0 !important; // 오른쪽 패딩 제거
-    box-sizing: border-box !important; // 박스 모델 조정
-    overflow-x: hidden !important; // 가로 스크롤 방지
-  }
+  max-width: 100%;
 
   // 본문 내의 모든 텍스트 요소에 content 폰트 적용
   p,
