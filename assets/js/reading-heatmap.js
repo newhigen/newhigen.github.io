@@ -83,8 +83,38 @@ async function loadBooksData() {
 }
 
 // ========================================
-// 3. 포스트 길이 확인
+// 3. 포스트 길이 확인 및 제목 가져오기
 // ========================================
+
+/**
+ * 포스트의 실제 제목을 가져옵니다.
+ * @param {string} postKey - 포스트 키
+ * @returns {string} 실제 제목
+ */
+function getPostTitle(postKey) {
+    // 실제 제목 매핑
+    const titleMap = {
+        'infj-doctor': 'INFJ 의사의 병원 일기',
+        'stare-at-professional': '전문가의 표정',
+        '25-seasons': '내게 남은 스물다섯 번의 계절',
+        'useful-macos-apps': '유용한 맥OS 앱들',
+        'health-newbie': '헬스는 쪼렙입니다만',
+        'running-story': '달리기를 말할 때 내가 하고 싶은 이야기',
+        'writing-model': '글쓰기',
+        'how-to-read': '독서법',
+        'note-premium': '노트의 품격',
+        'one-life': '단 한 번의 삶',
+        'fake-senior-junior': '시니어처럼 보이고 싶은 주니어 - 인지적 편향 부수기 (2)',
+        'experience-and-knowledge': '경험 + 지식 = 숙련',
+        'appreciation-as-word': 'Appreciation as Word',
+        'power-n-and-power-s': '파워 N과 파워 S가 결혼하면',
+        'breaking-bias': '책을 고르는 시야 - 인지적 편향 부수기 (1)',
+        'moral-uncertainty': '불확실성과 개인의 한계에서의 도덕적 선택',
+        'did-i-understand': '안다는 착각'
+    };
+
+    return titleMap[postKey] || postMetadata[postKey]?.title || postKey;
+}
 
 /**
  * 포스트가 짧은 포스트인지 확인 (JSON 메타데이터 사용)
@@ -287,7 +317,7 @@ function generateBooksList() {
 
         // 책 목록 생성
         const bookList = document.createElement('ul');
-        bookList.style.cssText = 'margin-bottom: 30px; font-size: 14px; line-height: 1.4; list-style: none; padding-left: 0; margin-left: 0px;';
+        bookList.style.cssText = 'margin-bottom: 30px; font-size: 14px; line-height: 1.6; list-style: none; padding-left: 0; margin-left: 0px;';
 
         let currentMonth = null;
         booksByYear[year].forEach((book, index) => {
@@ -312,7 +342,7 @@ function generateBooksList() {
 
             // 책 제목 컨테이너 생성
             const titleContainer = document.createElement('span');
-            titleContainer.style.cssText = 'display: inline-flex; align-items: baseline; gap: 4px;';
+            titleContainer.style.cssText = 'display: inline-flex; align-items: baseline; gap: 2px;';
 
             if (book.post) {
                 // 포스트가 있는 경우 링크 생성
@@ -346,11 +376,36 @@ function generateBooksList() {
             // 인용 횟수 표시
             const citationCount = citationStats[book.title] || 0;
             if (citationCount > 0) {
-                const citationSpan = document.createElement('sup');
-                citationSpan.textContent = citationCount;
-                citationSpan.style.cssText = 'color: #1971c2; font-size: 10px; font-weight: 600; margin-left: 2px;';
-                citationSpan.title = `${citationCount}개의 포스트에서 인용됨`;
-                titleContainer.appendChild(citationSpan);
+                const citationButton = document.createElement('span');
+                citationButton.textContent = citationCount;
+                citationButton.style.cssText = 'display: inline-flex; align-items: center; justify-content: center; width: 10px; height: 10px; background-color: #e0f2f1; color: #26a69a; border: 0.5px solid #b2dfdb; border-radius: 6px 6px 6px 0px; font-size: 8px; font-weight: 700; margin-left: 1px; cursor: pointer; transition: all 0.2s ease; position: relative; top: -6px; line-height: 1; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;';
+                citationButton.title = `${citationCount}개의 포스트에서 인용됨`;
+
+                // 호버 효과 추가
+                citationButton.addEventListener('mouseenter', function () {
+                    this.style.backgroundColor = '#26a69a';
+                    this.style.color = 'white';
+                    this.style.borderColor = '#00897b';
+
+                    // 인용한 포스트 목록 표시
+                    showCitationList(this, book.title);
+                });
+
+                citationButton.addEventListener('mouseleave', function () {
+                    this.style.backgroundColor = '#e0f2f1';
+                    this.style.color = '#26a69a';
+                    this.style.borderColor = '#b2dfdb';
+
+                    // 툴팁 숨기기 (지연 시간 증가)
+                    setTimeout(() => {
+                        const tooltip = document.querySelector('.citation-tooltip');
+                        if (tooltip && !tooltip.matches(':hover')) {
+                            hideCitationList();
+                        }
+                    }, 300);
+                });
+
+                titleContainer.appendChild(citationButton);
             }
 
             listItem.appendChild(titleContainer);
@@ -369,6 +424,127 @@ function generateBooksList() {
 // ========================================
 // 7. 툴팁 기능
 // ========================================
+
+/**
+ * 인용한 포스트 목록을 표시합니다.
+ * @param {HTMLElement} button - 인용 버튼 요소
+ * @param {string} bookTitle - 책 제목
+ */
+function showCitationList(button, bookTitle) {
+    // 기존 툴팁 제거
+    hideCitationList();
+
+    // 인용한 포스트 목록 찾기
+    const citingPosts = [];
+    Object.keys(postMetadata).forEach(postKey => {
+        const post = postMetadata[postKey];
+        if (post.book_citations && post.book_citations.includes(bookTitle)) {
+            citingPosts.push({
+                key: postKey,
+                title: post.title,
+                date: post.date
+            });
+        }
+    });
+
+    if (citingPosts.length === 0) return;
+
+    // 툴팁 컨테이너 생성
+    const tooltip = document.createElement('div');
+    tooltip.className = 'citation-tooltip';
+    tooltip.style.cssText = 'position: fixed; background: #24292e; color: white; padding: 12px; border-radius: 6px; font-size: 12px; max-width: 300px; z-index: 1000; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); pointer-events: auto;';
+
+    // 툴팁 내용 생성
+    const header = document.createElement('div');
+    header.style.cssText = 'font-weight: 600; margin-bottom: 8px; color: #f6f8fa; border-bottom: 1px solid #586069; padding-bottom: 4px;';
+    header.textContent = `"${bookTitle}" 인용한 포스트`;
+
+    const content = document.createElement('div');
+    content.style.cssText = 'max-height: 200px; overflow-y: auto;';
+
+    citingPosts.forEach((post, index) => {
+        const postItem = document.createElement('div');
+        postItem.style.cssText = 'margin: 4px 0; line-height: 1.4; color: #e1e4e8;';
+
+        // 년월 표시 (같은 년월이면 첫 항목에만)
+        const postDate = new Date(post.date);
+        const year = postDate.getFullYear();
+        const month = postDate.getMonth() + 1;
+        const currentDateKey = `${year}.${month.toString().padStart(2, '0')}`;
+
+        const shouldShowDate = index === 0 ||
+            (index > 0 && currentDateKey !== `${new Date(citingPosts[index - 1].date).getFullYear()}.${(new Date(citingPosts[index - 1].date).getMonth() + 1).toString().padStart(2, '0')}`);
+
+        if (shouldShowDate) {
+            const dateSpan = document.createElement('span');
+            dateSpan.textContent = `${currentDateKey} `;
+            dateSpan.style.cssText = 'color: #8b949e; font-size: 11px; margin-right: 6px;';
+            postItem.appendChild(dateSpan);
+        } else {
+            // 같은 년월이면 빈 공간 추가 (정렬 유지)
+            const emptySpan = document.createElement('span');
+            emptySpan.style.cssText = 'display: inline-block; width: 45px; margin-right: 6px;';
+            postItem.appendChild(emptySpan);
+        }
+
+        const link = document.createElement('a');
+        link.href = `/${post.key}`;
+
+        // 제목 길이 제한 (20자 초과시 말줄임표)
+        const title = getPostTitle(post.key);
+        link.textContent = title.length > 20 ? title.substring(0, 20) + '...' : title;
+        link.style.cssText = 'color: #58a6ff; text-decoration: none;';
+        link.target = '_blank';
+
+        postItem.appendChild(link);
+        content.appendChild(postItem);
+    });
+
+    tooltip.appendChild(header);
+    tooltip.appendChild(content);
+
+    // 위치 계산
+    const rect = button.getBoundingClientRect();
+    let left = rect.left;
+    let top = rect.bottom + 5;
+
+    // 화면 밖으로 나가지 않도록 조정
+    const tooltipWidth = 300;
+    const tooltipHeight = Math.min(citingPosts.length * 20 + 60, 200);
+
+    if (left + tooltipWidth > window.innerWidth) {
+        left = window.innerWidth - tooltipWidth - 10;
+    }
+
+    if (top + tooltipHeight > window.innerHeight) {
+        top = rect.top - tooltipHeight - 5;
+    }
+
+    tooltip.style.left = left + 'px';
+    tooltip.style.top = top + 'px';
+
+    // 툴팁에 마우스 이벤트 추가
+    tooltip.addEventListener('mouseenter', function () {
+        // 툴팁 위에 마우스가 있으면 유지
+    });
+
+    tooltip.addEventListener('mouseleave', function () {
+        // 툴팁에서 마우스가 나가면 숨기기
+        hideCitationList();
+    });
+
+    document.body.appendChild(tooltip);
+}
+
+/**
+ * 인용 툴팁을 숨깁니다.
+ */
+function hideCitationList() {
+    const existingTooltip = document.querySelector('.citation-tooltip');
+    if (existingTooltip) {
+        existingTooltip.remove();
+    }
+}
 
 /**
  * 히트맵 셀에 마우스를 올렸을 때 해당 월의 책 목록을 표시합니다.
