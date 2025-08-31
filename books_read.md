@@ -27,9 +27,9 @@ permalink: /books_read/
     <span id="total-books"></span>
   </div>
 </div>
-<div class="books-note">
+<!-- <div class="books-note">
   <strong style="background: linear-gradient(to bottom, transparent 70%, #74c0fc 90%);">후기 있는 책</strong>
-</div>
+</div> -->
 
 <div id="books-list">
   <!-- 책 목록이 여기에 동적으로 생성됩니다 -->
