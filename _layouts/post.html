@@ -13,9 +13,15 @@ layout: base
       ======================================== -->
 
   <header class="post-header">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin: 0; padding-bottom: 15px;">
+    <div
+      style="display: flex; justify-content: space-between; align-items: center; margin: 0; padding-bottom: 15px; position: relative;">
       <p style="color: #aaa; font-size: 0.9rem; margin: 0;">{% include reading-time.html %}</p>
-      <!-- 날짜 (아래 오른쪽) -->
+      <!-- 카테고리 태그 (본문 중앙) -->
+      {%- if page.categories -%}
+      <span class="category-tag" style="position: absolute; left: 50%; transform: translateX(-50%);">{{ page.categories
+        | first }}</span>
+      {%- endif -%}
+      <!-- 날짜 (오른쪽) -->
       <div class="post-date-top" style="margin: 0;">
         {%- assign pdate = page.date | date_to_xmlschema -%}
         {%- assign weekday = page.date | date: "%a" -%}
@@ -52,12 +58,9 @@ layout: base
       </div>
     </div>
 
-    <!-- 포스트 제목과 카테고리 태그 -->
+    <!-- 포스트 제목 -->
     <div class="post-title-container">
       <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
-      {%- if page.categories -%}
-      <span class="category-tag">{{ page.categories | first }}</span>
-      {%- endif -%}
     </div>
 
     <!-- ========================================

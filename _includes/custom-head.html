@@ -29,4 +29,46 @@
         font-weight: 300;
         font-display: swap;
     }
+
+    /* 카테고리 태그 스타일 */
+    .category-tag {
+        font-size: 0.9rem;
+        color: #666666;
+        background-color: #d0d0d0;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-weight: 400;
+        display: inline-block;
+        margin: 0;
+    }
+
+    /* 목차 배경색을 사이트 배경색과 맞춤 */
+    .toc-container {
+        background: rgba(248, 250, 252, 0.5);
+        border-color: rgba(225, 228, 232, 0.8);
+    }
+
+
+    /* 모바일 네비게이션 배경색을 사이트 배경색과 맞춤 */
+    @media screen and (max-width: 600px) {
+        .site-nav {
+            background-color: rgba(243, 246, 249, 0.6);
+        }
+    }
+
+    /* 목차 토글 버튼을 눈에 띄게 만들기 */
+    .toc-toggle {
+        background: rgba(255, 255, 255, 0.9);
+        border-color: rgba(0, 0, 0, 0.2);
+        color: rgba(0, 0, 0, 0.8);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+
+    .toc-container.collapsed .toc-toggle {
+        background: rgba(255, 255, 255, 0.9);
+        border-color: rgba(0, 0, 0, 0.2);
+        color: rgba(0, 0, 0, 0.8);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 </style>
