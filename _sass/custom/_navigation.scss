@@ -20,11 +20,11 @@
   margin-bottom: 0;
   float: left;
   color: rgb(66.25, 66.25, 66.25);
-  
+
   &:visited {
     color: rgb(66.25, 66.25, 66.25);
   }
-  
+
   @media screen and (max-width: $breakpoint-mobile) {
     padding-right: 45px;
   }
@@ -39,7 +39,7 @@
   border: 1px solid $light-gray;
   border-radius: $border-radius-sm;
   text-align: right;
-  
+
   // 모바일 네비게이션 스타일
   @media screen and (max-width: $breakpoint-mobile) {
     background-color: rgba(255, 255, 255, 0.6);
@@ -47,7 +47,7 @@
     border: 1px dashed $light-gray;
     font-size: 1.1rem;
   }
-  
+
   // 데스크톱 네비게이션 스타일
   @media screen and (min-width: $breakpoint-mobile) {
     position: static;
@@ -70,11 +70,11 @@
   line-height: 0;
   padding-top: $spacing-md;
   text-align: center;
-  
-  > svg path {
+
+  >svg path {
     fill: rgb(66.25, 66.25, 66.25);
   }
-  
+
   @media screen and (min-width: $breakpoint-mobile) {
     display: none;
   }
@@ -88,7 +88,7 @@
   height: 36px;
   z-index: 2;
   cursor: pointer;
-  
+
   @media screen and (min-width: $breakpoint-mobile) {
     display: none;
   }
@@ -98,7 +98,7 @@
 .site-nav input~.trigger {
   clear: both;
   display: none;
-  
+
   @media screen and (min-width: $breakpoint-mobile) {
     display: block;
   }
@@ -116,16 +116,17 @@
   display: block;
   padding: $spacing-sm $spacing-md;
   margin-left: $spacing-xl;
-  
+  font-family: $font-family-nav; // 네비게이션 폰트 변수 사용
+
   &:not(:last-child) {
     margin-right: 0;
   }
-  
+
   @media screen and (min-width: $breakpoint-mobile) {
     display: inline;
     padding: 0;
     margin-left: auto;
-    
+
     &:not(:last-child) {
       margin-right: $spacing-xl;
     }
@@ -174,5 +175,6 @@
     display: inline-block;
     color: $muted-color;
     font-size: 1.1rem;
+    font-family: $font-family-nav; // 네비게이션 폰트 변수 사용
   }
 }

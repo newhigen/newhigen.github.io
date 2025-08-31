@@ -75,6 +75,7 @@
   text-align: right;
   flex-shrink: 0 !important; // 강제로 크기 고정
   white-space: nowrap !important;
+  font-family: $font-family-nav; // 네비게이션 폰트 변수 사용
 }
 
 // 포스트 카테고리
@@ -88,6 +89,7 @@
   color: $secondary-color;
   flex-shrink: 0 !important; // 강제로 크기 고정
   white-space: nowrap !important;
+  font-family: $font-family-nav; // 네비게이션 폰트 변수 사용
 }
 
 // 모든 화면 크기에서 적용
