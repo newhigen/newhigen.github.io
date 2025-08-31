@@ -4,6 +4,14 @@ require 'json'
 require 'yaml'
 require 'fileutils'
 
+# SafeYAML을 사용하여 안전한 YAML 파싱
+begin
+  require 'safe_yaml'
+  SafeYAML::OPTIONS[:default_mode] = :safe
+rescue LoadError
+  # SafeYAML이 없으면 기본 YAML 사용
+end
+
 class PostMetadataGenerator
   def initialize
     @posts_dir = File.join(Dir.pwd, '_posts')
@@ -47,16 +55,22 @@ class PostMetadataGenerator
     end
 
     # footnote에서 도서 정보 추출
-    footnote_pattern = /\[(\^[0-9]+)\]:\s*\[\[도서\]\s*([^,]+),\s*([^,]+),\s*([0-9]+)\]/i
-    content.scan(footnote_pattern).each do |match|
-      footnote_num = match[0]
-      book_title = match[1].strip
-      author = match[2].strip
-      year = match[3].strip
+    footnote_patterns = [
+      /\[(\^[0-9]+)\]:\s*\[\[도서\]\s*([^,]+),\s*([^,]+),\s*([0-9]+)\]/i,
+      /\[(\^[0-9]+)\]:\s*\[\[생각\]\s*([^,]+),\s*([0-9]+)\]/i
+    ]
 
-      # 책 목록에서 해당 책 찾기
-      if books[book_title]
-        citations << book_title
+    footnote_patterns.each do |pattern|
+      content.scan(pattern).each do |match|
+        footnote_num = match[0]
+        book_title = match[1].strip
+        author = match[2]&.strip
+        year = match[3]&.strip || match[2]&.strip
+
+        # 책 목록에서 해당 책 찾기
+        if books[book_title]
+          citations << book_title
+        end
       end
     end
 
@@ -81,7 +95,15 @@ class PostMetadataGenerator
       if content.start_with?('---')
         parts = content.split('---', 3)
         if parts.length >= 3
-          front_matter = YAML.load(parts[1]) rescue {}
+          begin
+            front_matter = YAML.load(parts[1])
+            if front_matter.nil?
+              front_matter = {}
+            end
+          rescue => e
+            puts "⚠️ YAML 파싱 에러 (#{filename}): #{e.message}"
+            front_matter = {}
+          end
           body_content = parts[2]
         else
           front_matter = {}
@@ -103,6 +125,8 @@ class PostMetadataGenerator
       # URL 생성 (Jekyll 규칙에 따라)
       date_part = filename[0..9] # YYYY-MM-DD
       title_part = filename[11..-1] # 나머지 부분
+
+
 
       metadata[title_part] = {
         'filename' => filename,
