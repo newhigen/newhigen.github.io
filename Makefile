@@ -30,9 +30,6 @@ help:
 	@echo "  make full-check  - 전체 점검 (모든 도구)"
 	@echo ""
 	@echo "📸 스크린샷 도구:"
-	@echo "  make st          - 로컬 사이트 스크린샷 (make screenshot)"
-	@echo "  make screenshot  - 로컬 사이트 스크린샷 촬영"
-	@echo "  make screenshot-pr PR=123 - PR 스크린샷 촬영"
 	@echo "  make pr PR=123   - PR 스크린샷 + 댓글 작성"
 	@echo ""
 	@echo "💡 팁: git commit 시 자동으로 테스트가 실행됩니다!"
@@ -130,20 +127,6 @@ pre-commit-check:
 	@bundle exec jekyll build --quiet || (echo "❌ 빌드 실패!" && exit 1)
 	@echo "✅ 커밋 준비 완료!"
 
-# 스크린샷 촬영
-screenshot:
-	@echo "📸 로컬 사이트 스크린샷 촬영 중..."
-	@node _scripts/puppeteer_screenshot_and_comment.js local
-
-# PR 스크린샷 촬영
-screenshot-pr:
-	@if [ -z "$(PR)" ]; then \
-		echo "❌ PR 번호를 지정해주세요: make screenshot-pr PR=123"; \
-		exit 1; \
-	fi
-	@echo "📸 PR #$(PR) 스크린샷 촬영 중..."
-	@node _scripts/puppeteer_screenshot_and_comment.js pr $(PR)
-
 # PR 스크린샷 + 댓글 작성
 pr:
 	@if [ -z "$(PR)" ]; then \
@@ -152,9 +135,6 @@ pr:
 	fi
 	@echo "📸 PR #$(PR) 스크린샷 촬영 및 댓글 작성 중..."
 	@node _scripts/puppeteer_screenshot_and_comment.js full $(PR)
-
-# 스크린샷 (별칭)
-st: screenshot
 
 # 도움말 (기본값)
 .DEFAULT_GOAL := help

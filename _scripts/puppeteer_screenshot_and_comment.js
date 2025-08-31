@@ -1,14 +1,191 @@
-const PuppeteerScreenshot = require('./puppeteer_screenshot');
 const PRCommenter = require('./comment_with_files');
 const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
+const puppeteer = require('puppeteer');
 
 class PuppeteerScreenshotAndComment {
     constructor() {
-        this.screenshot = new PuppeteerScreenshot();
         this.commenter = new PRCommenter();
         this.screenshotsDir = path.join(__dirname, '../assets/screenshots');
+        this.browser = null;
+        this.ensureScreenshotsDir();
+    }
+
+    ensureScreenshotsDir() {
+        if (!fs.existsSync(this.screenshotsDir)) {
+            fs.mkdirSync(this.screenshotsDir, { recursive: true });
+        }
+    }
+
+    async init() {
+        try {
+            console.log('Edge 브라우저 초기화 중...');
+
+            // Edge 실행 파일 경로 찾기
+            const edgePaths = [
+                '/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge',
+                '/usr/bin/microsoft-edge',
+                '/usr/bin/edge'
+            ];
+
+            let executablePath = null;
+            for (const path of edgePaths) {
+                if (fs.existsSync(path)) {
+                    executablePath = path;
+                    break;
+                }
+            }
+
+            if (!executablePath) {
+                console.log('Edge를 찾을 수 없습니다. 기본 Chromium을 사용합니다.');
+            } else {
+                console.log(`Edge 실행 파일 발견: ${executablePath}`);
+            }
+
+            this.browser = await puppeteer.launch({
+                headless: "new",
+                executablePath: executablePath,
+                args: [
+                    '--no-sandbox',
+                    '--disable-setuid-sandbox',
+                    '--disable-dev-shm-usage',
+                    '--disable-accelerated-2d-canvas',
+                    '--no-first-run',
+                    '--no-zygote',
+                    '--disable-gpu',
+                    '--disable-web-security',
+                    '--disable-features=VizDisplayCompositor'
+                ]
+            });
+            console.log('브라우저 초기화 완료');
+        } catch (error) {
+            console.error('브라우저 초기화 실패:', error.message);
+            throw error;
+        }
+    }
+
+    async takeScreenshot(url, selector = 'body', name = 'screenshot') {
+        let page = null;
+
+        try {
+            page = await this.browser.newPage();
+
+            // 뷰포트 설정 (컴팩트한 크기)
+            await page.setViewport({ width: 1024, height: 768 });
+
+            // 타임아웃 설정
+            page.setDefaultTimeout(30000);
+            page.setDefaultNavigationTimeout(30000);
+
+            console.log(`페이지 로딩 중: ${url}`);
+            await page.goto(url, {
+                waitUntil: 'domcontentloaded',
+                timeout: 30000
+            });
+
+            // 페이지가 완전히 로드될 때까지 잠시 대기
+            await page.waitForTimeout(2000);
+
+            // 웹폰트 로딩 대기
+            await page.evaluateHandle('document.fonts.ready');
+            await page.waitForTimeout(1000); // 폰트 렌더링 대기
+
+            // 특정 요소가 있다면 해당 요소만 스크린샷
+            let element = null;
+            if (selector !== 'body') {
+                try {
+                    await page.waitForSelector(selector, { timeout: 5000 });
+                    element = await page.$(selector);
+                    console.log(`선택자 ${selector} 찾음`);
+                } catch (error) {
+                    console.warn(`선택자 ${selector}를 찾을 수 없습니다. 전체 페이지를 스크린샷합니다.`);
+                }
+            }
+
+            console.log(`스크린샷 촬영 중: ${url}`);
+            const screenshot = await (element || page).screenshot({
+                quality: 95,
+                type: 'jpeg',
+                fullPage: false
+            });
+
+            // 파일명 생성
+            const today = new Date();
+            const dateStr = today.toISOString().split('T')[0];
+            const filename = `${dateStr}_${name}.jpg`;
+            const filePath = path.join(this.screenshotsDir, filename);
+
+            // 파일 저장
+            fs.writeFileSync(filePath, screenshot);
+            console.log(`스크린샷 저장: ${filename}`);
+
+            return filePath;
+
+        } catch (error) {
+            console.error(`스크린샷 촬영 실패 (${url}):`, error.message);
+            return null;
+        } finally {
+            if (page) {
+                try {
+                    await page.close();
+                } catch (error) {
+                    console.warn('페이지 닫기 실패:', error.message);
+                }
+            }
+        }
+    }
+
+    async captureLocalSite(pages) {
+        try {
+            await this.init();
+
+            const results = [];
+            for (let i = 0; i < pages.length; i++) {
+                const { url, selector = 'body', name } = pages[i];
+                console.log(`\n${i + 1}/${pages.length} 번째 스크린샷 준비 중...`);
+
+                const result = await this.takeScreenshot(url, selector, name);
+                if (result) {
+                    results.push(result);
+                }
+            }
+
+            return results;
+        } catch (error) {
+            console.error('로컬 사이트 스크린샷 촬영 실패:', error.message);
+            return [];
+        } finally {
+            if (this.browser) {
+                try {
+                    await this.browser.close();
+                } catch (error) {
+                    console.warn('브라우저 닫기 실패:', error.message);
+                }
+            }
+        }
+    }
+
+    // 공통 스크린샷 구성
+    getCommonPages() {
+        return [
+            { url: 'http://localhost:4000', name: 'main_page' },
+            { url: 'http://localhost:4000/did-i-understand/', name: 'sample_post' },
+            { url: 'http://localhost:4000/books_read/', name: 'books_read_page' },
+            { url: 'http://localhost:4000/thought/', name: 'thoughts_page' },
+            { url: 'http://localhost:4000/about/', name: 'about_page' }
+        ];
+    }
+
+    // 공통 URL 목록
+    getCommonUrls() {
+        return [
+            'http://localhost:4000',
+            'http://localhost:4000/did-i-understand/',
+            'http://localhost:4000/books_read/',
+            'http://localhost:4000/thought/',
+            'http://localhost:4000/about/'
+        ];
     }
 
     async mergeImagesVertically(imagePaths, urls, outputName) {
@@ -114,14 +291,8 @@ class PuppeteerScreenshotAndComment {
         try {
             console.log('로컬 사이트 스크린샷 촬영 및 병합 시작...');
 
-            // 1. 스크린샷 촬영
-            const screenshotResults = await this.screenshot.captureLocalSite([
-                { url: 'http://localhost:4000', name: 'main_page' },
-                { url: 'http://localhost:4000/did-i-understand/', name: 'sample_post' },
-                { url: 'http://localhost:4000/books_read/', name: 'books_read_page' },
-                { url: 'http://localhost:4000/thought/', name: 'thoughts_page' },
-                { url: 'http://localhost:4000/about/', name: 'about_page' }
-            ]);
+            // 1. 스크린샷 촬영 (공통 구성)
+            const screenshotResults = await this.captureLocalSite(this.getCommonPages());
 
             if (!screenshotResults || screenshotResults.length === 0) {
                 console.error('스크린샷 생성에 실패했습니다.');
@@ -131,14 +302,7 @@ class PuppeteerScreenshotAndComment {
             console.log(`스크린샷 생성 완료: ${screenshotResults.length}개 파일`);
 
             // 2. 이미지 병합 (URL 정보 포함)
-            const urls = [
-                'http://localhost:4000',
-                'http://localhost:4000/did-i-understand/',
-                'http://localhost:4000/books_read/',
-                'http://localhost:4000/thought/',
-                'http://localhost:4000/about/'
-            ];
-            const mergedPath = await this.mergeImagesVertically(screenshotResults, urls, outputName);
+            const mergedPath = await this.mergeImagesVertically(screenshotResults, this.getCommonUrls(), outputName);
 
             if (mergedPath) {
                 console.log('✅ 모든 작업이 완료되었습니다!');
@@ -171,8 +335,8 @@ class PuppeteerScreenshotAndComment {
 
             console.log(`PR #${prNumber} 스크린샷 촬영 및 병합 시작...`);
 
-            // 1. PR 스크린샷 촬영
-            const screenshotResults = await this.screenshot.capturePRChanges(prNumber);
+            // 1. 로컬 사이트 스크린샷 촬영 (공통 구성)
+            const screenshotResults = await this.captureLocalSite(this.getCommonPages());
 
             if (!screenshotResults || screenshotResults.length === 0) {
                 console.error('스크린샷 생성에 실패했습니다.');
@@ -181,14 +345,8 @@ class PuppeteerScreenshotAndComment {
 
             console.log(`스크린샷 생성 완료: ${screenshotResults.length}개 파일`);
 
-            // 2. 이미지 병합 (PR URL 정보 포함)
-            const baseUrl = 'https://github.com/newhigen/newhigen.github.io';
-            const urls = [
-                `${baseUrl}/pull/${prNumber}`,
-                `${baseUrl}/pull/${prNumber}/files`,
-                `${baseUrl}/pull/${prNumber}/commits`
-            ];
-            const mergedPath = await this.mergeImagesVertically(screenshotResults, urls, outputName);
+            // 2. 이미지 병합 (URL 정보 포함)
+            const mergedPath = await this.mergeImagesVertically(screenshotResults, this.getCommonUrls(), outputName);
 
             if (mergedPath) {
                 console.log('✅ 모든 작업이 완료되었습니다!');
@@ -268,19 +426,7 @@ if (require.main === module) {
     const args = process.argv.slice(2);
     const command = args[0];
 
-    if (command === 'local') {
-        const outputName = args[1] || 'merged_local';
-        screenshotAndComment.captureAndMergeLocalSite(outputName)
-            .then(result => {
-                if (result) {
-                    console.log(`\n완료! 병합된 파일: ${result}`);
-                } else {
-                    console.error('작업 실패');
-                    process.exit(1);
-                }
-            });
-
-    } else if (command === 'pr' && args[1]) {
+    if (command === 'pr' && args[1]) {
         const prNumber = args[1];
         const outputName = args[2];
 
@@ -308,12 +454,10 @@ if (require.main === module) {
 
     } else {
         console.log('사용법:');
-        console.log('  node puppeteer_screenshot_and_comment.js local [output_name]');
         console.log('  node puppeteer_screenshot_and_comment.js pr <PR번호> [output_name]');
         console.log('  node puppeteer_screenshot_and_comment.js full <PR번호> [메시지] [output_name]');
         console.log('');
         console.log('예시:');
-        console.log('  node puppeteer_screenshot_and_comment.js local');
         console.log('  node puppeteer_screenshot_and_comment.js pr 57');
         console.log('  node puppeteer_screenshot_and_comment.js full 57 "변경사항 확인"');
     }
