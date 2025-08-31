@@ -29,6 +29,9 @@ help:
 	@echo "  make deploy      - 배포 준비 및 체크"
 	@echo "  make full-check  - 전체 점검 (모든 도구)"
 	@echo ""
+	@echo "📸 스크린샷 도구:"
+	@echo "  make pr PR=123   - PR 스크린샷 + 댓글 작성"
+	@echo ""
 	@echo "💡 팁: git commit 시 자동으로 테스트가 실행됩니다!"
 	@echo ""
 
@@ -123,6 +126,15 @@ pre-commit-check:
 	@echo "🔍 커밋 전 체크 실행 중..."
 	@bundle exec jekyll build --quiet || (echo "❌ 빌드 실패!" && exit 1)
 	@echo "✅ 커밋 준비 완료!"
+
+# PR 스크린샷 + 댓글 작성
+pr:
+	@if [ -z "$(PR)" ]; then \
+		echo "❌ PR 번호를 지정해주세요: make pr PR=123"; \
+		exit 1; \
+	fi
+	@echo "📸 PR #$(PR) 스크린샷 촬영 및 댓글 작성 중..."
+	@node _scripts/puppeteer_screenshot_and_comment.js full $(PR)
 
 # 도움말 (기본값)
 .DEFAULT_GOAL := help

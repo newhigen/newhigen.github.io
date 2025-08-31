@@ -6,6 +6,8 @@ Gemfile.lock
 
 _site/
 
+node_modules/
+
 # Blog maintenance tools
 assets/data/blog_health_report.json
 _tools/*.log

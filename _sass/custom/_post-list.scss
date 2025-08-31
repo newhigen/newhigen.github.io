@@ -8,6 +8,8 @@
 .post-list {
   margin-left: 0;
   list-style: none;
+  max-width: 800px; // 포스트 목록 최대 너비 제한
+  margin: 0 auto; // 가운데 정렬
 
   >li {
     margin-bottom: $spacing-sm; // 포스트 사이 간격 줄임
@@ -21,6 +23,7 @@
 // 포스트 목록 제목
 .post-list-heading {
   font-size: 1.75rem;
+  font-family: $font-family-nav; // 네비게이션 폰트와 동일하게 적용
 }
 
 // 포스트 링크 컨테이너 개선
@@ -73,6 +76,7 @@
   text-align: right;
   flex-shrink: 0 !important; // 강제로 크기 고정
   white-space: nowrap !important;
+  font-family: $font-family-nav; // 네비게이션 폰트 변수 사용
 }
 
 // 포스트 카테고리
@@ -80,12 +84,14 @@
   font-size: $font-size-xs;
   color: $muted-color;
   display: inline-block;
-  width: 40px !important; // 강제 고정 크기
-  text-align: left !important; // 왼쪽 정렬로 변경
+  width: 80px !important; // 너비 확장 (40px → 80px)
+  text-align: right !important; // 오른쪽 정렬
   font-weight: 500;
   color: $secondary-color;
   flex-shrink: 0 !important; // 강제로 크기 고정
   white-space: nowrap !important;
+  font-family: $font-family-nav; // 네비게이션 폰트 변수 사용
+  overflow: visible !important; // 넘치는 텍스트 표시
 }
 
 // 모든 화면 크기에서 적용
@@ -102,6 +108,8 @@
   overflow: hidden !important;
   text-overflow: ellipsis !important;
 }
+
+
 
 // 모바일 반응형
 @media screen and (max-width: $breakpoint-tablet) {

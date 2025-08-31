@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // TOC 컨테이너 생성
         const tocContainer = document.createElement('div');
-        tocContainer.className = 'toc-container collapsed'; // 기본적으로 숨김 상태
+        tocContainer.className = 'toc-container'; // 기본적으로 펼친 상태
         tocContainer.innerHTML = `
       <div class="toc-toggle">목차</div>
       <ul class="toc-list"></ul>
@@ -51,8 +51,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // TOC를 body에 추가
         document.body.appendChild(tocContainer);
 
-        // 포스트 본문에 TOC 여백 추가 (숨김 상태)
-        postContent.classList.add('has-toc-collapsed');
+        // 포스트 본문에 TOC 여백 추가 (펼친 상태)
+        postContent.classList.add('has-toc');
 
         // 토글 버튼 이벤트 리스너 추가
         const toggleButton = tocContainer.querySelector('.toc-toggle');
@@ -62,13 +62,13 @@ document.addEventListener('DOMContentLoaded', function () {
             toggleTOC(tocContainer, postContent);
         });
 
-        // 로컬 스토리지에서 TOC 상태 복원 (기본값은 숨김)
-        const isExpanded = localStorage.getItem('toc-expanded') === 'true';
-        if (isExpanded) {
-            // 펼친 상태로 복원
-            tocContainer.classList.remove('collapsed');
-            postContent.classList.remove('has-toc-collapsed');
-            postContent.classList.add('has-toc');
+        // 로컬 스토리지에서 TOC 상태 복원 (기본값은 펼침)
+        const isCollapsed = localStorage.getItem('toc-collapsed') === 'true';
+        if (isCollapsed) {
+            // 숨김 상태로 복원
+            tocContainer.classList.add('collapsed');
+            postContent.classList.remove('has-toc');
+            postContent.classList.add('has-toc-collapsed');
         }
 
         // 스크롤 이벤트 리스너 추가
@@ -87,13 +87,13 @@ document.addEventListener('DOMContentLoaded', function () {
             tocContainer.classList.remove('collapsed');
             postContent.classList.remove('has-toc-collapsed');
             postContent.classList.add('has-toc');
-            localStorage.setItem('toc-expanded', 'true');
+            localStorage.setItem('toc-collapsed', 'false');
         } else {
             // 숨기기 - 즉시 실행
             tocContainer.classList.add('collapsed');
             postContent.classList.add('has-toc-collapsed');
             postContent.classList.remove('has-toc');
-            localStorage.setItem('toc-expanded', 'false');
+            localStorage.setItem('toc-collapsed', 'true');
         }
     }
 

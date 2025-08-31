@@ -4,10 +4,18 @@
 
 @import 'variables';
 
+// 포스트 컨테이너
+.post {
+  max-width: 800px; // 너비 축소 (1000px → 800px)
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
 // 포스트 본문 컨테이너
 .post-content {
   margin-bottom: $spacing-xxl;
   font-family: $font-family-post-content;
+  max-width: 100%;
 
   // 본문 내의 모든 텍스트 요소에 content 폰트 적용
   p,
@@ -18,6 +26,17 @@
   span,
   div {
     font-family: $font-family-post-content;
+    line-height: 1.5; // line-height 증가 (1.3 → 1.6)
+  }
+
+  // paragraph 간격 줄이기
+  p {
+    margin-bottom: 0.4em; // 기본 paragraph 간격 더 줄이기 (0.8em → 0.4em)
+  }
+
+  // 연속된 paragraph 간격 더 줄이기
+  p+p {
+    margin-top: 0.2em; // 연속 paragraph 간격 더 줄이기 (0.5em → 0.2em)
   }
 
   // bold 텍스트만 SemiBold 폰트 적용
@@ -27,13 +46,14 @@
   }
 }
 
+
+
 // 포스트 제목
 .post-title,
 .post-content h1 {
   margin-bottom: $spacing-md;
   font-size: 2.625rem;
   letter-spacing: -1px;
-  line-height: 1.15;
   font-family: $font-family-post-headers;
 
   @media screen and (min-width: $breakpoint-desktop) {
@@ -41,19 +61,33 @@
   }
 }
 
-// 포스트 본문의 모든 제목들
+// 포스트 본문의 모든 제목들 (기본 스타일)
 .post-content h1,
 .post-content h2,
 .post-content h3,
 .post-content h4,
 .post-content h5,
 .post-content h6 {
-  margin-top: $spacing-xxl;
+  line-height: 1.3;
   font-family: $font-family-post-headers;
 }
 
-// h2 제목
+// h1 제목 (가장 큰 위/아래 간격)
+.post-content h1 {
+  margin-top: 70px; // 가장 큰 위 간격 (50px → 70px)
+  margin-bottom: 20px; // 가장 큰 아래 간격 (25px → 20px)
+  font-size: 2.625rem;
+  font-family: $font-family-post-headers;
+
+  @media screen and (min-width: $breakpoint-desktop) {
+    font-size: 2.625rem;
+  }
+}
+
+// h2 제목 (중간 위/아래 간격)
 .post-content h2 {
+  margin-top: 40px; // 중간 위 간격 (55px → 40px)
+  margin-bottom: 28px; // 중간 아래 간격 (20px → 28px)
   font-size: 1.75rem;
   font-family: $font-family-post-headers;
 
@@ -62,8 +96,10 @@
   }
 }
 
-// h3 제목
+// h3 제목 (작은 위/아래 간격)
 .post-content h3 {
+  margin-top: 42px; // 작은 위 간격 (30px → 42px)
+  margin-bottom: 21px; // 작은 아래 간격 (15px → 21px)
   font-size: 1.375rem;
   font-family: $font-family-post-headers;
 
@@ -72,8 +108,10 @@
   }
 }
 
-// h4 제목
+// h4 제목 (더 작은 위/아래 간격)
 .post-content h4 {
+  margin-top: 35px; // 더 작은 위 간격 (25px → 35px)
+  margin-bottom: 17px; // 더 작은 아래 간격 (12px → 17px)
   font-size: 1.25rem;
   font-family: $font-family-post-headers;
 }
