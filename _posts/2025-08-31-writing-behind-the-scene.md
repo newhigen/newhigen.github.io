@@ -94,7 +94,7 @@ permalink: writing-behine-the-scene
 
 너진똑 영상[^10]에서 말하는 것은 영향력은 끼치는 사람은 본인이 싫더라도 자기 행동을 조심해야 한다고 한다.
 
-그리고 행동을 조심하더라도 모두가 좋아할 수 없기에 반대 의견은 항상 있고[^8]
+그리고 행동을 조심하더라도 모두가 좋아할 수 없기에 반대 의견은 항상 있고[^8]<sup>(찬반양론)</sup>
 
 그 반대 의견들을 의식하다 보면 어느 순간 동의하는 의견들을 갈구하게 되고 종국에 좋지 않은 말로를 맞이할 수밖에 없다.
 
@@ -108,7 +108,7 @@ permalink: writing-behine-the-scene
 
 # 그럼에도
 
-그럼에도 두 가지 주된 이유로 글을 쓰기로 했다.
+하지만 두 가지 주된 이유로 기회비용보다 편익이 크다고 결론을 내렸고 글을 쓰기로 했다(실행).[^8]
 
 ## (1) 생각의 자동 테스트
 
@@ -152,7 +152,7 @@ SNS는 보통 관계로 먼저 이어져서 글로 들어와 주제를 본다면
 [^5]: [[생각] 안다는 착각, 2025]({% post_url 2025-08-09-did-i-understand %})
 [^6]: [[생각] 달리기를 말할 때 내가 하고 싶은 이야기, 2025]({% post_url 2025-08-12-running-story %})
 [^7]: [[생각] 단 한 번의 삶, 2025]({% post_url 2025-08-10-one-life %})
-[^8]: [찬반양론 _ [도서] 완벽한 선택은 없다, 안도 고다이, 2025](https://product.kyobobook.co.kr/detail/S000216497148)
+[^8]: [[도서] 완벽한 선택은 없다, 안도 고다이, 2025](https://product.kyobobook.co.kr/detail/S000216497148)
 [^9]: [[도서] 왜 나는 항상 결심만 할까?, 켈리 맥고니걸, 2012](https://product.kyobobook.co.kr/detail/S000000733034)
 [^10]: [[유튜브] 인플루언서는 왜 죽을 수밖에 없는가?, 너진똑, 2025](https://www.youtube.com/watch?v=X_qqqRO280s)
 [^11]: [My knowledge may not be the entire map for everyone,<br>but I hope it can be a compass for someone who feels lost. [블로그의 about]]({{ site.baseurl }}/about)
