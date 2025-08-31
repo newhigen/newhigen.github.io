@@ -2,7 +2,7 @@
 layout: post
 title: 독서법
 date: 2025-08-03
-categories: 표상
+categories: 효과적_모형
 permalink: how-to-read
 ---
 

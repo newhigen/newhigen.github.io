@@ -6,7 +6,8 @@
     "categories": [],
     "tags": [],
     "content_length": 1509,
-    "is_short": false
+    "is_short": false,
+    "book_citations": []
   },
   "experience-and-knowledge": {
     "filename": "2025-07-28-experience-and-knowledge",
@@ -14,8 +15,9 @@
     "title": "experience and knowledge",
     "categories": [],
     "tags": [],
-    "content_length": 501,
-    "is_short": true
+    "content_length": 522,
+    "is_short": true,
+    "book_citations": []
   },
   "25-seasons": {
     "filename": "2025-07-31-25-seasons",
@@ -24,7 +26,8 @@
     "categories": [],
     "tags": [],
     "content_length": 936,
-    "is_short": true
+    "is_short": true,
+    "book_citations": []
   },
   "moral-uncertainty": {
     "filename": "2025-07-31-moral-uncertainty",
@@ -32,8 +35,9 @@
     "title": "moral uncertainty",
     "categories": [],
     "tags": [],
-    "content_length": 1070,
-    "is_short": false
+    "content_length": 1078,
+    "is_short": false,
+    "book_citations": []
   },
   "power-n-and-power-s": {
     "filename": "2025-08-02-power-n-and-power-s",
@@ -42,7 +46,8 @@
     "categories": [],
     "tags": [],
     "content_length": 1449,
-    "is_short": false
+    "is_short": false,
+    "book_citations": []
   },
   "how-to-read": {
     "filename": "2025-08-03-how-to-read",
@@ -50,8 +55,12 @@
     "title": "how to read",
     "categories": [],
     "tags": [],
-    "content_length": 3169,
-    "is_short": false
+    "content_length": 3218,
+    "is_short": false,
+    "book_citations": [
+      "책 잘 읽는 방법",
+      "진작 이렇게 책을 읽었더라면"
+    ]
   },
   "stare-at-professional": {
     "filename": "2025-08-03-stare-at-professional",
@@ -59,8 +68,13 @@
     "title": "stare at professional",
     "categories": [],
     "tags": [],
-    "content_length": 1885,
-    "is_short": false
+    "content_length": 1908,
+    "is_short": false,
+    "book_citations": [
+      "Deep Work",
+      "1만 시간의 재발견",
+      "내게 남은 스물다섯 번의 계절"
+    ]
   },
   "breaking-bias": {
     "filename": "2025-08-04-breaking-bias",
@@ -68,8 +82,11 @@
     "title": "breaking bias",
     "categories": [],
     "tags": [],
-    "content_length": 1044,
-    "is_short": false
+    "content_length": 1070,
+    "is_short": false,
+    "book_citations": [
+      "안다는 착각"
+    ]
   },
   "did-i-understand": {
     "filename": "2025-08-09-did-i-understand",
@@ -78,7 +95,8 @@
     "categories": [],
     "tags": [],
     "content_length": 3293,
-    "is_short": false
+    "is_short": false,
+    "book_citations": []
   },
   "infj-doctor": {
     "filename": "2025-08-10-infj-doctor",
@@ -86,8 +104,14 @@
     "title": "infj doctor",
     "categories": [],
     "tags": [],
-    "content_length": 3861,
-    "is_short": false
+    "content_length": 3913,
+    "is_short": false,
+    "book_citations": [
+      "80:20 학습법",
+      "안다는 착각",
+      "실용주의 사고와 학습",
+      "달리기를 말할 때 내가 하고 싶은 이야기"
+    ]
   },
   "one-life": {
     "filename": "2025-08-10-one-life",
@@ -95,8 +119,12 @@
     "title": "one life",
     "categories": [],
     "tags": [],
-    "content_length": 629,
-    "is_short": true
+    "content_length": 668,
+    "is_short": true,
+    "book_citations": [
+      "내게 남은 스물다섯 번의 계절",
+      "달리기를 말할 때 내가 하고 싶은 이야기"
+    ]
   },
   "note-premium": {
     "filename": "2025-08-12-note-premium",
@@ -104,8 +132,9 @@
     "title": "note premium",
     "categories": [],
     "tags": [],
-    "content_length": 2515,
-    "is_short": false
+    "content_length": 2487,
+    "is_short": false,
+    "book_citations": []
   },
   "running-story": {
     "filename": "2025-08-12-running-story",
@@ -113,8 +142,11 @@
     "title": "running story",
     "categories": [],
     "tags": [],
-    "content_length": 5224,
-    "is_short": false
+    "content_length": 5228,
+    "is_short": false,
+    "book_citations": [
+      "Deep Work"
+    ]
   },
   "appreciation-as-word": {
     "filename": "2025-08-14-appreciation-as-word",
@@ -122,8 +154,12 @@
     "title": "appreciation as word",
     "categories": [],
     "tags": [],
-    "content_length": 2746,
-    "is_short": false
+    "content_length": 2811,
+    "is_short": false,
+    "book_citations": [
+      "1만 시간의 재발견",
+      "실용주의 사고와 학습"
+    ]
   },
   "health-newbie": {
     "filename": "2025-08-17-health-newbie",
@@ -132,6 +168,45 @@
     "categories": [],
     "tags": [],
     "content_length": 283,
-    "is_short": true
+    "is_short": true,
+    "book_citations": []
+  },
+  "fake-senior-junior": {
+    "filename": "2025-08-31-fake-senior-junior",
+    "date": "2025-08-31",
+    "title": "fake senior junior",
+    "categories": [],
+    "tags": [],
+    "content_length": 2949,
+    "is_short": false,
+    "book_citations": [
+      "왜 나는 항상 결심만 할까?",
+      "함께 자라기",
+      "완벽한 선택은 없다"
+    ]
+  },
+  "writing-model": {
+    "filename": "2025-08-31-writing-model",
+    "date": "2025-08-31",
+    "title": "writing model",
+    "categories": [],
+    "tags": [],
+    "content_length": 0,
+    "is_short": true,
+    "book_citations": []
+  },
+  "_book_citation_stats": {
+    "책 잘 읽는 방법": 1,
+    "진작 이렇게 책을 읽었더라면": 1,
+    "Deep Work": 2,
+    "1만 시간의 재발견": 2,
+    "내게 남은 스물다섯 번의 계절": 2,
+    "안다는 착각": 2,
+    "80:20 학습법": 1,
+    "실용주의 사고와 학습": 2,
+    "달리기를 말할 때 내가 하고 싶은 이야기": 2,
+    "왜 나는 항상 결심만 할까?": 1,
+    "함께 자라기": 1,
+    "완벽한 선택은 없다": 1
   }
 }

@@ -8,9 +8,13 @@
 .post-list {
   margin-left: 0;
   list-style: none;
-  
-  > li {
+
+  >li {
     margin-bottom: $spacing-sm; // 포스트 사이 간격 줄임
+    display: flex !important; // 강제 flex 적용
+    align-items: center !important;
+    gap: $spacing-md;
+    width: 100%;
   }
 }
 
@@ -19,11 +23,26 @@
   font-size: 1.75rem;
 }
 
+// 포스트 링크 컨테이너 개선
+.post-list>li {
+  display: flex !important;
+  align-items: center !important;
+  gap: $spacing-md;
+  margin-bottom: $spacing-sm;
+  width: 100%;
+}
+
 // 포스트 링크
 .post-link {
   font-size: 1rem;
   color: $muted-color;
-  
+  flex: 1 !important; // 강제로 남은 공간 모두 사용
+  min-width: 0 !important; // flex 아이템이 축소될 수 있도록
+  white-space: nowrap !important; // 강제로 한 줄 유지
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  display: block !important;
+
   &.short-post {
     font-size: 1.05rem;
     color: $secondary-color;
@@ -50,8 +69,10 @@
   font-size: 14px;
   color: $muted-color;
   display: inline-block;
-  width: 45px;
+  width: 50px !important; // 강제 고정 크기
   text-align: right;
+  flex-shrink: 0 !important; // 강제로 크기 고정
+  white-space: nowrap !important;
 }
 
 // 포스트 카테고리
@@ -59,21 +80,37 @@
   font-size: $font-size-xs;
   color: $muted-color;
   display: inline-block;
-  width: 35px;
-  text-align: right;
+  width: 40px !important; // 강제 고정 크기
+  text-align: left !important; // 왼쪽 정렬로 변경
   font-weight: 500;
   color: $secondary-color;
+  flex-shrink: 0 !important; // 강제로 크기 고정
+  white-space: nowrap !important;
+}
+
+// 모든 화면 크기에서 적용
+.post-list li {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.post-list li .post-link {
+  flex: 1 !important;
+  min-width: 0 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
 }
 
 // 모바일 반응형
 @media screen and (max-width: $breakpoint-tablet) {
   .post-link {
-    max-width: calc(100vw - 200px); // 날짜+카테고리+여백 고려
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    display: inline-block;
-    vertical-align: bottom;
+    max-width: none !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    display: block !important;
   }
 
   .post-categories {

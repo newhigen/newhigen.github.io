@@ -7,6 +7,24 @@
 // 포스트 본문 컨테이너
 .post-content {
   margin-bottom: $spacing-xxl;
+  font-family: $font-family-post-content;
+
+  // 본문 내의 모든 텍스트 요소에 content 폰트 적용
+  p,
+  li,
+  blockquote,
+  em,
+  i,
+  span,
+  div {
+    font-family: $font-family-post-content;
+  }
+
+  // bold 텍스트만 SemiBold 폰트 적용
+  strong,
+  b {
+    font-family: $font-family-post-content-bold;
+  }
 }
 
 // 포스트 제목
@@ -16,7 +34,8 @@
   font-size: 2.625rem;
   letter-spacing: -1px;
   line-height: 1.15;
-  
+  font-family: $font-family-post-headers;
+
   @media screen and (min-width: $breakpoint-desktop) {
     font-size: 2.625rem;
   }
@@ -30,12 +49,14 @@
 .post-content h5,
 .post-content h6 {
   margin-top: $spacing-xxl;
+  font-family: $font-family-post-headers;
 }
 
 // h2 제목
 .post-content h2 {
   font-size: 1.75rem;
-  
+  font-family: $font-family-post-headers;
+
   @media screen and (min-width: $breakpoint-desktop) {
     font-size: 2rem;
   }
@@ -44,7 +65,8 @@
 // h3 제목
 .post-content h3 {
   font-size: 1.375rem;
-  
+  font-family: $font-family-post-headers;
+
   @media screen and (min-width: $breakpoint-desktop) {
     font-size: 1.625rem;
   }
@@ -53,16 +75,19 @@
 // h4 제목
 .post-content h4 {
   font-size: 1.25rem;
+  font-family: $font-family-post-headers;
 }
 
 // h5 제목
 .post-content h5 {
   font-size: 1.125rem;
+  font-family: $font-family-post-headers;
 }
 
 // h6 제목
 .post-content h6 {
   font-size: 1.0625rem;
+  font-family: $font-family-post-headers;
 }
 
 // 포스트 헤더 (제목, 메타 정보)
@@ -97,24 +122,24 @@
   display: inline-block;
   width: 50px;
   text-align: right;
-  
+
   .bullet-divider {
     padding-inline: $spacing-lg;
   }
-  
+
   .meta-label {
     font-weight: 600;
   }
-  
+
   .force-inline {
     display: inline;
-    
+
     &::before {
       content: "•";
       padding-inline: $spacing-sm;
     }
   }
-  
+
   .post-authors {
     margin-top: $spacing-sm;
   }
@@ -133,7 +158,7 @@
   text-align: right;
   font-size: $font-size-small;
   color: $secondary-color;
-  
+
   .meta-label {
     color: $secondary-color;
     font-weight: 500;
