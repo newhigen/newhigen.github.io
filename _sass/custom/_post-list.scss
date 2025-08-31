@@ -7,6 +7,9 @@
 // 포스트 목록 컨테이너
 .post-list {
   margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
   list-style: none;
   max-width: 800px; // 포스트 목록 최대 너비 제한
   margin: 0 auto; // 가운데 정렬
@@ -32,6 +35,8 @@
   align-items: center !important;
   gap: $spacing-md;
   margin-bottom: $spacing-sm;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
   width: 100%;
 }
 
@@ -77,6 +82,19 @@
   flex-shrink: 0 !important; // 강제로 크기 고정
   white-space: nowrap !important;
   font-family: $font-family-nav; // 네비게이션 폰트 변수 사용
+  position: relative; // 상대 위치 설정
+
+  // 년월 위에 선 그리기
+  &::before {
+    content: '';
+    position: absolute;
+    top: -8px; // 텍스트 위쪽에 위치
+    right: 0; // 오른쪽 정렬
+    width: 100%; // 텍스트 길이만큼
+    height: 2px; // 선 두께 (더 두껍게)
+    background-color: $muted-color; // 선 색상
+    opacity: 0.5; // 투명도 (더 진하게)
+  }
 }
 
 // 포스트 카테고리
@@ -92,6 +110,22 @@
   white-space: nowrap !important;
   font-family: $font-family-nav; // 네비게이션 폰트 변수 사용
   overflow: visible !important; // 넘치는 텍스트 표시
+  position: relative; // 상대 위치 설정
+  padding: 0; // 내부 여백 제거
+
+  // 분류 위에 선 그리기
+  &::before {
+    content: '';
+    position: absolute;
+    top: -8px; // 텍스트 위쪽에 위치
+    right: 0; // 오른쪽 정렬
+    width: 100%; // 텍스트 길이만큼
+    height: 2px; // 선 두께 (더 두껍게)
+    background-color: $muted-color; // 선 색상
+    opacity: 0.3; // 투명도 (약간 연하게)
+    border-top: 1.5px dashed $muted-color; // 긴 줄선을 더 얇게
+    background-color: transparent; // 배경색 투명으로
+  }
 }
 
 // 모든 화면 크기에서 적용
@@ -99,6 +133,8 @@
   display: flex !important;
   align-items: center !important;
   width: 100% !important;
+  margin-left: 0 !important; // 왼쪽 여백 제거
+  padding-left: 0 !important; // 왼쪽 패딩 제거
 }
 
 .post-list li .post-link {
