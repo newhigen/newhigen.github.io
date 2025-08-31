@@ -4,17 +4,22 @@
     "description": "Personal blog with screenshot tools",
     "main": "index.js",
     "scripts": {
-        "screenshot:pr": "node _scripts/screenshot_merger.js pr",
-        "screenshot:custom": "node _scripts/screenshot_merger.js custom",
+        "screenshot:local": "node _scripts/puppeteer_screenshot_and_comment.js local",
+        "screenshot:pr": "node _scripts/puppeteer_screenshot_and_comment.js pr",
+        "screenshot:full": "node _scripts/puppeteer_screenshot_and_comment.js full",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "dependencies": {
-        "puppeteer": "^21.11.0"
+        "glob": "^11.0.3",
+        "puppeteer": "^21.11.0",
+        "sharp": "^0.33.0"
     },
     "keywords": [
         "blog",
         "jekyll",
-        "screenshot"
+        "screenshot",
+        "puppeteer",
+        "edge"
     ],
     "author": "newhigen",
     "license": "MIT"
