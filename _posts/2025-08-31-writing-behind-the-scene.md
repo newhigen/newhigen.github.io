@@ -3,7 +3,7 @@ layout: post
 title: 내 글쓰기의 무대 뒤
 date: 2025-08-31
 categories: 생각
-permalink: writing-behine-the-scene
+permalink: writing-behind-the-scene
 ---
 
 # 제목 정하기
