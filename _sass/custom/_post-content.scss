@@ -12,7 +12,8 @@
 
   // 모바일에서 좌우 여백 거의 없애기
   @media screen and (max-width: $breakpoint-mobile) {
-    padding: 0 0px;
+    padding: 0;
+    margin: 0 -5px; // 음수 마진으로 더 넓게
   }
 }
 
