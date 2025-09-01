@@ -35,17 +35,19 @@
   position: absolute;
   top: 9px;
   right: 15px;
-  background-color: lightblue;
+  background-color: transparent;
   border: 1px solid $light-gray;
   border-radius: $border-radius-sm;
   text-align: right;
 
   // 모바일 네비게이션 스타일
   @media screen and (max-width: $breakpoint-mobile) {
-    background-color: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(8px);
-    border: 1px dashed $light-gray;
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    border: 2px solid #cccccc !important;
     font-size: 1.1rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    backdrop-filter: blur(5px);
   }
 
   // 데스크톱 네비게이션 스타일

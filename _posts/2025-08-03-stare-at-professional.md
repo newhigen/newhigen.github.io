@@ -6,7 +6,7 @@ categories: 생각
 permalink: stare-at-professional
 ---
 
-## 전문가
+# 전문가
 
 자신의 일을 좋아하는 전문가를 볼 때 일를 하는 모습과 표정을 유심히 바라본다.
 
@@ -18,7 +18,7 @@ permalink: stare-at-professional
 - '전문가는 일을 할 때 저렇게까지 몰입하고 집중하나보다.'
 - '저 정도의 경지에 다다르기 위해서 앞에서 보이지 않는 노력들을 얼마나 많이 했을까.'
 
-## 일을 좋아하고 잘 하는가?
+# 일을 좋아하고 잘 하는가?
 
 그러면서 드는 생각은 아래처럼도 있지만
 
@@ -39,7 +39,7 @@ permalink: stare-at-professional
 
 하지만 일을 '어떻게' 잘하게 될 수 있는지 어렴풋이 알고 배우기 비교적 쉽지만, **'무엇을' 좋아하고 잘하고 싶은지는 정말 어려운 것 같다**.
 
-## 내 피라미드? <subtitle>나름의 메타인지?</subtitle>
+# 내 피라미드? <subtitle>나름의 메타인지?</subtitle>
 
 어쩌면 나도 일일일이라는 피라미드[^3] 안의 사고에 갇혀있을지 (아니 스스로 들어갔을지) 모른다.
 
@@ -53,7 +53,7 @@ permalink: stare-at-professional
 
 <big_dots_for_extra>...</big_dots_for_extra>
 
-## INFJ Stare
+# INFJ Stare
 
 나도 잘 몰랐던 표현인데 INFJ는 관찰 이상으로 상대방을 응시하는 INFJ stare를 한다고 한다.
 

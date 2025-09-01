@@ -6,15 +6,15 @@ categories: 생각
 permalink: appreciation-as-word
 ---
 
-## **Appreciation이란?**
+# Appreciation이란?
 
-‘인정’이라고 번역 될 수도 있지만, 인정은 acknowledge에 조금 더 가까운 느낌이다.
+'인정'이라고 번역 될 수도 있지만, 인정은 acknowledge에 조금 더 가까운 느낌이다.
 
 Acknowledgement에 gratitude가 후추후추된 느낌 또는 acknowledge는 T적 표현이고 appreciate은 F적 표현이라고 할 수 있을까?
 
 인정과 칭찬 그 사이 어딘가?
 
-## **Appreciation의 종류**
+# Appreciation의 종류
 
 Appreciation은 꼭 언어의 형태일 필요는 없다.
 
@@ -22,9 +22,9 @@ Appreciation은 꼭 언어의 형태일 필요는 없다.
 
 Appreciation을 표현하는 방법들은 다양하겠지만, 여기서는 시간적 차원에서 가장 소모값이 적은 말(언어)로써의 appreciation을 이야기하고자 한다.
 
-## **Appreciation as Word는 필요할까?**
+# Appreciation as Word는 필요할까?
 
-### 회사에서
+## 회사에서
 
 개인적으로는 지양하지만 필수인가라고 물어보면 그렇다고 대답하기는 어렵다.
 회사에 일로 성과를 내는 것은 당연하게 기대되는 것이 그 대가로 급여를 받는 것이기 때문이다.
@@ -38,7 +38,7 @@ Google에서는 peer bonus[^5]라는 프로그램이 있고, Microsoft에서는 
 
 누군가가 받는 대가에 상응하는 기대 이상으로 성과를 냈거나, 주어진 일에 추가로 동료들의 일을 도운 경우들에서는 피드백보다 appreciation이 적합할 수도 있겠다는 생각이 든다.
 
-### 대가가 당연시되지 않는 일에서 (e.g., 오픈소스)
+## 대가가 당연시되지 않는 일에서 (e.g., 오픈소스)
 
 그렇다면 대가가 당연시되지 않는 일에서는 어떨까?<br>
 (일이라는 정의 자체가 대가를 받지 않으면 일이라고 할 수 없다고도 하지만, 이 글의 포인트는 아니니 넘어가도록 하자.)
@@ -47,7 +47,7 @@ Google에서는 peer bonus[^5]라는 프로그램이 있고, Microsoft에서는 
 
 물론 자기만족을 위해 공유된 최종 결과물들도 있겠지만, 남에게 도움이 될 것이라는 기대로 일하는 사람들에게는 최소한의 표현인 말로써의 appreciation이라도 전달한다면 조금이나마 힘이 되지 않을까 싶다.
 
-## **Motivation for Blogging**
+# Motivation for Blogging
 
 그런 의미에서 블로그를 시작하는데 동기부여와 좋은 레퍼런스를 제공해준 사람들에게 작은 표현이나마 appreciation을 남기려고 한다.
 
@@ -62,11 +62,11 @@ Google에서는 peer bonus[^5]라는 프로그램이 있고, Microsoft에서는 
 
 * [sindresorhus.com](http://sindresorhus.com)
 
-## **Appreciation은 어렵다**
+# Appreciation은 어렵다
 
 ‘인간은 적응의 동물이다’라는 표현처럼 받는 것에 익숙해지면 점점 당연시하게 되는 경우들이 많다.
 
-하지만 **‘익숙함에 속아 소중함을 잊지 말자’**라는 말처럼 상황을 잘 객관화하고 감사함을 기억하고 무엇보다 표현까지 해줄 수 있는 사람이 되고 싶지만 쉽지는 않은 것 같다.<br>
+하지만 ‘익숙함에 속아 소중함을 잊지 말자’라는 말처럼 상황을 잘 객관화하고 감사함을 기억하고 무엇보다 표현까지 해줄 수 있는 사람이 되고 싶지만 쉽지는 않은 것 같다.<br>
 표현도 연습이 필요하다.
 
 ‘Taken for granted’하고 있는 상황들이 있지 않은지 돌아보고, 늦게나마 appreciation을 전달해보면 어떨까?
