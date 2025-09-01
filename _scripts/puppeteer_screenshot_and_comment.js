@@ -65,14 +65,14 @@ class PuppeteerScreenshotAndComment {
         }
     }
 
-    async takeScreenshot(url, selector = 'body', name = 'screenshot') {
+    async takeScreenshot(url, selector = 'body', name = 'screenshot', viewport = { width: 1024, height: 768 }) {
         let page = null;
 
         try {
             page = await this.browser.newPage();
 
-            // 뷰포트 설정 (컴팩트한 크기)
-            await page.setViewport({ width: 1024, height: 768 });
+            // 뷰포트 설정
+            await page.setViewport(viewport);
 
             // 타임아웃 설정
             page.setDefaultTimeout(30000);
@@ -105,7 +105,7 @@ class PuppeteerScreenshotAndComment {
 
             console.log(`스크린샷 촬영 중: ${url}`);
             const screenshot = await (element || page).screenshot({
-                quality: 95,
+                quality: 98,
                 type: 'jpeg',
                 fullPage: false
             });
@@ -142,10 +142,10 @@ class PuppeteerScreenshotAndComment {
 
             const results = [];
             for (let i = 0; i < pages.length; i++) {
-                const { url, selector = 'body', name } = pages[i];
+                const { url, selector = 'body', name, viewport = { width: 1024, height: 768 } } = pages[i];
                 console.log(`\n${i + 1}/${pages.length} 번째 스크린샷 준비 중...`);
 
-                const result = await this.takeScreenshot(url, selector, name);
+                const result = await this.takeScreenshot(url, selector, name, viewport);
                 if (result) {
                     results.push(result);
                 }
@@ -166,71 +166,179 @@ class PuppeteerScreenshotAndComment {
         }
     }
 
-    // 공통 스크린샷 구성
+    // 공통 스크린샷 구성 (데스크톱 + 모바일)
     getCommonPages() {
         return [
-            { url: 'http://localhost:4000', name: 'main_page' },
-            { url: 'http://localhost:4000/did-i-understand/', name: 'sample_post' },
-            { url: 'http://localhost:4000/books_read/', name: 'books_read_page' },
-            { url: 'http://localhost:4000/thought/', name: 'thoughts_page' },
-            { url: 'http://localhost:4000/about/', name: 'about_page' }
+            { url: 'http://localhost:4000', name: 'main_page_desktop', viewport: { width: 1024, height: 768 } },
+            { url: 'http://localhost:4000', name: 'main_page_mobile', viewport: { width: 375, height: 667 } },
+            { url: 'http://localhost:4000/did-i-understand/', name: 'sample_post_desktop', viewport: { width: 1024, height: 768 } },
+            { url: 'http://localhost:4000/did-i-understand/', name: 'sample_post_mobile', viewport: { width: 375, height: 667 } },
+            { url: 'http://localhost:4000/books_read/', name: 'books_read_page_desktop', viewport: { width: 1024, height: 768 } },
+            { url: 'http://localhost:4000/books_read/', name: 'books_read_page_mobile', viewport: { width: 375, height: 667 } },
+            { url: 'http://localhost:4000/thought/', name: 'thoughts_page_desktop', viewport: { width: 1024, height: 768 } },
+            { url: 'http://localhost:4000/thought/', name: 'thoughts_page_mobile', viewport: { width: 375, height: 667 } },
+            { url: 'http://localhost:4000/about/', name: 'about_page_desktop', viewport: { width: 1024, height: 768 } },
+            { url: 'http://localhost:4000/about/', name: 'about_page_mobile', viewport: { width: 375, height: 667 } }
         ];
     }
 
-    // 공통 URL 목록
+    // 공통 URL 목록 (데스크톱 + 모바일)
     getCommonUrls() {
         return [
-            'http://localhost:4000',
-            'http://localhost:4000/did-i-understand/',
-            'http://localhost:4000/books_read/',
-            'http://localhost:4000/thought/',
-            'http://localhost:4000/about/'
+            'http://localhost:4000 (Desktop)',
+            'http://localhost:4000 (Mobile)',
+            'http://localhost:4000/did-i-understand/ (Desktop)',
+            'http://localhost:4000/did-i-understand/ (Mobile)',
+            'http://localhost:4000/books_read/ (Desktop)',
+            'http://localhost:4000/books_read/ (Mobile)',
+            'http://localhost:4000/thought/ (Desktop)',
+            'http://localhost:4000/thought/ (Mobile)',
+            'http://localhost:4000/about/ (Desktop)',
+            'http://localhost:4000/about/ (Mobile)'
         ];
     }
 
-    async mergeImagesVertically(imagePaths, urls, outputName) {
+    async mergeImagesSideBySide(imagePaths, urls, outputName) {
         try {
-            console.log('이미지 세로 병합 중...');
+            console.log('이미지 가로 병합 중...');
 
             if (imagePaths.length === 0) {
                 console.error('병합할 이미지가 없습니다.');
                 return null;
             }
 
-            // 모든 이미지를 동일한 너비로 리사이즈
-            const targetWidth = 900; // 고정 너비 (컴팩트한 크기)
-            const resizedImages = await Promise.all(
-                imagePaths.map(async (imagePath) => {
-                    return sharp(imagePath)
-                        .resize({
-                            width: targetWidth,
-                            fit: 'contain',
-                            background: { r: 255, g: 255, b: 255, alpha: 1 }
-                        })
-                        .toBuffer();
+            // 데스크톱과 모바일 이미지를 쌍으로 그룹화
+            const imagePairs = [];
+            for (let i = 0; i < imagePaths.length; i += 2) {
+                if (i + 1 < imagePaths.length) {
+                    imagePairs.push({
+                        desktop: { path: imagePaths[i], url: urls[i] },
+                        mobile: { path: imagePaths[i + 1], url: urls[i + 1] }
+                    });
+                } else {
+                    // 홀수 개인 경우 마지막 이미지만 처리
+                    imagePairs.push({
+                        desktop: { path: imagePaths[i], url: urls[i] },
+                        mobile: null
+                    });
+                }
+            }
+
+            // 각 쌍의 이미지를 가로로 병합
+            const mergedPairs = await Promise.all(
+                imagePairs.map(async (pair) => {
+                    try {
+                        // 파일 존재 확인
+                        if (!fs.existsSync(pair.desktop.path)) {
+                            console.error(`데스크톱 이미지 파일이 존재하지 않습니다: ${pair.desktop.path}`);
+                            return null;
+                        }
+
+                        // 데스크톱 이미지 처리
+                        const desktopImage = await sharp(pair.desktop.path)
+                            .jpeg({ quality: 98 })
+                            .resize({ width: 450, fit: 'contain', background: { r: 255, g: 255, b: 255, alpha: 1 } })
+                            .toBuffer();
+
+                        // 데스크톱 이미지 높이 가져오기
+                        let desktopHeight = 400;
+                        try {
+                            const desktopMeta = await sharp(desktopImage).metadata();
+                            desktopHeight = desktopMeta.height || 400;
+                        } catch (metaError) {
+                            console.warn('데스크톱 메타데이터 읽기 실패, 기본 높이 사용:', metaError.message);
+                        }
+
+                        if (pair.mobile) {
+                            if (!fs.existsSync(pair.mobile.path)) {
+                                console.error(`모바일 이미지 파일이 존재하지 않습니다: ${pair.mobile.path}`);
+                                return desktopImage;
+                            }
+
+                            // 모바일 이미지를 데스크톱과 같은 높이로 조정하고 비율에 맞게 너비 조정
+                            const mobileImage = await sharp(pair.mobile.path)
+                                .jpeg({ quality: 98 })
+                                .resize({ height: desktopHeight, fit: 'contain', background: { r: 255, g: 255, b: 255, alpha: 1 } })
+                                .toBuffer();
+
+                            // 모바일 이미지의 실제 너비 가져오기
+                            let mobileWidth = 450;
+                            try {
+                                const mobileMeta = await sharp(mobileImage).metadata();
+                                mobileWidth = mobileMeta.width || 450;
+                            } catch (metaError) {
+                                console.warn('모바일 메타데이터 읽기 실패, 기본 너비 사용:', metaError.message);
+                            }
+
+                            // 가로로 병합 (모바일 너비에 맞게 조정, 간격 추가)
+                            const gap = 20; // PC와 모바일 사이 간격
+                            return sharp({
+                                create: {
+                                    width: 450 + gap + mobileWidth, // 데스크톱 450 + 간격 + 모바일 실제 너비
+                                    height: desktopHeight,
+                                    channels: 3,
+                                    background: { r: 255, g: 255, b: 255 }
+                                }
+                            })
+                                .composite([
+                                    { input: desktopImage, left: 0, top: 0 },
+                                    { input: mobileImage, left: 450 + gap, top: 0 }
+                                ])
+                                .jpeg({ quality: 98 })
+                                .toBuffer();
+                        } else {
+                            // 모바일 이미지가 없는 경우 데스크톱만
+                            return desktopImage;
+                        }
+                    } catch (error) {
+                        console.error(`이미지 처리 오류 (${pair.desktop.path}):`, error.message);
+                        return null;
+                    }
                 })
             );
 
-            // 각 이미지의 실제 높이 계산
-            const imageHeights = await Promise.all(
-                resizedImages.map(async (buffer) => {
-                    const metadata = await sharp(buffer).metadata();
-                    return metadata.height;
-                })
-            );
+            // null 값 제거
+            const validMergedPairs = mergedPairs.filter(pair => pair !== null);
 
-            // URL 텍스트 높이 (각 이미지 위에 추가)
+            if (validMergedPairs.length === 0) {
+                console.error('유효한 병합된 이미지가 없습니다.');
+                return null;
+            }
+
+            // URL 텍스트 높이
             const urlTextHeight = 30;
-            const totalHeight = imageHeights.reduce((sum, height) => sum + height + urlTextHeight, 0);
+            let totalHeight = validMergedPairs.length * urlTextHeight;
 
-            // 병합된 이미지 생성
+            // 각 이미지의 높이를 안전하게 계산
+            for (const buffer of validMergedPairs) {
+                try {
+                    const metadata = await sharp(buffer).metadata();
+                    totalHeight += metadata.height;
+                } catch (error) {
+                    console.warn('이미지 메타데이터 읽기 실패, 기본 높이 사용:', error.message);
+                    totalHeight += 400; // 기본 높이
+                }
+            }
+
+            // 최종 병합 이미지 생성
             const compositeImages = [];
             let yOffset = 0;
 
-            for (let i = 0; i < resizedImages.length; i++) {
-                // URL 텍스트 추가
-                const urlText = urls[i] || `Image ${i + 1}`;
-                const urlImage = await this.createTextImage(urlText, targetWidth, urlTextHeight);
+            for (let i = 0; i < validMergedPairs.length; i++) {
+                const pair = imagePairs[i];
+
+                // URL 텍스트 추가 (동적 너비) - 경로만 표시
+                let urlText = pair.desktop.url.replace(' (Desktop)', '');
+                // localhost:4000 제거하고 경로만 남기기
+                urlText = urlText.replace('http://localhost:4000', '').replace(/^\//, '') || 'home';
+                let textWidth = 900; // 기본값
+                try {
+                    const pairMeta = await sharp(validMergedPairs[i]).metadata();
+                    textWidth = pairMeta.width || 900;
+                } catch (error) {
+                    console.warn('이미지 너비 읽기 실패, 기본값 사용:', error.message);
+                }
+                const urlImage = await this.createTextImage(urlText, textWidth, urlTextHeight);
 
                 compositeImages.push({
                     input: urlImage,
@@ -239,13 +347,20 @@ class PuppeteerScreenshotAndComment {
                 });
                 yOffset += urlTextHeight;
 
-                // 스크린샷 이미지 추가
+                // 병합된 이미지 추가
                 compositeImages.push({
-                    input: resizedImages[i],
+                    input: validMergedPairs[i],
                     left: 0,
                     top: yOffset
                 });
-                yOffset += imageHeights[i];
+
+                try {
+                    const metadata = await sharp(validMergedPairs[i]).metadata();
+                    yOffset += metadata.height;
+                } catch (error) {
+                    console.warn('이미지 메타데이터 읽기 실패, 기본 높이 사용:', error.message);
+                    yOffset += 400; // 기본 높이
+                }
             }
 
             // 날짜별 파일명 생성
@@ -254,17 +369,28 @@ class PuppeteerScreenshotAndComment {
             const outputFilename = `${dateStr}.jpg`;
             const outputPath = path.join(this.screenshotsDir, outputFilename);
 
-            // 병합된 이미지 저장
+            // 최대 너비 계산
+            let maxWidth = 0;
+            for (const buffer of validMergedPairs) {
+                try {
+                    const metadata = await sharp(buffer).metadata();
+                    maxWidth = Math.max(maxWidth, metadata.width || 0);
+                } catch (error) {
+                    console.warn('최대 너비 계산 실패:', error.message);
+                }
+            }
+
+            // 최종 병합된 이미지 저장 (정확한 너비로)
             await sharp({
                 create: {
-                    width: targetWidth,
+                    width: maxWidth,
                     height: totalHeight,
                     channels: 3,
                     background: { r: 255, g: 255, b: 255 }
                 }
             })
                 .composite(compositeImages)
-                .jpeg({ quality: 95, mozjpeg: true })
+                .jpeg({ quality: 98, mozjpeg: true })
                 .toFile(outputPath);
 
             console.log(`병합된 이미지 저장: ${outputFilename}`);
@@ -302,7 +428,7 @@ class PuppeteerScreenshotAndComment {
             console.log(`스크린샷 생성 완료: ${screenshotResults.length}개 파일`);
 
             // 2. 이미지 병합 (URL 정보 포함)
-            const mergedPath = await this.mergeImagesVertically(screenshotResults, this.getCommonUrls(), outputName);
+            const mergedPath = await this.mergeImagesSideBySide(screenshotResults, this.getCommonUrls(), outputName);
 
             if (mergedPath) {
                 console.log('✅ 모든 작업이 완료되었습니다!');
@@ -346,7 +472,7 @@ class PuppeteerScreenshotAndComment {
             console.log(`스크린샷 생성 완료: ${screenshotResults.length}개 파일`);
 
             // 2. 이미지 병합 (URL 정보 포함)
-            const mergedPath = await this.mergeImagesVertically(screenshotResults, this.getCommonUrls(), outputName);
+            const mergedPath = await this.mergeImagesSideBySide(screenshotResults, this.getCommonUrls(), outputName);
 
             if (mergedPath) {
                 console.log('✅ 모든 작업이 완료되었습니다!');
