@@ -90,11 +90,29 @@ layout: base
       <!-- ========================================
                  2-3. 포스트 링크 및 제목
                  ======================================== -->
+      {%- assign post_slug = post.url | split: '/' | last | split: '.' | first -%}
+      {%- assign is_short_post = false -%}
+
+      <!-- 특정 짧은 글들 하드코딩 -->
+      {%- if post_slug == 'experience-and-knowledge' or post_slug == '25-seasons' or post_slug == 'one-life' or
+      post_slug == 'health-newbie' or post_slug == 'writing-model' -%}
+      {%- assign is_short_post = true -%}
+      {%- endif -%}
+
+      <!-- post_metadata.json에서 확인 -->
+      {%- assign post_data = site.data.post_metadata[post_slug] -%}
+      {%- if post_data and post_data.is_short -%}
+      {%- assign is_short_post = true -%}
+      {%- endif -%}
+
       <a href="{{ post.url | relative_url }}" class="post-link" style="color: black;"
         data-post-url="{{ post.url | relative_url }}">
         {{ post.title | escape }}
         {%- if site.excerpt_length > 0 -%}
         {{ post.excerpt }}
+        {%- endif -%}
+        {%- if is_short_post -%}
+        <span class="short-post-tag">짧은 글</span>
         {%- endif -%}
       </a>
     </li>
@@ -207,5 +225,51 @@ layout: base
         }
       }
     });
+
+    // 짧은 글 태그 표시/숨김 처리
+    function handleShortPostTags() {
+      postItems.forEach(item => {
+        const postLink = item.querySelector('.post-link');
+        const shortTag = item.querySelector('.short-post-tag');
+
+        if (postLink && shortTag) {
+          // 태그를 임시로 숨기고 텍스트만으로 너비 측정
+          shortTag.style.display = 'none';
+          const textOnlyWidth = postLink.scrollWidth;
+          const availableWidth = postLink.offsetWidth;
+
+          // 텍스트만으로도 잘렸다면 태그는 숨김
+          if (textOnlyWidth > availableWidth) {
+            shortTag.style.display = 'none';
+          } else {
+            // 태그를 다시 보이게 하고 전체 너비 측정
+            shortTag.style.display = 'inline-block';
+            const fullWidth = postLink.scrollWidth;
+
+            // 태그 포함 전체가 잘렸다면 태그 숨김
+            if (fullWidth > availableWidth) {
+              shortTag.style.display = 'none';
+            }
+          }
+        }
+      });
+    }
+
+    // 디바운스 함수
+    function debounce(func, wait) {
+      let timeout;
+      return function executedFunction(...args) {
+        const later = () => {
+          clearTimeout(timeout);
+          func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+      };
+    }
+
+    // 초기 실행 및 리사이즈 이벤트 (디바운스 적용)
+    handleShortPostTags();
+    window.addEventListener('resize', debounce(handleShortPostTags, 100));
   });
 </script>
