@@ -259,10 +259,18 @@
   text-align: right;
   font-size: $font-size-small;
   color: $secondary-color;
+  position: relative;
+  z-index: 20; // 네비게이션보다 위에 표시
 
   .meta-label {
     color: $secondary-color;
     font-weight: 500;
+  }
+
+  // 모바일에서 네비게이션과 겹치지 않도록 위치 조정
+  @media screen and (max-width: $breakpoint-mobile) {
+    margin-top: 10px;
+    margin-right: 10px;
   }
 }
 
