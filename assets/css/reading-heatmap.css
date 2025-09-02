@@ -204,6 +204,25 @@
     white-space: nowrap;
 }
 
+/* 재읽기 태그 스타일 */
+.reread-tag {
+    display: inline-block;
+    font-size: 9px !important;
+    color: #ffffff !important;
+    background-color: #d73a49 !important;
+    padding: 1px 3px;
+    margin-left: 3px;
+    border-radius: 2px;
+    border: none;
+    font-weight: 500;
+    vertical-align: middle;
+    opacity: 1;
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
 /* ========================================
    6. 툴팁 스타일
    ======================================== */
