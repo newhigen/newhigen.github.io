@@ -15,6 +15,11 @@
 body {
   font-family: $font-family-primary;
   font-size: $font-size-base;
+
+  // 모바일에서 기본 글씨 크기 줄이기
+  @media screen and (max-width: $breakpoint-mobile) {
+    font-size: 1rem;
+  }
 }
 
 // 기본 링크 스타일
@@ -53,6 +58,12 @@ a {
 p {
   // margin-bottom: 0px; // TODO: 매번 br하는 것은 귀찮지만 li 전에 빈 공간은 없애고 싶다.
   line-height: 1;
+
+  // 모바일에서 단락 글씨 크기 줄이기
+  @media screen and (max-width: $breakpoint-mobile) {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
 }
 
 // 목록

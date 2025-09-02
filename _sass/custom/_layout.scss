@@ -8,11 +8,22 @@
 .page-content {
   padding: $spacing-xxl 0;
   flex: 1 0 auto;
+
+  // 모바일에서 페이지 컨텐츠 글씨 크기 줄이기
+  @media screen and (max-width: $breakpoint-mobile) {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
 }
 
 // 페이지 제목
 .page-heading {
   font-size: 2rem;
+
+  // 모바일에서 페이지 제목 크기 줄이기
+  @media screen and (max-width: $breakpoint-mobile) {
+    font-size: 1.6rem;
+  }
 }
 
 // 사이트 푸터
@@ -98,23 +109,23 @@
   margin-left: 0;
   display: table;
   margin: 0 auto;
-  
+
   li {
     float: left;
     min-width: 45px;
     min-height: 45px;
     text-align: center;
     margin: $spacing-sm $spacing-md $spacing-sm 0;
-    
+
     &:last-of-type {
       margin-right: 0;
     }
-    
+
     a {
       display: block;
       padding: $spacing-md 12px;
       border: 1px solid $light-gray;
-      
+
       &:hover {
         border-color: rgb(219.25, 219.25, 219.25);
       }
@@ -125,20 +136,21 @@
 // 페이지네이션
 .pagination {
   margin-bottom: $spacing-xxl;
-  
+
   li {
+
     a,
     div {
       min-width: 41px;
       text-align: center;
       box-sizing: border-box;
     }
-    
+
     div {
       display: block;
       padding: 7.5px;
       border: 1px solid transparent;
-      
+
       &.pager-edge {
         color: $light-gray;
         border: 1px dashed;
