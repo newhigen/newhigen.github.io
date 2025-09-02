@@ -1,146 +1,169 @@
 // ========================================
-// 기본 스타일 (공통)
+// 기본 스타일
 // ========================================
 
 @import 'variables';
 
-// 사이트 전체 컨테이너 너비 확장
-.wrapper {
-  max-width: 1000px; // 사이트 전체 너비 축소 (1200px → 1000px)
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-// 기본 body 스타일
+// body 기본 스타일
 body {
-  font-family: $font-family-primary;
-  font-size: $font-size-base;
+  font-family: $font-family-post-content;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: $text-color;
+  background-color: $background-color;
 
-  // 모바일에서 기본 글씨 크기 줄이기
+  // 모바일에서 글씨 크기 줄이기
   @media screen and (max-width: $breakpoint-mobile) {
     font-size: 1rem;
   }
 }
 
-// 기본 링크 스타일
-a {
-  color: $primary-color;
-
-  &:hover {
-    color: $primary-color;
-    text-decoration: underline;
-  }
-
-  &:visited {
-    color: $primary-color;
-  }
-}
-
-// 공통 링크 스타일 (포스트, 페이지, 헤더, 푸터)
-.post-content a,
-.page-content a,
-.site-header a,
-.site-footer a {
-  color: $primary-color;
-}
-
-// 강조 텍스트 (UI 요소에서만 적용)
-.site-header strong,
-.site-header b,
-.site-footer strong,
-.site-footer b,
-.nav strong,
-.nav b {
-  font-family: $font-family-bold;
-}
-
-// 단락
+// paragraph 기본 스타일
 p {
-  // margin-bottom: 0px; // TODO: 매번 br하는 것은 귀찮지만 li 전에 빈 공간은 없애고 싶다.
-  line-height: 1;
+  margin-bottom: 0.8em;
+  line-height: 1.6;
 
-  // 모바일에서 단락 글씨 크기 줄이기
+  // 모바일에서 글씨 크기 줄이기
   @media screen and (max-width: $breakpoint-mobile) {
     font-size: 0.9rem;
     line-height: 1.4;
   }
 }
 
-// 목록
-ul {
-  margin-block-start: 0em;
+// 링크 기본 스타일
+a {
+  color: $text-color;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $text-color;
+    text-decoration: underline;
+  }
+
+  &:visited {
+    color: $text-color;
+  }
 }
 
-// 이미지
+// 이미지 기본 스타일
 img {
-  border: 1px solid #ccc;
+  max-width: 100%;
+  height: auto;
   border-radius: $border-radius-lg;
 }
 
-// 인용구
-blockquote {
-  font-style: normal;
-  border-left: 4px solid $light-gray;
-  padding-left: $spacing-lg;
-  margin-left: 0;
-  color: $secondary-color;
+// 코드 블록 기본 스타일
+code {
+  background-color: $lighter-gray;
+  padding: 2px 4px;
+  border-radius: $border-radius-sm;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.9em;
 }
 
-// 각주
-.footnotes {
-  font-size: $font-size-small;
+// 인라인 코드 스타일
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+// 인용문 기본 스타일
+blockquote {
+  margin: $spacing-lg 0;
+  padding: $spacing-sm $spacing-md;
+  border-left: 4px solid $light-gray;
+  background-color: $lightest-gray;
+  font-style: italic;
   color: $muted-color;
-
-  a {
-    color: $muted-color;
-  }
-
-  ol {
-    list-style-type: none;
-    counter-reset: footnote-counter;
-    padding-left: 0;
-  }
-
-  li {
-    counter-increment: footnote-counter;
-    margin-bottom: $spacing-sm;
-
-    &::before {
-      content: "[" counter(footnote-counter) "]";
-      margin-right: $spacing-md;
-    }
-  }
 
   p {
-    display: inline;
+    margin: 0;
   }
 }
 
-// 커스텀 강조 요소들
-emphasis {
-  background-color: #fff9c4;
-  border-radius: $border-radius-sm;
+// 목록 기본 스타일
+ul,
+ol {
+  margin: $spacing-lg 0;
+  padding-left: $spacing-xl;
+
+  li {
+    margin-bottom: $spacing-sm;
+    line-height: 1.6;
+  }
 }
 
-best {
-  background-color: #ffe3e3;
-  border-radius: $border-radius-sm;
+// 테이블 기본 스타일
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: $spacing-lg 0;
+  font-size: 0.9em;
+
+  th,
+  td {
+    padding: $spacing-sm $spacing-md;
+    text-align: left;
+    border-bottom: 1px solid $light-gray;
+  }
+
+  th {
+    background-color: $lighter-gray;
+    font-weight: 600;
+  }
 }
 
-subtitle {
-  margin-left: $spacing-sm;
-  font-size: 1.0rem;
-  font-weight: bold;
+// 수평선 기본 스타일
+hr {
+  border: none;
+  border-top: 1px solid $light-gray;
+  margin: $spacing-xl 0;
+}
+
+// 강조 텍스트 기본 스타일
+strong,
+b {
+  font-weight: 600;
+  font-family: $font-family-post-content-bold;
+}
+
+// 이탤릭 텍스트 기본 스타일
+em,
+i {
+  font-style: italic;
+}
+
+// 작은 텍스트 기본 스타일
+small {
+  font-size: 0.8em;
   color: $muted-color;
 }
 
-big_dots_for_extra {
-  display: block;
-  margin-top: $spacing-xl;
-  font-size: 2rem;
+// 삭제된 텍스트 기본 스타일
+del {
+  text-decoration: line-through;
   color: $muted-color;
 }
 
-my {
-  color: #099268;
+// 인용 기본 스타일
+cite {
+  font-style: italic;
+  color: $muted-color;
+}
+
+// 정의 목록 기본 스타일
+dl {
+  margin: $spacing-lg 0;
+
+  dt {
+    font-weight: 600;
+    margin-bottom: $spacing-sm;
+  }
+
+  dd {
+    margin-left: $spacing-md;
+    margin-bottom: $spacing-sm;
+  }
 }

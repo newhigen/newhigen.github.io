@@ -317,7 +317,7 @@ function generateBooksList() {
 
         // 책 목록 생성
         const bookList = document.createElement('ul');
-        bookList.style.cssText = 'margin-bottom: 30px; font-size: 14px; line-height: 1.6; list-style: none; padding-left: 0; margin-left: 0px;';
+        bookList.style.cssText = 'margin-bottom: 30px; font-size: 13px; line-height: 1.6; list-style: none; padding-left: 0; margin-left: 0px;';
 
         let currentMonth = null;
         booksByYear[year].forEach((book, index) => {
@@ -331,7 +331,7 @@ function generateBooksList() {
                 // 월 표시 추가 (왼쪽에)
                 const monthSpan = document.createElement('span');
                 monthSpan.textContent = `${book.month}월 `;
-                monthSpan.style.cssText = 'color: #586069; font-size: 12px; margin-right: 8px; display: inline-block; width: 25px; text-align: right;';
+                monthSpan.style.cssText = 'color: #586069; font-size: 11px; margin-right: 8px; display: inline-block; width: 25px; text-align: right;';
                 listItem.appendChild(monthSpan);
             } else {
                 // 같은 월이면 빈 공간 추가 (정렬 유지)
@@ -342,14 +342,17 @@ function generateBooksList() {
 
             // 책 제목 컨테이너 생성
             const titleContainer = document.createElement('span');
-            titleContainer.style.cssText = 'display: inline-flex; align-items: baseline; gap: 2px;';
+            titleContainer.style.cssText = 'display: inline-flex; align-items: center; gap: 2px;';
 
             if (book.post) {
                 // 포스트가 있는 경우 링크 생성
                 const link = document.createElement('a');
                 link.href = `/${book.post}`;
-                link.textContent = book.title;
-                link.style.cssText = 'text-decoration: none;';
+
+                // 제목 길이 제한 (20자 초과시 말줄임표)
+                const title = book.title;
+                link.textContent = title.length > 20 ? title.substring(0, 20) + '...' : title;
+                link.style.cssText = 'text-decoration: none; font-family: Pretendard-Light, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;';
 
                 // 짧은 포스트인 경우 태그를 별도 요소로 추가
                 const isShort = isShortPost(book.post);
@@ -361,6 +364,7 @@ function generateBooksList() {
                     const tag = document.createElement('span');
                     tag.className = 'short-post-tag';
                     tag.textContent = '짧은 글';
+                    tag.style.cssText = 'display: inline-block !important; font-size: 9px !important; color: #666666 !important; background-color: #e8e8e8 !important; padding: 1px 3px !important; margin-left: 3px !important; border-radius: 2px !important; border: none !important; font-weight: 500 !important; vertical-align: middle !important; opacity: 1 !important; position: relative !important; z-index: 1 !important; flex-shrink: 0 !important; white-space: nowrap !important;';
                     titleContainer.appendChild(tag);
                 } else {
                     link.className = 'book-link';
@@ -369,7 +373,10 @@ function generateBooksList() {
             } else {
                 // 포스트가 없는 경우 일반 텍스트
                 const titleSpan = document.createElement('span');
-                titleSpan.textContent = book.title;
+                // 제목 길이 제한 (20자 초과시 말줄임표)
+                const title = book.title;
+                titleSpan.textContent = title.length > 20 ? title.substring(0, 20) + '...' : title;
+                titleSpan.style.cssText = 'font-family: Pretendard-Light, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;';
                 titleContainer.appendChild(titleSpan);
             }
 

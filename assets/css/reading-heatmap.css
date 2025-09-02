@@ -173,6 +173,7 @@
     background: none !important;
     background-image: none !important;
     background-color: #6ba3e8 !important;
+    font-size: 9px !important;
 }
 
 /* 짧은 글 링크도 일반 글과 동일한 하이라이트 적용 */
@@ -187,7 +188,7 @@
 /* 짧은 글 태그 스타일 (홈페이지와 동일) */
 .short-post-tag {
     display: inline-block;
-    font-size: 0.5rem;
+    font-size: 9px !important;
     color: #666666;
     background-color: #e8e8e8;
     padding: 1px 3px;
@@ -362,6 +363,19 @@
 #books-list h2 {
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+#books-list ul li {
+    margin-bottom: 4px;
+    padding: 1px 0;
+    display: flex;
+    align-items: center;
+}
+
+#books-list ul li>span {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
 }
 
 @media (max-width: 768px) {
