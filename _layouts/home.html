@@ -172,59 +172,77 @@ layout: base
     const postList = document.querySelector('.post-list');
     const postItems = document.querySelectorAll('.post-list li');
 
-    if (!searchInput || !postList) return;
+    // 분류 이름 줄이기 함수
+    function shortenCategoryNames() {
+      const categoryElements = document.querySelectorAll('.post-categories');
+      categoryElements.forEach(element => {
+        const originalText = element.textContent;
+        let shortenedText = originalText;
 
-    // 검색 기능
-    searchInput.addEventListener('input', function () {
-      const searchTerm = this.value.toLowerCase().trim();
+        // 분류 이름 줄이기 규칙 - '효과적 모형'만 줄이기
+        if (originalText === '효과적 모형') {
+          shortenedText = '모형';
+        }
 
-      postItems.forEach(item => {
-        const postLink = item.querySelector('.post-link');
-        const postTitle = postLink ? postLink.textContent.toLowerCase() : '';
-        const postUrl = postLink ? postLink.getAttribute('data-post-url') : '';
+        // 원본 텍스트를 data 속성에 저장하고 줄인 텍스트 표시
+        element.setAttribute('data-original-category', originalText);
+        element.textContent = shortenedText;
+      });
+    }
 
-        if (searchTerm === '' || postTitle.includes(searchTerm) || postUrl.includes(searchTerm)) {
-          item.style.display = '';
-        } else {
-          item.style.display = 'none';
+    // 검색 기능 (검색창이 있을 때만)
+    if (searchInput && postList) {
+      searchInput.addEventListener('input', function () {
+        const searchTerm = this.value.toLowerCase().trim();
+
+        postItems.forEach(item => {
+          const postLink = item.querySelector('.post-link');
+          const postTitle = postLink ? postLink.textContent.toLowerCase() : '';
+          const postUrl = postLink ? postLink.getAttribute('data-post-url') : '';
+
+          if (searchTerm === '' || postTitle.includes(searchTerm) || postUrl.includes(searchTerm)) {
+            item.style.display = '';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+
+        // 검색 결과가 없을 때 메시지 표시
+        const visibleItems = Array.from(postItems).filter(item => item.style.display !== 'none');
+        let noResultsMessage = document.querySelector('.no-results-message');
+
+        if (visibleItems.length === 0 && searchTerm !== '') {
+          if (!noResultsMessage) {
+            noResultsMessage = document.createElement('div');
+            noResultsMessage.className = 'no-results-message';
+            noResultsMessage.textContent = '검색 결과가 없습니다.';
+            noResultsMessage.style.cssText = 'text-align: center; color: #666; margin: 20px 0; font-style: italic;';
+            postList.appendChild(noResultsMessage);
+          }
+        } else if (noResultsMessage) {
+          noResultsMessage.remove();
         }
       });
 
-      // 검색 결과가 없을 때 메시지 표시
-      const visibleItems = Array.from(postItems).filter(item => item.style.display !== 'none');
-      let noResultsMessage = document.querySelector('.no-results-message');
+      // 검색창 포커스 시 전체 선택
+      searchInput.addEventListener('focus', function () {
+        this.select();
+      });
 
-      if (visibleItems.length === 0 && searchTerm !== '') {
-        if (!noResultsMessage) {
-          noResultsMessage = document.createElement('div');
-          noResultsMessage.className = 'no-results-message';
-          noResultsMessage.textContent = '검색 결과가 없습니다.';
-          noResultsMessage.style.cssText = 'text-align: center; color: #666; margin: 20px 0; font-style: italic;';
-          postList.appendChild(noResultsMessage);
-        }
-      } else if (noResultsMessage) {
-        noResultsMessage.remove();
-      }
-    });
-
-    // 검색창 포커스 시 전체 선택
-    searchInput.addEventListener('focus', function () {
-      this.select();
-    });
-
-    // Enter 키로 검색 실행
-    searchInput.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        const firstVisibleItem = Array.from(postItems).find(item => item.style.display !== 'none');
-        if (firstVisibleItem) {
-          const link = firstVisibleItem.querySelector('.post-link');
-          if (link) {
-            window.location.href = link.href;
+      // Enter 키로 검색 실행
+      searchInput.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          const firstVisibleItem = Array.from(postItems).find(item => item.style.display !== 'none');
+          if (firstVisibleItem) {
+            const link = firstVisibleItem.querySelector('.post-link');
+            if (link) {
+              window.location.href = link.href;
+            }
           }
         }
-      }
-    });
+      });
+    }
 
     // 짧은 글 태그 표시/숨김 처리
     function handleShortPostTags() {
@@ -269,6 +287,7 @@ layout: base
     }
 
     // 초기 실행 및 리사이즈 이벤트 (디바운스 적용)
+    shortenCategoryNames(); // 분류 이름 줄이기 실행
     handleShortPostTags();
     window.addEventListener('resize', debounce(handleShortPostTags, 100));
   });

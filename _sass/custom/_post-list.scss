@@ -33,7 +33,7 @@
 .post-list>li {
   display: flex !important;
   align-items: center !important;
-  gap: $spacing-md;
+  gap: $spacing-lg; // 포스트 요소들 사이 간격 늘리기 (spacing-md → spacing-lg)
   margin-bottom: $spacing-xl; // 포스트 사이 간격 더 넓히기 (spacing-lg → spacing-xl)
   margin-left: 0 !important;
   padding-left: 0 !important;
@@ -123,7 +123,7 @@
   font-size: $font-size-xs;
   color: $muted-color;
   display: inline-block;
-  width: 80px !important; // 너비 확장 (40px → 80px)
+  width: 35px !important; // 너비 더 줄이기 (50px → 35px)
   text-align: right !important; // 오른쪽 정렬
   font-weight: 500;
   color: $secondary-color;
@@ -192,6 +192,6 @@
 @media screen and (max-width: $breakpoint-mobile) {
   .post-list>li {
     margin-bottom: $spacing-lg; // 모바일에서도 간격 더 넓게 (spacing-md → spacing-lg)
-    gap: $spacing-sm;
+    gap: $spacing-md; // 모바일에서도 요소 간격 유지 (spacing-sm → spacing-md)
   }
 }
