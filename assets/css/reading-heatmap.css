@@ -156,16 +156,16 @@
 
 /* 기본 링크 호버 효과 */
 .book-link:hover {
-    background: linear-gradient(to bottom, transparent 75%, rgba(139, 186, 229, 0.6) 50%) !important;
+    background: linear-gradient(to bottom, transparent 65%, rgba(139, 186, 229, 0.6) 35%) !important;
 }
 
 /* 후기 링크 스타일 */
 .book-link {
-    background: linear-gradient(to bottom, transparent 75%, rgba(116, 192, 252, 0.5) 90%) !important;
+    background: linear-gradient(to bottom, transparent 65%, rgba(116, 192, 252, 0.5) 35%) !important;
 }
 
 .book-link:hover {
-    background: linear-gradient(to bottom, transparent 75%, rgba(25, 113, 194, 0.7) 90%) !important;
+    background: linear-gradient(to bottom, transparent 65%, rgba(25, 113, 194, 0.7) 35%) !important;
 }
 
 /* 짧은 글 태그는 하이라이트에서 제외 */
@@ -178,11 +178,11 @@
 
 /* 짧은 글 링크도 일반 글과 동일한 하이라이트 적용 */
 .book-link.no-highlight {
-    background: linear-gradient(to bottom, transparent 75%, rgba(116, 192, 252, 0.5) 90%) !important;
+    background: linear-gradient(to bottom, transparent 65%, rgba(116, 192, 252, 0.5) 35%) !important;
 }
 
 .book-link.no-highlight:hover {
-    background: linear-gradient(to bottom, transparent 75%, rgba(25, 113, 194, 0.7) 90%) !important;
+    background: linear-gradient(to bottom, transparent 65%, rgba(25, 113, 194, 0.7) 35%) !important;
 }
 
 /* 짧은 글 태그 스타일 (홈페이지와 동일) */
