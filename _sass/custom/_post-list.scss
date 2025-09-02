@@ -27,11 +27,6 @@
 .post-list-heading {
   font-size: 1.75rem;
   font-family: $font-family-nav; // 네비게이션 폰트와 동일하게 적용
-
-  // 모바일에서 제목 크기 줄이기
-  @media screen and (max-width: $breakpoint-mobile) {
-    font-size: 1.4rem;
-  }
 }
 
 // 포스트 링크 컨테이너 개선
@@ -39,7 +34,7 @@
   display: flex !important;
   align-items: center !important;
   gap: $spacing-md;
-  margin-bottom: $spacing-sm;
+  margin-bottom: $spacing-xl; // 포스트 사이 간격 더 넓히기 (spacing-lg → spacing-xl)
   margin-left: 0 !important;
   padding-left: 0 !important;
   width: 100%;
@@ -57,11 +52,6 @@
   display: block !important;
   text-decoration: none;
   position: relative;
-
-  // 모바일에서 포스트 링크 크기 줄이기
-  @media screen and (max-width: $breakpoint-mobile) {
-    font-size: 0.85rem;
-  }
 
   &.short-post {
     font-size: 1.05rem;
@@ -115,12 +105,6 @@
   font-family: $font-family-nav; // 네비게이션 폰트 변수 사용
   position: relative; // 상대 위치 설정
 
-  // 모바일에서 메타 정보 크기 줄이기
-  @media screen and (max-width: $breakpoint-mobile) {
-    font-size: 12px;
-    width: 45px !important;
-  }
-
   // 년월 위에 선 그리기
   &::before {
     content: '';
@@ -150,12 +134,6 @@
   position: relative; // 상대 위치 설정
   padding: 0; // 내부 여백 제거
 
-  // 모바일에서 카테고리 크기 줄이기
-  @media screen and (max-width: $breakpoint-mobile) {
-    font-size: 0.7rem;
-    width: 70px !important;
-  }
-
   // 분류 위에 선 그리기
   &::before {
     content: '';
@@ -178,6 +156,7 @@
   width: 100% !important;
   margin-left: 0 !important; // 왼쪽 여백 제거
   padding-left: 0 !important; // 왼쪽 패딩 제거
+  margin-bottom: $spacing-xl; // 포스트 사이 간격 더 넓히기 (spacing-lg → spacing-xl)
 }
 
 .post-list li .post-link {
@@ -209,10 +188,10 @@
   }
 }
 
-// 모바일에서 포스트 목록 간격 줄이기
+// 모바일에서 포스트 목록 간격 줄이기 (하지만 기본 간격보다는 넓게)
 @media screen and (max-width: $breakpoint-mobile) {
   .post-list>li {
-    margin-bottom: $spacing-xs;
+    margin-bottom: $spacing-lg; // 모바일에서도 간격 더 넓게 (spacing-md → spacing-lg)
     gap: $spacing-sm;
   }
 }
