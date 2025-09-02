@@ -9,7 +9,7 @@
 .heatmap-container {
     margin: 0px auto;
     padding: 24px;
-    background: #ffffff;
+    background: #fafbfc;
     border: 1px solid #e1e4e8;
     border-radius: 8px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
@@ -37,8 +37,8 @@
     width: 16px;
     height: 16px;
     border-radius: 3px;
-    background-color: #f6f8fa;
-    border: 1px solid #f6f8fa;
+    background-color: #f1f3f4;
+    border: none;
     transition: all 0.2s ease;
     cursor: pointer;
     margin: 0;
@@ -135,7 +135,7 @@
     color: #586069;
     justify-content: center;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .heatmap-legend-item {
@@ -156,16 +156,16 @@
 
 /* 기본 링크 호버 효과 */
 .book-link:hover {
-    background: linear-gradient(to bottom, transparent 75%, rgba(139, 186, 229, 0.6) 50%) !important;
+    background: linear-gradient(to bottom, transparent 65%, rgba(139, 186, 229, 0.6) 35%) !important;
 }
 
 /* 후기 링크 스타일 */
 .book-link {
-    background: linear-gradient(to bottom, transparent 75%, rgba(116, 192, 252, 0.5) 90%) !important;
+    background: linear-gradient(to bottom, transparent 65%, rgba(116, 192, 252, 0.5) 35%) !important;
 }
 
 .book-link:hover {
-    background: linear-gradient(to bottom, transparent 75%, rgba(25, 113, 194, 0.7) 90%) !important;
+    background: linear-gradient(to bottom, transparent 65%, rgba(25, 113, 194, 0.7) 35%) !important;
 }
 
 /* 짧은 글 태그는 하이라이트에서 제외 */
@@ -173,23 +173,43 @@
     background: none !important;
     background-image: none !important;
     background-color: #6ba3e8 !important;
+    font-size: 9px !important;
 }
 
 /* 짧은 글 링크도 일반 글과 동일한 하이라이트 적용 */
 .book-link.no-highlight {
-    background: linear-gradient(to bottom, transparent 75%, rgba(116, 192, 252, 0.5) 90%) !important;
+    background: linear-gradient(to bottom, transparent 65%, rgba(116, 192, 252, 0.5) 35%) !important;
 }
 
 .book-link.no-highlight:hover {
-    background: linear-gradient(to bottom, transparent 75%, rgba(25, 113, 194, 0.7) 90%) !important;
+    background: linear-gradient(to bottom, transparent 65%, rgba(25, 113, 194, 0.7) 35%) !important;
 }
 
 /* 짧은 글 태그 스타일 (홈페이지와 동일) */
 .short-post-tag {
     display: inline-block;
-    font-size: 0.5rem;
+    font-size: 9px !important;
     color: #666666;
     background-color: #e8e8e8;
+    padding: 1px 3px;
+    margin-left: 3px;
+    border-radius: 2px;
+    border: none;
+    font-weight: 500;
+    vertical-align: middle;
+    opacity: 1;
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+/* 재읽기 태그 스타일 */
+.reread-tag {
+    display: inline-block;
+    font-size: 9px !important;
+    color: #ffffff !important;
+    background-color: #d73a49 !important;
     padding: 1px 3px;
     margin-left: 3px;
     border-radius: 2px;
@@ -356,12 +376,25 @@
 }
 
 #books-list {
-    margin-top: 0;
+    margin-top: 20px;
 }
 
 #books-list h2 {
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+#books-list ul li {
+    margin-bottom: 4px;
+    padding: 1px 0;
+    display: flex;
+    align-items: center;
+}
+
+#books-list ul li>span {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
 }
 
 @media (max-width: 768px) {

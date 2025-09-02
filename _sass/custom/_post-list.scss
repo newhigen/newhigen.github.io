@@ -33,8 +33,8 @@
 .post-list>li {
   display: flex !important;
   align-items: center !important;
-  gap: $spacing-md;
-  margin-bottom: $spacing-sm;
+  gap: $spacing-lg; // 포스트 요소들 사이 간격 늘리기 (spacing-md → spacing-lg)
+  margin-bottom: $spacing-xl; // 포스트 사이 간격 더 넓히기 (spacing-lg → spacing-xl)
   margin-left: 0 !important;
   padding-left: 0 !important;
   width: 100%;
@@ -67,7 +67,7 @@
 // 짧은 글 태그
 .short-post-tag {
   display: inline-block;
-  font-size: 0.5rem;
+  font-size: 0.6rem !important;
   color: $secondary-color;
   background-color: #e8e8e8;
   padding: 1px 3px;
@@ -84,7 +84,7 @@
 
   // 모바일에서 짧은 글 태그 크기 줄이기
   @media screen and (max-width: $breakpoint-mobile) {
-    font-size: 0.5rem !important;
+    font-size: 0.6rem !important;
     padding: 1px 3px !important;
     margin-left: 3px !important;
     line-height: 1.3 !important;
@@ -120,10 +120,10 @@
 
 // 포스트 카테고리
 .post-categories {
-  font-size: $font-size-xs;
+  font-size: 0.8rem;
   color: $muted-color;
   display: inline-block;
-  width: 80px !important; // 너비 확장 (40px → 80px)
+  width: 35px !important; // 너비 더 줄이기 (50px → 35px)
   text-align: right !important; // 오른쪽 정렬
   font-weight: 500;
   color: $secondary-color;
@@ -156,6 +156,7 @@
   width: 100% !important;
   margin-left: 0 !important; // 왼쪽 여백 제거
   padding-left: 0 !important; // 왼쪽 패딩 제거
+  margin-bottom: $spacing-xl; // 포스트 사이 간격 더 넓히기 (spacing-lg → spacing-xl)
 }
 
 .post-list li .post-link {
@@ -169,7 +170,7 @@
 
 
 // 모바일 반응형
-@media screen and (max-width: $breakpoint-tablet) {
+@media screen and (max-width: $breakpoint-mobile) {
   .post-link {
     max-width: none !important;
     overflow: hidden !important;
@@ -184,5 +185,13 @@
 
   .post-meta {
     vertical-align: center;
+  }
+}
+
+// 모바일에서 포스트 목록 간격 줄이기 (하지만 기본 간격보다는 넓게)
+@media screen and (max-width: $breakpoint-mobile) {
+  .post-list>li {
+    margin-bottom: $spacing-lg; // 모바일에서도 간격 더 넓게 (spacing-md → spacing-lg)
+    gap: $spacing-md; // 모바일에서도 요소 간격 유지 (spacing-sm → spacing-md)
   }
 }

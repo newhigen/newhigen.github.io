@@ -31,10 +31,9 @@ permalink: how-to-read
 # 독서에 대하여
 
 - 책을 읽는 것은 글자를 쓴 작가와 만나는 것이다.[^6]
-    - 나의 속도로 저자와 대담하고, 중간중간 떠오르는 나의 생각들로 빠질 수 있다.[^2]
-- 내 마음이 말할 공간을 남겨놓고 작가의 목소리를 듣기(책을 읽기).[^7]<br/>
-  내 생각 없이 읽으면 내 머리가 다른 사람들의 생각들로만 채워지게 됨.
-    - 작가의 이야기에 동의 표시나 반론을 적어둔다.[^2]
+- 나의 속도로 저자와 대담하고, 중간중간 떠오르는 나의 생각들로 빠질 수 있다.[^2]
+- 내 마음이 말할 공간을 남겨놓고 작가의 목소리를 듣기(책을 읽기).[^7]<br/> 내 생각 없이 읽으면 내 머리가 다른 사람들의 생각들로만 채워지게 됨.
+- 작가의 이야기에 동의 표시나 반론을 적어둔다.[^2]
 
 # 어려운 책 읽는 팁
 
@@ -44,13 +43,14 @@ permalink: how-to-read
 # 다른 독서법
 
 - 문제해결 중심 독서법 (≈ 가추법)
-    - '내가 마주한 문제를 어떻게 해결할 수 있을까'라는 관점으로 책을 읽기.[^9][^10]
+- '내가 마주한 문제를 어떻게 해결할 수 있을까'라는 관점으로 책을 읽기.[^9][^10]
 - 특정 주제를 공부할 때 그 주제에 대한 책 2-3권을 같이 읽으면 좋다.
-  - “저자마다 다르게 얘기를 하기 때문에, 머릿속에 종합해서 나만의 지식으로 만드는 데 도움이 됨.”[^11]
-  - “하나의 주제를 정하고 세 권 이상 읽으면 해당 주제에 대해 어느 정도 식견이 생겨요.”[^1]
-  - “If you want to have a deep and balanced understanding of a smaller range of topics … you should read books from the same topic until you reach a point where you get not enough new information (this is often after about 3-5 books for me). Try to pick books that represent different perspectives.”[^12]
+- “저자마다 다르게 얘기를 하기 때문에, 머릿속에 종합해서 나만의 지식으로 만드는 데 도움이 됨.”[^11]
+- “하나의 주제를 정하고 세 권 이상 읽으면 해당 주제에 대해 어느 정도 식견이 생겨요.”[^1]
+- “If you want to have a deep and balanced understanding of a smaller range of topics … you should read books from the same topic until you reach a point where you get not enough new information (this is often after about 3-5 books for me). Try to pick books that represent different perspectives.”[^12]
 
 ---
+
 다른 자료와의 연결
 
 [^1]: [[도서] 책 잘 읽는 방법, 김봉진, 2020](https://product.kyobobook.co.kr/detail/S000001899585)

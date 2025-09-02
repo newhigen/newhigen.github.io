@@ -143,6 +143,39 @@ function generateHeatmapData() {
     });
 }
 
+/**
+ * 같은 책을 여러 번 읽은 경우를 감지합니다.
+ * @returns {Object} 책 제목별 읽은 횟수와 마지막 읽은 날짜
+ */
+function getBookReadingCounts() {
+    const bookCounts = {};
+
+    booksList.forEach(book => {
+        if (!bookCounts[book.title]) {
+            bookCounts[book.title] = {
+                count: 0,
+                lastRead: null,
+                readings: []
+            };
+        }
+
+        bookCounts[book.title].count++;
+        bookCounts[book.title].readings.push({
+            year: book.year,
+            month: book.month,
+            post: book.post
+        });
+
+        // 마지막 읽은 날짜 업데이트
+        const currentDate = `${book.year}-${book.month.toString().padStart(2, '0')}`;
+        if (!bookCounts[book.title].lastRead || currentDate > bookCounts[book.title].lastRead) {
+            bookCounts[book.title].lastRead = currentDate;
+        }
+    });
+
+    return bookCounts;
+}
+
 // ========================================
 // 5. 히트맵 UI 생성
 // ========================================
@@ -289,9 +322,14 @@ function generateBooksList() {
         booksByYear[book.year].push(book);
     });
 
-    // 년도별로 정렬 (최신순)
-    const sortedYears = Object.keys(booksByYear).sort((a, b) => b - a);
-    const currentYear = new Date().getFullYear();
+            // 년도별로 정렬 (최신순)
+        const sortedYears = Object.keys(booksByYear).sort((a, b) => b - a);
+        const currentYear = new Date().getFullYear();
+        
+        // 각 년도 내에서 월별 정렬 (최신순)
+        sortedYears.forEach(year => {
+            booksByYear[year].sort((a, b) => b.month - a.month);
+        });
 
     // 2컬럼 컨테이너 생성
     const twoColumnContainer = document.createElement('div');
@@ -317,7 +355,10 @@ function generateBooksList() {
 
         // 책 목록 생성
         const bookList = document.createElement('ul');
-        bookList.style.cssText = 'margin-bottom: 30px; font-size: 14px; line-height: 1.6; list-style: none; padding-left: 0; margin-left: 0px;';
+        bookList.style.cssText = 'margin-bottom: 30px; font-size: 13px; line-height: 1.6; list-style: none; padding-left: 0; margin-left: 0px;';
+
+        // 책 읽은 횟수 정보 가져오기
+        const bookCounts = getBookReadingCounts();
 
         let currentMonth = null;
         booksByYear[year].forEach((book, index) => {
@@ -331,7 +372,7 @@ function generateBooksList() {
                 // 월 표시 추가 (왼쪽에)
                 const monthSpan = document.createElement('span');
                 monthSpan.textContent = `${book.month}월 `;
-                monthSpan.style.cssText = 'color: #586069; font-size: 12px; margin-right: 8px; display: inline-block; width: 25px; text-align: right;';
+                monthSpan.style.cssText = 'color: #586069; font-size: 11px; margin-right: 8px; display: inline-block; width: 25px; text-align: right;';
                 listItem.appendChild(monthSpan);
             } else {
                 // 같은 월이면 빈 공간 추가 (정렬 유지)
@@ -342,14 +383,21 @@ function generateBooksList() {
 
             // 책 제목 컨테이너 생성
             const titleContainer = document.createElement('span');
-            titleContainer.style.cssText = 'display: inline-flex; align-items: baseline; gap: 2px;';
+            titleContainer.style.cssText = 'display: inline-flex; align-items: center; gap: 2px;';
+
+            // 책 읽은 횟수 확인 및 최신 읽은 날짜 확인
+            const bookCount = bookCounts[book.title]?.count || 1;
+            const isLatestReading = bookCounts[book.title]?.lastRead === `${book.year}-${book.month.toString().padStart(2, '0')}`;
 
             if (book.post) {
                 // 포스트가 있는 경우 링크 생성
                 const link = document.createElement('a');
                 link.href = `/${book.post}`;
-                link.textContent = book.title;
-                link.style.cssText = 'text-decoration: none;';
+
+                // 제목 길이 제한 (20자 초과시 말줄임표)
+                const title = book.title;
+                link.textContent = title.length > 20 ? title.substring(0, 20) + '...' : title;
+                link.style.cssText = 'text-decoration: none; font-family: Pretendard-Light, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;';
 
                 // 짧은 포스트인 경우 태그를 별도 요소로 추가
                 const isShort = isShortPost(book.post);
@@ -361,16 +409,38 @@ function generateBooksList() {
                     const tag = document.createElement('span');
                     tag.className = 'short-post-tag';
                     tag.textContent = '짧은 글';
+                    tag.style.cssText = 'display: inline-block !important; font-size: 9px !important; color: #666666 !important; background-color: #e8e8e8 !important; padding: 1px 3px !important; margin-left: 3px !important; border-radius: 2px !important; border: none !important; font-weight: 500 !important; vertical-align: middle !important; opacity: 1 !important; position: relative !important; z-index: 1 !important; flex-shrink: 0 !important; white-space: nowrap !important;';
                     titleContainer.appendChild(tag);
                 } else {
                     link.className = 'book-link';
                     titleContainer.appendChild(link);
                 }
+
+                // 최신 읽은 경우에만 회차 태그 추가
+                if (bookCount > 1 && isLatestReading) {
+                    const rereadTag = document.createElement('span');
+                    rereadTag.className = 'reread-tag';
+                    rereadTag.textContent = `${bookCount}회차`;
+                    rereadTag.style.cssText = 'display: inline-block; font-size: 9px; color: #ffffff; background-color: #d73a49; padding: 1px 3px; margin-left: 3px; border-radius: 2px; border: none; font-weight: 500; vertical-align: middle; opacity: 1; position: relative; z-index: 1; flex-shrink: 0; white-space: nowrap;';
+                    titleContainer.appendChild(rereadTag);
+                }
             } else {
                 // 포스트가 없는 경우 일반 텍스트
                 const titleSpan = document.createElement('span');
-                titleSpan.textContent = book.title;
+                // 제목 길이 제한 (20자 초과시 말줄임표)
+                const title = book.title;
+                titleSpan.textContent = title.length > 20 ? title.substring(0, 20) + '...' : title;
+                titleSpan.style.cssText = 'font-family: Pretendard-Light, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;';
                 titleContainer.appendChild(titleSpan);
+
+                // 최신 읽은 경우에만 회차 태그 추가
+                if (bookCount > 1 && isLatestReading) {
+                    const rereadTag = document.createElement('span');
+                    rereadTag.className = 'reread-tag';
+                    rereadTag.textContent = `${bookCount}회차`;
+                    rereadTag.style.cssText = 'display: inline-block; font-size: 9px; color: #ffffff; background-color: #d73a49; padding: 1px 3px; margin-left: 3px; border-radius: 2px; border: none; font-weight: 500; vertical-align: middle; opacity: 1; position: relative; z-index: 1; flex-shrink: 0; white-space: nowrap;';
+                    titleContainer.appendChild(rereadTag);
+                }
             }
 
             // 인용 횟수 표시
