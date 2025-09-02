@@ -23,8 +23,9 @@
   margin-bottom: $spacing-xxl;
   font-family: $font-family-post-content;
   max-width: 100%;
+  font-size: 0.95rem; // 기본 글씨 크기 아주 약간 키우기 (0.9rem → 0.95rem)
 
-  // 본문 내의 모든 텍스트 요소에 content 폰트 적용
+  // 본문 내의 모든 텍스트 요소에 content 폰트와 크기 적용
   p,
   li,
   blockquote,
@@ -33,12 +34,13 @@
   span,
   div {
     font-family: $font-family-post-content;
-    line-height: 1.5; // line-height 증가 (1.3 → 1.6)
+    font-size: 0.95rem; // 기본 글씨 크기 아주 약간 키우기 (0.9rem → 0.95rem)
+    line-height: 1.6; // line-height 약간 키우기 (1.5 → 1.6)
   }
 
-  // PC에서 본문 글씨 크기 줄이기
+  // PC에서 본문 글씨 크기 (기본과 동일하게 유지)
   @media screen and (min-width: $breakpoint-desktop) {
-    font-size: 0.9rem; // 0.95rem → 0.9rem
+    font-size: 0.95rem;
 
     p,
     li,
@@ -47,13 +49,13 @@
     i,
     span,
     div {
-      font-size: 0.9rem; // 0.95rem → 0.9rem
+      font-size: 0.95rem;
     }
   }
 
-  // 모바일에서 본문 글씨 크기 줄이기
+  // 모바일에서 본문 글씨 크기 (기본과 동일하게 유지)
   @media screen and (max-width: $breakpoint-mobile) {
-    font-size: 0.9rem; // 0.95rem → 0.9rem
+    font-size: 0.95rem;
 
     p,
     li,
@@ -62,18 +64,18 @@
     i,
     span,
     div {
-      font-size: 0.9rem; // 0.95rem → 0.9rem
+      font-size: 0.95rem;
     }
   }
 
-  // paragraph 간격 줄이기
+  // paragraph 간격 늘리기
   p {
-    margin-bottom: 0.4em; // 기본 paragraph 간격 더 줄이기 (0.8em → 0.4em)
+    margin-bottom: 0.8em; // 기본 paragraph 간격 늘리기
   }
 
-  // 연속된 paragraph 간격 더 줄이기
+  // 연속된 paragraph 간격 늘리기
   p+p {
-    margin-top: 0.2em; // 연속 paragraph 간격 더 줄이기 (0.5em → 0.2em)
+    margin-top: 0.6em; // 연속 paragraph 간격 늘리기
   }
 
   // bold 텍스트만 SemiBold 폰트 적용
