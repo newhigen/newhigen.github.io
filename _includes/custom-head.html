@@ -1,33 +1,39 @@
 <!-- 커스텀 폰트 및 스타일 정의  -->
 
+<!-- Google Fonts 및 Pretendard 폰트 로드 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+
 <style>
-    @font-face {
-        font-family: 'Pretendard-Light';
-        src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff') format('woff');
-        font-weight: 100;
-        font-display: swap;
+    /* Pretendard 폰트 최신 버전 */
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+    
+    /* 폰트 패밀리 정의 */
+    :root {
+        --font-pretendard: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+        --font-noto: 'Noto Sans KR', sans-serif;
     }
-
-
-    @font-face {
-        font-family: 'Pretendard-Regular';
-        src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-        font-weight: 400;
-        font-display: swap;
+    
+    /* 기본 폰트 적용 */
+    body {
+        font-family: var(--font-pretendard) !important;
     }
-
-    @font-face {
-        font-family: 'Pretendard-Medium';
-        src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff') format('woff');
-        font-weight: 500;
-        font-display: swap;
-    }
-
-    @font-face {
-        font-family: 'KimJeongCheolGothic';
-        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulGothic-Light.woff2') format('woff2');
+    
+    /* 폰트 폴백 설정 */
+    .pretendard-light {
+        font-family: var(--font-pretendard);
         font-weight: 300;
-        font-display: swap;
+    }
+    
+    .pretendard-regular {
+        font-family: var(--font-pretendard);
+        font-weight: 400;
+    }
+    
+    .pretendard-medium {
+        font-family: var(--font-pretendard);
+        font-weight: 500;
     }
 
     /* 카테고리 태그 스타일 */
