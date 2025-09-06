@@ -8,7 +8,7 @@
 .site-header {
   min-height: 50px; // 높이 더 줄임
   position: relative;
-  padding: 8px 0 12px 0; // 하단 패딩만 조금 늘림
+  padding: 16px 0 12px 0; // 상단 패딩 늘림 (8px → 16px)
   border-bottom: 1px solid #e5e7eb; // 하단 구분선
 }
 
@@ -43,7 +43,7 @@
 // 사이트 네비게이션
 .site-nav {
   position: absolute;
-  top: 8px; // 패딩과 맞춤
+  top: 16px; // 패딩과 맞춤
   right: 15px;
   background-color: transparent;
   border: 1px solid $light-gray;
@@ -219,7 +219,7 @@
   .site-header .mode-switch {
     position: fixed; // fixed로 변경하여 창의 가장자리에 고정
     left: 8px; // 약간 오른쪽으로 이동
-    top: 12px; // 네비게이션 버튼들과 세로 중간 정렬
+    top: 20px; // 네비게이션 버튼들과 세로 중간 정렬
     margin: 0;
     z-index: 2000; // nav보다 높게
     pointer-events: auto;

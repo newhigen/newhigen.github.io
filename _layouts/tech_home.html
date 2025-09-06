@@ -4,6 +4,10 @@ layout: base
 
 <!-- Tech mode home: combined feed of projects + tech -->
 <section class="tech-home">
+  <header class="index-header">
+    <h1>Tech</h1>
+    <p class="index-desc">프로젝트 설명과 실제 동작하는 미니 프로젝트들을 정리했습니다.</p>
+  </header>
   {% assign combined = site.tech | concat: site.projects %}
   {% assign items = combined | sort: 'date' | reverse %}
 
@@ -12,20 +16,38 @@ layout: base
     {% for item in items %}
     {% assign is_project = false %}
     {% if item.collection == 'projects' or item.url contains '/projects/' %}
-      {% assign is_project = true %}
+    {% assign is_project = true %}
     {% endif %}
 
-    <li class="tech-item{% if is_project %} is-project{% else %} is-article{% endif %}">
-      <span class="type">{% if is_project %}프로젝트{% else %}기술{% endif %}</span>
-      <span class="date">{{ item.date | date: "%Y. %-m. %-d" }}</span>
-      <a class="title" href="{{ item.url | relative_url }}">{{ item.title | escape }}</a>
-      {% if is_project %}
-        {% if item.summary or item.description %}<span class="desc">— {{ item.summary | default: item.description }}</span>{% endif %}
-        {% if item.tech %}<span class="chips">{% for t in item.tech limit:3 %}<span class="chip">{{ t }}</span>{% endfor %}</span>{% endif %}
-      {% else %}
-        {% if item.description %}<span class="desc">— {{ item.description }}</span>{% endif %}
-        {% if item.tags %}<span class="chips">{% for t in item.tags limit:3 %}<span class="chip">{{ t }}</span>{% endfor %}</span>{% endif %}
-      {% endif %}
+    <li class="tech-home-item{% if is_project %} is-project{% else %} is-article{% endif %}">
+      <div class="cover">
+        {% if is_project %}
+        {% if item.thumbnail %}
+        <img src="{{ item.thumbnail | relative_url }}" alt="{{ item.title | escape }}">
+        {% else %}
+        <div class="thumb-placeholder">🚀</div>
+        {% endif %}
+        {% else %}
+        {% if item.thumbnail %}
+        <img src="{{ item.thumbnail | relative_url }}" alt="{{ item.title | escape }}">
+        {% else %}
+        <div class="thumb-placeholder">📝</div>
+        {% endif %}
+        {% endif %}
+      </div>
+      <div class="card-body">
+        <a class="title" href="{{ item.url | relative_url }}">{{ item.title | escape }}</a>
+        {% if is_project %}
+        {% if item.summary or item.description %}<p class="desc">{{ item.summary | default: item.description }}</p>{%
+        endif %}
+        {% else %}
+        {% if item.description %}<p class="desc">{{ item.description }}</p>{% endif %}
+        {% endif %}
+        <div class="meta">
+          <span class="date">{{ item.date | date: "%Y. %-m. %-d" }}</span>
+          <span class="type">{% if is_project %}프로젝트{% else %}Snippet{% endif %}</span>
+        </div>
+      </div>
     </li>
     {% endfor %}
   </ul>
@@ -33,4 +55,3 @@ layout: base
   <p>아직 글이 없습니다.</p>
   {% endif %}
 </section>
-

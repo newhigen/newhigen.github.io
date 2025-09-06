@@ -2,28 +2,36 @@
 layout: base
 ---
 
-<section class="collection-index tech-index">
+<section class="tech-home">
   <header class="index-header">
-    <h1>기술</h1>
-    <p class="index-desc">기술 관련 글을 주제별로 정리했습니다.</p>
+    <h1>Snippet</h1>
+    <p class="index-desc">실제로 동작하는 미니 프로젝트와 도구들을 정리했습니다.</p>
   </header>
 
   {% assign items = site.tech | sort: 'date' | reverse %}
   {% if items and items.size > 0 %}
-  <ul class="tech-list">
+  <ul class="tech-list tech-home-list">
     {% for a in items %}
-    <li class="tech-item">
-      <span class="date">{{ a.date | date: "%Y. %-m. %-d" }}</span>
-      <a class="title" href="{{ a.url | relative_url }}">{{ a.title | escape }}</a>
-      {% if a.description %}<span class="desc">— {{ a.description }}</span>{% endif %}
-      {% if a.tags %}
-      <span class="chips">{% for t in a.tags limit:4 %}<span class="chip">{{ t }}</span>{% endfor %}</span>
-      {% endif %}
+    <li class="tech-home-item is-article">
+      <div class="cover">
+        {% if a.thumbnail %}
+        <img src="{{ a.thumbnail | relative_url }}" alt="{{ a.title | escape }}">
+        {% else %}
+        <div class="thumb-placeholder">📝</div>
+        {% endif %}
+      </div>
+      <div class="card-body">
+        <a class="title" href="{{ a.url | relative_url }}">{{ a.title | escape }}</a>
+        {% if a.description %}<p class="desc">{{ a.description }}</p>{% endif %}
+        <div class="meta">
+          <span class="date">{{ a.date | date: "%Y. %-m. %-d" }}</span>
+          <span class="type">Snippet</span>
+        </div>
+      </div>
     </li>
     {% endfor %}
   </ul>
   {% else %}
-  <p>등록된 기술 글이 아직 없습니다.</p>
+  <p>등록된 스니펫이 아직 없습니다.</p>
   {% endif %}
 </section>
-

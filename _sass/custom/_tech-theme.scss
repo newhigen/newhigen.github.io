@@ -146,4 +146,226 @@ html[data-mode='tech'] {
     background-size: 24px 24px;
     background-position: top left;
   }
+
+  // Tech 모드에서 모든 목록을 카드 형태로 변경 (프로젝트 카드 크기와 동일)
+  .tech-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .tech-item {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .tech-item .cover {
+    display: block;
+    background: #f8fafc;
+    height: 140px;
+    overflow: hidden;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .thumb-placeholder {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #94a3b8;
+      font-size: 14px;
+      text-align: center;
+    }
+  }
+
+  .tech-item .card-body {
+    padding: 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tech-item .date {
+    color: #64748b;
+    font-size: 12px;
+    margin-bottom: 8px;
+    order: 1;
+  }
+
+  .tech-item .title {
+    font-weight: 600;
+    text-decoration: none;
+    color: #0f172a;
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 8px;
+    order: 2;
+
+    &:hover {
+      color: #2563eb;
+    }
+  }
+
+  .tech-item .desc {
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+    order: 3;
+    flex: 1;
+  }
+
+  .tech-item .type {
+    display: inline-block;
+    padding: 4px 8px;
+    font-size: 11px;
+    line-height: 1;
+    border-radius: 6px;
+    text-align: center;
+    color: #0f172a;
+    background: #e5e7eb;
+    margin-top: 12px;
+    order: 4;
+    align-self: flex-start;
+  }
+
+  .tech-item.is-project .type {
+    background: #dbeafe;
+    color: #1e3a8a;
+  }
+
+  .tech-item.is-article .type {
+    background: #e2e8f0;
+    color: #0f172a;
+  }
+
+  // Tech 홈 페이지 카드 스타일 (프로젝트 카드 크기와 동일)
+  .tech-home-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .tech-home-item {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .tech-home-item .cover {
+    display: block;
+    background: #f8fafc;
+    height: 160px;
+    overflow: hidden;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .thumb-placeholder {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #94a3b8;
+      font-size: 14px;
+      text-align: center;
+    }
+  }
+
+  .tech-home-item .card-body {
+    padding: 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tech-home-item .title {
+    font-weight: 600;
+    text-decoration: none;
+    color: #0f172a;
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 8px;
+
+    &:hover {
+      color: #2563eb;
+    }
+  }
+
+  .tech-home-item .desc {
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0 0 12px 0;
+    flex: 1;
+  }
+
+  .tech-home-item .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+  }
+
+  .tech-home-item .date {
+    color: #64748b;
+    font-size: 12px;
+  }
+
+  .tech-home-item .type {
+    display: inline-block;
+    padding: 4px 8px;
+    font-size: 11px;
+    line-height: 1;
+    border-radius: 6px;
+    text-align: center;
+    color: #0f172a;
+    background: #e5e7eb;
+  }
+
+  .tech-home-item.is-project .type {
+    background: #dbeafe;
+    color: #1e3a8a;
+  }
+
+  .tech-home-item.is-article .type {
+    background: #e2e8f0;
+    color: #0f172a;
+  }
 }

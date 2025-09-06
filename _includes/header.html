@@ -57,7 +57,7 @@
               <span class="caption">Tech</span>
             </button>
           </div>
-          <a class="page-link home-link icon-with-label{% if page.url == '/' or page.url contains '/tech/' %} active{% endif %}"
+          <a class="page-link home-link icon-with-label{% if page.url == '/' or page.url == '/tech/' %} active{% endif %}"
             href="{% if default_mode == 'tech' %}{{ '/tech/' | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}"
             title="Home" aria-label="Home">
             <span class="home-icon" aria-hidden="true">
@@ -99,8 +99,9 @@
             <a class="page-link{% if page.url contains '/projects/' %} active{% endif %}"
               href="{{ '/projects/' | relative_url }}"><i class="fa-solid fa-tag" aria-hidden="true"></i><span
                 class="label">프로젝트</span></a>
-            <a class="page-link" href="{{ '/tech/' | relative_url }}"><i class="fa-solid fa-tag"
-                aria-hidden="true"></i><span class="label">기술</span></a>
+            <a class="page-link{% if page.url contains '/snippet/' %} active{% endif %}"
+              href="{{ '/snippet/' | relative_url }}"><i class="fa-solid fa-tag" aria-hidden="true"></i><span
+                class="label">Snippet</span></a>
           </div>
         </div>
 
