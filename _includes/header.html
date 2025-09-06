@@ -110,16 +110,16 @@
 
         <!-- 오른쪽 메뉴 그룹 -->
         <div class="nav-group-right">
-          <div class="mode-switch" role="group" aria-label="Mode switch">
-            <button class="mode-label" data-mode="writing" aria-pressed="true">
-              <i class="fa-solid fa-pen"></i>
-              <span class="caption">Writing</span>
-            </button>
-            <button class="mode-toggle-knob" type="button" aria-label="모드 전환"><span class="knob"></span></button>
-            <button class="mode-label" data-mode="tech" aria-pressed="false">
-              <i class="fa-solid fa-code"></i>
-              <span class="caption">Tech</span>
-            </button>
+          <div class="mode-toggle-container" role="group" aria-label="Mode toggle">
+            <div class="mode-toggle-wrapper">
+              <button class="mode-option" data-mode="writing" aria-pressed="true">
+                글쓰기
+              </button>
+              <button class="mode-option" data-mode="tech" aria-pressed="false">
+                테크
+              </button>
+              <div class="mode-selector" aria-hidden="true"></div>
+            </div>
           </div>
         </div>
       </div>

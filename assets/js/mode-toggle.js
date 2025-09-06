@@ -21,12 +21,13 @@
     header.setAttribute('data-mode', mode);
     try { document.documentElement.setAttribute('data-mode', mode); } catch (e) { }
 
-    var btn = document.querySelector('.mode-toggle');
-    if (btn) {
-      btn.textContent = mode === 'tech' ? 'Tech' : 'Writing';
-      btn.setAttribute('aria-pressed', mode === 'tech' ? 'true' : 'false');
-      btn.setAttribute('aria-label', mode === 'tech' ? '기술 모드' : '글쓰기 모드');
-      btn.title = '모드 전환: ' + (mode === 'tech' ? 'Tech' : 'Writing');
+    // 새로운 토글 구조 업데이트
+    var writingBtn = document.querySelector('.mode-option[data-mode="writing"]');
+    var techBtn = document.querySelector('.mode-option[data-mode="tech"]');
+
+    if (writingBtn && techBtn) {
+      writingBtn.setAttribute('aria-pressed', mode === 'writing' ? 'true' : 'false');
+      techBtn.setAttribute('aria-pressed', mode === 'tech' ? 'true' : 'false');
     }
 
     // Update home link target when mode changes
@@ -96,20 +97,20 @@
       setTimeout(function () { document.documentElement.classList.remove('no-animate'); }, 50);
     }
 
-    // Mode labels
-    var modeLabels = document.querySelectorAll('.mode-switch .mode-label[data-mode]');
-    if (modeLabels && modeLabels.length) {
-      modeLabels.forEach(function (label) {
-        label.addEventListener('click', function () {
-          var targetMode = label.getAttribute('data-mode') === 'tech' ? 'tech' : 'writing';
+    // 새로운 모드 토글 버튼 이벤트
+    var modeOptions = document.querySelectorAll('.mode-option[data-mode]');
+    if (modeOptions && modeOptions.length) {
+      modeOptions.forEach(function (option) {
+        option.addEventListener('click', function () {
+          var targetMode = option.getAttribute('data-mode');
           applyMode(targetMode);
           try { localStorage.setItem('siteMode', targetMode); } catch (e) { /* ignore */ }
           goToModeHome(targetMode);
         });
         // Touch support
-        label.addEventListener('touchend', function (e) {
+        option.addEventListener('touchend', function (e) {
           e.preventDefault();
-          var targetMode = label.getAttribute('data-mode') === 'tech' ? 'tech' : 'writing';
+          var targetMode = option.getAttribute('data-mode');
           applyMode(targetMode);
           try { localStorage.setItem('siteMode', targetMode); } catch (e) { /* ignore */ }
           goToModeHome(targetMode);
@@ -117,37 +118,6 @@
       });
     }
 
-    // Knob toggle
-    var knob = document.querySelector('.mode-switch .mode-toggle-knob');
-    if (knob) {
-      knob.addEventListener('click', function () {
-        mode = (document.querySelector('.site-header')?.getAttribute('data-mode') === 'tech') ? 'writing' : 'tech';
-        applyMode(mode);
-        try { localStorage.setItem('siteMode', mode); } catch (e) { /* ignore */ }
-        goToModeHome(mode);
-      });
-      knob.addEventListener('touchend', function (e) {
-        e.preventDefault();
-        mode = (document.querySelector('.site-header')?.getAttribute('data-mode') === 'tech') ? 'writing' : 'tech';
-        applyMode(mode);
-        try { localStorage.setItem('siteMode', mode); } catch (e) { /* ignore */ }
-        goToModeHome(mode);
-      }, { passive: false });
-    }
-
-    // Fallback: clicking anywhere on the switch toggles
-    var switchRoot = document.querySelector('.mode-switch');
-    if (switchRoot) {
-      switchRoot.addEventListener('click', function (e) {
-        var t = e.target;
-        if (t.closest('.mode-label') || t.closest('.mode-toggle-knob')) return; // already handled
-        var current = document.querySelector('.site-header')?.getAttribute('data-mode') === 'tech' ? 'tech' : 'writing';
-        var next = current === 'tech' ? 'writing' : 'tech';
-        applyMode(next);
-        try { localStorage.setItem('siteMode', next); } catch (e2) { /* ignore */ }
-        goToModeHome(next);
-      });
-    }
 
     // Home icon should navigate to current mode's home
     var homeLink = document.querySelector('.home-link');

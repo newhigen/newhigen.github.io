@@ -8,7 +8,7 @@
 .site-header {
   min-height: 50px; // 높이 더 줄임
   position: relative;
-  padding: 8px 0 8px 0; // 상하 패딩 줄임 (16px/12px → 8px/8px)
+  padding: 4px 0 4px 0; // 상하 패딩 더 줄임 (8px → 4px)
   border-bottom: 1px solid #e5e7eb; // 하단 구분선
 }
 
@@ -44,7 +44,7 @@
 // 사이트 네비게이션 (전체 중앙 정렬)
 .site-header .site-nav {
   position: absolute !important;
-  top: 8px !important; // 높이를 더 올림 (16px → 8px)
+  top: -8px !important; // 높이를 더 올림 (사용자가 -8px로 수정함)
   left: 50% !important; // 완전 중앙 정렬
   right: auto !important;
   transform: translateX(-50%) !important;
@@ -56,8 +56,8 @@
   float: none !important;
 
   // 기본 PC 화면에서도 3단 레이아웃 적용 (Tech 버튼 잘림 방지)
-  width: calc(100% - 40px) !important; // 양쪽 여백 더 줄여서 버튼 잘림 방지
-  max-width: 1100px !important; // 최대 너비 증가하여 충분한 공간 확보
+  width: calc(100% - 20px) !important; // 양쪽 여백 더더 줄여서 버튼 잘림 방지 (40px → 20px)
+  max-width: 1200px !important; // 최대 너비 더 증가하여 충분한 공간 확보 (1100px → 1200px)
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
@@ -322,24 +322,91 @@
   margin: 0;
 }
 
-// 모드 스위치는 오른쪽 그룹에 배치
+// 모드 토글은 오른쪽 그룹에 배치
 @media screen and (min-width: $breakpoint-mobile) {
-  .nav-group-right .mode-switch {
+  .nav-group-right .mode-toggle-container {
     margin: 0;
   }
 }
 
-// Mode switch: labels + center knob (정상 배치)
-.mode-switch {
-  display: inline-flex;
-  align-items: center;
-  gap: 0; // 좌측 여백 과도 문제 방지
-  margin: 0; // 기본 마진 제거 - 그룹에서 관리
-  flex-direction: row; // 정상 순서: Writing - 토글 - Tech
+// 모드 토글 반응형 (모바일)
+@media screen and (max-width: $breakpoint-mobile) {
+  .mode-toggle-container {
+    padding: 3px;
+  }
+
+  .mode-option {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    min-width: 45px;
+  }
 }
 
-// 모드 스위치는 크기 변화 없이 위치만 이동 (홈~About 버튼과 동일)
+// 새로운 모드 토글: 둥근 모서리 네모가 선택된 모드를 감싸는 형태
+.mode-toggle-container {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
 
+.mode-toggle-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #f1f5f9;
+  border-radius: 8px;
+  padding: 2px;
+}
+
+.mode-option {
+  position: relative;
+  z-index: 2;
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+  min-width: 50px;
+  text-align: center;
+}
+
+.mode-option:hover {
+  color: #334155;
+}
+
+.mode-option[aria-pressed="true"] {
+  color: #6366f1;
+  font-weight: 600;
+}
+
+.mode-selector {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: calc(50% - 2px);
+  height: calc(100% - 4px);
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+// 테크 모드일 때 selector를 오른쪽으로 이동
+[data-mode="tech"] .mode-selector {
+  transform: translateX(100%);
+}
+
+// 이전 스타일들 제거 - 더 이상 사용하지 않음
 .mode-switch .mode-label {
   appearance: none;
   background: transparent;
@@ -486,8 +553,8 @@
 // 중앙 분류 영역 (데스크톱에서만 표시)
 // flex로 중앙 정렬되므로 별도 스타일 불필요
 
-// 너비가 더 작은 화면에서 분류 숨김 (강제) - 테크 버튼이 더 오른쪽부터 반응
-@media screen and (max-width: 650px) {
+// 너비가 더 넓은 화면에서부터 분류 숨김 (강제) - 테크 버튼이 더 오른쪽부터 반응
+@media screen and (max-width: 850px) {
 
   .site-nav .nav-group-center,
   .site-header .site-nav .nav-group-center,
@@ -717,8 +784,8 @@
       left: 50% !important; // 완전 중앙 정렬
       transform: translateX(-50%) !important;
       right: auto !important;
-      width: calc(100% - 40px) !important; // 양쪽 여백 더 줄여서 버튼 잘림 방지
-      max-width: 1100px !important; // 최대 너비 증가하여 충분한 공간 확보
+      width: calc(100% - 20px) !important; // 양쪽 여백 더더 줄여서 버튼 잘림 방지 (40px → 20px)
+      max-width: 1200px !important; // 최대 너비 더 증가하여 충분한 공간 확보 (1100px → 1200px)
     }
 
     .site-nav .trigger {
@@ -751,8 +818,8 @@
       flex: 1 1 auto !important;
       justify-content: center !important;
 
-      // 더 작은 화면에서는 강제 숨김 (테크 버튼이 더 오른쪽부터 반응)
-      @media screen and (max-width: 650px) {
+      // 더 넓은 화면에서부터 강제 숨김 (테크 버튼이 더 오른쪽부터 반응)
+      @media screen and (max-width: 850px) {
         display: none !important;
         visibility: hidden !important;
         opacity: 0 !important;
@@ -900,21 +967,28 @@
   display: none !important;
 }
 
-// 오른쪽 그룹(모드 스위치) 전체가 점진적으로 밀리도록 하는 반응형 스타일
-@media screen and (min-width: 321px) and (max-width: 900px) {
-  .site-nav .nav-group-right {
-    transform: translateX(-10px) !important;
+
+// 모드 버튼 그룹을 왼쪽으로 이동시켜서 전체 가운데 정렬 개선
+@media screen and (max-width: 1200px) {
+  .nav-group-right {
+    margin-right: -10px !important;
   }
 }
 
-@media screen and (min-width: 321px) and (max-width: 800px) {
-  .site-nav .nav-group-right {
-    transform: translateX(-20px) !important;
+@media screen and (max-width: 1100px) {
+  .nav-group-right {
+    margin-right: -20px !important;
   }
 }
 
-@media screen and (min-width: 321px) and (max-width: 700px) {
-  .site-nav .nav-group-right {
-    transform: translateX(-30px) !important;
+@media screen and (max-width: 1000px) {
+  .nav-group-right {
+    margin-right: -30px !important;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .nav-group-right {
+    margin-right: -40px !important;
   }
 }
