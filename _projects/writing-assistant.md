@@ -4,7 +4,7 @@ summary: 독서 기록과 생각 정리를 돕는 개인 블로그 시스템.
 tech: [Vibe Coding]
 thumbnail: /assets/screenshots/2025-09-01.jpg
 date: 2025-09-01
-tags: [writing, productivity, UX]
+tags: [writing]
 ---
 
 목표는 “생각 → 기록 → 구조화” 흐름을 빠르게 만드는 것. 포스트 작성 흐름을 끊지 않도록 최소한의 UI를 추가했습니다.

@@ -2,7 +2,7 @@
 title: 독서 히트맵 위젯
 summary: 월별 독서량을 GitHub 컨트리뷰션 보드처럼 시각화하는 위젯.
 tech: [Vibe Coding]
-thumbnail: /assets/screenshots/2025-08-31.jpg
+thumbnail: /assets/images/reading-heatmap.png
 date: 2025-08-31
 tags: [visualization, reading]
 ---

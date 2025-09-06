@@ -72,7 +72,7 @@ layout: base
         {% endif %}
         <div class="meta">
           <span class="date">{{ item.date | date: "%Y. %-m" }}</span>
-          <span class="type">{% if is_project %}프로젝트{% else %}Snippet{% endif %}</span>
+          {% if is_project %}<span class="type">프로젝트</span>{% endif %}
         </div>
         {% if item.tech or item.tags %}
         <div class="tags">

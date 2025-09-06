@@ -25,7 +25,6 @@ layout: base
         {% if p.summary or p.description %}<p class="desc">{{ p.summary | default: p.description }}</p>{% endif %}
         <div class="meta">
           <span class="date">{{ p.date | date: "%Y. %-m" }}</span>
-          <span class="type">프로젝트</span>
         </div>
         {% if p.tech or p.tags %}
         <div class="tags">

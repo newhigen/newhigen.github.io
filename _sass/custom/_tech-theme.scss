@@ -176,6 +176,7 @@ html[data-mode='tech'] {
     display: flex;
     flex-direction: column;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
     &:hover {
       transform: translateY(-2px);
@@ -193,7 +194,7 @@ html[data-mode='tech'] {
     img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       display: block;
     }
 
@@ -243,8 +244,9 @@ html[data-mode='tech'] {
 
   .tech-home-item .meta {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+    gap: 8px;
     margin-top: auto;
   }
 
@@ -259,9 +261,13 @@ html[data-mode='tech'] {
     font-size: 10px;
     line-height: 1;
     border-radius: 4px;
-    text-align: center;
     color: #0f172a;
     background: #e5e7eb;
+    white-space: nowrap;
+    box-sizing: border-box;
+    width: fit-content;
+    min-width: auto;
+    max-width: none;
   }
 
   .tech-home-item.is-project .type {
