@@ -8,7 +8,7 @@
 .site-header {
   min-height: 50px; // 높이 더 줄임
   position: relative;
-  padding: 16px 0 12px 0; // 상단 패딩 늘림 (8px → 16px)
+  padding: 8px 0 8px 0; // 상하 패딩 줄임 (16px/12px → 8px/8px)
   border-bottom: 1px solid #e5e7eb; // 하단 구분선
 }
 
@@ -44,7 +44,7 @@
 // 사이트 네비게이션 (전체 중앙 정렬)
 .site-header .site-nav {
   position: absolute !important;
-  top: 16px !important;
+  top: 8px !important; // 높이를 더 올림 (16px → 8px)
   left: 50% !important; // 완전 중앙 정렬
   right: auto !important;
   transform: translateX(-50%) !important;
@@ -61,8 +61,8 @@
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
-  padding: 8px 12px !important;
-  min-height: 50px !important;
+  padding: 6px 12px !important; // 패딩 줄여서 더 컴팩트하게
+  min-height: 40px !important; // 최소 높이 줄임 (50px → 40px)
   box-sizing: border-box !important;
 
 
@@ -216,14 +216,14 @@
     justify-content: center !important;
   }
 
-  // 오른쪽 그룹: 모드 스위치 (오른쪽부터 밀림)
+  // 오른쪽 그룹: 모드 스위치 (오른쪽 끝에서부터 이동)
   .nav-group-right {
     display: flex !important;
     align-items: center !important;
     gap: 8px !important;
     order: 3 !important;
     flex: 0 0 auto !important; // 고정 크기
-    flex-direction: row-reverse !important; // 오른쪽부터 밀림
+    justify-content: flex-end !important; // 오른쪽 정렬 (홈 버튼 왼쪽과 대칭)
   }
 
   // 링크 스타일링
@@ -329,55 +329,16 @@
   }
 }
 
-// Mode switch: labels + center knob (개별 요소가 오른쪽부터 밀림)
+// Mode switch: labels + center knob (정상 배치)
 .mode-switch {
   display: inline-flex;
   align-items: center;
   gap: 0; // 좌측 여백 과도 문제 방지
   margin: 0; // 기본 마진 제거 - 그룹에서 관리
-  flex-direction: row !important; // 기본 순서 유지
+  flex-direction: row; // 정상 순서: Writing - 토글 - Tech
 }
 
-// 반응형에서 모드 스위치 요소들이 오른쪽부터 점진적으로 축소됨
-@media screen and (max-width: 900px) {
-  .mode-switch .mode-label[data-mode='tech'] {
-    padding: 2px 4px; // Tech 버튼 패딩 축소
-    font-size: 0.75rem; // 폰트 크기 축소
-  }
-
-  .mode-switch .mode-label[data-mode='tech'] .caption {
-    display: none; // Tech 버튼 캡션 먼저 숨김
-  }
-}
-
-@media screen and (max-width: 800px) {
-  .mode-switch .mode-toggle-knob {
-    width: 28px; // 토글 노브 크기 축소
-    height: 20px;
-  }
-
-  .mode-switch .mode-toggle-knob .knob {
-    width: 18px;
-    height: 18px;
-  }
-}
-
-@media screen and (max-width: 750px) {
-  .mode-switch .mode-label[data-mode='writing'] .caption {
-    display: none; // Writing 버튼 캡션도 숨김
-  }
-
-  .mode-switch .mode-label[data-mode='writing'] {
-    padding: 2px 4px; // Writing 버튼 패딩 축소
-    font-size: 0.75rem;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .mode-switch .mode-label[data-mode='tech'] {
-    display: none; // 마지막에 Tech 버튼 완전 숨김
-  }
-}
+// 모드 스위치는 크기 변화 없이 위치만 이동 (홈~About 버튼과 동일)
 
 .mode-switch .mode-label {
   appearance: none;
@@ -525,10 +486,16 @@
 // 중앙 분류 영역 (데스크톱에서만 표시)
 // flex로 중앙 정렬되므로 별도 스타일 불필요
 
-// 너비가 적당히 좁아지면 분류 숨김 (더 빨리 숨김)
-@media screen and (max-width: 1000px) {
-  .nav-group-center {
+// 너비가 더 작은 화면에서 분류 숨김 (강제) - 테크 버튼이 더 오른쪽부터 반응
+@media screen and (max-width: 650px) {
+
+  .site-nav .nav-group-center,
+  .site-header .site-nav .nav-group-center,
+  .nav-group-center.nav-center--writing,
+  .nav-group-center.nav-center--tech {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
   }
 }
 
@@ -738,7 +705,7 @@
 
   // 모든 너비에서 새로운 3단 레이아웃 적용 (좁은 모바일 제외)
   // 기본 PC 화면부터 적용
-  @media screen and (min-width: 361px) {
+  @media screen and (min-width: 321px) {
     .site-nav {
       font-size: 0.9rem !important;
       background-color: rgba(255, 255, 255, 0.95) !important;
@@ -775,7 +742,7 @@
       flex: 0 0 auto !important;
     }
 
-    // 가운데 그룹: 분류 (좁아지면 숨김)
+    // 가운데 그룹: 분류 (768px 이하에서는 숨김)
     .nav-group-center {
       display: flex !important;
       align-items: center !important;
@@ -783,17 +750,25 @@
       order: 2 !important;
       flex: 1 1 auto !important;
       justify-content: center !important;
+
+      // 더 작은 화면에서는 강제 숨김 (테크 버튼이 더 오른쪽부터 반응)
+      @media screen and (max-width: 650px) {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+      }
     }
 
-    // 오른쪽 그룹: 모드 버튼 (오른쪽부터 밀림)
+    // 오른쪽 그룹: 모드 버튼 (오른쪽 끝에서부터 이동)
     .nav-group-right {
       display: flex !important;
       align-items: center !important;
       gap: 8px !important;
       order: 3 !important;
       flex: 0 0 auto !important;
-      flex-direction: row-reverse !important; // 오른쪽부터 밀림
+      justify-content: flex-end !important; // 오른쪽 정렬 (홈 버튼 왼쪽과 대칭)
     }
+
 
     .site-nav .icon-with-label {
       padding: 4px 6px !important;
@@ -820,7 +795,7 @@
   }
 
   // 매우 작은 화면에서만 nav 버튼으로 숨기기
-  @media screen and (max-width: 360px) {
+  @media screen and (max-width: 320px) {
     .site-nav {
       max-width: none !important;
       font-size: 0.8rem !important;
@@ -923,4 +898,23 @@
 
 .site-header:not([data-mode])[data-default-mode='tech'] .books-link {
   display: none !important;
+}
+
+// 오른쪽 그룹(모드 스위치) 전체가 점진적으로 밀리도록 하는 반응형 스타일
+@media screen and (min-width: 321px) and (max-width: 900px) {
+  .site-nav .nav-group-right {
+    transform: translateX(-10px) !important;
+  }
+}
+
+@media screen and (min-width: 321px) and (max-width: 800px) {
+  .site-nav .nav-group-right {
+    transform: translateX(-20px) !important;
+  }
+}
+
+@media screen and (min-width: 321px) and (max-width: 700px) {
+  .site-nav .nav-group-right {
+    transform: translateX(-30px) !important;
+  }
 }
