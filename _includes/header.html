@@ -46,17 +46,6 @@
       <div class="trigger">
         <!-- 왼쪽 메뉴 그룹 -->
         <div class="nav-group-left">
-          <div class="mode-switch" role="group" aria-label="Mode switch">
-            <button class="mode-label" data-mode="writing" aria-pressed="true">
-              <i class="fa-solid fa-pen"></i>
-              <span class="caption">Writing</span>
-            </button>
-            <button class="mode-toggle-knob" type="button" aria-label="모드 전환"><span class="knob"></span></button>
-            <button class="mode-label" data-mode="tech" aria-pressed="false">
-              <i class="fa-solid fa-code"></i>
-              <span class="caption">Tech</span>
-            </button>
-          </div>
           <a class="page-link home-link icon-with-label{% if page.url == '/' or page.url == '/tech/' %} active{% endif %}"
             href="{% if default_mode == 'tech' %}{{ '/tech/' | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}"
             title="Home" aria-label="Home">
@@ -77,42 +66,6 @@
             </svg>
             <span class="caption">검색</span>
           </a>
-
-        </div>
-
-        <!-- 중앙 메뉴 그룹 (모드별 스위칭) -->
-        <div class="nav-group-center nav-center--writing">
-          <div class="nav-categories">
-            <a class="page-link{% if page.url contains '/thought/' %} active{% endif %}"
-              href="{{ '/thought/' | relative_url }}"><i class="fa-solid fa-tag" aria-hidden="true"></i><span
-                class="label">생각</span></a>
-            <a class="page-link{% if page.url contains '/book/' %} active{% endif %}"
-              href="{{ '/book/' | relative_url }}"><i class="fa-solid fa-tag" aria-hidden="true"></i><span
-                class="label">책</span></a>
-            <a class="page-link{% if page.url contains '/representation/' %} active{% endif %}"
-              href="{{ '/representation/' | relative_url }}"><i class="fa-solid fa-tag" aria-hidden="true"></i><span
-                class="label">효과적_모형</span></a>
-          </div>
-        </div>
-        <div class="nav-group-center nav-center--tech">
-          <div class="nav-categories">
-            <a class="page-link{% if page.url contains '/projects/' %} active{% endif %}"
-              href="{{ '/projects/' | relative_url }}"><i class="fa-solid fa-tag" aria-hidden="true"></i><span
-                class="label">프로젝트</span></a>
-            <a class="page-link{% if page.url contains '/tools/' %} active{% endif %}"
-              href="{{ '/tools/' | relative_url }}"><i class="fa-solid fa-tag" aria-hidden="true"></i><span
-                class="label">Tools</span></a>
-          </div>
-        </div>
-
-        <!-- 오른쪽 메뉴 그룹 -->
-        <div class="nav-group-right">
-          <a class="page-link books-link icon-with-label{% if page.url contains '/books_read/' %} active{% endif %}" {%
-            if default_mode=='tech' %} style="display:none" {% endif %} href="{{ '/books_read/' | relative_url }}"
-            title="읽은 책들" aria-label="읽은 책들">
-            <i class="fa-solid fa-book-open" aria-hidden="true"></i>
-            <span class="caption">읽은 책들</span>
-          </a>
           <a class="page-link about-link icon-with-label{% if page.url contains '/about/' %} active{% endif %}"
             href="{{ '/about/' | relative_url }}" title="About" aria-label="About">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -122,6 +75,52 @@
             </svg>
             <span class="caption">About</span>
           </a>
+          <a class="page-link books-link icon-with-label{% if page.url contains '/books_read/' %} active{% endif %}{%
+            if default_mode=='tech' %} style=" display:none"{% endif %}" href="{{ '/books_read/' | relative_url }}"
+            title="읽은 책들" aria-label="읽은 책들">
+            <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+            <span class="caption">읽은 책들</span>
+          </a>
+        </div>
+
+        <!-- 중앙 메뉴 그룹 (모드별 스위칭) -->
+        <div class="nav-group-center nav-center--writing">
+          <div class="nav-categories">
+            <a class="page-link{% if page.url contains '/thought/' %} active{% endif %}"
+              href="{{ '/thought/' | relative_url }}"><i class="fa-solid fa-tag" aria-hidden="true"></i><span
+                class="label">생각</span></a>
+            <a class="page-link{% if page.url contains '/representation/' %} active{% endif %}"
+              href="{{ '/representation/' | relative_url }}"><i class="fa-solid fa-tag" aria-hidden="true"></i><span
+                class="label">모형</span></a>
+            <a class="page-link{% if page.url contains '/book/' %} active{% endif %}"
+              href="{{ '/book/' | relative_url }}"><i class="fa-solid fa-tag" aria-hidden="true"></i><span
+                class="label">책</span></a>
+          </div>
+        </div>
+        <div class="nav-group-center nav-center--tech">
+          <div class="nav-categories">
+            <a class="page-link{% if page.url contains '/projects/' %} active{% endif %}"
+              href="{{ '/projects/' | relative_url }}"><i class="fa-solid fa-tag" aria-hidden="true"></i><span
+                class="label">프로젝트</span></a>
+            <a class="page-link{% if page.url contains '/tools/' %} active{% endif %}"
+              href="{{ '/tools/' | relative_url }}"><i class="fa-solid fa-tag" aria-hidden="true"></i><span
+                class="label">스니펫</span></a>
+          </div>
+        </div>
+
+        <!-- 오른쪽 메뉴 그룹 -->
+        <div class="nav-group-right">
+          <div class="mode-switch" role="group" aria-label="Mode switch">
+            <button class="mode-label" data-mode="writing" aria-pressed="true">
+              <i class="fa-solid fa-pen"></i>
+              <span class="caption">Writing</span>
+            </button>
+            <button class="mode-toggle-knob" type="button" aria-label="모드 전환"><span class="knob"></span></button>
+            <button class="mode-label" data-mode="tech" aria-pressed="false">
+              <i class="fa-solid fa-code"></i>
+              <span class="caption">Tech</span>
+            </button>
+          </div>
         </div>
       </div>
     </nav>

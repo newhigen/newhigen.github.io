@@ -12,11 +12,12 @@
   border-bottom: 1px solid #e5e7eb; // 하단 구분선
 }
 
-// 헤더 영역은 본문보다 조금 넓게
+// 헤더 영역은 본문보다 조금 넓게 (Tech 버튼 잘림 방지)
 .site-header .wrapper {
-  max-width: 1080px;
+  max-width: 1200px; // 최대 너비 증가하여 충분한 공간 확보
   width: 100%;
   position: relative;
+  margin: 0 auto !important; // 헤더 wrapper 중앙 정렬 강제
 }
 
 // 헤더 wrapper는 기본 흐름 유지 (flex 해제)
@@ -40,33 +41,39 @@
   }
 }
 
-// 사이트 네비게이션
-.site-nav {
-  position: absolute;
-  top: 16px; // 패딩과 맞춤
-  right: 15px;
-  background-color: transparent;
-  border: 1px solid $light-gray;
-  border-radius: $border-radius-sm;
-  text-align: right;
+// 사이트 네비게이션 (전체 중앙 정렬)
+.site-header .site-nav {
+  position: absolute !important;
+  top: 16px !important;
+  left: 50% !important; // 완전 중앙 정렬
+  right: auto !important;
+  transform: translateX(-50%) !important;
+  background-color: transparent !important;
+  border: 1px solid $light-gray !important;
+  border-radius: $border-radius-sm !important;
+  text-align: center !important;
+  margin: 0 !important;
+  float: none !important;
 
-  // 모바일에서 nav 버튼 특성 변경
-  @media screen and (max-width: 768px) {
-    position: static !important; // static으로 변경하여 자연스러운 플로우
-    top: auto !important;
-    right: auto !important;
-    z-index: auto !important;
-    width: auto !important;
-    max-width: none !important;
-  }
+  // 기본 PC 화면에서도 3단 레이아웃 적용 (Tech 버튼 잘림 방지)
+  width: calc(100% - 40px) !important; // 양쪽 여백 더 줄여서 버튼 잘림 방지
+  max-width: 1100px !important; // 최대 너비 증가하여 충분한 공간 확보
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 8px 12px !important;
+  min-height: 50px !important;
+  box-sizing: border-box !important;
+
 
   // 모바일 네비게이션 스타일
   @media screen and (max-width: $breakpoint-mobile) {
     position: fixed;
     top: 30px;
     right: 10px;
+    left: 10px; // 왼쪽 여백도 설정하여 양쪽 여백 확보
     width: auto;
-    max-width: calc(100vw - 100px); // 모드 버튼 공간 더 확보
+    max-width: none; // max-width 제한 해제
     box-sizing: border-box;
     background-color: rgba(255, 255, 255, 0.95) !important;
     border: 1px solid #cccccc !important;
@@ -77,12 +84,11 @@
     border-radius: 8px;
   }
 
-  // 데스크톱 네비게이션 스타일
+  // 데스크톱 네비게이션 스타일 (기본 스타일 유지)
   @media screen and (min-width: $breakpoint-mobile) {
-    position: static;
-    float: right;
-    border: none;
-    background-color: inherit;
+    border: none !important;
+    background-color: inherit !important;
+    // position과 transform은 기본값 사용
   }
 }
 
@@ -172,77 +178,71 @@
   border-radius: 8px;
 }
 
-// 커스텀 네비게이션 스타일 (text-align 사용)
+// 커스텀 네비게이션 스타일 (3단 그룹 배치)
 @media screen and (min-width: $breakpoint-mobile) {
   .site-nav {
     width: 100%;
     float: none;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
   }
 
-  // 1. 모든 인라인 자식들의 텍스트 중앙 정렬
+  // 네비게이션 트리거를 flex 컨테이너로 설정
   .site-nav .trigger {
-    text-align: center;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    gap: 16px !important;
   }
 
-  // 2. 좌우 그룹 플로팅
+  // 왼쪽 그룹: 홈, 검색, About, 책들
   .nav-group-left {
-    float: left;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    order: 1 !important;
+    flex: 0 0 auto !important; // 고정 크기
   }
 
-  .nav-group-right {
-    float: right;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  // 3. 중앙 그룹이 중간에 위치하도록 설정
+  // 가운데 그룹: 분류 버튼들
   .nav-group-center {
-    display: inline-block;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    order: 2 !important;
+    flex: 1 1 auto !important; // 가변 크기
+    justify-content: center !important;
   }
 
-  // 4. 링크 스타일링
-  .nav-group-center .page-link {
-    display: inline-block;
-    margin: 0 $spacing-lg;
+  // 오른쪽 그룹: 모드 스위치 (오른쪽부터 밀림)
+  .nav-group-right {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    order: 3 !important;
+    flex: 0 0 auto !important; // 고정 크기
+    flex-direction: row-reverse !important; // 오른쪽부터 밀림
   }
 
+  // 링크 스타일링
   .site-nav .page-link {
     display: inline-block;
     color: #0f172a;
     font-size: 1rem;
     font-family: $ui-font;
+    margin: 0 !important; // 기본 마진 제거
   }
 
-  // Flush left/right groups without extra left margins
+  // 그룹별 특별 스타일
   .nav-group-left .page-link,
   .nav-group-right .page-link {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    margin: 0 !important;
   }
 
-  .nav-group-left .mode-switch {
-    margin-left: 0;
-  }
-
-  // Place mode switch outside nav width at far left of header
-  .site-header {
-    position: relative;
-  }
-
-  .site-header .mode-switch {
-    position: fixed; // fixed로 변경하여 창의 가장자리에 고정
-    left: 8px; // 약간 오른쪽으로 이동
-    top: 20px; // 네비게이션 버튼들과 세로 중간 정렬
-    margin: 0;
-    z-index: 2000; // nav보다 높게
-    pointer-events: auto;
-    height: 36px; // 고정 높이
-    display: flex;
-    align-items: center;
+  .nav-group-center .page-link {
+    margin: 0 4px !important;
   }
 }
 
@@ -275,7 +275,8 @@
   align-items: center;
   justify-content: center;
   gap: 2px; // 간격 줄임
-  height: 36px; // 고정 높이로 통일
+  height: 40px; // 높이 증가 (36px → 40px)
+  min-height: 40px; // 최소 높이 보장
   white-space: nowrap;
   border-radius: 8px;
   transition: background-color 0.2s ease;
@@ -321,19 +322,61 @@
   margin: 0;
 }
 
-// Place mode toggle right after home link with spacing
+// 모드 스위치는 오른쪽 그룹에 배치
 @media screen and (min-width: $breakpoint-mobile) {
-  .nav-group-left .mode-toggle {
-    margin-left: 6px;
+  .nav-group-right .mode-switch {
+    margin: 0;
   }
 }
 
-// Mode switch: labels + center knob
+// Mode switch: labels + center knob (개별 요소가 오른쪽부터 밀림)
 .mode-switch {
   display: inline-flex;
   align-items: center;
   gap: 0; // 좌측 여백 과도 문제 방지
-  margin-right: 28px; // 홈 아이콘과 간격 유지
+  margin: 0; // 기본 마진 제거 - 그룹에서 관리
+  flex-direction: row !important; // 기본 순서 유지
+}
+
+// 반응형에서 모드 스위치 요소들이 오른쪽부터 점진적으로 축소됨
+@media screen and (max-width: 900px) {
+  .mode-switch .mode-label[data-mode='tech'] {
+    padding: 2px 4px; // Tech 버튼 패딩 축소
+    font-size: 0.75rem; // 폰트 크기 축소
+  }
+
+  .mode-switch .mode-label[data-mode='tech'] .caption {
+    display: none; // Tech 버튼 캡션 먼저 숨김
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .mode-switch .mode-toggle-knob {
+    width: 28px; // 토글 노브 크기 축소
+    height: 20px;
+  }
+
+  .mode-switch .mode-toggle-knob .knob {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .mode-switch .mode-label[data-mode='writing'] .caption {
+    display: none; // Writing 버튼 캡션도 숨김
+  }
+
+  .mode-switch .mode-label[data-mode='writing'] {
+    padding: 2px 4px; // Writing 버튼 패딩 축소
+    font-size: 0.75rem;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .mode-switch .mode-label[data-mode='tech'] {
+    display: none; // 마지막에 Tech 버튼 완전 숨김
+  }
 }
 
 .mode-switch .mode-label {
@@ -356,6 +399,8 @@
   align-items: center;
   gap: 2px;
   width: 56px; // 좌우 동일 너비
+  height: 40px; // 다른 요소들과 높이 맞춤
+  min-height: 40px; // 최소 높이 보장
 }
 
 // 통일된 hover 효과
@@ -409,7 +454,7 @@
 .mode-switch .mode-toggle-knob {
   position: relative;
   width: 56px;
-  height: 28px; // 토글 높이 축소
+  height: 32px; // 토글 높이 증가 (28px → 32px)
   background: #e7e9ed; // writing(OFF)
   border: 1px solid #d1d5db;
   border-radius: 999px;
@@ -418,6 +463,7 @@
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
+  align-self: center; // 세로 중앙 정렬
 }
 
 .mode-switch .mode-toggle-knob:focus {
@@ -431,8 +477,8 @@
   left: 0;
   right: auto;
   transform: translateY(-50%);
-  width: 24px;
-  height: 24px; // 축소된 트랙 높이에 맞춤
+  width: 28px; // knob 크기 증가 (24px → 28px)
+  height: 28px; // knob 크기 증가 (24px → 28px)
   background: #ffffff;
   border: 1px solid #d1d5db;
   border-radius: 50%;
@@ -476,13 +522,11 @@
   line-height: 1.2;
 }
 
-// 중앙 분류 영역
-.nav-group-center {
-  margin-top: 12px; // 분류 버튼들을 전체적으로 더 아래로 내림
-}
+// 중앙 분류 영역 (데스크톱에서만 표시)
+// flex로 중앙 정렬되므로 별도 스타일 불필요
 
-// 너비가 적당히 좁아지면(태블릿 이하) 분류 숨김
-@media screen and (max-width: $breakpoint-desktop) {
+// 너비가 적당히 좁아지면 분류 숨김 (더 빨리 숨김)
+@media screen and (max-width: 1000px) {
   .nav-group-center {
     display: none !important;
   }
@@ -498,12 +542,12 @@
   text-decoration: none;
 }
 
-// Categories grid with fixed positions
+// Categories grid with center alignment
 .nav-categories {
   display: flex;
   flex-wrap: wrap;
   gap: 8px 14px;
-  justify-content: flex-start;
+  justify-content: center; // 가운데 정렬로 변경
   align-items: center;
 }
 
@@ -571,23 +615,24 @@
 // (모바일 레이아웃은 기본 Minima 동작 유지)
 @media screen and (max-width: $breakpoint-mobile) {
 
-  // 세로 배치로 변경 (right align, responsive)
+  // 가로 배치 유지 (left-center-right)
   .site-nav .trigger {
     display: flex;
-    flex-direction: column; // 세로 배치
-    align-items: flex-end; // right align
-    gap: 2px; // 세로 간격 더 줄임
-    width: auto; // 자동 너비
-    max-width: none; // 최대 너비 제한 해제
-    overflow: visible; // 오버플로우 허용
-    padding: 6px; // 패딩 더 줄임
+    flex-direction: row; // 가로 배치 유지
+    align-items: center; // 중간 정렬
+    justify-content: space-between; // 3단 배치
+    gap: 8px;
+    width: 100%;
+    max-width: none;
+    overflow: visible;
+    padding: 0;
     box-sizing: border-box;
-    min-width: 80px; // 최소 너비 더 줄임
+    min-width: auto;
   }
 
-  // Mode switch를 맨 위에 (right align)
+  // Mode switch를 오른쪽 그룹에 배치
   .mode-switch {
-    order: 0;
+    order: 3; // 오른쪽 그룹
     width: auto; // 자동 너비
     display: flex;
     justify-content: flex-end; // right align
@@ -601,25 +646,40 @@
     z-index: 2000;
   }
 
-  // 네비게이션 버튼들을 세로로 배치 (right align)
-  .nav-group-left,
-  .nav-group-right {
-    display: contents; // 그룹을 해제하고 개별 요소들이 직접 배치되도록
+  // 네비게이션 그룹들을 가로로 배치
+  .nav-group-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    order: 1; // 왼쪽 그룹
   }
 
-  // Primary icons 세로 배치 (right align)
+  .nav-group-center {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    order: 2; // 가운데 그룹
+  }
+
+  .nav-group-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    order: 3; // 오른쪽 그룹
+  }
+
+  // Primary icons 가로 배치
   .home-link.icon-with-label,
   .search-icon.icon-with-label,
   .books-link.icon-with-label,
   .about-link.icon-with-label {
-    order: 0; // 모드 스위치가 분리되었으므로 0으로 변경
     width: auto; // 자동 너비
     max-width: none; // 최대 너비 제한 해제
-    justify-content: flex-end; // right align
-    align-self: flex-end; // 컨테이너 내에서 right align
+    justify-content: center; // 중앙 정렬
+    align-self: center; // 컨테이너 내에서 중앙 정렬
   }
 
-  // Normalize heights for icon-with-label on small screens (right align, responsive)
+  // Normalize heights for icon-with-label on small screens (가로 배치)
   .site-nav .icon-with-label {
     min-height: auto;
     padding: 4px 6px; // 패딩 더 줄임
@@ -627,9 +687,9 @@
     font-size: 0.75rem; // 폰트 크기 더 줄임
     flex-shrink: 0; // 축소 방지
     flex-direction: row; // 가로 배치 (아이콘 + 텍스트)
-    justify-content: flex-end; // right align
-    text-align: right;
-    align-self: flex-end; // 컨테이너 내에서 right align
+    justify-content: center; // 중앙 정렬
+    text-align: center;
+    align-self: center; // 컨테이너 내에서 중앙 정렬
     width: auto; // 자동 너비
     white-space: nowrap; // 텍스트 줄바꿈 방지
     min-width: 60px; // 최소 너비 더 줄임
@@ -647,10 +707,10 @@
     flex-shrink: 0;
   }
 
-  // 캡션 텍스트 크기 축소 (right align)
+  // 캡션 텍스트 크기 축소 (가로 배치)
   .site-nav .icon-with-label .caption {
     font-size: 12px;
-    margin-right: 6px; // 오른쪽 마진으로 변경
+    margin: 0; // 마진 제거
   }
 
   // Hide center categories on small screens
@@ -658,11 +718,11 @@
     display: none !important;
   }
 
-  // 작은 화면에서 간격 조정 (right align)
+  // 작은 화면에서 간격 조정 (가로 배치)
   @media screen and (max-width: 480px) {
     .site-nav .trigger {
       gap: 3px; // 더 tight하게
-      padding: 6px 10px 6px 6px; // 오른쪽 패딩만
+      padding: 6px 10px; // 좌우 패딩
     }
 
     .site-nav .icon-with-label {
@@ -672,94 +732,139 @@
 
     .site-nav .icon-with-label .caption {
       font-size: 13px;
-      margin-right: 6px; // 오른쪽 마진
+      margin: 0; // 마진 제거
     }
   }
 
-  // 768px 너비에서 특별 처리 - 홈/검색 버튼을 가운데로 이동
-  @media screen and (max-width: 768px) {
+  // 모든 너비에서 새로운 3단 레이아웃 적용 (좁은 모바일 제외)
+  // 기본 PC 화면부터 적용
+  @media screen and (min-width: 361px) {
     .site-nav {
-      max-width: none !important; // 최대 너비 제한 해제
       font-size: 0.9rem !important;
-      width: 100% !important; // 전체 너비 사용
-      display: flex !important;
-      justify-content: center !important; // nav 버튼 자체를 가운데 정렬
-      align-items: center !important;
+      background-color: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: blur(10px) !important;
+      border-radius: 8px !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+      // 전체 중앙 정렬
+      position: absolute !important;
+      left: 50% !important; // 완전 중앙 정렬
+      transform: translateX(-50%) !important;
+      right: auto !important;
+      width: calc(100% - 40px) !important; // 양쪽 여백 더 줄여서 버튼 잘림 방지
+      max-width: 1100px !important; // 최대 너비 증가하여 충분한 공간 확보
     }
 
     .site-nav .trigger {
-      padding: 4px !important;
-      gap: 2px !important;
-      min-width: 70px !important;
-      flex-direction: column !important; // 세로 배치로 변경
+      padding: 0 !important;
+      gap: 8px !important;
+      min-width: auto !important;
+      flex-direction: row !important; // 가로 배치
       align-items: center !important;
-      justify-content: center !important; // 가운데 정렬
-      display: flex !important; // 강제 flex 적용
-      width: 100% !important; // 전체 너비 사용
-      max-width: 100vw !important; // 화면 너비로 제한
+      justify-content: space-between !important;
+      display: flex !important;
+      width: 100% !important;
+      max-width: none !important;
     }
 
-    // 모드 스위치를 맨 위에 배치
-    .mode-switch {
-      order: -1 !important;
-      margin-bottom: 4px !important; // 아래쪽 마진
-    }
-
-    // 홈과 검색 버튼을 가운데에 배치
-    .home-link.icon-with-label,
-    .search-icon.icon-with-label {
-      order: 0 !important;
-      margin: 2px 0 !important; // 상하 마진
-    }
-
-    // About 버튼을 맨 아래에 배치
-    .about-link.icon-with-label {
+    // 왼쪽 그룹: 홈, 검색, About, 읽은 책들
+    .nav-group-left {
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
       order: 1 !important;
-      margin-top: 4px !important; // 위쪽 마진
-      align-self: stretch !important; // 전체 너비 사용
-      text-align: center !important; // 텍스트 가운데 정렬
+      flex: 0 0 auto !important;
+    }
+
+    // 가운데 그룹: 분류 (좁아지면 숨김)
+    .nav-group-center {
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      order: 2 !important;
+      flex: 1 1 auto !important;
+      justify-content: center !important;
+    }
+
+    // 오른쪽 그룹: 모드 버튼 (오른쪽부터 밀림)
+    .nav-group-right {
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      order: 3 !important;
+      flex: 0 0 auto !important;
+      flex-direction: row-reverse !important; // 오른쪽부터 밀림
     }
 
     .site-nav .icon-with-label {
-      padding: 3px 4px !important;
-      gap: 2px !important;
+      padding: 4px 6px !important;
+      gap: 4px !important;
       font-size: 0.7rem !important;
       min-width: 50px !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      flex-shrink: 0 !important; // 축소 방지
+      flex-shrink: 0 !important;
     }
 
     .site-nav .icon-with-label svg,
     .site-nav .icon-with-label i {
       width: 14px !important;
       height: 14px !important;
-      flex-shrink: 0 !important; // 아이콘 크기 고정
+      flex-shrink: 0 !important;
     }
 
     .site-nav .icon-with-label .caption {
       font-size: 0.6rem !important;
-      white-space: nowrap !important; // 텍스트 줄바꿈 방지
+      white-space: nowrap !important;
     }
   }
 
-  // 매우 작은 화면에서 추가 최적화
+  // 매우 작은 화면에서만 nav 버튼으로 숨기기
   @media screen and (max-width: 360px) {
     .site-nav {
-      max-width: none !important; // 최대 너비 제한 해제
+      max-width: none !important;
       font-size: 0.8rem !important;
+      padding: 6px 8px !important;
     }
 
     .site-nav .trigger {
-      padding: 2px !important;
-      gap: 1px !important;
-      min-width: 60px !important;
+      padding: 0 !important;
+      gap: 6px !important;
+      min-width: auto !important;
+      flex-direction: column !important; // 세로 배치로 변경
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    // 3단 레이아웃 해제하고 세로 배치
+    .nav-group-left,
+    .nav-group-center,
+    .nav-group-right {
+      display: contents !important; // 그룹 해제
+    }
+
+    // 모드 스위치를 맨 위에 배치
+    .mode-switch {
+      order: -1 !important;
+      margin-bottom: 4px !important;
+    }
+
+    // 홈과 검색 버튼을 가운데에 배치
+    .home-link.icon-with-label,
+    .search-icon.icon-with-label {
+      order: 0 !important;
+      margin: 2px 0 !important;
+    }
+
+    // About 버튼을 맨 아래에 배치
+    .about-link.icon-with-label {
+      order: 1 !important;
+      margin-top: 4px !important;
     }
 
     .site-nav .icon-with-label {
-      padding: 2px 3px !important;
-      gap: 1px !important;
+      padding: 3px 4px !important;
+      gap: 2px !important;
       font-size: 0.6rem !important;
       min-width: 45px !important;
     }
@@ -775,45 +880,40 @@
     }
   }
 
-  // 중간 크기 화면에서 최적화
-  @media screen and (min-width: 769px) and (max-width: 1024px) {
-    .site-nav {
-      max-width: none !important;
-    }
-
-    .site-nav .trigger {
-      flex-direction: row !important; // 가로 배치로 복원
-      gap: 4px !important;
-    }
-
-    .site-nav .icon-with-label {
-      min-width: 60px !important;
-      font-size: 0.8rem !important;
-    }
-  }
 }
 
-// 모드별 중앙 네비 스위칭
+// 모드별 중앙 네비 스위칭 (flex 컨테이너 내에서 가운데 정렬)
 .nav-center--tech {
-  display: none;
+  display: none !important;
 }
 
 // JS 적용 후 우선순위: data-mode 값 사용
 .site-header[data-mode='tech'] .nav-center--writing {
-  display: none;
+  display: none !important;
 }
 
 .site-header[data-mode='tech'] .nav-center--tech {
-  display: inline-block;
+  display: flex !important; // flex로 변경하여 가운데 정렬 유지
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 // JS 이전 초기 표시: 페이지 경로 기반 기본 모드
 .site-header:not([data-mode])[data-default-mode='tech'] .nav-center--writing {
-  display: none;
+  display: none !important;
 }
 
 .site-header:not([data-mode])[data-default-mode='tech'] .nav-center--tech {
-  display: inline-block;
+  display: flex !important; // flex로 변경하여 가운데 정렬 유지
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+// Writing 모드일 때 기본 표시
+.nav-center--writing {
+  display: flex !important; // flex로 변경하여 가운데 정렬 유지
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 // "읽은 책들"은 Writing 모드에서만 표시

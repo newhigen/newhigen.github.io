@@ -6,8 +6,8 @@
 .toc-container {
     position: fixed;
     top: 100px; // 헤더 아래 여백
-    right: 25px; // 오른쪽 여백 증가 (15px → 25px)
-    width: 180px; // 너비 확장 (150px → 180px)
+    right: 25px; // 기본 오른쪽 여백
+    width: 180px; // 기본 너비
     max-height: calc(100vh - 140px);
     overflow-y: auto;
     background: rgba(255, 255, 255, 0.5) !important; // 반투명 흰색 배경
@@ -27,6 +27,19 @@
     // 데스크톱에서만 표시 (768px 이상)
     @media (min-width: 768px) {
         display: block;
+    }
+
+    // 중간 크기 화면에서 크기와 위치 조정
+    @media (min-width: 768px) and (max-width: 1200px) {
+        right: 15px; // 여백 줄임
+        width: 160px; // 너비 줄임
+    }
+
+    // 작은 데스크톱에서 더 작게
+    @media (min-width: 768px) and (max-width: 1024px) {
+        right: 10px; // 여백 더 줄임
+        width: 140px; // 너비 더 줄임
+        font-size: 12px; // 폰트 크기 축소
     }
 
     // 숨겨진 상태 (기본 상태)
