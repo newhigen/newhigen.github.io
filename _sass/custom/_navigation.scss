@@ -9,8 +9,16 @@
   min-height: 55.95px;
   line-height: 54px;
   position: relative;
-  padding-top: $spacing-xl;
+  padding-top: $spacing-xl; // 원래 값으로 복구
+  border-bottom: 1px solid #e5e7eb; // 하단 구분선
 }
+
+// 헤더 영역은 본문보다 조금 넓게 + 수직 중앙 정렬
+.site-header .wrapper {
+  max-width: 1080px;
+}
+
+// 헤더 wrapper는 기본 흐름 유지 (flex 해제)
 
 // 사이트 제목
 .site-title {
@@ -113,12 +121,14 @@
 
 // 네비게이션 링크
 .site-nav .page-link {
-  color: #111111;
+  color: #0f172a; // 통일된 진한 네이비 톤
   line-height: 1.5;
   display: block;
   padding: $spacing-sm $spacing-md;
   margin-left: $spacing-xl;
-  font-family: $font-family-nav; // 네비게이션 폰트 변수 사용
+  font-family: $ui-font; // UI 폰트로 통일
+  letter-spacing: -0.01em;
+  font-weight: 500;
 
   &:not(:last-child) {
     margin-right: 0;
@@ -149,34 +159,175 @@
   }
 
   // 1. 모든 인라인 자식들의 텍스트 중앙 정렬
-  .site-nav .trigger {
-    text-align: center;
-  }
+  .site-nav .trigger { text-align: center; }
 
   // 2. 좌우 그룹 플로팅
-  .nav-group-left {
-    float: left;
-  }
-
-  .nav-group-right {
-    float: right;
-  }
+  .nav-group-left { float: left; }
+  .nav-group-right { float: right; }
 
   // 3. 중앙 그룹이 중간에 위치하도록 설정
-  .nav-group-center {
-    display: inline-block;
-  }
+  .nav-group-center { display: inline-block; }
 
   // 4. 링크 스타일링
-  .nav-group-center .page-link {
-    display: inline-block;
-    margin: 0 $spacing-lg; // 중앙 링크 사이 간격
-  }
+  .nav-group-center .page-link { display: inline-block; margin: 0 $spacing-lg; }
 
-  .site-nav .page-link {
-    display: inline-block;
-    color: $muted-color;
-    font-size: 1.1rem;
-    font-family: $font-family-nav; // 네비게이션 폰트 변수 사용
-  }
+  .site-nav .page-link { display: inline-block; color: #0f172a; font-size: 1rem; font-family: $ui-font; }
 }
+
+// 모드 토글 버튼 스타일 (앵커와 동일하게 보이도록)
+.site-nav .mode-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+// Home icon sizing
+.site-nav .home-icon {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+}
+.site-nav .home-icon svg { width: 20px; height: 20px; }
+
+// Icon-only link minimal spacing + alignment
+.site-nav .icon-with-label {
+  margin: 0 8px !important;
+  padding: 2px 6px 6px;
+  display: inline-flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 36px; // 요소 높이 통일(상단 행)
+  white-space: nowrap;
+}
+.site-nav .icon-with-label { overflow: visible; }
+.site-nav .icon-with-label svg { width: 20px; height: 20px; display: block; overflow: visible; }
+.site-nav .icon-with-label i { font-size: 20px; line-height: 1; }
+.site-nav .icon-with-label .caption { font-size: 11px; color: $muted-color; line-height: 1.1; margin: 0; }
+
+// Place mode toggle right after home link with spacing
+@media screen and (min-width: $breakpoint-mobile) {
+  .nav-group-left .mode-toggle { margin-left: 6px; }
+}
+
+// Mode switch: labels + center knob
+.mode-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0; // 좌측 여백 과도 문제 방지
+  margin-right: 28px; // 홈 아이콘과 간격 유지
+}
+.mode-switch .mode-label {
+  appearance: none;
+  background: transparent;
+  border: none;
+  padding: 4px 6px;
+  font-size: 0.8rem; // 아이콘 아래 작은 캡션에 맞춤
+  line-height: 1.4;
+  cursor: pointer;
+  color: #0f172a;
+  font-family: $ui-font;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  border-radius: 6px;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: 56px; // 좌우 동일 너비
+}
+.mode-switch .mode-label:hover { background: #eef2f7; }
+.mode-switch .mode-label:focus { outline: 2px solid #94a3b8; outline-offset: 2px; }
+.mode-switch .mode-label .caption { font-size: 11px; color: $muted-color; line-height: 1; }
+.mode-switch .mode-label i { font-size: 20px; line-height: 1; }
+
+// 좌우 라벨 기본 채움색을 다르게
+.mode-switch .mode-label[data-mode='writing'] { background: #f3f4f6; }
+.mode-switch .mode-label[data-mode='tech'] { background: #eff6ff; }
+.mode-switch .mode-label.active[data-mode='writing'] { background: #e5e7eb; color: #0b1220; }
+.mode-switch .mode-label.active[data-mode='tech'] { background: #dbeafe; color: #0b1220; }
+
+.mode-switch .mode-toggle-knob {
+  position: relative;
+  width: 56px; height: 32px;
+  background: #e7e9ed; // writing(OFF)
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+  padding: 0; margin: 0 8px; // 좌우 동일 여백
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+.mode-switch .mode-toggle-knob:focus { outline: 2px solid #94a3b8; outline-offset: 2px; }
+.mode-switch .mode-toggle-knob .knob {
+  position: absolute; top: 50%; left: 0; right: auto; transform: translateY(-50%);
+  width: 28px; height: 28px;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 50%;
+  transition: left .18s ease;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+}
+.no-animate .mode-switch .mode-toggle-knob .knob { transition: none !important; }
+.site-header[data-mode='tech'] .mode-switch .mode-toggle-knob { background: #dbeafe; border-color: #bfdbfe; }
+.site-header[data-mode='tech'] .mode-switch .mode-toggle-knob .knob { left: auto; right: 0; }
+
+// Center group label (icon-only)
+// (분류 아이콘 제거됨) label 스타일 제거
+
+// Category links: ghost style with fixed height and spacing
+.nav-group-center .page-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: transparent;
+  text-align: center;
+  white-space: nowrap;
+  margin: 0 !important;
+  font-size: 0.92rem; // 분류 텍스트 조금 줄임
+}
+.nav-group-center .page-link:hover {
+  background: #f3f4f6;
+}
+.nav-group-center .page-link.active {
+  background: #e5e7eb;
+  color: #0b1220;
+  text-decoration: none;
+}
+
+// Categories grid with fixed positions
+.nav-categories { display: flex; flex-wrap: wrap; gap: 8px 14px; justify-content: flex-start; align-items: center; }
+
+// Category icon inside buttons
+.nav-group-center .page-link i.fa-tag { font-size: 10px; margin-right: 6px; color: $muted-color; }
+
+// Books/About icon fine-tune to avoid clipping
+.books-link { overflow: visible; }
+.books-link svg { width: 18px; height: 18px; transform: translateY(1px); }
+.books-link i.fa-book-open { font-size: 18px; line-height: 1; transform: translateY(1px); display: block; }
+.about-link svg { width: 18px; height: 18px; transform: translateY(1px); display: block; }
+
+// (모바일 레이아웃은 기본 Minima 동작 유지)
+
+// 모드별 중앙 네비 스위칭
+.nav-center--tech { display: none; }
+
+// JS 적용 후 우선순위: data-mode 값 사용
+.site-header[data-mode='tech'] .nav-center--writing { display: none; }
+.site-header[data-mode='tech'] .nav-center--tech { display: inline-block; }
+
+// JS 이전 초기 표시: 페이지 경로 기반 기본 모드
+.site-header:not([data-mode])[data-default-mode='tech'] .nav-center--writing { display: none; }
+.site-header:not([data-mode])[data-default-mode='tech'] .nav-center--tech { display: inline-block; }
+
+// "읽은 책들"은 Writing 모드에서만 표시
+.site-header[data-mode='tech'] .books-link { display: none !important; }
+.site-header:not([data-mode])[data-default-mode='tech'] .books-link { display: none !important; }

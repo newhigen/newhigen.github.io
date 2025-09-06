@@ -1,0 +1,49 @@
+---
+layout: base
+---
+
+<section class="collection-index projects-index">
+  <header class="index-header">
+    <h1>프로젝트</h1>
+    <p class="index-desc">진행한 프로젝트와 산출물을 모았습니다.</p>
+  </header>
+
+  {% assign items = site.projects | sort: 'date' | reverse %}
+  {% if items and items.size > 0 %}
+  <div class="project-grid">
+    {% for p in items %}
+    <article class="project-card">
+      <a class="cover" href="{{ p.url | relative_url }}" aria-label="{{ p.title | escape }}">
+        {% if p.thumbnail %}
+        <img src="{{ p.thumbnail | relative_url }}" alt="{{ p.title | escape }}">
+        {% else %}
+        <div class="thumb-placeholder">{{ p.title | escape }}</div>
+        {% endif %}
+      </a>
+      <div class="card-body">
+        <h2 class="card-title"><a href="{{ p.url | relative_url }}">{{ p.title | escape }}</a></h2>
+        {% if p.summary or p.description %}
+        <p class="card-summary">{{ p.summary | default: p.description }}</p>
+        {% endif %}
+        <div class="card-meta">
+          <time>{{ p.date | date: "%Y. %-m. %-d" }}</time>
+          {% if p.tech %}
+          <span class="dot">•</span>
+          <span class="chips">
+            {% for t in p.tech limit:3 %}<span class="chip">{{ t }}</span>{% endfor %}
+          </span>
+          {% endif %}
+        </div>
+        <div class="card-links">
+          {% if p.repo %}<a class="muted" href="{{ p.repo }}" target="_blank" rel="noopener">Repo</a>{% endif %}
+          {% if p.demo %}<a class="muted" href="{{ p.demo }}" target="_blank" rel="noopener">Demo</a>{% endif %}
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p>등록된 프로젝트가 아직 없습니다.</p>
+  {% endif %}
+</section>
+
