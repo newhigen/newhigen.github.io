@@ -1,10 +1,10 @@
 ---
 title: 글쓰기 도우미 실험
 summary: 독서 기록과 생각 정리를 돕는 작은 글쓰기 유틸리티를 Jekyll과 JS로 구현.
-tech: [Jekyll, JavaScript, UX]
+tech: [Jekyll, JavaScript]
 thumbnail: /assets/screenshots/2025-09-01.jpg
 date: 2025-09-01
-tags: [writing, productivity]
+tags: [writing, productivity, UX]
 ---
 
 목표는 “생각 → 기록 → 구조화” 흐름을 빠르게 만드는 것. 포스트 작성 흐름을 끊지 않도록 최소한의 UI를 추가했습니다.

@@ -3,6 +3,15 @@
   function detectDefaultMode() {
     var header = document.querySelector('.site-header');
     if (!header) return 'writing';
+
+    // URL 기반 모드 감지
+    var path = window.location.pathname;
+    if (path === '/' || path === '/index.html') {
+      return 'writing';
+    } else if (path.includes('/tech/') || path.includes('/snippet/') || path.includes('/projects/')) {
+      return 'tech';
+    }
+
     return header.getAttribute('data-default-mode') || 'writing';
   }
 
@@ -66,9 +75,16 @@
   }
 
   function init() {
-    var stored = null;
-    try { stored = localStorage.getItem('siteMode'); } catch (e) { /* ignore */ }
-    var mode = stored || detectDefaultMode();
+    // URL 기반으로 모드 결정 (localStorage보다 우선)
+    var mode = detectDefaultMode();
+
+    // URL이 명확하지 않은 경우에만 localStorage 사용
+    var path = window.location.pathname;
+    if (path !== '/' && path !== '/index.html' && !path.includes('/tech/') && !path.includes('/snippet/') && !path.includes('/projects/')) {
+      var stored = null;
+      try { stored = localStorage.getItem('siteMode'); } catch (e) { /* ignore */ }
+      if (stored) mode = stored;
+    }
     // Prevent initial knob animation on load/navigation
     try {
       document.documentElement.classList.add('no-animate');
