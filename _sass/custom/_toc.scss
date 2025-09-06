@@ -6,7 +6,7 @@
 .toc-container {
     position: fixed;
     top: 100px; // 헤더 아래 여백
-    right: 25px; // 기본 오른쪽 여백
+    right: 5px; // 본문에 더 가깝게 (25px → 5px)
     width: 180px; // 기본 너비
     max-height: calc(100vh - 140px);
     overflow-y: auto;
