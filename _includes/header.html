@@ -2,7 +2,13 @@
    사이트 헤더 (네비게이션)
    ======================================== -->
 
-<header class="site-header">
+{% assign default_mode = 'writing' %}
+{% if page.url contains '/projects/' or page.url contains '/tech/' or page.url contains '/tools/' %}
+{% assign default_mode = 'tech' %}
+{% endif %}
+
+<header class="site-header" data-default-mode="{{ default_mode }}" data-writing-home="{{ '/' | relative_url }}"
+  data-tech-home="{{ '/tech/' | relative_url }}">
 
   <div class="wrapper">
     <!-- ========================================
@@ -40,34 +46,81 @@
       <div class="trigger">
         <!-- 왼쪽 메뉴 그룹 -->
         <div class="nav-group-left">
-          <a class="page-link{% if page.url == '/' %} active{% endif %}" href="{{ '/' | relative_url }}">
-            Home
+          <a class="page-link home-link icon-with-label{% if page.url == '/' or page.url == '/tech/' %} active{% endif %}"
+            href="{% if default_mode == 'tech' %}{{ '/tech/' | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}"
+            title="Home" aria-label="Home">
+            <span class="home-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 10.5 12 3l9 7.5" />
+                <path d="M5 10v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V10" />
+              </svg>
+            </span>
+            <span class="caption">홈</span>
           </a>
-          <a class="page-link search-icon" title="검색">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <a class="page-link search-icon icon-with-label" title="검색" aria-label="검색">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
               <circle cx="11" cy="11" r="8"></circle>
               <path d="m21 21-4.35-4.35"></path>
             </svg>
-            검색
+            <span class="caption">검색</span>
+          </a>
+          <a class="page-link about-link icon-with-label{% if page.url contains '/about/' %} active{% endif %}"
+            href="{{ '/about/' | relative_url }}" title="About" aria-label="About">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="4" />
+              <path d="M6 20c0-3.314 2.686-6 6-6s6 2.686 6 6" />
+            </svg>
+            <span class="caption">About</span>
+          </a>
+          <a class="page-link books-link icon-with-label{% if page.url contains '/books_read/' %} active{% endif %}{%
+            if default_mode=='tech' %} style=" display:none"{% endif %}" href="{{ '/books_read/' | relative_url }}"
+            title="읽은 책들" aria-label="읽은 책들">
+            <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+            <span class="caption">읽은 책들</span>
           </a>
         </div>
 
-        <!-- 중앙 메뉴 그룹 (카테고리) -->
-        <div class="nav-group-center">
-          <a class="page-link{% if page.url contains '/thought/' %} active{% endif %}"
-            href="{{ '/thought/' | relative_url }}">#생각</a>
-          <a class="page-link{% if page.url contains '/book/' %} active{% endif %}"
-            href="{{ '/book/' | relative_url }}">#책</a>
-          <a class="page-link{% if page.url contains '/효과적-모형/' %} active{% endif %}"
-            href="{{ '/representation/' | relative_url }}">#효과적_모형</a>
+        <!-- 중앙 메뉴 그룹 (모드별 스위칭) -->
+        <div class="nav-group-center nav-center--writing">
+          <div class="nav-categories">
+            <a class="page-link{% if page.url contains '/thought/' %} active{% endif %}"
+              href="{{ '/thought/' | relative_url }}"><i class="fa-solid fa-tag" aria-hidden="true"></i><span
+                class="label">생각</span></a>
+            <a class="page-link{% if page.url contains '/representation/' %} active{% endif %}"
+              href="{{ '/representation/' | relative_url }}"><i class="fa-solid fa-tag" aria-hidden="true"></i><span
+                class="label">모형</span></a>
+            <a class="page-link{% if page.url contains '/book/' %} active{% endif %}"
+              href="{{ '/book/' | relative_url }}"><i class="fa-solid fa-tag" aria-hidden="true"></i><span
+                class="label">책</span></a>
+          </div>
+        </div>
+        <div class="nav-group-center nav-center--tech">
+          <div class="nav-categories">
+            <a class="page-link{% if page.url contains '/projects/' %} active{% endif %}"
+              href="{{ '/projects/' | relative_url }}"><i class="fa-solid fa-tag" aria-hidden="true"></i><span
+                class="label">프로젝트</span></a>
+            <a class="page-link{% if page.url contains '/tools/' %} active{% endif %}"
+              href="{{ '/tools/' | relative_url }}"><i class="fa-solid fa-tag" aria-hidden="true"></i><span
+                class="label">스니펫</span></a>
+          </div>
         </div>
 
         <!-- 오른쪽 메뉴 그룹 -->
         <div class="nav-group-right">
-          <a class="page-link{% if page.url contains '/books_read/' %} active{% endif %}"
-            href="{{ '/books_read/' | relative_url }}">읽은 책들</a>
-          <a class="page-link{% if page.url contains '/about/' %} active{% endif %}"
-            href="{{ '/about/' | relative_url }}">About</a>
+          <div class="mode-toggle-container" role="group" aria-label="Mode toggle">
+            <div class="mode-toggle-wrapper">
+              <button class="mode-option" data-mode="writing" aria-pressed="true">
+                글쓰기
+              </button>
+              <button class="mode-option" data-mode="tech" aria-pressed="false">
+                테크
+              </button>
+              <div class="mode-selector" aria-hidden="true"></div>
+            </div>
+          </div>
         </div>
       </div>
     </nav>

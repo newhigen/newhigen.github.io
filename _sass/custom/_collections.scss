@@ -1,0 +1,245 @@
+// ========================================
+// Projects & Tech collection styles
+// ========================================
+
+.collection-index {
+  .index-header {
+    margin: 0 0 1.5rem 0;
+
+    h1 {
+      margin: 0 0 .25rem 0;
+    }
+
+    .index-desc {
+      color: #6a737d;
+      margin: 0;
+    }
+  }
+}
+
+// Projects index grid
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.project-card {
+  border: 1px solid #eaecef;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+
+  .cover {
+    display: block;
+    background: #f6f8fa;
+    height: 160px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .thumb-placeholder {
+      color: #586069;
+      padding: 12px;
+      font-size: 14px;
+    }
+  }
+
+  .card-body {
+    padding: 12px;
+  }
+
+  .card-title {
+    font-size: 15px;
+    margin: 0 0 6px 0;
+  }
+
+  .card-summary {
+    color: #586069;
+    margin: 0 0 8px 0;
+    font-size: 13px;
+  }
+
+  .card-meta {
+    color: #6a737d;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .dot {
+    color: #c0c4c8;
+  }
+
+  .card-links {
+    margin-top: 8px;
+    display: flex;
+    gap: 12px;
+  }
+
+  .muted {
+    color: #6a737d;
+    text-decoration: none;
+  }
+}
+
+// Chips
+.chips {
+  display: inline-flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 1;
+  padding: 4px 6px;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #334155;
+}
+
+// Project detail
+.layout-project {
+  .project-header {
+    margin-bottom: 16px;
+  }
+
+  .project-title {
+    margin: 0 0 8px 0;
+  }
+
+  .project-summary {
+    color: #586069;
+    margin: 0 0 8px 0;
+  }
+
+  .project-meta {
+    color: #6a737d;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .project-thumb {
+    margin: 12px 0;
+  }
+
+  .project-thumb img {
+    width: 100%;
+    border-radius: 6px;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 8px;
+    margin: 8px 0 0 0;
+  }
+
+  .btn {
+    padding: 6px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  .btn-ghost {
+    border: 1px solid #e2e8f0;
+    color: #334155;
+  }
+
+  .btn-primary {
+    background: #2563eb;
+    color: #fff;
+  }
+}
+
+// Tech index list
+.tech-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tech-item {
+  padding: 8px 0;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.tech-item .date {
+  color: #6a737d;
+  width: 110px;
+  flex: 0 0 auto;
+}
+
+.tech-item .title {
+  font-weight: 600;
+  text-decoration: none;
+  color: inherit;
+}
+
+.tech-item .desc {
+  color: #6a737d;
+  margin-left: 6px;
+}
+
+// Tech home classification badge
+.tech-home-list .type {
+  display: inline-block;
+  min-width: 56px;
+  padding: 2px 6px;
+  font-size: 12px;
+  line-height: 1;
+  border-radius: 999px;
+  text-align: center;
+  color: #0f172a;
+  background: #e5e7eb;
+}
+
+.tech-home-list .is-project .type {
+  background: #dbeafe;
+  color: #1e3a8a;
+}
+
+.tech-home-list .is-article .type {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+// Tech detail
+.layout-tech {
+  .tech-header {
+    margin-bottom: 12px;
+  }
+
+  .tech-meta-row {
+    display: flex;
+    justify-content: space-between;
+    color: #6a737d;
+  }
+
+  .tech-title {
+    margin: 6px 0 6px 0;
+  }
+
+  .tech-description {
+    color: #586069;
+    margin: 0 0 8px 0;
+  }
+
+  .tech-tags {
+    margin-top: 4px;
+  }
+}

@@ -1,0 +1,32 @@
+---
+layout: base
+---
+
+<article class="layout-tech tech h-entry" itemscope itemtype="https://schema.org/TechArticle">
+  <header class="tech-header">
+    <div class="tech-meta-row">
+      <p class="reading-time">{% include reading-time.html %}</p>
+      {% assign pdate = page.date | date_to_xmlschema %}
+      <time class="dt-published" datetime="{{ pdate }}">{{ page.date | date: "%Y. %-m. %-d" }}</time>
+    </div>
+
+    <h1 class="tech-title p-name" itemprop="headline">{{ page.title | escape }}</h1>
+
+    {% if page.description %}
+    <p class="tech-description" itemprop="description">{{ page.description }}</p>
+    {% endif %}
+
+    {% if page.tags %}
+    <div class="tech-tags">
+      {% for tag in page.tags %}<span class="chip">{{ tag }}</span>{% endfor %}
+    </div>
+    {% endif %}
+  </header>
+
+  <div class="tech-content e-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+
+  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>
+
