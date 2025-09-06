@@ -57,6 +57,14 @@
     }
   }
 
+  function goToModeHome(mode) {
+    var header = document.querySelector('.site-header');
+    var techHome = (header && header.getAttribute('data-tech-home')) || '/tech/';
+    var writingHome = (header && header.getAttribute('data-writing-home')) || '/';
+    var target = mode === 'tech' ? techHome : writingHome;
+    if (target) window.location.href = target;
+  }
+
   function init() {
     var stored = null;
     try { stored = localStorage.getItem('siteMode'); } catch (e) { /* ignore */ }
@@ -80,13 +88,16 @@
           var targetMode = label.getAttribute('data-mode') === 'tech' ? 'tech' : 'writing';
           applyMode(targetMode);
           try { localStorage.setItem('siteMode', targetMode); } catch (e) { /* ignore */ }
-
-          var header = document.querySelector('.site-header');
-          var techHome = (header && header.getAttribute('data-tech-home')) || '/tech/';
-          var writingHome = (header && header.getAttribute('data-writing-home')) || '/';
-          var target = targetMode === 'tech' ? techHome : writingHome;
-          if (target) window.location.href = target;
+          goToModeHome(targetMode);
         });
+        // Touch support
+        label.addEventListener('touchend', function (e) {
+          e.preventDefault();
+          var targetMode = label.getAttribute('data-mode') === 'tech' ? 'tech' : 'writing';
+          applyMode(targetMode);
+          try { localStorage.setItem('siteMode', targetMode); } catch (e) { /* ignore */ }
+          goToModeHome(targetMode);
+        }, { passive: false });
       });
     }
 
@@ -97,12 +108,28 @@
         mode = (document.querySelector('.site-header')?.getAttribute('data-mode') === 'tech') ? 'writing' : 'tech';
         applyMode(mode);
         try { localStorage.setItem('siteMode', mode); } catch (e) { /* ignore */ }
+        goToModeHome(mode);
+      });
+      knob.addEventListener('touchend', function (e) {
+        e.preventDefault();
+        mode = (document.querySelector('.site-header')?.getAttribute('data-mode') === 'tech') ? 'writing' : 'tech';
+        applyMode(mode);
+        try { localStorage.setItem('siteMode', mode); } catch (e) { /* ignore */ }
+        goToModeHome(mode);
+      }, { passive: false });
+    }
 
-        var header = document.querySelector('.site-header');
-        var techHome = (header && header.getAttribute('data-tech-home')) || '/tech/';
-        var writingHome = (header && header.getAttribute('data-writing-home')) || '/';
-        var target = mode === 'tech' ? techHome : writingHome;
-        if (target) window.location.href = target;
+    // Fallback: clicking anywhere on the switch toggles
+    var switchRoot = document.querySelector('.mode-switch');
+    if (switchRoot) {
+      switchRoot.addEventListener('click', function (e) {
+        var t = e.target;
+        if (t.closest('.mode-label') || t.closest('.mode-toggle-knob')) return; // already handled
+        var current = document.querySelector('.site-header')?.getAttribute('data-mode') === 'tech' ? 'tech' : 'writing';
+        var next = current === 'tech' ? 'writing' : 'tech';
+        applyMode(next);
+        try { localStorage.setItem('siteMode', next); } catch (e2) { /* ignore */ }
+        goToModeHome(next);
       });
     }
 

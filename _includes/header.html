@@ -4,10 +4,11 @@
 
 {% assign default_mode = 'writing' %}
 {% if page.url contains '/projects/' or page.url contains '/tech/' %}
-  {% assign default_mode = 'tech' %}
+{% assign default_mode = 'tech' %}
 {% endif %}
 
-<header class="site-header" data-default-mode="{{ default_mode }}" data-writing-home="{{ '/' | relative_url }}" data-tech-home="{{ '/tech/' | relative_url }}">
+<header class="site-header" data-default-mode="{{ default_mode }}" data-writing-home="{{ '/' | relative_url }}"
+  data-tech-home="{{ '/tech/' | relative_url }}">
 
   <div class="wrapper">
     <!-- ========================================
@@ -56,7 +57,7 @@
               <span class="caption">Tech</span>
             </button>
           </div>
-          <a class="page-link home-link icon-with-label{% if page.url == '/' %} active{% endif %}"
+          <a class="page-link home-link icon-with-label{% if page.url == '/' or page.url contains '/tech/' %} active{% endif %}"
             href="{% if default_mode == 'tech' %}{{ '/tech/' | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}"
             title="Home" aria-label="Home">
             <span class="home-icon" aria-hidden="true">
@@ -69,45 +70,52 @@
             <span class="caption">홈</span>
           </a>
           <a class="page-link search-icon icon-with-label" title="검색" aria-label="검색">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
               <circle cx="11" cy="11" r="8"></circle>
               <path d="m21 21-4.35-4.35"></path>
             </svg>
             <span class="caption">검색</span>
           </a>
-          
+
         </div>
 
         <!-- 중앙 메뉴 그룹 (모드별 스위칭) -->
         <div class="nav-group-center nav-center--writing">
           <div class="nav-categories">
             <a class="page-link{% if page.url contains '/thought/' %} active{% endif %}"
-              href="{{ '/thought/' | relative_url }}"><i class="fa-solid fa-tag" aria-hidden="true"></i>생각</a>
+              href="{{ '/thought/' | relative_url }}"><i class="fa-solid fa-tag" aria-hidden="true"></i><span
+                class="label">생각</span></a>
             <a class="page-link{% if page.url contains '/book/' %} active{% endif %}"
-              href="{{ '/book/' | relative_url }}"><i class="fa-solid fa-tag" aria-hidden="true"></i>책</a>
+              href="{{ '/book/' | relative_url }}"><i class="fa-solid fa-tag" aria-hidden="true"></i><span
+                class="label">책</span></a>
             <a class="page-link{% if page.url contains '/representation/' %} active{% endif %}"
-              href="{{ '/representation/' | relative_url }}"><i class="fa-solid fa-tag" aria-hidden="true"></i>효과적_모형</a>
+              href="{{ '/representation/' | relative_url }}"><i class="fa-solid fa-tag" aria-hidden="true"></i><span
+                class="label">효과적_모형</span></a>
           </div>
         </div>
         <div class="nav-group-center nav-center--tech">
           <div class="nav-categories">
             <a class="page-link{% if page.url contains '/projects/' %} active{% endif %}"
-              href="{{ '/projects/' | relative_url }}"><i class="fa-solid fa-tag" aria-hidden="true"></i>프로젝트</a>
-            <a class="page-link{% if page.url contains '/tech/' %} active{% endif %}"
-              href="{{ '/tech/' | relative_url }}"><i class="fa-solid fa-tag" aria-hidden="true"></i>기술</a>
+              href="{{ '/projects/' | relative_url }}"><i class="fa-solid fa-tag" aria-hidden="true"></i><span
+                class="label">프로젝트</span></a>
+            <a class="page-link" href="{{ '/tech/' | relative_url }}"><i class="fa-solid fa-tag"
+                aria-hidden="true"></i><span class="label">기술</span></a>
           </div>
         </div>
 
         <!-- 오른쪽 메뉴 그룹 -->
         <div class="nav-group-right">
-          <a class="page-link books-link icon-with-label{% if page.url contains '/books_read/' %} active{% endif %}"{% if default_mode == 'tech' %} style="display:none"{% endif %}
-            href="{{ '/books_read/' | relative_url }}" title="읽은 책들" aria-label="읽은 책들">
+          <a class="page-link books-link icon-with-label{% if page.url contains '/books_read/' %} active{% endif %}" {%
+            if default_mode=='tech' %} style="display:none" {% endif %} href="{{ '/books_read/' | relative_url }}"
+            title="읽은 책들" aria-label="읽은 책들">
             <i class="fa-solid fa-book-open" aria-hidden="true"></i>
             <span class="caption">읽은 책들</span>
           </a>
           <a class="page-link about-link icon-with-label{% if page.url contains '/about/' %} active{% endif %}"
             href="{{ '/about/' | relative_url }}" title="About" aria-label="About">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="8" r="4" />
               <path d="M6 20c0-3.314 2.686-6 6-6s6 2.686 6 6" />
             </svg>

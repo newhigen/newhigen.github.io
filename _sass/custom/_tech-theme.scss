@@ -3,9 +3,17 @@
 // ========================================
 
 html[data-mode='tech'] {
+
   // Global text/link accent
   body {
     color: #0b1220;
+    font-size: 0.9rem; // writing 모드와 동일한 작은 글씨 크기
+    line-height: 1.6;
+
+    // 모바일에서 글씨 크기 줄이기
+    @media screen and (max-width: 600px) {
+      font-size: 0.9rem;
+    }
   }
 
   a {
@@ -13,7 +21,10 @@ html[data-mode='tech'] {
     text-decoration-color: rgba(37, 99, 235, .4);
     text-underline-offset: 2px;
   }
-  a:hover { text-decoration-thickness: 2px; }
+
+  a:hover {
+    text-decoration-thickness: 2px;
+  }
 
   // Header/nav subtle emphasis
   .site-header {
@@ -29,34 +40,110 @@ html[data-mode='tech'] {
     max-width: 820px;
   }
 
-  // Headings: tighter tracking, clearer hierarchy
-  h1, h2, h3 { letter-spacing: -0.015em; }
-  h1 { font-weight: 700; }
-  h2 { font-weight: 650; }
+  // Headings: writing 모드와 동일한 크기로 맞춤
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.015em;
+  }
+
+  h1 {
+    font-weight: 700;
+    font-size: 1.6rem; // writing 모드와 동일한 작은 크기
+
+    @media screen and (max-width: 600px) {
+      font-size: 1.3rem;
+    }
+  }
+
+  h2 {
+    font-weight: 650;
+    font-size: 1.3rem; // writing 모드와 동일한 작은 크기
+
+    @media screen and (max-width: 600px) {
+      font-size: 1.1rem;
+    }
+  }
+
+  // 포스트 내용 글씨 크기 writing 모드와 동일하게
+  .post-content {
+    font-size: 0.9rem; // writing 모드와 동일
+
+    p,
+    li,
+    blockquote,
+    em,
+    i,
+    span,
+    div {
+      font-size: 0.9rem; // writing 모드와 동일
+      line-height: 1.6;
+    }
+  }
+
+  // 포스트 제목 크기 writing 모드와 동일하게
+  .post-title {
+    font-size: 1.6rem; // writing 모드와 동일한 작은 크기
+
+    @media screen and (max-width: 600px) {
+      font-size: 1.3rem;
+    }
+  }
 
   // Code blocks: darkened background for contrast
-  pre, code { font-variant-ligatures: none; }
-  pre { background: #0f172a; color: #e2e8f0; border-radius: 8px; padding: 12px 14px; }
-  code { background: #f1f5f9; color: #0b1220; }
-  pre code { background: transparent; color: inherit; }
+  pre,
+  code {
+    font-variant-ligatures: none;
+  }
+
+  pre {
+    background: #0f172a;
+    color: #e2e8f0;
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+
+  code {
+    background: #f1f5f9;
+    color: #0b1220;
+  }
+
+  pre code {
+    background: transparent;
+    color: inherit;
+  }
 
   // Lists and rules
-  hr { border: 0; height: 1px; background: #e5e7eb; }
+  hr {
+    border: 0;
+    height: 1px;
+    background: #e5e7eb;
+  }
 
   // Chips accent
-  .chip { background: #e0e7ff; color: #1e40af; }
+  .chip {
+    background: #e0e7ff;
+    color: #1e40af;
+  }
 
   // Project cards in tech mode get more defined look
-  .project-card { border-color: #dbeafe; }
-  .project-card .card-title a { color: #0f172a; }
-  .project-card .card-links .muted { color: #334155; }
+  .project-card {
+    border-color: #dbeafe;
+  }
+
+  .project-card .card-title a {
+    color: #0f172a;
+  }
+
+  .project-card .card-links .muted {
+    color: #334155;
+  }
 
   // Subtle grid background for content area
   .page-content {
     background-image: linear-gradient(rgba(99, 102, 241, 0.05) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
+      linear-gradient(90deg, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
     background-size: 24px 24px;
     background-position: top left;
   }
 }
-
