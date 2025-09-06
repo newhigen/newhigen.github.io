@@ -1,7 +1,7 @@
 ---
-title: 글쓰기 도우미 실험
-summary: 독서 기록과 생각 정리를 돕는 작은 글쓰기 유틸리티를 Jekyll과 JS로 구현.
-tech: [Jekyll, JavaScript]
+title: 블로그
+summary: 독서 기록과 생각 정리를 돕는 개인 블로그 시스템.
+tech: [Vibe Coding]
 thumbnail: /assets/screenshots/2025-09-01.jpg
 date: 2025-09-01
 tags: [writing, productivity, UX]

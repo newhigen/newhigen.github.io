@@ -11,8 +11,35 @@ layout: base
   {% assign combined = site.tech | concat: site.projects %}
   {% assign items = combined | sort: 'date' | reverse %}
 
-  {% if items and items.size > 0 %}
   <ul class="tech-list tech-home-list">
+    <!-- Tools 카드 추가 -->
+    <li class="tech-home-item is-article" data-tool="true">
+      <div class="cover">
+        <div class="thumb-placeholder">🖼️</div>
+      </div>
+      <div class="card-body">
+        <a class="title" href="{{ '/assets/tools/mac-background.html' | relative_url }}" target="_blank">이미지를 맥 배경으로</a>
+        <p class="desc">이미지를 16:9 비율로 조정하고 상단에 메뉴바 검정 오버레이를 추가하는 도구</p>
+        <div class="meta">
+          <span class="date">2025. 1</span>
+          <span class="type">Tool</span>
+        </div>
+        <div class="tags">
+          <div class="purpose-tags">
+            <span class="purpose-tag">
+              <i class="fab fa-apple"></i>MacOS
+            </span>
+          </div>
+          <div class="tech-tags">
+            <span class="tech-tag" title="Vibe Coding">
+              <i class="fas fa-wand-magic-sparkles"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    {% if items and items.size > 0 %}
     {% for item in items %}
     {% assign is_project = false %}
     {% if item.collection == 'projects' or item.url contains '/projects/' %}
@@ -76,6 +103,7 @@ layout: base
               {% when 'CSS Grid' %}<i class="fab fa-css3-alt"></i>
               {% when 'JavaScript' %}<i class="fab fa-js-square"></i>
               {% when 'Jekyll' %}<i class="fas fa-code"></i>
+              {% when 'Vibe Coding' %}<i class="fas fa-wand-magic-sparkles"></i>
               {% else %}{{ tech }}
               {% endcase %}
             </span>
@@ -87,8 +115,6 @@ layout: base
       </div>
     </li>
     {% endfor %}
+    {% endif %}
   </ul>
-  {% else %}
-  <p>아직 글이 없습니다.</p>
-  {% endif %}
 </section>

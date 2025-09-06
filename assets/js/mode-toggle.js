@@ -8,7 +8,7 @@
     var path = window.location.pathname;
     if (path === '/' || path === '/index.html') {
       return 'writing';
-    } else if (path.includes('/tech/') || path.includes('/snippet/') || path.includes('/projects/')) {
+    } else if (path.includes('/tech/') || path.includes('/tools/') || path.includes('/projects/')) {
       return 'tech';
     }
 
@@ -80,7 +80,7 @@
 
     // URL이 명확하지 않은 경우에만 localStorage 사용
     var path = window.location.pathname;
-    if (path !== '/' && path !== '/index.html' && !path.includes('/tech/') && !path.includes('/snippet/') && !path.includes('/projects/')) {
+    if (path !== '/' && path !== '/index.html' && !path.includes('/tech/') && !path.includes('/tools/') && !path.includes('/projects/')) {
       var stored = null;
       try { stored = localStorage.getItem('siteMode'); } catch (e) { /* ignore */ }
       if (stored) mode = stored;

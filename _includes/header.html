@@ -3,7 +3,7 @@
    ======================================== -->
 
 {% assign default_mode = 'writing' %}
-{% if page.url contains '/projects/' or page.url contains '/tech/' %}
+{% if page.url contains '/projects/' or page.url contains '/tech/' or page.url contains '/tools/' %}
 {% assign default_mode = 'tech' %}
 {% endif %}
 
@@ -99,9 +99,9 @@
             <a class="page-link{% if page.url contains '/projects/' %} active{% endif %}"
               href="{{ '/projects/' | relative_url }}"><i class="fa-solid fa-tag" aria-hidden="true"></i><span
                 class="label">프로젝트</span></a>
-            <a class="page-link{% if page.url contains '/snippet/' %} active{% endif %}"
-              href="{{ '/snippet/' | relative_url }}"><i class="fa-solid fa-tag" aria-hidden="true"></i><span
-                class="label">Snippet</span></a>
+            <a class="page-link{% if page.url contains '/tools/' %} active{% endif %}"
+              href="{{ '/tools/' | relative_url }}"><i class="fa-solid fa-tag" aria-hidden="true"></i><span
+                class="label">Tools</span></a>
           </div>
         </div>
 
