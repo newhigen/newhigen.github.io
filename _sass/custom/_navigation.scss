@@ -12,12 +12,15 @@
   border-bottom: 1px solid #e5e7eb; // 하단 구분선
 }
 
-// 헤더 영역은 본문보다 조금 넓게 (Tech 버튼 잘림 방지)
+// 헤더 영역은 전체 너비 사용 (배경 줄어드는 문제 방지)
 .site-header .wrapper {
-  max-width: 1200px; // 최대 너비 증가하여 충분한 공간 확보
+  max-width: none; // 최대 너비 제한 제거로 전체 너비 사용
   width: 100%;
   position: relative;
   margin: 0 auto !important; // 헤더 wrapper 중앙 정렬 강제
+  // 기본 .wrapper 좌우 패딩(보통 30px)이 헤더 내에서 가로 스크롤을 유발하므로 제거
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 // 헤더 wrapper는 기본 흐름 유지 (flex 해제)
@@ -45,9 +48,9 @@
 .site-header .site-nav {
   position: absolute !important;
   top: -8px !important; // 높이를 더 올림 (사용자가 -8px로 수정함)
-  left: 50% !important; // 완전 중앙 정렬
-  right: auto !important;
-  transform: translateX(-50%) !important;
+  left: 0 !important;
+  right: 0 !important;
+  transform: none !important;
   background-color: transparent !important;
   border: 1px solid $light-gray !important;
   border-radius: $border-radius-sm !important;
@@ -55,13 +58,13 @@
   margin: 0 !important;
   float: none !important;
 
-  // 네비 바 너비 복구 - 충분한 공간 확보
-  width: calc(100% - 20px) !important; // 양쪽 여백 다시 줄임 (60px → 20px)
-  max-width: 1200px !important; // 최대 너비 다시 늘림 (900px → 1200px)
+  // 네비 바 너비 - 오버플로우 완전 방지
+  width: 100% !important; // 100vw는 스크롤바 폭 포함 → 100%로 안전하게
+  max-width: 100% !important;
   display: flex !important;
-  justify-content: space-between !important;
+  justify-content: center !important; // 중앙 정렬
   align-items: center !important;
-  padding: 6px 12px !important; // 패딩 줄여서 더 컴팩트하게
+  padding: 6px 0 !important; // 좌우 패딩 제거 (트리거에서 처리)
   min-height: 40px !important; // 최소 높이 줄임 (50px → 40px)
   box-sizing: border-box !important;
 
@@ -70,8 +73,8 @@
   @media screen and (max-width: $breakpoint-mobile) {
     position: fixed;
     top: 30px;
-    right: 10px;
-    left: 10px; // 왼쪽 여백도 설정하여 양쪽 여백 확보
+    right: max(10px, env(safe-area-inset-right));
+    left: max(10px, env(safe-area-inset-left)); // 안전 영역 고려한 반응형 여백
     width: auto;
     max-width: none; // max-width 제한 해제
     box-sizing: border-box;
@@ -183,7 +186,7 @@
   border-radius: 8px;
 }
 
-// 커스텀 네비게이션 스타일 (3단 그룹 배치)
+// 단순한 네비게이션 스타일 (왼쪽-오른쪽 배치)
 @media screen and (min-width: $breakpoint-mobile) {
   .site-nav {
     width: 100%;
@@ -198,37 +201,42 @@
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
-    width: 100% !important;
-    gap: 16px !important;
+    width: 100% !important; // 100vw 대신 100%로 가로 스크롤 방지
+    max-width: 1200px !important; // 최대 너비 제한
+    margin: 0 auto !important; // 중앙 정렬
+    padding: 0 10px !important; // 내부 패딩
+    box-sizing: border-box !important; // 패딩 포함 계산
+    overflow: hidden !important; // 오버플로우 숨김
   }
 
-  // 왼쪽 그룹: 홈, 검색, About, 책들
+  // 왼쪽 그룹: 홈, 검색, About, 책들, 분류들
   .nav-group-left {
     display: flex !important;
     align-items: center !important;
-    gap: 12px !important;
-    order: 1 !important;
-    flex: 0 0 auto !important; // 고정 크기
+    gap: 10px !important; // 12px에서 10px로 살짝 줄임
+    flex-shrink: 1 !important; // 필요시 축소 허용
+    min-width: 0 !important; // 최소 너비 제한 해제
   }
 
-  // 가운데 그룹: 분류 버튼들
+  // 가운데 그룹: 분류 버튼들 (가운데 정렬)
   .nav-group-center {
     display: flex !important;
     align-items: center !important;
     gap: 8px !important;
-    order: 2 !important;
-    flex: 1 1 auto !important; // 가변 크기
-    justify-content: center !important;
+    justify-content: center !important; // 가운데 정렬
+    flex: 1 !important; // 가변 공간 차지
+    margin: 0 16px !important; // 좌우 여백
+    min-width: 0 !important; // 최소 너비 제한 해제
+    overflow: hidden !important; // 오버플로우 숨김
   }
 
-  // 오른쪽 그룹: 모드 스위치 (오른쪽 끝에서부터 이동)
+  // 오른쪽 그룹: 모드 스위치 (테크 버튼 잘림 방지)
   .nav-group-right {
     display: flex !important;
     align-items: center !important;
-    gap: 8px !important;
-    order: 3 !important;
-    flex: 0 0 auto !important; // 고정 크기
-    justify-content: flex-end !important; // 오른쪽 정렬 (홈 버튼 왼쪽과 대칭)
+    flex-shrink: 0 !important; // 축소 방지로 테크 버튼 잘림 방지
+    margin-left: auto !important; // 오른쪽으로 밀어내기
+    min-width: fit-content !important; // 내용에 맞는 최소 너비
   }
 
   // 링크 스타일링
@@ -327,11 +335,9 @@
   margin: 0;
 }
 
-// 모드 토글은 오른쪽 그룹에 배치
-@media screen and (min-width: $breakpoint-mobile) {
-  .nav-group-right .mode-toggle-container {
-    margin: 0;
-  }
+// 모드 토글 기본 스타일
+.mode-toggle-container {
+  margin: 0;
 }
 
 // 모드 토글 반응형 (모바일)
@@ -558,13 +564,9 @@
 // 중앙 분류 영역 (데스크톱에서만 표시)
 // flex로 중앙 정렬되므로 별도 스타일 불필요
 
-// 너비가 더 넓은 화면에서부터 분류 숨김 (강제) - 테크 버튼이 더 오른쪽부터 반응
+// 중간 크기 화면에서 분류 숨김
 @media screen and (max-width: 850px) {
-
-  .site-nav .nav-group-center,
-  .site-header .site-nav .nav-group-center,
-  .nav-group-center.nav-center--writing,
-  .nav-group-center.nav-center--tech {
+  .nav-group-center {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;
@@ -787,59 +789,51 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
       // 전체 중앙 정렬
       position: absolute !important;
-      left: 50% !important; // 완전 중앙 정렬
-      transform: translateX(-50%) !important;
-      right: auto !important;
-      width: calc(100% - 20px) !important; // 양쪽 여백 다시 줄임 (60px → 20px)
-      max-width: 1200px !important; // 최대 너비 다시 늘림 (900px → 1200px)
+      left: 0 !important;
+      right: 0 !important;
+      transform: none !important;
+      width: 100% !important; // 100vw → 100%
+      max-width: 100% !important;
+      padding: 0 !important; // 패딩 제거 (트리거에서 처리)
     }
 
     .site-nav .trigger {
-      padding: 0 !important;
-      gap: 8px !important;
+      padding: 0 10px !important; // 내부 패딩
+      gap: 6px !important; // 고정 간격
       min-width: auto !important;
       flex-direction: row !important; // 가로 배치
       align-items: center !important;
       justify-content: space-between !important;
       display: flex !important;
-      width: 100% !important;
-      max-width: none !important;
+      width: 100% !important; // 100vw 대신 100%
+      max-width: 1200px !important; // 최대 너비 제한
+      margin: 0 auto !important; // 중앙 정렬
+      box-sizing: border-box !important; // 패딩 포함 계산
+      overflow: hidden !important; // 오버플로우 숨김
     }
 
     // 왼쪽 그룹: 홈, 검색, About, 읽은 책들
     .nav-group-left {
       display: flex !important;
       align-items: center !important;
-      gap: 8px !important;
+      gap: 6px !important; // 8px에서 6px로 살짝 줄임
       order: 1 !important;
       flex: 0 0 auto !important;
     }
 
-    // 가운데 그룹: 분류 (768px 이하에서는 숨김)
+    // 가운데 그룹: 분류 (850px 이하에서는 숨김)
     .nav-group-center {
-      display: flex !important;
-      align-items: center !important;
-      gap: 8px !important;
-      order: 2 !important;
-      flex: 1 1 auto !important;
-      justify-content: center !important;
-
-      // 더 넓은 화면에서부터 강제 숨김 (테크 버튼이 더 오른쪽부터 반응)
-      @media screen and (max-width: 850px) {
-        display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-      }
+      display: none !important; // 작은 화면에서는 숨김
+      visibility: hidden !important;
+      opacity: 0 !important;
     }
 
-    // 오른쪽 그룹: 모드 버튼 (오른쪽 끝에서부터 이동)
+    // 오른쪽 그룹: 모드 버튼 (테크 버튼 잘림 방지)
     .nav-group-right {
       display: flex !important;
       align-items: center !important;
-      gap: 8px !important;
-      order: 3 !important;
-      flex: 0 0 auto !important;
-      justify-content: flex-end !important; // 오른쪽 정렬 (홈 버튼 왼쪽과 대칭)
+      flex-shrink: 0 !important; // 축소 방지로 테크 버튼 잘림 방지
+      margin-left: auto !important; // 오른쪽으로 밀어내기
     }
 
 
@@ -911,49 +905,4 @@
 
 .site-header:not([data-mode])[data-default-mode='tech'] .books-link {
   display: none !important;
-}
-
-
-// 모드 버튼이 더 오른쪽에서부터 유지되도록 조정 최소화
-.nav-group-right {
-  margin-right: -5px !important; // 최소한만 조정
-}
-
-.mode-toggle-container {
-  margin-left: -5px !important; // 최소한만 조정
-}
-
-.toc-container {
-  right: 0px !important; // 본문 바로 오른쪽에 붙이기
-  margin-right: 0 !important;
-}
-
-@media screen and (max-width: 1000px) {
-  .nav-group-right {
-    margin-right: -10px !important;
-  }
-
-  .mode-toggle-container {
-    margin-left: -10px !important;
-  }
-}
-
-@media screen and (max-width: 900px) {
-  .nav-group-right {
-    margin-right: -15px !important;
-  }
-
-  .mode-toggle-container {
-    margin-left: -15px !important;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  .nav-group-right {
-    margin-right: -20px !important;
-  }
-
-  .mode-toggle-container {
-    margin-left: -20px !important;
-  }
 }
