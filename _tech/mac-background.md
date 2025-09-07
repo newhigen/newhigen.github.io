@@ -1,6 +1,6 @@
 ---
 layout: tech
-title: 맥 배경화면 메뉴바 조절기
+title: 맥 검은 메뉴바 배경화면 만들기
 description: 이미지를 16:9 배경화면으로 변환하고 메뉴바 높이를 조절하여 4K PNG로 출력하는 도구
 permalink: /tools/mac-background/
 thumbnail: /assets/images/mac-background-menubar-tool.png
@@ -125,7 +125,7 @@ date: 2025-09-07
   </style>
 
   <div class="panel">
-    <h2>맥 배경화면 메뉴바 높이 조절</h2>
+    <h2>메뉴바 검은 배경 높이 정하기</h2>
 
     <div class="controls">
       <div class="row">
@@ -145,7 +145,7 @@ date: 2025-09-07
     <div class="drop" id="drop" role="region" aria-label="이미지 드래그 앤 드롭 영역">
       <input id="file" type="file" accept="image/*" />
       <div><strong>이미지를 드래그해서 이곳에 놓으세요.</strong></div>
-      <div class="hint">이미지는 16:9로 맞추고, 위에서 선택한 높이만큼 검정 오버레이가 적용됩니다.</div>
+      <div class="hint">이미지는 16:9로 자르고, 위에서 선택한 높이만큼 검정 오버레이가 적용됩니다.</div>
     </div>
 
     <div class="preview-wrap">
@@ -221,9 +221,9 @@ date: 2025-09-07
         if (!matched) presetButtons.forEach(btn => btn.classList.remove('active'));
       }
 
-      barH.addEventListener('input', () => { updateMaskHeight(); syncPresetActive(); });
+      barH.addEventListener('input', () => { updateSysbarDimensions(); syncPresetActive(); });
       presetButtons.forEach(b => {
-        b.addEventListener('click', () => { barH.value = b.dataset.bar; updateMaskHeight(); syncPresetActive(); });
+        b.addEventListener('click', () => { barH.value = b.dataset.bar; updateSysbarDimensions(); syncPresetActive(); });
       });
 
       function updateSysbarDimensions() {
@@ -231,36 +231,33 @@ date: 2025-09-07
         const previewH = rect.height; // CSS px
         const barPx = Math.max(0, parseInt(barH.value || '0', 10));
 
-        // 프리뷰 메뉴바는 4K 기준 50px을 비율로 스케일
-        const sysH = Math.round(previewH * (MENUBAR_PRESET_4K / OUTPUT_HEIGHT));
+        // 메뉴바는 항상 고정 크기로 표시 (사용자 설정과 무관하게 일정한 높이 유지)
+        // 4K 기준 50px를 고정 비율로 사용
+        const FIXED_MENUBAR_4K = 50;
+        const sysH = Math.round(previewH * (FIXED_MENUBAR_4K / OUTPUT_HEIGHT));
         sysbar.style.height = sysH + 'px';
-        // 텍스트 크기도 메뉴바 높이에 맞춰 비율로 스케일 (기본 24px -> 11px 비례)
-        const fontPx = Math.max(9, Math.round(sysH * (11/24)));
+
+        // 텍스트 크기도 메뉴바 높이에 맞춰 비율로 스케일
+        const fontPx = Math.max(9, Math.round(sysH * (11/50))); // 50px 기준으로 11px 폰트
         sysbar.style.fontSize = fontPx + 'px';
 
         // 아이콘 크기를 메뉴바 높이에 맞춰 스케일
-        const iconSize = Math.max(8, Math.round(sysH * (12/24)));
-        const statusSize = Math.max(8, Math.round(sysH * (10/24)));
-        const dotSize = Math.max(1, Math.round(sysH * (2/24)));
-        const dotTop = Math.max(1, Math.round(sysH * (1/24)));
-        const dotRight = Math.max(1, Math.round(sysH * (2/24)));
+        const iconSize = Math.max(8, Math.round(sysH * (12/50))); // 50px 기준으로 12px 아이콘
+        const statusSize = Math.max(8, Math.round(sysH * (10/50)));
+        const dotSize = Math.max(1, Math.round(sysH * (2/50)));
+        const dotTop = Math.max(1, Math.round(sysH * (1/50)));
+        const dotRight = Math.max(1, Math.round(sysH * (2/50)));
         sysbar.style.setProperty('--icon-size', iconSize + 'px');
         sysbar.style.setProperty('--status-size', statusSize + 'px');
         sysbar.style.setProperty('--apple-dot-size', dotSize + 'px');
         sysbar.style.setProperty('--apple-dot-top', dotTop + 'px');
         sysbar.style.setProperty('--apple-dot-right', dotRight + 'px');
 
-        // 마스크도 함께 갱신 (초기/리사이즈 시)
+        // 마스크만 사용자 설정값에 따라 변경
         const maskH = Math.round(previewH * (barPx / OUTPUT_HEIGHT));
         mask.style.height = maskH + 'px';
       }
-      function updateMaskHeight() {
-        const rect = preview.getBoundingClientRect();
-        const previewH = rect.height;
-        const barPx = Math.max(0, parseInt(barH.value || '0', 10));
-        const maskH = Math.round(previewH * (barPx / OUTPUT_HEIGHT));
-        mask.style.height = maskH + 'px';
-      }
+      // updateMaskHeight 함수 제거 - updateSysbarDimensions에서 통합 처리
       window.addEventListener('resize', updateSysbarDimensions);
       updateSysbarDimensions();
       syncPresetActive();
