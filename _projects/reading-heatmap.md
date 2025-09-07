@@ -5,6 +5,7 @@ tech: [Vibe Coding]
 thumbnail: /assets/images/reading-heatmap.png
 date: 2025-08-31
 tags: [visualization, reading]
+mini: true
 ---
 
 사이트의 `books_read` 데이터를 기반으로 간단한 히트맵을 그립니다. 마우스 오버 시 해당 월의 목록을 툴팁으로 보여주고, 모바일에선 탭으로 동작합니다.

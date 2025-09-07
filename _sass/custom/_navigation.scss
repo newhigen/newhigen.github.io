@@ -454,6 +454,11 @@
   z-index: 1;
 }
 
+// 페이지 로드 시 애니메이션 방지
+.no-animate .mode-selector {
+  transition: none !important;
+}
+
 // 테크 모드일 때 selector를 오른쪽으로 이동
 [data-mode="tech"] .mode-selector {
   transform: translateX(100%);

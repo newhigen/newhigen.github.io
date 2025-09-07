@@ -1,9 +1,11 @@
 ---
 layout: tech
-title: 이미지를 맥 배경으로
-description: 이미지를 16:9로 맞추고 상단 메뉴바 검정 오버레이를 얹어 배경화면 PNG로 저장하는 도구
+title: 맥 배경화면 메뉴바 조절기
+description: 이미지를 16:9 배경화면으로 변환하고 메뉴바 높이를 조절하여 4K PNG로 출력하는 도구
 permalink: /tech/mac-background/
-tags: [MacOS, Tool]
+thumbnail: /assets/images/mac-background-menubar-tool.png
+tags: [MacOS]
+tech: [Vibe Coding]
 date: 2025-09-07
 ---
 
@@ -123,7 +125,7 @@ date: 2025-09-07
   </style>
 
   <div class="panel">
-    <h2>이미지 → 16:9 배경 + 상단 메뉴바 검정</h2>
+    <h2>맥 배경화면 메뉴바 높이 조절</h2>
 
     <div class="controls">
       <div class="row">

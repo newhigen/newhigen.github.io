@@ -26,6 +26,9 @@ layout: base
           {% if p.summary or p.description %}<p class="desc">{{ p.summary | default: p.description }}</p>{% endif %}
           <div class="meta">
             <span class="date">{{ p.date | date: "%Y. %-m" }}</span>
+            <div class="meta-tags">
+              {% if p.mini %}<span class="mini-tag">mini</span>{% endif %}
+            </div>
           </div>
           {% if p.tech or p.tags %}
           <div class="tags">

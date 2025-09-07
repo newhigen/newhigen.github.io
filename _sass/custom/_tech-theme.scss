@@ -271,10 +271,15 @@ html[data-mode='tech'] {
 
   .tech-home-item .meta {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
-    gap: 8px;
     margin-top: auto;
+  }
+
+  .tech-home-item .meta-tags {
+    display: flex;
+    align-items: center;
+    gap: 4px;
   }
 
   .tech-home-item .date {
@@ -295,6 +300,22 @@ html[data-mode='tech'] {
     width: fit-content;
     min-width: auto;
     max-width: none;
+  }
+
+  .tech-home-item .mini-tag {
+    display: inline-block;
+    padding: 2px 6px;
+    font-size: 9px;
+    line-height: 1;
+    border-radius: 4px;
+    color: #92400e;
+    background: #fef3c7;
+    white-space: nowrap;
+    box-sizing: border-box;
+    width: fit-content;
+    min-width: auto;
+    max-width: none;
+    font-weight: 500;
   }
 
   .tech-home-item.is-project .type {
