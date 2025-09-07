@@ -13,58 +13,60 @@ layout: base
   <ul class="tech-list tech-home-list">
     {% for p in items %}
     <li class="tech-home-item is-project">
-      <div class="cover">
-        {% if p.thumbnail %}
-        <img src="{{ p.thumbnail | relative_url }}" alt="{{ p.title | escape }}">
-        {% else %}
-        <div class="thumb-placeholder">🚀</div>
-        {% endif %}
-      </div>
-      <div class="card-body">
-        <a class="title" href="{{ p.url | relative_url }}">{{ p.title | escape }}</a>
-        {% if p.summary or p.description %}<p class="desc">{{ p.summary | default: p.description }}</p>{% endif %}
-        <div class="meta">
-          <span class="date">{{ p.date | date: "%Y. %-m" }}</span>
-        </div>
-        {% if p.tech or p.tags %}
-        <div class="tags">
-          {% if p.tags %}
-          <div class="purpose-tags">
-            {% for tag in p.tags %}
-            <span class="purpose-tag">
-              {% case tag %}
-              {% when 'visualization' %}<i class="fas fa-chart-bar"></i>{{ tag }}
-              {% when 'reading' %}<i class="fas fa-book"></i>{{ tag }}
-              {% when 'writing' %}<i class="fas fa-pen"></i>{{ tag }}
-              {% when 'productivity' %}<i class="fas fa-rocket"></i>{{ tag }}
-              {% when 'UI' %}<i class="fas fa-palette"></i>{{ tag }}
-              {% when 'ML' %}<i class="fas fa-brain"></i>{{ tag }}
-              {% when 'UX' %}<i class="fas fa-user-circle"></i>{{ tag }}
-              {% else %}{{ tag }}
-              {% endcase %}
-            </span>
-            {% endfor %}
-          </div>
-          {% endif %}
-          {% if p.tech %}
-          <div class="tech-tags">
-            {% for tech in p.tech %}
-            <span class="tech-tag" title="{{ tech }}">
-              {% case tech %}
-              {% when 'D3.js' %}<i class="fab fa-js-square"></i>
-              {% when 'CSS Grid' %}<i class="fab fa-css3-alt"></i>
-              {% when 'JavaScript' %}<i class="fab fa-js-square"></i>
-              {% when 'Jekyll' %}<i class="fas fa-code"></i>
-              {% when 'Vibe Coding' %}<i class="fas fa-wand-magic-sparkles"></i>
-              {% else %}{{ tech }}
-              {% endcase %}
-            </span>
-            {% endfor %}
-          </div>
+      <a href="{{ p.url | relative_url }}" class="card-link">
+        <div class="cover">
+          {% if p.thumbnail %}
+          <img src="{{ p.thumbnail | relative_url }}" alt="{{ p.title | escape }}">
+          {% else %}
+          <div class="thumb-placeholder">🚀</div>
           {% endif %}
         </div>
-        {% endif %}
-      </div>
+        <div class="card-body">
+          <h3 class="title">{{ p.title | escape }}</h3>
+          {% if p.summary or p.description %}<p class="desc">{{ p.summary | default: p.description }}</p>{% endif %}
+          <div class="meta">
+            <span class="date">{{ p.date | date: "%Y. %-m" }}</span>
+          </div>
+          {% if p.tech or p.tags %}
+          <div class="tags">
+            {% if p.tags %}
+            <div class="purpose-tags">
+              {% for tag in p.tags %}
+              <span class="purpose-tag">
+                {% case tag %}
+                {% when 'visualization' %}<i class="fas fa-chart-bar"></i>{{ tag }}
+                {% when 'reading' %}<i class="fas fa-book"></i>{{ tag }}
+                {% when 'writing' %}<i class="fas fa-pen"></i>{{ tag }}
+                {% when 'productivity' %}<i class="fas fa-rocket"></i>{{ tag }}
+                {% when 'UI' %}<i class="fas fa-palette"></i>{{ tag }}
+                {% when 'ML' %}<i class="fas fa-brain"></i>{{ tag }}
+                {% when 'UX' %}<i class="fas fa-user-circle"></i>{{ tag }}
+                {% else %}{{ tag }}
+                {% endcase %}
+              </span>
+              {% endfor %}
+            </div>
+            {% endif %}
+            {% if p.tech %}
+            <div class="tech-tags">
+              {% for tech in p.tech %}
+              <span class="tech-tag" title="{{ tech }}">
+                {% case tech %}
+                {% when 'D3.js' %}<i class="fab fa-js-square"></i>
+                {% when 'CSS Grid' %}<i class="fab fa-css3-alt"></i>
+                {% when 'JavaScript' %}<i class="fab fa-js-square"></i>
+                {% when 'Jekyll' %}<i class="fas fa-code"></i>
+                {% when 'Vibe Coding' %}<i class="fas fa-wand-magic-sparkles"></i>
+                {% else %}{{ tech }}
+                {% endcase %}
+              </span>
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+          {% endif %}
+        </div>
+      </a>
     </li>
     {% endfor %}
   </ul>
