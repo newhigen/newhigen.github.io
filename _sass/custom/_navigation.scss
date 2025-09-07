@@ -40,6 +40,14 @@
   }
 
   @media screen and (max-width: $breakpoint-mobile) {
+
+    // 햄버거 아이콘을 네비 바 오른쪽에 고정(헤더 내부 기준)
+    label[for=nav-trigger],
+    .menu-icon {
+      float: none !important;
+      align-self: flex-end !important;
+    }
+
     padding-right: 45px;
   }
 }
@@ -71,20 +79,23 @@
 
   // 모바일 네비게이션 스타일
   @media screen and (max-width: $breakpoint-mobile) {
-    position: fixed;
-    top: 30px;
-    right: max(10px, env(safe-area-inset-right));
-    left: max(10px, env(safe-area-inset-left)); // 안전 영역 고려한 반응형 여백
-    width: auto;
-    max-width: none; // max-width 제한 해제
+    // 네비바 자체는 헤더 안에서 전체 폭을 차지하되 배경/테두리는 제거
+    position: absolute; // 헤더 기준 배치
+    top: -8px; // 데스크톱 네비와 동일한 위상
+    left: 0;
+    right: 0;
+    transform: none !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
     box-sizing: border-box;
-    background-color: rgba(255, 255, 255, 0.95) !important;
-    border: 1px solid #cccccc !important;
+    background-color: transparent !important; // 버튼만 보이게
+    border: none !important;
     font-size: 1rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: none;
     z-index: 1000;
-    backdrop-filter: blur(10px);
-    border-radius: 8px;
+    backdrop-filter: none;
+    border-radius: 0;
   }
 
   // 데스크톱 네비게이션 스타일 (기본 스타일 유지)
@@ -342,6 +353,37 @@
 
 // 모드 토글 반응형 (모바일)
 @media screen and (max-width: $breakpoint-mobile) {
+
+  // 햄버거 버튼(라벨)을 네비 바 오른쪽 + 수직 중앙에 고정
+  .site-nav label[for=nav-trigger] {
+    position: absolute !important;
+    top: calc(50% + 17px) !important; // 더 아래로 내림
+    right: max(10px, env(safe-area-inset-right)) !important;
+    transform: translateY(-50%) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 36px !important;
+    height: 36px !important;
+    float: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 1002;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  // 아이콘은 라벨 내부에서 중앙 정렬, 자체 포지션 제거
+  .site-nav .menu-icon {
+    position: static !important;
+    float: none !important;
+    display: block !important;
+    width: 20px !important;
+    height: 20px !important;
+    line-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
   .mode-toggle-container {
     padding: 3px;
   }
@@ -664,19 +706,26 @@
   // 트리거가 체크되었을 때만 세로 배치로 표시
   .site-nav .nav-trigger:checked~.trigger {
     display: flex !important;
+    position: absolute !important; // 드롭다운처럼 배치
+    top: calc(100% + 8px) !important; // 버튼 아래로
+    right: max(10px, env(safe-area-inset-right)) !important; // 햄버거와 동일한 오른쪽 여백
     flex-direction: column !important; // 세로 배치
-    align-items: center !important;
-    justify-content: center !important;
+    align-items: flex-end !important; // 오른쪽 정렬
+    justify-content: flex-start !important;
+    text-align: right !important;
     gap: 6px !important;
-    width: 100%;
-    max-width: none;
+    width: max-content; // 내용 너비에 맞춤
+    max-width: 90vw; // 좁은 화면에서 안전하게
     overflow: visible;
     padding: 8px;
     box-sizing: border-box;
     min-width: auto;
-    background-color: rgba(248, 250, 252, 0.95);
-    border-radius: 4px;
-    margin-top: 8px;
+    background-color: rgba(248, 250, 252, 0.98);
+    border-radius: 8px;
+    border: 1px solid #cccccc;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    margin: 0 !important;
+    z-index: 1001;
   }
 
   // 트리거가 체크되었을 때만 그룹 해제하고 세로 배치
@@ -686,10 +735,19 @@
     display: contents !important; // 그룹 해제
   }
 
+  // 분류 버튼 그룹(가운데)은 모바일 펼침 상태에서도 계속 숨김
+  .site-nav .nav-trigger:checked~.trigger .nav-group-center,
+  .site-nav .nav-trigger:checked~.trigger .nav-center--writing,
+  .site-nav .nav-trigger:checked~.trigger .nav-center--tech {
+    display: none !important;
+  }
+
   // 트리거가 체크되었을 때 모드 토글을 맨 위에 배치
+  // (가로 순서 유지: 왼쪽 그룹 아이템들 다음, 맨 아래에 오도록)
   .site-nav .nav-trigger:checked~.trigger .mode-toggle-container {
-    order: -1 !important;
-    margin-bottom: 4px !important;
+    order: 99 !important; // 가장 마지막
+    margin-top: 6px !important;
+    align-self: flex-end !important; // 오른쪽 정렬 유지
   }
 
   // 트리거가 체크되었을 때 요소 순서 정의
@@ -717,8 +775,9 @@
   .about-link.icon-with-label {
     width: auto; // 자동 너비
     max-width: none; // 최대 너비 제한 해제
-    justify-content: center; // 중앙 정렬
-    align-self: center; // 컨테이너 내에서 중앙 정렬
+    justify-content: flex-end; // 오른쪽 정렬
+    align-self: flex-end; // 컨테이너 내에서 오른쪽 정렬
+    text-align: right; // 텍스트도 오른쪽 정렬
   }
 
   // Normalize heights for icon-with-label on small screens (가로 배치)
@@ -729,9 +788,9 @@
     font-size: 0.75rem; // 폰트 크기 더 줄임
     flex-shrink: 0; // 축소 방지
     flex-direction: row; // 가로 배치 (아이콘 + 텍스트)
-    justify-content: center; // 중앙 정렬
-    text-align: center;
-    align-self: center; // 컨테이너 내에서 중앙 정렬
+    justify-content: flex-end; // 오른쪽 정렬
+    text-align: right;
+    align-self: flex-end; // 컨테이너 내에서 오른쪽 정렬
     width: auto; // 자동 너비
     white-space: nowrap; // 텍스트 줄바꿈 방지
     min-width: 60px; // 최소 너비 더 줄임
@@ -780,7 +839,7 @@
 
   // 모든 너비에서 새로운 3단 레이아웃 적용 (좁은 모바일 제외)
   // 기본 PC 화면부터 적용
-  @media screen and (min-width: 321px) {
+  @media screen and (min-width: 601px) {
     .site-nav {
       font-size: 0.9rem !important;
       background-color: rgba(255, 255, 255, 0.95) !important;
