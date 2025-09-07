@@ -24,6 +24,10 @@
   font-family: $font-family-post-content;
   max-width: 100%;
   font-size: 0.9rem; // 기본 글씨 크기 (모든 화면 크기에서 일관되게)
+  // 긴 토큰(긴 URL, 긴 단어, 인라인 코드 등)로 인한 가로 오버플로우 방지
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
 
   // 본문 내의 모든 텍스트 요소에 content 폰트와 크기 적용
   p,
@@ -336,6 +340,7 @@
   padding: $spacing-md;
   border-radius: $border-radius;
   overflow-x: auto;
+  max-width: 100%;
   margin: $spacing-lg 0;
   border: 1px solid $light-gray;
 
@@ -345,6 +350,13 @@
     border-radius: 0;
     font-size: 0.9em;
   }
+}
+
+// Rouge 하이라이터 래퍼가 pre 외곽으로 넘치지 않도록 처리
+.post-content .highlighter-rouge,
+.post-content .highlight {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 // 인라인 코드 스타일
@@ -384,7 +396,11 @@
 
 // 테이블 스타일
 .post-content table {
+  // 표가 본문 너비를 밀어내지 않도록 가로 스크롤 허용
   width: 100%;
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   border-collapse: collapse;
   margin: $spacing-lg 0;
   font-size: 0.9em;
@@ -394,12 +410,21 @@
     padding: $spacing-sm $spacing-md;
     text-align: left;
     border-bottom: 1px solid $light-gray;
+    word-break: break-word;
+    overflow-wrap: anywhere;
   }
 
   th {
     background-color: $lighter-gray;
     font-weight: 600;
   }
+}
+
+// 임베디드 미디어가 본문 너비를 넘지 않도록 제한
+.post-content iframe,
+.post-content video,
+.post-content embed {
+  max-width: 100%;
 }
 
 // 수평선 스타일
