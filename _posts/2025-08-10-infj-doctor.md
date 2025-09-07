@@ -133,10 +133,6 @@ INFJ는 의미 있는 해결책과 완결성을 추구한다.<br> 그래서 <emp
 
 불확실성 속에서도 꾸준히 노력하면 시간이 지나 결과가 드러날 것이다.[^7]<sup>(장기간 지나 드러난 재능)</sup>
 
----
-
-다른 자료와의 연결
-
 [^1]: [[도서] 80:20 학습법, 피터 홀린스, 2023](https://product.kyobobook.co.kr/detail/S000215553249)
 [^2]: [[웹사이트] Moral Decision-Making Under Uncertainty, Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/moral-decision-uncertainty/)
 [^3]: [[도서] 안다는 착각, 니시바야시 가츠히코, 2005]({% post_url 2025-08-09-did-i-understand %})

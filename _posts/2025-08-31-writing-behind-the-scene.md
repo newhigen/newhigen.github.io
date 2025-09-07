@@ -74,10 +74,6 @@ permalink: writing-behind-the-scene
 
 <emphasis><b>나는 글쓰기를 통해 더 생각하고 효과적으로 학습하며, 공개하여 한 번 더 생각하기를</b></emphasis> 기대하고, <emphasis><b>타인은 고민의 실마리를, 실수에서 용기를 얻기를</b></emphasis> 바란다.[^11]
 
----
-
-다른 자료와의 연결
-
 [^1]: [[생각] 파워 N과 파워 S가 결혼하면, 2025]({% post_url 2025-08-02-power-n-and-power-s %})
 [^2]: [[도서] 거인의 노트, 김병완, 2023](https://product.kyobobook.co.kr/detail/S000001953766)
 [^3]: [[도서] 1만 시간의 재발견, 안데르스 에릭슨, 2016](https://product.kyobobook.co.kr/detail/S000001892497)

@@ -39,10 +39,6 @@ permalink: stare-at-professional
 
 나도 잘 몰랐던 표현인데 INFJ는 관찰 이상으로 상대방을 응시하는 INFJ stare를 한다고 한다. 전문가들을 바라보았던 방식도 이런 느낌이지 않았을까 싶다. 상대방의 표면 너머의 내면을 (틀리더라도) 직관적으로 파악하려고 한다. 그런데 상대방의 입장에서는 위협적으로[^5] 느껴질 수 있다고 한다. 미디어를 통해서 상대를 볼 때는 상관없지만 같이 있는 자리에서는 불편할 수도 있으니 주의를 해야겠다.
 
----
-
-다른 자료와의 연결
-
 [^1]: [[도서] Deep Work, Cal Newport, 2016](https://product.kyobobook.co.kr/detail/S000003275587)
 [^2]: [[도서] 1만 시간의 재발견, 안데르스 에릭슨, 2016](https://product.kyobobook.co.kr/detail/S000001892497)
 [^3]: [[유튜브] 나랑 너는 급이 다르지ㅋㅋ 에 대한 솔직한 생각 털어보기, 2023](https://youtu.be/ayxKTS2pSe0?feature=shared&t=707)

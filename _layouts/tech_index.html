@@ -9,31 +9,69 @@ layout: base
   </header>
 
   <ul class="tech-list tech-home-list">
+    {% if site.tech and site.tech.size > 0 %}
+    {% for tool in site.tech %}
     <li class="tech-home-item is-article" data-tool="true">
-      <a href="{{ '/assets/tools/mac-background.html' | relative_url }}" target="_blank" class="card-link">
+      <a href="{{ tool.url | relative_url }}" class="card-link">
         <div class="cover">
-          <div class="thumb-placeholder">🖼️</div>
+          {% if tool.thumbnail %}
+          <img src="{{ tool.thumbnail | relative_url }}" alt="{{ tool.title | escape }}" />
+          {% else %}
+          <div class="thumb-placeholder">🔧</div>
+          {% endif %}
         </div>
         <div class="card-body">
-          <h3 class="title">이미지를 맥 배경으로</h3>
-          <p class="desc">이미지를 16:9 비율로 조정하고 상단에 메뉴바 검정 오버레이를 추가하는 도구</p>
+          <h3 class="title">{{ tool.title | escape }}</h3>
+          {% if tool.description %}<p class="desc">{{ tool.description }}</p>{% endif %}
           <div class="meta">
-            <span class="date">2025. 1</span>
+            <span class="date">{{ tool.date | date: "%Y. %-m" }}</span>
+            <div class="meta-tags">
+              {% if tool.mini %}<span class="mini-tag">mini</span>{% endif %}
+            </div>
           </div>
+          {% if tool.tags or tool.tech %}
           <div class="tags">
+            {% if tool.tags %}
             <div class="purpose-tags">
+              {% for tag in tool.tags %}
               <span class="purpose-tag">
-                <i class="fab fa-apple"></i>MacOS
+                {% case tag %}
+                {% when 'MacOS' %}<i class="fab fa-apple"></i>{{ tag }}
+                {% when 'Tool' %}<i class="fas fa-tools"></i>{{ tag }}
+                {% else %}{{ tag }}
+                {% endcase %}
               </span>
+              {% endfor %}
             </div>
+            {% endif %}
+            {% if tool.tech %}
             <div class="tech-tags">
-              <span class="tech-tag" title="Vibe Coding">
-                <i class="fas fa-wand-magic-sparkles"></i>
+              {% for tech in tool.tech %}
+              <span class="tech-tag" title="{{ tech }}">
+                {% case tech %}
+                {% when 'JavaScript' %}<i class="fab fa-js-square"></i>
+                {% when 'CSS' %}<i class="fab fa-css3-alt"></i>
+                {% when 'HTML' %}<i class="fab fa-html5"></i>
+                {% when 'Canvas' %}<i class="fas fa-paint-brush"></i>
+                {% when 'Vibe Coding' %}<i class="fas fa-wand-magic-sparkles"></i>
+                {% else %}{{ tech }}
+                {% endcase %}
               </span>
+              {% endfor %}
             </div>
+            {% endif %}
           </div>
+          {% endif %}
         </div>
       </a>
     </li>
+    {% endfor %}
+    {% else %}
+    <li class="tech-home-item">
+      <div class="card-body">
+        <p>아직 도구가 없습니다.</p>
+      </div>
+    </li>
+    {% endif %}
   </ul>
 </section>
