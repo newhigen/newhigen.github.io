@@ -2,7 +2,7 @@
 title: 블로그
 summary: 독서 기록과 생각 정리를 돕는 개인 블로그 시스템.
 tech: [Vibe Coding]
-thumbnail: /assets/screenshots/2025-09-01.jpg
+thumbnail: /assets/images/blog-preview.png
 date: 2025-09-01
 tags: [writing]
 ---
