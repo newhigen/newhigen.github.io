@@ -426,19 +426,55 @@
   font-weight: 500;
   cursor: pointer;
   border-radius: 6px;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
   white-space: nowrap;
   min-width: 50px;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.mode-option svg {
+  flex-shrink: 0;
+  transition: all 0.3s ease;
 }
 
 .mode-option:hover {
   color: #334155;
+  transform: translateY(-1px);
 }
 
 .mode-option[aria-pressed="true"] {
-  color: #6366f1;
+  color: #ffffff;
   font-weight: 600;
+}
+
+.mode-option[data-mode="writing"][aria-pressed="true"] {
+  color: #ffffff;
+}
+
+.mode-option[data-mode="tech"][aria-pressed="true"] {
+  color: #ffffff;
+}
+
+.mode-option[data-mode="writing"]:not([aria-pressed="true"]) {
+  color: #6b7280;
+}
+
+.mode-option[data-mode="tech"]:not([aria-pressed="true"]) {
+  color: #6b7280;
+}
+
+.mode-option[data-mode="writing"]:not([aria-pressed="true"]):hover {
+  color: #8b5cf6;
+  background: rgba(139, 92, 246, 0.1);
+}
+
+.mode-option[data-mode="tech"]:not([aria-pressed="true"]):hover {
+  color: #3b82f6;
+  background: rgba(59, 130, 246, 0.1);
 }
 
 .mode-selector {
@@ -447,10 +483,10 @@
   left: 2px;
   width: calc(50% - 2px);
   height: calc(100% - 4px);
-  background: white;
+  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
   border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1;
 }
 
@@ -462,6 +498,8 @@
 // 테크 모드일 때 selector를 오른쪽으로 이동
 [data-mode="tech"] .mode-selector {
   transform: translateX(100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
 }
 
 // 이전 스타일들 제거 - 더 이상 사용하지 않음

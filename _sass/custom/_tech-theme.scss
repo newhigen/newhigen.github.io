@@ -4,7 +4,7 @@
 
 html[data-mode='tech'] {
 
-  // Global text/link accent
+  // Global text/link accent - 테크 모드 블루 계열
   body {
     color: #0b1220;
     font-size: 0.9rem; // writing 모드와 동일한 작은 글씨 크기
@@ -17,22 +17,34 @@ html[data-mode='tech'] {
   }
 
   a {
-    color: #2563eb;
-    text-decoration-color: rgba(37, 99, 235, .4);
+    color: #3b82f6; // 토글 버튼과 동일한 테크 블루
+    text-decoration-color: rgba(59, 130, 246, .4);
     text-underline-offset: 2px;
   }
 
   a:hover {
+    color: #1d4ed8; // 토글 버튼 그라데이션 끝 색상
     text-decoration-thickness: 2px;
   }
 
-  // Header/nav subtle emphasis
+  // Header/nav subtle emphasis - 테크 모드 강조
   .site-header {
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid #dbeafe;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.02) 0%, rgba(29, 78, 216, 0.02) 100%);
   }
 
   .site-nav .page-link {
-    color: #0f172a;
+    color: #1e40af;
+  }
+
+  .site-nav .page-link:hover {
+    color: #3b82f6;
+    background: rgba(59, 130, 246, 0.1);
+  }
+
+  .site-nav .page-link.active {
+    color: #1d4ed8;
+    background: rgba(59, 130, 246, 0.15);
   }
 
   // Layout width slightly wider for docs-like feel
@@ -120,29 +132,43 @@ html[data-mode='tech'] {
     background: #e5e7eb;
   }
 
-  // Chips accent
+  // Chips accent - 테크 블루 계열
   .chip {
-    background: #e0e7ff;
-    color: #1e40af;
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    color: #1d4ed8;
+    border: 1px solid rgba(59, 130, 246, 0.2);
   }
 
   // Project cards in tech mode get more defined look
   .project-card {
     border-color: #dbeafe;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%);
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
+  }
+
+  .project-card:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.15);
+    transform: translateY(-2px);
   }
 
   .project-card .card-title a {
-    color: #0f172a;
+    color: #1e40af;
+  }
+
+  .project-card .card-title a:hover {
+    color: #3b82f6;
   }
 
   .project-card .card-links .muted {
-    color: #334155;
+    color: #475569;
   }
 
-  // Subtle grid background for content area
+  // Subtle grid background for content area - 테크 블루 계열
   .page-content {
-    background-image: linear-gradient(rgba(99, 102, 241, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.01) 0%, rgba(29, 78, 216, 0.01) 100%);
+    background-image: linear-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
     background-size: 24px 24px;
     background-position: top left;
   }
@@ -169,18 +195,19 @@ html[data-mode='tech'] {
   }
 
   .tech-home-item {
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
+    border: 1px solid #dbeafe;
+    border-radius: 12px;
     overflow: hidden;
-    background: #fff;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%);
     display: flex;
     flex-direction: column;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.08);
 
     &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
+      border-color: #3b82f6;
     }
   }
 
@@ -246,13 +273,13 @@ html[data-mode='tech'] {
   .tech-home-item .title {
     font-weight: 600;
     text-decoration: none;
-    color: #0f172a;
+    color: #1e40af;
     font-size: 15px;
     line-height: 1.4;
     margin: 0 0 6px 0;
 
     &:hover {
-      color: #2563eb;
+      color: #3b82f6;
     }
   }
 
@@ -319,13 +346,15 @@ html[data-mode='tech'] {
   }
 
   .tech-home-item.is-project .type {
-    background: #dbeafe;
-    color: #1e3a8a;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
   }
 
   .tech-home-item.is-article .type {
-    background: #dbeafe;
-    color: #1e3a8a;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
   }
 
   .tech-home-item .tags {

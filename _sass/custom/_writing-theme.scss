@@ -1,0 +1,117 @@
+// ========================================
+// Writing Mode Theme (default mode)
+// ========================================
+
+html[data-mode='writing'],
+html:not([data-mode]) {
+
+    // Global text/link accent - 글쓰기 모드 은은한 보라색 계열
+    a {
+        color: #a855f7; // 더 부드러운 보라색
+        text-decoration-color: rgba(168, 85, 247, .3);
+        text-underline-offset: 2px;
+    }
+
+    a:hover {
+        color: #7c3aed; // 호버 시 약간 진한 보라색
+        text-decoration-thickness: 2px;
+    }
+
+    // Header/nav subtle emphasis - 글쓰기 모드 강조
+    .site-header {
+        border-bottom: 1px solid #f3e8ff;
+        background: rgba(248, 250, 252, 0.8);
+    }
+
+    .site-nav .page-link {
+        color: #6b7280; // 더 차분한 색상
+    }
+
+    .site-nav .page-link:hover {
+        color: #a855f7;
+        background: rgba(168, 85, 247, 0.08);
+    }
+
+    .site-nav .page-link.active {
+        color: #7c3aed;
+        background: rgba(168, 85, 247, 0.12);
+    }
+
+    // Clean background for content area - 격자 제거
+    .page-content {
+        background: #ffffff;
+    }
+
+    // Chips accent - 글쓰기 은은한 보라색 계열
+    .chip {
+        background: #f3e8ff;
+        color: #7c3aed;
+        border: 1px solid rgba(168, 85, 247, 0.15);
+    }
+
+    // Post cards and content styling
+    .post-card {
+        border-color: #f3e8ff;
+        background: #ffffff;
+        box-shadow: 0 1px 3px rgba(168, 85, 247, 0.08);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .post-card:hover {
+        border-color: #ddd6fe;
+        box-shadow: 0 4px 12px rgba(168, 85, 247, 0.12);
+        transform: translateY(-2px);
+    }
+
+    .post-title a {
+        color: #374151; // 차분한 기본 색상
+    }
+
+    .post-title a:hover {
+        color: #a855f7;
+    }
+
+    // Post meta styling
+    .post-meta {
+        color: #6b7280;
+    }
+
+    .post-meta .category-tag {
+        background: #f3e8ff;
+        color: #7c3aed;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 11px;
+        font-weight: 500;
+        border: 1px solid rgba(168, 85, 247, 0.15);
+    }
+
+    // Blockquote styling
+    blockquote {
+        border-left: 4px solid #c4b5fd;
+        background: rgba(248, 250, 252, 0.5);
+        color: #6b7280;
+    }
+
+    // Code blocks
+    code {
+        background: #f9fafb;
+        color: #7c3aed;
+    }
+
+    pre {
+        background: #1f2937;
+        border: 1px solid #e5e7eb;
+    }
+
+    // Headings
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: #374151;
+    }
+
+}
