@@ -47,14 +47,10 @@ layout: base
           {% endif %}
           <div class="meta">
             <span class="date">{{ item.date | date: "%Y. %-m" }}</span>
-            <<<<<<< HEAD <div class="meta-tags">
-              {% if is_project %}<span class="type">프로젝트</span>{% elsif is_tool %}<span class="type">Tool</span>{% endif
-              %}
-              {% if item.mini %}<span class="mini-tag">mini</span>{% endif %}
+            {% if is_project %}<span class="type">프로젝트</span>{% elsif is_tool %}<span class="type">Tool</span>{% endif
+            %}
+            {% if item.mini %}<span class="mini-tag">mini</span>{% endif %}
           </div>
-          =======
-          {% if is_project %}<span class="type">프로젝트</span>{% endif %}
-          >>>>>>> 827646f79d9bba9f2eeff1d5b6d745141fb78226
         </div>
         {% if item.tech or item.tags %}
         <div class="tags">
