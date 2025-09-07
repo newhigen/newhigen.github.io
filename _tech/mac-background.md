@@ -2,7 +2,7 @@
 layout: tech
 title: 맥 배경화면 메뉴바 조절기
 description: 이미지를 16:9 배경화면으로 변환하고 메뉴바 높이를 조절하여 4K PNG로 출력하는 도구
-permalink: /tech/mac-background/
+permalink: /tools/mac-background/
 thumbnail: /assets/images/mac-background-menubar-tool.png
 tags: [MacOS]
 tech: [Vibe Coding]

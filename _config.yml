@@ -66,7 +66,7 @@ collections:
     permalink: /projects/:slug/
   tech:
     output: true
-    permalink: /tech/:slug/
+    permalink: /tools/:slug/
 
 defaults:
   - scope:

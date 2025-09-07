@@ -222,6 +222,14 @@
 
 // Tech detail
 .layout-tech {
+  // 부모 wrapper에서 이미 너비 제한을 하므로 여기서는 제거
+  width: 100%;
+
+  // 모바일에서 좌우 여백 조정
+  @media screen and (max-width: 768px) {
+    padding: 0 15px;
+  }
+
   .tech-header {
     margin-bottom: 12px;
   }
@@ -243,5 +251,15 @@
 
   .tech-tags {
     margin-top: 4px;
+  }
+
+  .tech-content {
+    margin-top: 10px;
+    margin-bottom: 40px;
+    max-width: 100%;
+    font-size: 0.9rem;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    hyphens: auto;
   }
 }

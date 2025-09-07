@@ -47,9 +47,9 @@ html[data-mode='tech'] {
     background: rgba(59, 130, 246, 0.15);
   }
 
-  // Layout width slightly wider for docs-like feel
+  // Layout width same as writing posts
   .page-content .wrapper {
-    max-width: 820px;
+    max-width: 600px;
   }
 
   // Headings: writing 모드와 동일한 크기로 맞춤
