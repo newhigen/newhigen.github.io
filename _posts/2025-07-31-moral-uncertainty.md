@@ -31,9 +31,5 @@ permalink: moral-uncertainty
 
 이런 질문들을 던지는 문헌들[^2]을 찾아 읽어보아야겠다.
 
----
-
-다른 자료와의 연결
-
 [^1]: [[도서] 사전확률 _ 모든 것은 예측 가능하다, 톰 치버스, 2023](https://product.kyobobook.co.kr/detail/S000215101862)
 [^2]: [[웹사이트] Moral Decision-Making Under Uncertainty, Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/moral-decision-uncertainty/)

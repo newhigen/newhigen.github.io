@@ -53,10 +53,6 @@ permalink: fake-senior-junior
 3. 실질적으로 필요한 성장에 맞는 지식을 습득하고 경험을 쌓고(실행)
 4. 내가 필요한 성장이 무엇인지 돌아보며(검증) 방향을 조금씩 틀면서 전진해 나간다(수정).
 
----
-
-다른 자료와의 연결
-
 [^1]: [[도서] 왜 나는 항상 결심만 할까?, 캘리 맥고니걸, 2012](https://product.kyobobook.co.kr/detail/S000000733034)
 [^2]: [[도서] 일의 감각, 로저 니본, 2021](https://product.kyobobook.co.kr/detail/S000001729572)
 [^3]: [[도서] 함께 자라기, 김창준, 2018](https://product.kyobobook.co.kr/detail/S000001033071)

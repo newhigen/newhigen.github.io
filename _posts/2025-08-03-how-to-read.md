@@ -49,10 +49,6 @@ permalink: how-to-read
 - “하나의 주제를 정하고 세 권 이상 읽으면 해당 주제에 대해 어느 정도 식견이 생겨요.”[^1]
 - “If you want to have a deep and balanced understanding of a smaller range of topics … you should read books from the same topic until you reach a point where you get not enough new information (this is often after about 3-5 books for me). Try to pick books that represent different perspectives.”[^12]
 
----
-
-다른 자료와의 연결
-
 [^1]: [[도서] 책 잘 읽는 방법, 김봉진, 2020](https://product.kyobobook.co.kr/detail/S000001899585)
 [^2]: [[유튜브] 아직도 책을 꼭 사서 읽는 이유?, 유현준, 2023](https://www.youtube.com/watch?v=RverOA2gM6U)
 [^3]: [[도서] 닥치는 대로 끌리는 대로 오직 재미있게 이동진 독서법, 이동진, 2023](https://product.kyobobook.co.kr/detail/S000061352973)
