@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang=" ko">
+<!-- ========================================
+   HTML Head 섹션
+   ======================================== -->
+
+<head>
+  <!-- ========================================
+      1. 기본 메타 태그
+      ======================================== -->
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ========================================
+      2. SEO 및 검색 엔진 최적화
+      ======================================== --><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>맥 배경화면 메뉴바 조절기 | newhigen</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="맥 배경화면 메뉴바 조절기" />
+<meta name="author" content="GitHub User" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="이미지를 16:9 배경화면으로 변환하고 메뉴바 높이를 조절하여 4K PNG로 출력하는 도구" />
+<meta property="og:description" content="이미지를 16:9 배경화면으로 변환하고 메뉴바 높이를 조절하여 4K PNG로 출력하는 도구" />
+<link rel="canonical" href="https://newhigen.github.io/tech/mac-background/" />
+<meta property="og:url" content="https://newhigen.github.io/tech/mac-background/" />
+<meta property="og:site_name" content="newhigen" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-09-07T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="맥 배경화면 메뉴바 조절기" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"GitHub User"},"dateModified":"2025-09-07T00:00:00+09:00","datePublished":"2025-09-07T00:00:00+09:00","description":"이미지를 16:9 배경화면으로 변환하고 메뉴바 높이를 조절하여 4K PNG로 출력하는 도구","headline":"맥 배경화면 메뉴바 조절기","mainEntityOfPage":{"@type":"WebPage","@id":"https://newhigen.github.io/tech/mac-background/"},"url":"https://newhigen.github.io/tech/mac-background/"}</script>
+<!-- End Jekyll SEO tag -->
+<!-- ========================================
+      3. 외부 리소스 로드
+      ======================================== -->
+
+  <!-- Font Awesome 아이콘 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css">
+
+  <!-- ========================================
+      4. 사이트 스타일시트
+      ======================================== -->
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/search.css">
+
+  <!-- ========================================
+      5. JavaScript 파일
+      ======================================== -->
+
+  <script src="/assets/js/toc.js" defer></script>
+  <script src="/assets/js/mode-toggle.js" defer></script><script src="/assets/js/overflow-debug.js" defer></script><!-- ========================================
+      6. 파비콘 설정
+      ======================================== -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  <!-- ========================================
+      7. RSS 피드
+      ======================================== --><link type="application/atom+xml" rel="alternate" href="https://newhigen.github.io/feed.xml" title="newhigen" /><!-- ========================================
+      8. Google Analytics (프로덕션 환경에서만)
+      ======================================== --><!-- ========================================
+      9. 커스텀 헤드 내용
+      ======================================== --><!-- 커스텀 폰트 및 스타일 정의  -->
+
+<!-- Google Fonts 및 Pretendard 폰트 로드 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+    /* Pretendard 폰트 최신 버전 */
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+
+    /* 폰트 패밀리 정의 */
+    :root {
+        --font-pretendard: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+        --font-noto: 'Noto Sans KR', sans-serif;
+    }
+
+    /* 기본 폰트 적용 */
+    body {
+        font-family: var(--font-pretendard) !important;
+    }
+
+    /* 폰트 폴백 설정 */
+    .pretendard-light {
+        font-family: var(--font-pretendard);
+        font-weight: 300;
+    }
+
+    .pretendard-regular {
+        font-family: var(--font-pretendard);
+        font-weight: 400;
+    }
+
+    .pretendard-medium {
+        font-family: var(--font-pretendard);
+        font-weight: 500;
+    }
+
+    /* 카테고리 태그 스타일 */
+    .category-tag {
+        font-size: 0.9rem;
+        color: #666666;
+        background-color: #d0d0d0;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-weight: 400;
+        display: inline-block;
+        margin: 0;
+    }
+
+    /* 목차 배경색을 사이트 배경색과 맞춤 */
+    .toc-container {
+        background: rgba(248, 250, 252, 0.5);
+        border-color: rgba(225, 228, 232, 0.8);
+    }
+
+
+    /* 모바일 네비게이션 배경색을 사이트 배경색과 맞춤 */
+    @media screen and (max-width: 600px) {
+        .site-nav {
+            background-color: rgba(243, 246, 249, 0.6);
+        }
+    }
+
+    /* 목차 토글 버튼을 눈에 띄게 만들기 */
+    .toc-toggle {
+        background: rgba(255, 255, 255, 0.9);
+        border-color: rgba(0, 0, 0, 0.2);
+        color: rgba(0, 0, 0, 0.8);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+
+    .toc-container.collapsed .toc-toggle {
+        background: rgba(255, 255, 255, 0.9);
+        border-color: rgba(0, 0, 0, 0.2);
+        color: rgba(0, 0, 0, 0.8);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+</style>
+</head>
+
+
+<body>
+    <!-- ========================================
+   사이트 헤더 (네비게이션)
+   ======================================== -->
+
+
+
+
+<header class="site-header" data-default-mode="writing" data-writing-home="/"
+  data-tech-home="/technology/">
+
+  <div class="wrapper">
+    <!-- ========================================
+        1. 네비게이션 페이지 목록 준비
+        ======================================== --><!-- ========================================
+        2. 네비게이션 메뉴 (페이지가 있는 경우만)
+        ======================================== --><nav class="site-nav">
+      <!-- ========================================
+            2-1. 모바일 메뉴 토글 버튼
+            ======================================== -->
+
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path
+              d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z" />
+          </svg>
+        </span>
+      </label>
+
+      <!-- ========================================
+            2-2. 네비게이션 메뉴 그룹
+            ======================================== -->
+
+      <div class="trigger">
+        <!-- 왼쪽 메뉴 그룹 -->
+        <div class="nav-group-left">
+          <a class="page-link home-link icon-with-label"
+            href="/"
+            title="Home" aria-label="Home">
+            <span class="home-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 10.5 12 3l9 7.5" />
+                <path d="M5 10v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V10" />
+              </svg>
+            </span>
+            <span class="caption">홈</span>
+          </a>
+          <a class="page-link search-icon icon-with-label" title="검색" aria-label="검색">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <span class="caption">검색</span>
+          </a>
+          <a class="page-link about-link icon-with-label"
+            href="/about/" title="About" aria-label="About">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="4" />
+              <path d="M6 20c0-3.314 2.686-6 6-6s6 2.686 6 6" />
+            </svg>
+            <span class="caption">About</span>
+          </a>
+          <a class="page-link books-link icon-with-label" href="/books_read/"
+            title="읽은 책들" aria-label="읽은 책들">
+            <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+            <span class="caption">읽은 책들</span>
+          </a>
+        </div>
+
+        <!-- 중앙 메뉴 그룹 (모드별 스위칭) -->
+        <div class="nav-group-center nav-center--writing">
+          <div class="nav-categories">
+            <a class="page-link"
+              href="/thought/"><i class="fa-solid fa-tag" aria-hidden="true"></i><span
+                class="label">생각</span></a>
+            <a class="page-link"
+              href="/representation/"><i class="fa-solid fa-tag" aria-hidden="true"></i><span
+                class="label">모형</span></a>
+            <a class="page-link"
+              href="/book/"><i class="fa-solid fa-tag" aria-hidden="true"></i><span
+                class="label">책</span></a>
+          </div>
+        </div>
+        <div class="nav-group-center nav-center--tech">
+          <div class="nav-categories">
+            <a class="page-link"
+              href="/projects/"><i class="fa-solid fa-tag" aria-hidden="true"></i><span
+                class="label">Projects</span></a>
+            <a class="page-link"
+              href="/tools/"><i class="fa-solid fa-tag" aria-hidden="true"></i><span
+                class="label">Tools</span></a>
+          </div>
+        </div>
+
+        <!-- 오른쪽 메뉴 그룹 -->
+        <div class="nav-group-right">
+          <div class="mode-toggle-container" role="group" aria-label="Mode toggle">
+            <div class="mode-toggle-wrapper">
+              <button class="mode-option" data-mode="writing" aria-pressed="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
+                </svg>
+                글쓰기
+              </button>
+              <button class="mode-option" data-mode="tech" aria-pressed="false">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                </svg>
+                테크
+              </button>
+              <div class="mode-selector" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav></div>
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+        <div class="wrapper">
+            <article class="layout-tech tech h-entry" itemscope itemtype="https://schema.org/TechArticle">
+  <header class="tech-header">
+    <div class="tech-meta-row">
+      <p class="reading-time">
+
+14m read
+
+</p>
+      
+      <time class="dt-published" datetime="2025-09-07T00:00:00+09:00">2025. 9. 7</time>
+    </div>
+
+    <h1 class="tech-title p-name" itemprop="headline">맥 배경화면 메뉴바 조절기</h1>
+
+    
+    <p class="tech-description" itemprop="description">이미지를 16:9 배경화면으로 변환하고 메뉴바 높이를 조절하여 4K PNG로 출력하는 도구</p>
+    
+
+    
+    <div class="tech-tags">
+      <span class="chip">MacOS</span>
+    </div>
+    
+  </header>
+
+  <div class="tech-content e-content" itemprop="articleBody">
+    <div class="tool-mac-bg">
+  <style>
+    .tool-mac-bg { font-size: 0.95rem; }
+    .tool-mac-bg .panel { display: grid; gap: 12px; grid-template-columns: 1fr; max-width: 980px; margin: 0 auto; }
+    .tool-mac-bg h2 { font-size: 1.1rem; margin: 0 0 8px; }
+    .tool-mac-bg .controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .tool-mac-bg .controls > * { background: #fff; border: 1px solid #e5e7eb; color: inherit; border-radius: 8px; padding: 8px 10px; }
+    .tool-mac-bg .controls input[type="number"]{ width: 80px; }
+    .tool-mac-bg .controls select{ min-width: 200px; }
+    .tool-mac-bg button.primary{ background: #2563eb; border-color: #2563eb; color: #fff; cursor: pointer; border-radius: 8px; padding: 8px 12px; }
+    .tool-mac-bg .download-btn{
+      position: static; /* 프리뷰 아래 배치 */
+      margin: 12px 0 0 auto; /* 오른쪽 정렬 */
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+      transition: all 0.2s ease;
+      display: none;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    .tool-mac-bg .download-btn:hover{
+      background: #1d4ed8;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+    }
+    .tool-mac-bg .download-btn:active{
+      transform: translateY(0);
+    }
+    .tool-mac-bg .download-btn svg{
+      flex-shrink: 0;
+    }
+    .tool-mac-bg button.ghost{ background: #f8fafc; border: 1px solid #e5e7eb; cursor: pointer; border-radius: 999px; padding: 6px 10px; }
+    .tool-mac-bg .drop{ border: 2px dashed #cbd5e1; border-radius: 12px; padding: 16px; text-align: center; color: #475569; background: #f8fafc; }
+    .tool-mac-bg .drop.drag{ background: #eef2ff; border-color: #6366f1; }
+    /* Safari 호환: 파일 입력을 완전히 숨기지 않고 시각적으로만 숨김 */
+    .tool-mac-bg .drop input{
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .tool-mac-bg .drop .hint{ opacity: .9; font-size: 14px; }
+    .tool-mac-bg .preview-wrap{ position: relative; border-radius: 12px; overflow: hidden; border: 1px solid #e5e7eb; background: #fff; }
+    .tool-mac-bg .preview{ position: relative; width: 100%; aspect-ratio: 16/9; background: url('/assets/images/sonoma.jpg') center/cover no-repeat; }
+    /* 맥 메뉴바 샘플(고정 높이, 경계선 제거하여 실제와 유사하게) */
+    .tool-mac-bg .sysbar{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 24px; /* 초기값, 스크립트에서 비율로 스케일 */
+      background: rgba(255,255,255,.82);
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 8px; /* 패딩은 작게 유지, 필요하면 스케일 가능 */
+      font-size: 11px; /* 초기값, 스크립트에서 비율로 스케일 */
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #333;
+      backdrop-filter: blur(20px);
+    }
+    .tool-mac-bg .menubar-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .tool-mac-bg .menubar-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .tool-mac-bg .apple-logo {
+      width: var(--icon-size, 12px);
+      height: var(--icon-size, 12px);
+      background: #333;
+      border-radius: 2px;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .tool-mac-bg .apple-logo::before {
+      content: '';
+      position: absolute;
+      top: var(--apple-dot-top, 1px);
+      right: var(--apple-dot-right, 2px);
+      width: var(--apple-dot-size, 2px);
+      height: var(--apple-dot-size, 2px);
+      background: #fff;
+      border-radius: 50%;
+    }
+    .tool-mac-bg .menu-item { font-weight: 500; opacity: 0.9; }
+    .tool-mac-bg .status-icon {
+      width: var(--status-size, 10px);
+      height: var(--status-size, 10px);
+      background: #666;
+      border-radius: 1px;
+      opacity: 0.8;
+      flex-shrink: 0;
+    }
+    /* 오른쪽 절반에만 적용되는 검정 마스크(선택값 50/70을 비율로 스케일). 메뉴바 위로 올라오도록 z-index > sysbar */
+    .tool-mac-bg .mask{ position: absolute; top: 0; right: 0; width: 50%; height: 0; background: #000; opacity: 1; pointer-events: none; z-index: 4; }
+    .tool-mac-bg .img{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: none; }
+    .tool-mac-bg .row{ display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .tool-mac-bg small{ color: #64748b; }
+  </style>
+
+  <div class="panel">
+    <h2>맥 배경화면 메뉴바 높이 조절</h2>
+
+    <div class="controls">
+      <div class="row">
+        <strong>출력 해상도: 3840×2160 (4K UHD)</strong>
+      </div>
+
+      <label class="row">메뉴바 높이(px)
+        <input id="barH" type="number" min="0" step="1" value="72" />
+        <span class="chips">
+          <button type="button" class="ghost" data-bar="50">메뉴바 높이만큼 (50)</button>
+          <button type="button" class="ghost" data-bar="72">앱 전체화면 시 빈틈 없게 (72)</button>
+        </span>
+      </label>
+
+    </div>
+
+    <div class="drop" id="drop" role="region" aria-label="이미지 드래그 앤 드롭 영역">
+      <input id="file" type="file" accept="image/*" />
+      <div><strong>이미지를 드래그해서 이곳에 놓으세요.</strong></div>
+      <div class="hint">이미지는 16:9로 맞추고, 위에서 선택한 높이만큼 검정 오버레이가 적용됩니다.</div>
+    </div>
+
+    <div class="preview-wrap">
+      <div class="preview" id="preview">
+        <img id="img" class="img" alt="preview" />
+        <div id="sysbar" class="sysbar" aria-hidden="true">
+          <div class="menubar-left">
+            <div class="apple-logo"></div>
+            <span class="menu-item">Finder</span>
+            <span class="menu-item">File</span>
+            <span class="menu-item">Edit</span>
+            <span class="menu-item">View</span>
+          </div>
+          <div class="menubar-right">
+            <div class="status-icon"></div>
+            <div class="status-icon"></div>
+            <div class="status-icon"></div>
+            <span style="font-size: 9px; opacity: 0.8;">12:34</span>
+          </div>
+        </div>
+        <div id="mask" class="mask half-right" aria-hidden="true"></div>
+      </div>
+    </div>
+    <button id="download" class="download-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <polyline points="7,10 12,15 17,10" />
+          <line x1="12" y1="15" x2="12" y2="3" />
+        </svg>
+        PNG 다운로드
+      </button>
+  </div>
+
+  <script>
+    (function () {
+      const fileInput = document.getElementById('file');
+      const drop = document.getElementById('drop');
+      const imgEl = document.getElementById('img');
+      const sysbar = document.getElementById('sysbar');
+      const mask = document.getElementById('mask');
+      const barH = document.getElementById('barH');
+      const downloadBtn = document.getElementById('download');
+      const preview = document.getElementById('preview');
+
+      // 4K 고정
+      const OUTPUT_WIDTH = 3840;
+      const OUTPUT_HEIGHT = 2160;
+
+      // 프리뷰 메뉴바는 4K 기준 50px 높이를 비율로 반영
+      const MENUBAR_PRESET_4K = 50; // 실제 메뉴바 높이(4K px)
+      const DEFAULT_BAR_4K = 72;    // 전체화면 가리기 높이(4K px)
+
+      // 상태
+      let imageBitmap = null;
+      let naturalW = 0, naturalH = 0;
+
+      // 초기값: 전체화면 가리기 높이
+      barH.value = DEFAULT_BAR_4K;
+
+      // 바 값 변경 시: 마스크만 갱신 (메뉴바는 고정)
+      const presetButtons = Array.from(document.querySelectorAll('[data-bar]'));
+      function syncPresetActive() {
+        const v = parseInt(barH.value || '0', 10);
+        let matched = false;
+        presetButtons.forEach(btn => {
+          if (parseInt(btn.dataset.bar, 10) === v) {
+            btn.classList.add('active');
+            matched = true;
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+        if (!matched) presetButtons.forEach(btn => btn.classList.remove('active'));
+      }
+
+      barH.addEventListener('input', () => { updateMaskHeight(); syncPresetActive(); });
+      presetButtons.forEach(b => {
+        b.addEventListener('click', () => { barH.value = b.dataset.bar; updateMaskHeight(); syncPresetActive(); });
+      });
+
+      function updateSysbarDimensions() {
+        const rect = preview.getBoundingClientRect();
+        const previewH = rect.height; // CSS px
+        const barPx = Math.max(0, parseInt(barH.value || '0', 10));
+
+        // 프리뷰 메뉴바는 4K 기준 50px을 비율로 스케일
+        const sysH = Math.round(previewH * (MENUBAR_PRESET_4K / OUTPUT_HEIGHT));
+        sysbar.style.height = sysH + 'px';
+        // 텍스트 크기도 메뉴바 높이에 맞춰 비율로 스케일 (기본 24px -> 11px 비례)
+        const fontPx = Math.max(9, Math.round(sysH * (11/24)));
+        sysbar.style.fontSize = fontPx + 'px';
+
+        // 아이콘 크기를 메뉴바 높이에 맞춰 스케일
+        const iconSize = Math.max(8, Math.round(sysH * (12/24)));
+        const statusSize = Math.max(8, Math.round(sysH * (10/24)));
+        const dotSize = Math.max(1, Math.round(sysH * (2/24)));
+        const dotTop = Math.max(1, Math.round(sysH * (1/24)));
+        const dotRight = Math.max(1, Math.round(sysH * (2/24)));
+        sysbar.style.setProperty('--icon-size', iconSize + 'px');
+        sysbar.style.setProperty('--status-size', statusSize + 'px');
+        sysbar.style.setProperty('--apple-dot-size', dotSize + 'px');
+        sysbar.style.setProperty('--apple-dot-top', dotTop + 'px');
+        sysbar.style.setProperty('--apple-dot-right', dotRight + 'px');
+
+        // 마스크도 함께 갱신 (초기/리사이즈 시)
+        const maskH = Math.round(previewH * (barPx / OUTPUT_HEIGHT));
+        mask.style.height = maskH + 'px';
+      }
+      function updateMaskHeight() {
+        const rect = preview.getBoundingClientRect();
+        const previewH = rect.height;
+        const barPx = Math.max(0, parseInt(barH.value || '0', 10));
+        const maskH = Math.round(previewH * (barPx / OUTPUT_HEIGHT));
+        mask.style.height = maskH + 'px';
+      }
+      window.addEventListener('resize', updateSysbarDimensions);
+      updateSysbarDimensions();
+      syncPresetActive();
+
+      // 파일 로드
+      function setImage(file) {
+        if (!file) return;
+        const url = URL.createObjectURL(file);
+        imgEl.src = url;
+        imgEl.style.display = 'block'; // 이미지가 로드되면 표시
+        downloadBtn.style.display = 'flex'; // 다운로드 버튼 표시
+        imgEl.onload = async () => {
+          // ImageBitmap으로 보관 (고속 드로잉)
+          imageBitmap = await createImageBitmap(file);
+          naturalW = imageBitmap.width;
+          naturalH = imageBitmap.height;
+          URL.revokeObjectURL(url);
+        }
+      }
+
+      fileInput.addEventListener('change', e => setImage(e.target.files[0]));
+      // 드롭
+      ['dragenter', 'dragover'].forEach(ev => drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.add('drag'); }));
+      ['dragleave', 'drop'].forEach(ev => drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.remove('drag'); }));
+      // 클릭으로 파일 선택 창을 열지 않음 (드래그 앤 드롭만 허용)
+      drop.addEventListener('drop', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const f = e.dataTransfer.files?.[0];
+        if (f && f.type.startsWith('image/')) setImage(f);
+      });
+
+      // 캔버스에 cover 방식으로 그리기
+      function drawCover(ctx, img, cw, ch) {
+        const iw = img.width, ih = img.height;
+        const cr = cw / ch;        // canvas ratio
+        const ir = iw / ih;        // image ratio
+        let dw, dh, dx, dy;
+        if (ir > cr) {
+          // 이미지가 더 가로로 김 -> 높이에 맞추고 좌우 잘라내기
+          dh = ch;
+          dw = Math.round(ch * ir);
+          dx = Math.round((cw - dw) / 2);
+          dy = 0;
+        } else {
+          // 이미지가 더 세로로 김 -> 너비에 맞추고 상하 잘라내기
+          dw = cw;
+          dh = Math.round(cw / ir);
+          dx = 0;
+          dy = Math.round((ch - dh) / 2);
+        }
+        ctx.drawImage(img, dx, dy, dw, dh);
+      }
+
+      // 다운로드
+      downloadBtn.addEventListener('click', async () => {
+        if (!imageBitmap) {
+          alert('먼저 이미지를 올려라.');
+          return;
+        }
+
+        const canvas = document.createElement('canvas');
+        canvas.width = OUTPUT_WIDTH;
+        canvas.height = OUTPUT_HEIGHT;
+        const ctx = canvas.getContext('2d');
+
+        // 배경 검정
+        ctx.fillStyle = '#000';
+        ctx.fillRect(0, 0, OUTPUT_WIDTH, OUTPUT_HEIGHT);
+
+        // 이미지 cover
+        drawCover(ctx, imageBitmap, OUTPUT_WIDTH, OUTPUT_HEIGHT);
+
+        // 메뉴바 오버레이
+        const barPx = Math.max(0, parseInt(barH.value || '0', 10));
+        if (barPx > 0) {
+          ctx.fillStyle = '#000';
+          ctx.fillRect(0, 0, OUTPUT_WIDTH, barPx);
+        }
+
+        // 저장
+        const url = canvas.toDataURL('image/png');
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `wallpaper_4K_${OUTPUT_WIDTH}x${OUTPUT_HEIGHT}_bar${barPx}.png`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+      });
+
+    })();
+  </script>
+</div>
+
+  </div>
+
+  <a class="u-url" href="/tech/mac-background/" hidden></a>
+</article>
+
+
+        </div>
+    </main>
+
+    <div id="search-popup" class="search-popup">
+    <div class="search-content">
+        <div class="search-header">
+            <input type="text" id="search-input" placeholder="검색어를 입력하세요...">
+            <button id="search-close">×</button>
+        </div>
+        <div id="search-results"></div>
+    </div>
+</div>
+
+
+<script src="/assets/js/search.js"></script>
+
+
+    <!-- 기술 스택 툴팁 스크립트 -->
+    <script src="/assets/js/tech-tooltip.js"></script>
+</body>
+
+</html>
