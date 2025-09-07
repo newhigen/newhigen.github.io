@@ -154,35 +154,41 @@
    5. 책 목록 링크 스타일
    ======================================== */
 
-/* 기본 링크 호버 효과 */
-.book-link:hover {
-    background: linear-gradient(to bottom, transparent 65%, rgba(139, 186, 229, 0.6) 35%) !important;
+/* 후기 링크 - 보라색 형광펜, 글씨색은 검은색 유지 */
+.book-link { 
+    background: linear-gradient(to bottom, transparent 70%, rgba(167, 139, 250, 0.28) 30%) !important; 
+    color: #0f172a !important; 
+    font-weight: 500; 
+    padding: 0; 
+    border: none; 
+    text-decoration: none;
 }
 
-/* 후기 링크 스타일 */
-.book-link {
-    background: linear-gradient(to bottom, transparent 65%, rgba(116, 192, 252, 0.5) 35%) !important;
+.book-link:hover { 
+    background: linear-gradient(to bottom, transparent 70%, rgba(167, 139, 250, 0.45) 30%) !important; 
+    color: #0f172a !important; 
+    text-decoration: none;
 }
 
-.book-link:hover {
-    background: linear-gradient(to bottom, transparent 65%, rgba(25, 113, 194, 0.7) 35%) !important;
+.book-link:visited {
+    color: #0f172a !important;
 }
 
-/* 짧은 글 태그는 하이라이트에서 제외 */
-.book-link .short-post-tag {
-    background: none !important;
-    background-image: none !important;
-    background-color: #6ba3e8 !important;
-    font-size: 9px !important;
+/* 짧은 글 링크도 동일한 형광펜 적용 */
+.book-link.no-highlight { 
+    background: linear-gradient(to bottom, transparent 70%, rgba(167, 139, 250, 0.28) 30%) !important; 
+    color: #0f172a !important; 
+    text-decoration: none;
 }
 
-/* 짧은 글 링크도 일반 글과 동일한 하이라이트 적용 */
-.book-link.no-highlight {
-    background: linear-gradient(to bottom, transparent 65%, rgba(116, 192, 252, 0.5) 35%) !important;
+.book-link.no-highlight:hover { 
+    background: linear-gradient(to bottom, transparent 70%, rgba(167, 139, 250, 0.45) 30%) !important; 
+    color: #0f172a !important; 
+    text-decoration: none; 
 }
 
-.book-link.no-highlight:hover {
-    background: linear-gradient(to bottom, transparent 65%, rgba(25, 113, 194, 0.7) 35%) !important;
+.book-link.no-highlight:visited {
+    color: #0f172a !important;
 }
 
 /* 짧은 글 태그 스타일 (홈페이지와 동일) */
@@ -204,23 +210,46 @@
     white-space: nowrap;
 }
 
-/* 재읽기 태그 스타일 */
+/* 재읽기 태그: 히트맵 스타일 */
 .reread-tag {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     font-size: 9px !important;
-    color: #ffffff !important;
-    background-color: #d73a49 !important;
-    padding: 1px 3px;
+    padding: 1px 6px;
     margin-left: 3px;
-    border-radius: 2px;
-    border: none;
-    font-weight: 500;
+    border-radius: 3px;
+    border: none !important;
+    font-weight: 600;
     vertical-align: middle;
-    opacity: 1;
-    position: relative;
-    z-index: 1;
-    flex-shrink: 0;
     white-space: nowrap;
+}
+
+/* 2회차: 매우 연한 노란색 배경, 연한 노란색 글씨 */
+.reread-tag[data-count="2"] {
+    background: #fffbeb !important;
+    color: #f59e0b !important;
+}
+
+/* 3회차: 매우 연한 주황색 배경, 연한 주황색 글씨 */
+.reread-tag[data-count="3"] {
+    background: #fff7ed !important;
+    color: #f97316 !important;
+}
+
+/* 4회차: 매우 연한 빨간색 배경, 연한 빨간색 글씨 */
+.reread-tag[data-count="4"] {
+    background: #fef2f2 !important;
+    color: #ef4444 !important;
+}
+
+/* 5회차 이상: 매우 연한 진빨간색 배경, 연한 빨간색 글씨 */
+.reread-tag[data-count="5"],
+.reread-tag[data-count="6"],
+.reread-tag[data-count="7"],
+.reread-tag[data-count="8"],
+.reread-tag[data-count="9"] {
+    background: #fef2f2 !important;
+    color: #dc2626 !important;
 }
 
 /* ========================================

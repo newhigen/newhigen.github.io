@@ -322,14 +322,14 @@ function generateBooksList() {
         booksByYear[book.year].push(book);
     });
 
-            // 년도별로 정렬 (최신순)
-        const sortedYears = Object.keys(booksByYear).sort((a, b) => b - a);
-        const currentYear = new Date().getFullYear();
-        
-        // 각 년도 내에서 월별 정렬 (최신순)
-        sortedYears.forEach(year => {
-            booksByYear[year].sort((a, b) => b.month - a.month);
-        });
+    // 년도별로 정렬 (최신순)
+    const sortedYears = Object.keys(booksByYear).sort((a, b) => b - a);
+    const currentYear = new Date().getFullYear();
+
+    // 각 년도 내에서 월별 정렬 (최신순)
+    sortedYears.forEach(year => {
+        booksByYear[year].sort((a, b) => b.month - a.month);
+    });
 
     // 2컬럼 컨테이너 생성
     const twoColumnContainer = document.createElement('div');
@@ -405,11 +405,10 @@ function generateBooksList() {
                     link.className = 'book-link no-highlight';
                     titleContainer.appendChild(link);
 
-                    // 태그를 별도 요소로 추가
+                    // 태그를 별도 요소로 추가 (스타일은 CSS로 처리)
                     const tag = document.createElement('span');
                     tag.className = 'short-post-tag';
                     tag.textContent = '짧은 글';
-                    tag.style.cssText = 'display: inline-block !important; font-size: 9px !important; color: #666666 !important; background-color: #e8e8e8 !important; padding: 1px 3px !important; margin-left: 3px !important; border-radius: 2px !important; border: none !important; font-weight: 500 !important; vertical-align: middle !important; opacity: 1 !important; position: relative !important; z-index: 1 !important; flex-shrink: 0 !important; white-space: nowrap !important;';
                     titleContainer.appendChild(tag);
                 } else {
                     link.className = 'book-link';
@@ -421,7 +420,7 @@ function generateBooksList() {
                     const rereadTag = document.createElement('span');
                     rereadTag.className = 'reread-tag';
                     rereadTag.textContent = `${bookCount}회차`;
-                    rereadTag.style.cssText = 'display: inline-block; font-size: 9px; color: #ffffff; background-color: #d73a49; padding: 1px 3px; margin-left: 3px; border-radius: 2px; border: none; font-weight: 500; vertical-align: middle; opacity: 1; position: relative; z-index: 1; flex-shrink: 0; white-space: nowrap;';
+                    rereadTag.setAttribute('data-count', bookCount);
                     titleContainer.appendChild(rereadTag);
                 }
             } else {
@@ -438,7 +437,7 @@ function generateBooksList() {
                     const rereadTag = document.createElement('span');
                     rereadTag.className = 'reread-tag';
                     rereadTag.textContent = `${bookCount}회차`;
-                    rereadTag.style.cssText = 'display: inline-block; font-size: 9px; color: #ffffff; background-color: #d73a49; padding: 1px 3px; margin-left: 3px; border-radius: 2px; border: none; font-weight: 500; vertical-align: middle; opacity: 1; position: relative; z-index: 1; flex-shrink: 0; white-space: nowrap;';
+                    rereadTag.setAttribute('data-count', bookCount);
                     titleContainer.appendChild(rereadTag);
                 }
             }
