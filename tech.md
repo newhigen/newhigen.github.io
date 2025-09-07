@@ -1,7 +1,7 @@
 ---
 layout: base
 title: Tech
-permalink: /tech/
+permalink: /technology/
 ---
 
 <div class="page-content">

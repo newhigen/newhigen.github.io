@@ -3,12 +3,12 @@
    ======================================== -->
 
 {% assign default_mode = 'writing' %}
-{% if page.url contains '/projects/' or page.url contains '/tech/' or page.url contains '/tools/' %}
+{% if page.url contains '/projects/' or page.url contains '/technology/' or page.url contains '/tools/' %}
 {% assign default_mode = 'tech' %}
 {% endif %}
 
 <header class="site-header" data-default-mode="{{ default_mode }}" data-writing-home="{{ '/' | relative_url }}"
-  data-tech-home="{{ '/tech/' | relative_url }}">
+  data-tech-home="{{ '/technology/' | relative_url }}">
 
   <div class="wrapper">
     <!-- ========================================
@@ -46,8 +46,8 @@
       <div class="trigger">
         <!-- 왼쪽 메뉴 그룹 -->
         <div class="nav-group-left">
-          <a class="page-link home-link icon-with-label{% if page.url == '/' or page.url == '/tech/' %} active{% endif %}"
-            href="{% if default_mode == 'tech' %}{{ '/tech/' | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}"
+          <a class="page-link home-link icon-with-label{% if page.url == '/' or page.url == '/technology/' %} active{% endif %}"
+            href="{% if default_mode == 'tech' %}{{ '/technology/' | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}"
             title="Home" aria-label="Home">
             <span class="home-icon" aria-hidden="true">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
