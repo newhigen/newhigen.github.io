@@ -14,7 +14,7 @@ layout: base
   <ul class="tech-list tech-home-list">
     <!-- Tools 카드 추가 -->
     <li class="tech-home-item is-article" data-tool="true">
-      <a href="{{ '/assets/tools/mac-background.html' | relative_url }}" target="_blank" class="card-link">
+      <a href="{{ '/tech/mac-background/' | relative_url }}" class="card-link">
         <div class="cover">
           <div class="thumb-placeholder">🖼️</div>
         </div>
@@ -43,6 +43,7 @@ layout: base
 
     {% if items and items.size > 0 %}
     {% for item in items %}
+    {% unless item.url contains '/tech/mac-background/' %}
     {% assign is_project = false %}
     {% if item.collection == 'projects' or item.url contains '/projects/' %}
     {% assign is_project = true %}
@@ -118,6 +119,7 @@ layout: base
         </div>
       </a>
     </li>
+    {% endunless %}
     {% endfor %}
     {% endif %}
   </ul>
