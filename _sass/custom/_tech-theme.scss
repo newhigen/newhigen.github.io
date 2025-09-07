@@ -229,6 +229,24 @@ html[data-mode='tech'] {
     }
   }
 
+  // 카드 전체를 클릭 가능하게 만드는 링크 스타일
+  .tech-home-item .card-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    &:visited {
+      color: inherit;
+    }
+  }
+
   .tech-home-item .cover {
     display: block;
     background: #f8fafc;
