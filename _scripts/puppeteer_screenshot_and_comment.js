@@ -177,6 +177,12 @@ class PuppeteerScreenshotAndComment {
             { url: 'http://localhost:4000/books_read/', name: 'books_read_page_mobile', viewport: { width: 375, height: 667 } },
             { url: 'http://localhost:4000/thought/', name: 'thoughts_page_desktop', viewport: { width: 1024, height: 768 } },
             { url: 'http://localhost:4000/thought/', name: 'thoughts_page_mobile', viewport: { width: 375, height: 667 } },
+            { url: 'http://localhost:4000/technology/', name: 'tech_home_desktop', viewport: { width: 1024, height: 768 } },
+            { url: 'http://localhost:4000/technology/', name: 'tech_home_mobile', viewport: { width: 375, height: 667 } },
+            { url: 'http://localhost:4000/projects/', name: 'projects_page_desktop', viewport: { width: 1024, height: 768 } },
+            { url: 'http://localhost:4000/projects/', name: 'projects_page_mobile', viewport: { width: 375, height: 667 } },
+            { url: 'http://localhost:4000/tech/mac-background/', name: 'mac_tool_desktop', viewport: { width: 1024, height: 768 } },
+            { url: 'http://localhost:4000/tech/mac-background/', name: 'mac_tool_mobile', viewport: { width: 375, height: 667 } },
             { url: 'http://localhost:4000/about/', name: 'about_page_desktop', viewport: { width: 1024, height: 768 } },
             { url: 'http://localhost:4000/about/', name: 'about_page_mobile', viewport: { width: 375, height: 667 } }
         ];
@@ -193,6 +199,12 @@ class PuppeteerScreenshotAndComment {
             'http://localhost:4000/books_read/ (Mobile)',
             'http://localhost:4000/thought/ (Desktop)',
             'http://localhost:4000/thought/ (Mobile)',
+            'http://localhost:4000/technology/ (Desktop)',
+            'http://localhost:4000/technology/ (Mobile)',
+            'http://localhost:4000/projects/ (Desktop)',
+            'http://localhost:4000/projects/ (Mobile)',
+            'http://localhost:4000/tech/mac-background/ (Desktop)',
+            'http://localhost:4000/tech/mac-background/ (Mobile)',
             'http://localhost:4000/about/ (Desktop)',
             'http://localhost:4000/about/ (Mobile)'
         ];
