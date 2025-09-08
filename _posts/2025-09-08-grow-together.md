@@ -77,9 +77,8 @@ publication_year: 2018
 
 ### A, B, C 작업 #2-1
 
-![abc작업](../assets/images/grow-together/abc작업.png)
+![abc작업](../assets/images/grow-together/abc작업.png)
 
-[abc작업]()
 
 - 맨 아래 make it work, right, fast는 책 내용은 아니고 코딩 피라미드가 연상되서 기입
 - ABC 모델은 더글라스 앵글바트가 말했다.
@@ -92,8 +91,6 @@ publication_year: 2018
 - 부분의 합 < 전체
 
 ![조직](../assets/images/grow-together/조직.png)
-
-[조직]()
 
 - 직전 결과물로 다음 결과물 개선
     - 부트스트레핑
