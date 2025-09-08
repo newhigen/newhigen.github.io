@@ -551,18 +551,24 @@
 
 // 이미지 스타일 (그림자 효과)
 .post-content img {
-  max-width: 100%;
+  max-width: 70%; // 원본 크기의 70%로 축소
   height: auto;
   display: block;
   margin: 20px auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 
-  // 모바일에서 약간 작은 그림자
+  // 모바일에서는 80%로 설정하여 화면에 맞게
   @media screen and (max-width: $breakpoint-mobile) {
+    max-width: 80%;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
     border-radius: 6px;
     margin: 15px auto;
+  }
+
+  // 태블릿에서는 75%
+  @media screen and (min-width: $breakpoint-mobile) and (max-width: $breakpoint-desktop) {
+    max-width: 75%;
   }
 }
 
