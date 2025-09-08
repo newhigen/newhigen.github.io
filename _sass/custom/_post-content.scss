@@ -389,9 +389,45 @@
   padding-left: $spacing-xl;
 
   li {
-    margin-bottom: $spacing-sm;
+    margin-bottom: 2px; // 리스트 아이템 간격 줄이기 (기존 $spacing-sm → 2px)
     line-height: 1.6;
+
+    // li 내부 문단의 추가 간격을 줄여 전체 간격 축소
+    >p {
+      margin: 0.2em 0;
+    }
   }
+}
+
+// 문단 바로 다음에 오는 리스트의 위 간격을 아이템 간격(2px)과 동일하게
+.post-content p+ul,
+.post-content p+ol {
+  margin-top: 2px;
+}
+
+// 문단 바로 다음에 리스트가 오는 경우, 문단의 아래 간격도 2px로 축소
+// (마진 겹침을 고려하여 p와 ul/ol 모두 2px로 설정)
+.post-content p:has(+ ul),
+.post-content p:has(+ ol) {
+  margin-bottom: 2px;
+}
+
+// 리스트 아이템 내부에서 문단 다음에 오는 중첩 리스트도 동일 규칙 적용
+.post-content li>p+ul,
+.post-content li>p+ol {
+  margin-top: 2px;
+}
+
+.post-content li>p:has(+ ul),
+.post-content li>p:has(+ ol) {
+  margin-bottom: 2px;
+}
+
+// 어떤 요소 뒤에 오든, 중첩 리스트 자체의 기본 위/아래 간격 축소
+.post-content li>ul,
+.post-content li>ol {
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 // 테이블 스타일
@@ -513,10 +549,42 @@
   }
 }
 
+// 이미지 스타일 (그림자 효과)
+.post-content img {
+  max-width: 70%; // 원본 크기의 70%로 축소
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+
+  // 모바일에서는 80%로 설정하여 화면에 맞게
+  @media screen and (max-width: $breakpoint-mobile) {
+    max-width: 80%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    margin: 15px auto;
+  }
+
+  // 태블릿에서는 75%
+  @media screen and (min-width: $breakpoint-mobile) and (max-width: $breakpoint-desktop) {
+    max-width: 75%;
+  }
+}
+
 // 커스텀 강조 요소들
 .post-content emphasis {
+  display: inline; // 인라인 요소로 고정하여 줄바꿈 방지
+  padding: 0; // 수평 패딩 제거: 줄바꿈 유발 폭 증가 방지
   background-color: #fff9c4;
   border-radius: $border-radius-sm;
+  -webkit-box-decoration-break: clone; // 줄바꿈 시 배경/모서리 끊김 없이 복제
+  box-decoration-break: clone;
+}
+
+// 강조 뒤에 단어가 붙을 때 줄바꿈 방지용 Word Joiner(U+2060) 삽입
+.post-content emphasis::after {
+  content: "\2060";
 }
 
 .post-content best {
