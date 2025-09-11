@@ -142,7 +142,8 @@
   // 모바일에서 글씨 크기와 간격 줄이기
   @media screen and (max-width: $breakpoint-mobile) {
     font-size: 1.3rem; // 모바일에서도 크기 더 줄이기 (1.5rem → 1.3rem)
-    margin-top: 25px; // 모바일에서 위 간격 줄이기 (30px → 25px)
+    font-weight: 600; // 모바일에서 약간 더 진하게
+    margin-top: 30px; // 모바일에서 위 간격 약간 추가 (25px → 30px)
     margin-bottom: 20px; // 모바일에서 아래 간격 넓히기 (10px → 20px)
   }
 
@@ -161,7 +162,8 @@
   // 모바일에서 글씨 크기와 간격 줄이기
   @media screen and (max-width: $breakpoint-mobile) {
     font-size: 1.1rem; // 모바일에서도 크기 더 줄이기 (1.3rem → 1.1rem)
-    margin-top: 20px; // 모바일에서 위 간격 줄이기 (25px → 20px)
+    font-weight: 600; // 모바일에서 약간 더 진하게
+    margin-top: 24px; // 모바일에서 위 간격 약간 추가 (20px → 24px)
     margin-bottom: 15px; // 모바일에서도 아래 간격 줄이기 (18px → 15px)
   }
 
@@ -180,7 +182,8 @@
   // 모바일에서 글씨 크기와 간격 줄이기
   @media screen and (max-width: $breakpoint-mobile) {
     font-size: 1rem; // 모바일에서도 크기 더 줄이기 (1.1rem → 1rem)
-    margin-top: 25px; // 모바일에서 위 간격 줄이기 (30px → 25px)
+    font-weight: 600; // 모바일에서 약간 더 진하게
+    margin-top: 30px; // 모바일에서 위 간격 약간 추가 (25px → 30px)
     margin-bottom: 12px; // 모바일에서도 아래 간격 줄이기 (15px → 12px)
   }
 
@@ -198,7 +201,8 @@
 
   @media screen and (max-width: $breakpoint-mobile) {
     font-size: 0.95rem; // 모바일에서도 크기 줄이기 (1rem → 0.95rem)
-    margin-top: 20px;
+    font-weight: 600; // 모바일에서 약간 더 진하게
+    margin-top: 24px; // 모바일에서 위 간격 약간 추가 (20px → 24px)
     margin-bottom: 10px;
   }
 
@@ -216,7 +220,8 @@
 
   @media screen and (max-width: $breakpoint-mobile) {
     font-size: 0.9rem; // 모바일에서도 크기 줄이기 (0.95rem → 0.9rem)
-    margin-top: 18px;
+    font-weight: 600; // 모바일에서 약간 더 진하게
+    margin-top: 22px; // 모바일에서 위 간격 약간 추가 (18px → 22px)
     margin-bottom: 8px;
   }
 
@@ -234,7 +239,8 @@
 
   @media screen and (max-width: $breakpoint-mobile) {
     font-size: 0.85rem; // 모바일에서도 크기 줄이기 (0.9rem → 0.85rem)
-    margin-top: 15px;
+    font-weight: 600; // 모바일에서 약간 더 진하게
+    margin-top: 20px; // 모바일에서 위 간격 약간 추가 (15px → 20px)
     margin-bottom: 6px;
   }
 
