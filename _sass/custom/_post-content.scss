@@ -6,7 +6,7 @@
 
 // 포스트 컨테이너
 .post {
-  max-width: 600px; // 너비 더 줄이기 (700px → 600px)
+  max-width: 600px; // 기본 너비
   margin: 0 auto;
   padding: 0 20px;
 
@@ -14,6 +14,11 @@
   @media screen and (max-width: $breakpoint-mobile) {
     padding: 0;
     margin: 0 -5px; // 음수 마진으로 더 넓게
+  }
+
+  // 데스크톱(비모바일)에서 본문 폭 넓히기
+  @media screen and (min-width: $breakpoint-desktop) {
+    max-width: 720px;
   }
 }
 
@@ -42,9 +47,9 @@
     line-height: 1.6; // line-height 약간 키우기 (1.5 → 1.6)
   }
 
-  // PC에서 본문 글씨 크기 (기본과 동일하게 유지)
+  // PC에서 본문 글씨 크기 키우기 (모바일 제외)
   @media screen and (min-width: $breakpoint-desktop) {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
 
     p,
     li,
@@ -53,7 +58,7 @@
     i,
     span,
     div {
-      font-size: 0.9rem;
+      font-size: 1.2rem;
     }
   }
 
