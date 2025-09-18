@@ -15,7 +15,7 @@
     "title": "경험 + 지식 = 숙련",
     "categories": "생각",
     "tags": [],
-    "content_length": 522,
+    "content_length": 507,
     "is_short": true,
     "book_citations": []
   },
@@ -25,7 +25,7 @@
     "title": "내게 남은 스물다섯 번의 계절",
     "categories": "책",
     "tags": [],
-    "content_length": 936,
+    "content_length": 906,
     "is_short": true,
     "book_citations": []
   },
@@ -35,7 +35,7 @@
     "title": "불확실성과 개인의 한계에서의 도덕적 선택",
     "categories": "생각",
     "tags": [],
-    "content_length": 1078,
+    "content_length": 1057,
     "is_short": false,
     "book_citations": []
   },
@@ -45,7 +45,7 @@
     "title": "파워 N과 파워 S가 결혼하면",
     "categories": "생각",
     "tags": [],
-    "content_length": 1449,
+    "content_length": 1447,
     "is_short": false,
     "book_citations": []
   },
@@ -55,7 +55,7 @@
     "title": "독서법",
     "categories": "효과적_모형",
     "tags": [],
-    "content_length": 3218,
+    "content_length": 3197,
     "is_short": false,
     "book_citations": [
       "책 잘 읽는 방법",
@@ -68,7 +68,7 @@
     "title": "전문가의 표정",
     "categories": "생각",
     "tags": [],
-    "content_length": 1908,
+    "content_length": 1889,
     "is_short": false,
     "book_citations": [
       "Deep Work",
@@ -82,7 +82,7 @@
     "title": "책을 고르는 시야 - 인지적 편향 부수기 (1)",
     "categories": "생각",
     "tags": [],
-    "content_length": 1070,
+    "content_length": 1052,
     "is_short": false,
     "book_citations": [
       "안다는 착각"
@@ -94,7 +94,7 @@
     "title": "안다는 착각",
     "categories": "책",
     "tags": [],
-    "content_length": 3293,
+    "content_length": 3244,
     "is_short": false,
     "book_citations": []
   },
@@ -104,7 +104,7 @@
     "title": "INFJ 의사의 병원 일기",
     "categories": "책",
     "tags": [],
-    "content_length": 3913,
+    "content_length": 3882,
     "is_short": false,
     "book_citations": [
       "80:20 학습법",
@@ -119,7 +119,7 @@
     "title": "단 한 번의 삶",
     "categories": "책",
     "tags": [],
-    "content_length": 668,
+    "content_length": 649,
     "is_short": true,
     "book_citations": [
       "내게 남은 스물다섯 번의 계절",
@@ -132,7 +132,7 @@
     "title": "노트의 품격",
     "categories": "책",
     "tags": [],
-    "content_length": 2487,
+    "content_length": 2461,
     "is_short": false,
     "book_citations": []
   },
@@ -142,7 +142,7 @@
     "title": "달리기를 말할 때 내가 하고 싶은 이야기",
     "categories": "책",
     "tags": [],
-    "content_length": 5228,
+    "content_length": 5180,
     "is_short": false,
     "book_citations": [
       "Deep Work"
@@ -154,7 +154,7 @@
     "title": "Appreciation as Word",
     "categories": "생각",
     "tags": [],
-    "content_length": 2811,
+    "content_length": 2765,
     "is_short": false,
     "book_citations": [
       "1만 시간의 재발견",
@@ -167,7 +167,7 @@
     "title": "헬스는 쪼렙입니다만",
     "categories": "책",
     "tags": [],
-    "content_length": 283,
+    "content_length": 280,
     "is_short": true,
     "book_citations": []
   },
@@ -177,7 +177,7 @@
     "title": "시니어처럼 보이고 싶은 주니어 - 인지적 편향 부수기 (2)",
     "categories": "생각",
     "tags": [],
-    "content_length": 2949,
+    "content_length": 2933,
     "is_short": false,
     "book_citations": [
       "왜 나는 항상 결심만 할까?",
@@ -191,7 +191,7 @@
     "title": "내 글쓰기의 무대 뒤",
     "categories": "생각",
     "tags": [],
-    "content_length": 4003,
+    "content_length": 3987,
     "is_short": false,
     "book_citations": [
       "거인의 노트",
@@ -214,20 +214,54 @@
     "is_short": true,
     "book_citations": []
   },
+  "grow-together": {
+    "filename": "2025-09-08-grow-together",
+    "date": "2025-09-08",
+    "title": "함께 자라기",
+    "categories": "책",
+    "tags": [],
+    "content_length": 5052,
+    "is_short": false,
+    "book_citations": [
+      "실용주의 사고와 학습",
+      "1만 시간의 재발견",
+      "제텔카스텐",
+      "완벽한 선택은 없다",
+      "피플웨어"
+    ]
+  },
+  "discovery-of-detail": {
+    "filename": "2025-09-19-discovery-of-detail",
+    "date": "2025-09-19",
+    "title": "디테일의 발견",
+    "categories": "책",
+    "tags": [],
+    "content_length": 4968,
+    "is_short": false,
+    "book_citations": [
+      "실용주의 사고와 학습",
+      "제텔카스텐",
+      "안다는 착각",
+      "INFJ 의사의 병원 일기"
+    ]
+  },
   "_book_citation_stats": {
     "책 잘 읽는 방법": 1,
     "진작 이렇게 책을 읽었더라면": 1,
     "Deep Work": 2,
-    "1만 시간의 재발견": 3,
+    "1만 시간의 재발견": 4,
     "내게 남은 스물다섯 번의 계절": 2,
-    "안다는 착각": 3,
+    "안다는 착각": 4,
     "80:20 학습법": 1,
-    "실용주의 사고와 학습": 2,
+    "실용주의 사고와 학습": 4,
     "달리기를 말할 때 내가 하고 싶은 이야기": 3,
     "왜 나는 항상 결심만 할까?": 2,
     "함께 자라기": 2,
-    "완벽한 선택은 없다": 2,
+    "완벽한 선택은 없다": 3,
     "거인의 노트": 1,
-    "단 한 번의 삶": 1
+    "단 한 번의 삶": 1,
+    "제텔카스텐": 2,
+    "피플웨어": 1,
+    "INFJ 의사의 병원 일기": 1
   }
 }
