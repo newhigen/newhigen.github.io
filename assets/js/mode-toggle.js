@@ -21,14 +21,7 @@
     header.setAttribute('data-mode', mode);
     try { document.documentElement.setAttribute('data-mode', mode); } catch (e) { }
 
-    // 새로운 토글 구조 업데이트
-    var writingBtn = document.querySelector('.mode-option[data-mode="writing"]');
-    var techBtn = document.querySelector('.mode-option[data-mode="tech"]');
-
-    if (writingBtn && techBtn) {
-      writingBtn.setAttribute('aria-pressed', mode === 'writing' ? 'true' : 'false');
-      techBtn.setAttribute('aria-pressed', mode === 'tech' ? 'true' : 'false');
-    }
+    // 새로운 중앙 토글 구조 업데이트 - 레이블 활성화 상태는 CSS에서 data-mode로 처리됨
 
     // Update home link target when mode changes
     var headerEl = document.querySelector('.site-header');
@@ -97,24 +90,38 @@
       setTimeout(function () { document.documentElement.classList.remove('no-animate'); }, 50);
     }
 
-    // 새로운 모드 토글 버튼 이벤트
-    var modeOptions = document.querySelectorAll('.mode-option[data-mode]');
-    if (modeOptions && modeOptions.length) {
-      modeOptions.forEach(function (option) {
-        option.addEventListener('click', function () {
-          var targetMode = option.getAttribute('data-mode');
+    // 중앙 토글 스위치 이벤트
+    var toggleSwitch = document.querySelector('.center-toggle-switch');
+    if (toggleSwitch) {
+      toggleSwitch.addEventListener('click', function () {
+        var currentMode = document.querySelector('.site-header')?.getAttribute('data-mode') || 'writing';
+        var targetMode = currentMode === 'writing' ? 'tech' : 'writing';
+        applyMode(targetMode);
+        try { localStorage.setItem('siteMode', targetMode); } catch (e) { /* ignore */ }
+        goToModeHome(targetMode);
+      });
+
+      // Touch support
+      toggleSwitch.addEventListener('touchend', function (e) {
+        e.preventDefault();
+        var currentMode = document.querySelector('.site-header')?.getAttribute('data-mode') || 'writing';
+        var targetMode = currentMode === 'writing' ? 'tech' : 'writing';
+        applyMode(targetMode);
+        try { localStorage.setItem('siteMode', targetMode); } catch (e) { /* ignore */ }
+        goToModeHome(targetMode);
+      }, { passive: false });
+    }
+
+    // 레이블 클릭 이벤트 (레이블 클릭으로도 모드 변경 가능)
+    var modeLabels = document.querySelectorAll('.mode-label[data-mode]');
+    if (modeLabels && modeLabels.length) {
+      modeLabels.forEach(function (label) {
+        label.addEventListener('click', function () {
+          var targetMode = label.getAttribute('data-mode');
           applyMode(targetMode);
           try { localStorage.setItem('siteMode', targetMode); } catch (e) { /* ignore */ }
           goToModeHome(targetMode);
         });
-        // Touch support
-        option.addEventListener('touchend', function (e) {
-          e.preventDefault();
-          var targetMode = option.getAttribute('data-mode');
-          applyMode(targetMode);
-          try { localStorage.setItem('siteMode', targetMode); } catch (e) { /* ignore */ }
-          goToModeHome(targetMode);
-        }, { passive: false });
       });
     }
 

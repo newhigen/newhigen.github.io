@@ -5,15 +5,15 @@
 html[data-mode='writing'],
 html:not([data-mode]) {
 
-    // Global text/link accent - 글쓰기 모드 연한 하늘색 계열
+    // Global text/link accent - 글쓰기 모드 더 연한 하늘색 계열
     a {
-        color: #3b82f6; // 연한 하늘색
-        text-decoration-color: rgba(59, 130, 246, .3);
+        color: #60a5fa; // 더 연한 하늘색
+        text-decoration-color: rgba(96, 165, 250, .3);
         text-underline-offset: 2px;
     }
 
     a:hover {
-        color: #1d4ed8; // 호버 시 약간 진한 하늘색
+        color: #3b82f6; // 호버 시 약간 진한 하늘색
         text-decoration-thickness: 2px;
     }
 
@@ -28,13 +28,13 @@ html:not([data-mode]) {
     }
 
     .site-nav .page-link:hover {
-        color: #3b82f6;
-        background: rgba(59, 130, 246, 0.08);
+        color: #60a5fa; // 더 연한 하늘색
+        background: rgba(96, 165, 250, 0.08);
     }
 
     .site-nav .page-link.active {
-        color: #1d4ed8;
-        background: rgba(59, 130, 246, 0.12);
+        color: #3b82f6; // 더 연한 하늘색
+        background: rgba(96, 165, 250, 0.12);
     }
 
     // Clean background for content area - 격자 제거
@@ -42,11 +42,11 @@ html:not([data-mode]) {
         background: #ffffff;
     }
 
-    // Chips accent - 글쓰기 연한 하늘색 계열
+    // Chips accent - 글쓰기 더 연한 하늘색 계열
     .chip {
-        background: #dbeafe;
-        color: #1d4ed8;
-        border: 1px solid rgba(59, 130, 246, 0.15);
+        background: #eff6ff; // 더 연한 배경
+        color: #3b82f6; // 더 연한 텍스트
+        border: 1px solid rgba(96, 165, 250, 0.15);
     }
 
     // Post cards and content styling - 평면적 디자인
@@ -58,7 +58,7 @@ html:not([data-mode]) {
     }
 
     .post-card:hover {
-        border-color: #93c5fd;
+        border-color: #bfdbfe; // 더 연한 호버 색상
     }
 
     .post-title a {
@@ -66,7 +66,7 @@ html:not([data-mode]) {
     }
 
     .post-title a:hover {
-        color: #3b82f6;
+        color: #60a5fa; // 더 연한 하늘색
     }
 
     // Post meta styling
@@ -75,18 +75,18 @@ html:not([data-mode]) {
     }
 
     .post-meta .category-tag {
-        background: #dbeafe;
-        color: #1d4ed8;
+        background: #eff6ff; // 더 연한 배경
+        color: #3b82f6; // 더 연한 텍스트
         padding: 2px 8px;
         border-radius: 2px;
         font-size: 11px;
         font-weight: 500;
-        border: 1px solid rgba(59, 130, 246, 0.15);
+        border: 1px solid rgba(96, 165, 250, 0.15);
     }
 
     // Blockquote styling
     blockquote {
-        border-left: 4px solid #93c5fd;
+        border-left: 4px solid #bfdbfe; // 더 연한 테두리
         background: rgba(248, 250, 252, 0.5);
         color: #6b7280;
     }
@@ -94,7 +94,7 @@ html:not([data-mode]) {
     // Code blocks
     code {
         background: #f9fafb;
-        color: #1d4ed8;
+        color: #3b82f6; // 더 연한 코드 색상
     }
 
     pre {

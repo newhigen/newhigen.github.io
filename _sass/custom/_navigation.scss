@@ -247,14 +247,18 @@
     align-items: center !important;
     flex-shrink: 0 !important; // 축소 방지로 테크 버튼 잘림 방지
     margin-left: auto !important; // 오른쪽으로 밀어내기
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    margin-right: 0 !important;
+    padding: 0 !important; // 모든 패딩 제거
     min-width: fit-content !important; // 내용에 맞는 최소 너비
   }
 
-  // 링크 스타일링
+  // 링크 스타일링 - 크기 증가
   .site-nav .page-link {
     display: inline-block;
     color: #0f172a;
-    font-size: 1rem;
+    font-size: 1.1rem; // 1rem → 1.1rem
     font-family: $ui-font;
     margin: 0 !important; // 기본 마진 제거
   }
@@ -286,8 +290,8 @@
 }
 
 .site-nav .home-icon svg {
-  width: 18px;
-  height: 18px;
+  width: 22px; // 18px → 22px
+  height: 22px; // 18px → 22px
 }
 
 // Icon-only link minimal spacing + alignment
@@ -328,28 +332,25 @@
 }
 
 .site-nav .icon-with-label svg {
-  width: 18px;
-  height: 18px;
+  width: 22px; // 18px → 22px
+  height: 22px; // 18px → 22px
   display: block;
   overflow: visible;
 }
 
 .site-nav .icon-with-label i {
-  font-size: 18px;
+  font-size: 22px; // 18px → 22px
   line-height: 1;
 }
 
 .site-nav .icon-with-label .caption {
-  font-size: 10px;
+  font-size: 12px; // 10px → 12px
   color: $muted-color;
   line-height: 1;
   margin: 0;
 }
 
-// 모드 토글 기본 스타일
-.mode-toggle-container {
-  margin: 0;
-}
+// 기본 스타일 제거됨 - 아래 새로운 디자인으로 대체
 
 // 모드 토글 반응형 (모바일)
 @media screen and (max-width: $breakpoint-mobile) {
@@ -384,9 +385,7 @@
     padding: 0 !important;
   }
 
-  .mode-toggle-container {
-    padding: 3px;
-  }
+  // 모바일에서는 새로운 토글 디자인 동일하게 적용
 
   .mode-option {
     padding: 6px 12px;
@@ -395,111 +394,100 @@
   }
 }
 
-// 새로운 모드 토글: 둥근 모서리 네모가 선택된 모드를 감싸는 형태
+// 새로운 중앙 토글 디자인: 가운데 스위치 + 양옆 레이블
 .mode-toggle-container {
-  display: inline-flex;
-  align-items: center;
-  padding: 4px;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important; // 12px → 8px로 간격 줄림
+  padding: 6px !important; // 상하좌우 균등한 패딩 (좀 더 여유있게)
+  margin: 0 !important; // 마진 완전 제거
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-radius: 8px !important;
+  border: 1px solid #e5e7eb !important;
+  backdrop-filter: blur(10px) !important;
+  box-sizing: border-box !important; // 박스 사이징 명시
 }
 
 .mode-toggle-wrapper {
-  position: relative;
   display: flex;
   align-items: center;
-  background: #f1f5f9;
-  border-radius: 8px;
-  padding: 2px;
+  gap: 8px; // 12px → 8px로 간격 줄임
 }
 
-.mode-option {
-  position: relative;
-  z-index: 2;
-  padding: 8px 16px;
-  border: none;
-  background: transparent;
-  color: #64748b;
+// 양옆 레이블 스타일
+.mode-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-size: 0.85rem;
   font-weight: 500;
-  cursor: pointer;
-  border-radius: 6px;
+  color: #6b7280;
   transition: all 0.3s ease;
   white-space: nowrap;
-  min-width: 50px;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
+  cursor: pointer;
 }
 
-.mode-option svg {
+.mode-label svg {
   flex-shrink: 0;
-  transition: all 0.3s ease;
+  width: 14px;
+  height: 14px;
 }
 
-.mode-option:hover {
-  color: #334155;
-  transform: translateY(-1px);
-}
-
-.mode-option[aria-pressed="true"] {
-  color: #ffffff;
+// 활성 상태 레이블
+[data-mode="writing"] .mode-label[data-mode="writing"] {
+  color: #60a5fa;
   font-weight: 600;
 }
 
-.mode-option[data-mode="writing"][aria-pressed="true"] {
-  color: #ffffff;
+[data-mode="tech"] .mode-label[data-mode="tech"] {
+  color: #60a5fa;
+  font-weight: 600;
 }
 
-.mode-option[data-mode="tech"][aria-pressed="true"] {
-  color: #ffffff;
+.mode-label:hover {
+  color: #60a5fa;
 }
 
-.mode-option[data-mode="writing"]:not([aria-pressed="true"]) {
-  color: #6b7280;
+// 중앙 토글 스위치 - Flexbox로 중앙 정렬
+.center-toggle-switch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 44px; // 스위치 너비 조정
+  height: 24px; // 스위치 높이 조정
+  background: #e5e7eb;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.mode-option[data-mode="tech"]:not([aria-pressed="true"]) {
-  color: #6b7280;
-}
-
-.mode-option[data-mode="writing"]:not([aria-pressed="true"]):hover {
-  color: #8b5cf6;
-  background: rgba(139, 92, 246, 0.1);
-}
-
-.mode-option[data-mode="tech"]:not([aria-pressed="true"]):hover {
-  color: #3b82f6;
-  background: rgba(59, 130, 246, 0.1);
-}
-
-.mode-selector {
+// 토글 노브 - Flexbox로 중앙 정렬
+.toggle-knob {
   position: absolute;
-  top: 2px;
+  top: 50%;
   left: 2px;
-  width: calc(50% - 2px);
-  height: calc(100% - 4px);
-  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 1;
+  transform: translateY(-50%);
+  width: 20px; // 노브 너비 조정
+  height: 20px; // 노브 높이 조정
+  background: #60a5fa;
+  border-radius: 50%;
+  border: 1px solid #3b82f6;
+  transition: transform 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+// 테크 모드일 때 노브를 오른쪽으로 이동
+[data-mode="tech"] .toggle-knob {
+  left: auto;
+  right: 2px;
+  transform: translateY(-50%);
 }
 
 // 페이지 로드 시 애니메이션 방지
-.no-animate .mode-selector {
+.no-animate .toggle-knob {
   transition: none !important;
-}
-
-// 테크 모드일 때 selector를 오른쪽으로 이동
-[data-mode="tech"] .mode-selector {
-  transform: translateX(100%);
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
 }
 
 // 이전 스타일들 제거 - 더 이상 사용하지 않음
@@ -527,10 +515,9 @@
   min-height: 40px; // 최소 높이 보장
 }
 
-// 통일된 hover 효과
+// 통일된 hover 효과 - 평면적 디자인
 .mode-switch .mode-label:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: #f3f4f6;
 }
 
 .mode-switch .mode-label:focus {
@@ -539,13 +526,13 @@
 }
 
 .mode-switch .mode-label .caption {
-  font-size: 11px;
+  font-size: 13px; // 11px → 13px
   color: $muted-color;
   line-height: 1;
 }
 
 .mode-switch .mode-label i {
-  font-size: 20px;
+  font-size: 24px; // 20px → 24px
   line-height: 1;
 }
 
@@ -564,15 +551,11 @@
 .mode-switch .mode-label.active[data-mode='writing'] {
   background: #e5e7eb;
   color: #0b1220;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .mode-switch .mode-label.active[data-mode='tech'] {
   background: #dbeafe;
   color: #0b1220;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .mode-switch .mode-toggle-knob {
@@ -607,7 +590,7 @@
   border: 1px solid #d1d5db;
   border-radius: 50%;
   transition: left .18s ease;
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+  border: 1px solid #e5e7eb;
 }
 
 .no-animate .mode-switch .mode-toggle-knob .knob {
@@ -642,7 +625,7 @@
   text-align: center;
   white-space: nowrap;
   margin: 0 !important;
-  font-size: 1.0rem; // 텍스트 약간 크게
+  font-size: 1.1rem; // 텍스트 더 크게 (1.0rem → 1.1rem)
   line-height: 1.2;
 }
 
@@ -679,7 +662,7 @@
 
 // Category icon inside buttons
 .nav-group-center .page-link i.fa-tag {
-  font-size: 12px;
+  font-size: 14px; // 12px → 14px
   margin: 0 2px 0 0;
   color: $muted-color;
   line-height: 1;
@@ -722,7 +705,7 @@
 }
 
 .books-link i.fa-book-open {
-  font-size: 18px;
+  font-size: 22px; // 18px → 22px
   line-height: 1;
   transform: none; // transform 제거
   display: block;
@@ -936,6 +919,10 @@
       align-items: center !important;
       flex-shrink: 0 !important; // 축소 방지로 테크 버튼 잘림 방지
       margin-left: auto !important; // 오른쪽으로 밀어내기
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+      margin-right: 0 !important;
+      padding: 0 !important;
     }
 
 
