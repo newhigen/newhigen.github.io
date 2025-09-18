@@ -184,7 +184,7 @@ publication_year: 2023
 [^3]: [[생각] INFJ 의사의 병원 일기, 2025]({% post_url 2025-08-10-infj-doctor %})
 [^4]: [[도서] 실용주의 사고와 학습, 앤디 헌트, 1999](https://product.kyobobook.co.kr/detail/S000001766246)
 [^5]: [[도서] 제텔카스텐, 숀케 아렌스, 2023](https://product.kyobobook.co.kr/detail/S000208468354)
-[^2]: [[도서] 린 소프트웨어 개발, 메리 포펜딕, 2007](https://product.kyobobook.co.kr/detail/S000001469789)
+[^6]: [[도서] 린 소프트웨어 개발, 메리 포펜딕, 2007](https://product.kyobobook.co.kr/detail/S000001469789)
 [^7]: [[블로그] 일론 머스크의 생각법, 1원칙 사고](https://www.learningman.co/firstprinciple/)
 [^8]: [[위키피디아] Form follows function](https://en.wikipedia.org/wiki/Form_follows_function)
 [^9]: [[위키피디아] There are unknown unknowns](https://en.wikipedia.org/wiki/There_are_unknown_unknowns)
