@@ -458,13 +458,13 @@ Q. 조직, 팀에서 내가 먼저 할 수 있는 일?
 - ex. 대화법, 사고법
 
 [^1]: [[도서] 실용주의 사고와 학습, 앤디 헌트, 1999](https://product.kyobobook.co.kr/detail/S000001766246)
-[^2]: [[도서] 린 소프트웨어 개발, 메리 포펜디크, 2003]() <!-- 교보링크 필요 -->
+[^2]: [[도서] 린 소프트웨어 개발, 메리 포펜딕, 2007](https://product.kyobobook.co.kr/detail/S000001469789)
 [^3]: [[도서] 1만 시간의 재발견, 안데르스 에릭슨, 2016](https://product.kyobobook.co.kr/detail/S000001892497)
-[^4]: [[생각] 잘하다 vs. 즐기다, 2025]() <!-- 내부 포스트 링크 필요 -->
-[^5]: [[생각] 습관, 2025]() <!-- 내부 포스트 링크 필요 -->
-[^6]: [[개념] 제텔카스텐, 2025]() <!-- 내부 포스트 링크 필요 -->
+[^4]: 잘하다 vs. 즐기다
+[^5]: 습관
+[^5]: [[도서] 제텔카스텐, 숀케 아렌스, 2023](https://product.kyobobook.co.kr/detail/S000208468354)
 [^7]: [[도서] 일의 감각, 로저 니본, 2021](https://product.kyobobook.co.kr/detail/S000001729572)
 [^8]: [[도서] 완벽한 선택은 없다, 안도 고다이, 2025](https://product.kyobobook.co.kr/detail/S000216497148)
 [^9]: [[도서] 피플웨어, 톰 데마르코, 1999]() <!-- 교보링크 필요 -->
-[^10]: [[유튜브] 퇴사는 이럴 때 하세요! (W/회사 10번 옮겨본 구글 수석디자이너), YouTube, 2024](https://www.youtube.com/watch?v=uqxNdpNwzsU)
-[^11]: [[위키피디아] Elevator pitch, Wikipedia](https://en.wikipedia.org/wiki/Elevator_pitch)
+[^10]: [[유튜브] 퇴사는 이럴 때 하세요! (W/회사 10번 옮겨본 구글 수석디자이너), 2024](https://www.youtube.com/watch?v=uqxNdpNwzsU)
+[^11]: [[위키피디아] Elevator pitch](https://en.wikipedia.org/wiki/Elevator_pitch)
