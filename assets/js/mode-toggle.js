@@ -65,7 +65,10 @@
     var techHome = (header && header.getAttribute('data-tech-home')) || '/tech/';
     var writingHome = (header && header.getAttribute('data-writing-home')) || '/';
     var target = mode === 'tech' ? techHome : writingHome;
-    if (target) window.location.href = target;
+    if (target) {
+      // 즉시 페이지 이동 - 깜빡임 방지
+      window.location.href = target;
+    }
   }
 
   function init() {
@@ -90,13 +93,14 @@
       setTimeout(function () { document.documentElement.classList.remove('no-animate'); }, 50);
     }
 
-    // 중앙 토글 스위치 이벤트
+    // 중앙 토글 스위치 이벤트 - 즉시 페이지 이동
     var toggleSwitch = document.querySelector('.center-toggle-switch');
     if (toggleSwitch) {
       toggleSwitch.addEventListener('click', function () {
         var currentMode = document.querySelector('.site-header')?.getAttribute('data-mode') || 'writing';
         var targetMode = currentMode === 'writing' ? 'tech' : 'writing';
-        applyMode(targetMode);
+
+        // localStorage 저장 후 즉시 페이지 이동 (UI 업데이트 생략)
         try { localStorage.setItem('siteMode', targetMode); } catch (e) { /* ignore */ }
         goToModeHome(targetMode);
       });
@@ -106,19 +110,21 @@
         e.preventDefault();
         var currentMode = document.querySelector('.site-header')?.getAttribute('data-mode') || 'writing';
         var targetMode = currentMode === 'writing' ? 'tech' : 'writing';
-        applyMode(targetMode);
+
+        // localStorage 저장 후 즉시 페이지 이동 (UI 업데이트 생략)
         try { localStorage.setItem('siteMode', targetMode); } catch (e) { /* ignore */ }
         goToModeHome(targetMode);
       }, { passive: false });
     }
 
-    // 레이블 클릭 이벤트 (레이블 클릭으로도 모드 변경 가능)
+    // 레이블 클릭 이벤트 - 즉시 페이지 이동
     var modeLabels = document.querySelectorAll('.mode-label[data-mode]');
     if (modeLabels && modeLabels.length) {
       modeLabels.forEach(function (label) {
         label.addEventListener('click', function () {
           var targetMode = label.getAttribute('data-mode');
-          applyMode(targetMode);
+
+          // localStorage 저장 후 즉시 페이지 이동 (UI 업데이트 생략)
           try { localStorage.setItem('siteMode', targetMode); } catch (e) { /* ignore */ }
           goToModeHome(targetMode);
         });
