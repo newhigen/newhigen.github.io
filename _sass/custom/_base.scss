@@ -7,14 +7,14 @@
 // body 기본 스타일
 body {
   font-family: $font-family-post-content;
-  font-size: 1.15rem;
+  font-size: 0.95rem; // 1.05rem → 0.95rem으로 더 줄임
   line-height: 1.6;
   color: $text-color;
   background-color: $background-color;
 
   // 모바일에서 글씨 크기 줄이기
   @media screen and (max-width: $breakpoint-mobile) {
-    font-size: 1rem;
+    font-size: 0.85rem; // 0.95rem → 0.85rem으로 더 줄임
   }
 }
 
@@ -25,7 +25,7 @@ p {
 
   // 모바일에서 글씨 크기 줄이기
   @media screen and (max-width: $breakpoint-mobile) {
-    font-size: 0.9rem;
+    font-size: 0.8rem; // 0.85rem → 0.8rem으로 더 줄임
     line-height: 1.4;
   }
 }

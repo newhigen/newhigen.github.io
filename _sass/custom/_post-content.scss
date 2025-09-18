@@ -47,9 +47,9 @@
     line-height: 1.6; // line-height 약간 키우기 (1.5 → 1.6)
   }
 
-  // PC에서 본문 글씨 크기 키우기 (모바일 제외)
+  // PC에서 본문 글씨 크기 (모바일 제외) - 더 줄임
   @media screen and (min-width: $breakpoint-desktop) {
-    font-size: 1.2rem;
+    font-size: 1.0rem; // 1.1rem → 1.0rem으로 더 줄임
 
     p,
     li,
@@ -58,7 +58,7 @@
     i,
     span,
     div {
-      font-size: 1.2rem;
+      font-size: 1.0rem; // 1.1rem → 1.0rem으로 더 줄임
     }
   }
 
