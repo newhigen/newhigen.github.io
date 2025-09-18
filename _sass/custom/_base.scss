@@ -11,6 +11,8 @@ body {
   line-height: 1.6;
   color: $text-color;
   background-color: $background-color;
+  overflow-y: scroll; // 항상 스크롤바 공간 확보하여 레이아웃 흔들림 방지
+  scrollbar-gutter: stable; // 현대적 방법: 스크롤바 공간 항상 확보
 
   // 모바일에서 글씨 크기 줄이기
   @media screen and (max-width: $breakpoint-mobile) {
