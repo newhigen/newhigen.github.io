@@ -5,21 +5,21 @@
 html[data-mode='writing'],
 html:not([data-mode]) {
 
-    // Global text/link accent - 글쓰기 모드 은은한 보라색 계열
+    // Global text/link accent - 글쓰기 모드 연한 하늘색 계열
     a {
-        color: #a855f7; // 더 부드러운 보라색
-        text-decoration-color: rgba(168, 85, 247, .3);
+        color: #3b82f6; // 연한 하늘색
+        text-decoration-color: rgba(59, 130, 246, .3);
         text-underline-offset: 2px;
     }
 
     a:hover {
-        color: #7c3aed; // 호버 시 약간 진한 보라색
+        color: #1d4ed8; // 호버 시 약간 진한 하늘색
         text-decoration-thickness: 2px;
     }
 
     // Header/nav subtle emphasis - 글쓰기 모드 강조
     .site-header {
-        border-bottom: 1px solid #f3e8ff;
+        border-bottom: 1px solid #dbeafe;
         background: rgba(248, 250, 252, 0.8);
     }
 
@@ -28,13 +28,13 @@ html:not([data-mode]) {
     }
 
     .site-nav .page-link:hover {
-        color: #a855f7;
-        background: rgba(168, 85, 247, 0.08);
+        color: #3b82f6;
+        background: rgba(59, 130, 246, 0.08);
     }
 
     .site-nav .page-link.active {
-        color: #7c3aed;
-        background: rgba(168, 85, 247, 0.12);
+        color: #1d4ed8;
+        background: rgba(59, 130, 246, 0.12);
     }
 
     // Clean background for content area - 격자 제거
@@ -42,25 +42,23 @@ html:not([data-mode]) {
         background: #ffffff;
     }
 
-    // Chips accent - 글쓰기 은은한 보라색 계열
+    // Chips accent - 글쓰기 연한 하늘색 계열
     .chip {
-        background: #f3e8ff;
-        color: #7c3aed;
-        border: 1px solid rgba(168, 85, 247, 0.15);
+        background: #dbeafe;
+        color: #1d4ed8;
+        border: 1px solid rgba(59, 130, 246, 0.15);
     }
 
-    // Post cards and content styling
+    // Post cards and content styling - 평면적 디자인
     .post-card {
-        border-color: #f3e8ff;
+        border-color: #dbeafe;
         background: #ffffff;
-        box-shadow: 0 1px 3px rgba(168, 85, 247, 0.08);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid #dbeafe;
+        transition: border-color 0.2s ease;
     }
 
     .post-card:hover {
-        border-color: #ddd6fe;
-        box-shadow: 0 4px 12px rgba(168, 85, 247, 0.12);
-        transform: translateY(-2px);
+        border-color: #93c5fd;
     }
 
     .post-title a {
@@ -68,7 +66,7 @@ html:not([data-mode]) {
     }
 
     .post-title a:hover {
-        color: #a855f7;
+        color: #3b82f6;
     }
 
     // Post meta styling
@@ -77,18 +75,18 @@ html:not([data-mode]) {
     }
 
     .post-meta .category-tag {
-        background: #f3e8ff;
-        color: #7c3aed;
+        background: #dbeafe;
+        color: #1d4ed8;
         padding: 2px 8px;
-        border-radius: 4px;
+        border-radius: 2px;
         font-size: 11px;
         font-weight: 500;
-        border: 1px solid rgba(168, 85, 247, 0.15);
+        border: 1px solid rgba(59, 130, 246, 0.15);
     }
 
     // Blockquote styling
     blockquote {
-        border-left: 4px solid #c4b5fd;
+        border-left: 4px solid #93c5fd;
         background: rgba(248, 250, 252, 0.5);
         color: #6b7280;
     }
@@ -96,7 +94,7 @@ html:not([data-mode]) {
     // Code blocks
     code {
         background: #f9fafb;
-        color: #7c3aed;
+        color: #1d4ed8;
     }
 
     pre {
