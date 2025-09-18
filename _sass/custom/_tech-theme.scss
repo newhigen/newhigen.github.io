@@ -139,17 +139,15 @@ html[data-mode='tech'] {
     border: 1px solid rgba(59, 130, 246, 0.2);
   }
 
-  // Project cards in tech mode get more defined look
+  // Project cards in tech mode get more defined look - 평면적 디자인
   .project-card {
     border-color: #dbeafe;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%);
-    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
+    background: #ffffff;
+    border: 1px solid #dbeafe;
   }
 
   .project-card:hover {
     border-color: #3b82f6;
-    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.15);
-    transform: translateY(-2px);
   }
 
   .project-card .card-title a {
@@ -201,12 +199,10 @@ html[data-mode='tech'] {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%);
     display: flex;
     flex-direction: column;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.08);
+    transition: border-color 0.2s ease;
+    border: 1px solid #dbeafe;
 
     &:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
       border-color: #3b82f6;
     }
   }
@@ -365,15 +361,15 @@ html[data-mode='tech'] {
   }
 
   .tech-home-item.is-project .type {
-    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    background: #3b82f6;
     color: #ffffff;
-    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+    border: 1px solid #1d4ed8;
   }
 
   .tech-home-item.is-article .type {
-    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    background: #3b82f6;
     color: #ffffff;
-    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+    border: 1px solid #1d4ed8;
   }
 
   .tech-home-item .tags {
