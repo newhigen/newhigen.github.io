@@ -1,14 +1,4 @@
 {
-  "useful-macos-apps": {
-    "filename": "2024-10-05-useful-macos-apps",
-    "date": "2024-10-05",
-    "title": "유용한 맥OS 앱들",
-    "categories": "생각",
-    "tags": [],
-    "content_length": 1509,
-    "is_short": false,
-    "book_citations": []
-  },
   "experience-and-knowledge": {
     "filename": "2025-07-28-experience-and-knowledge",
     "date": "2025-07-28",
@@ -191,7 +181,7 @@
     "title": "내 글쓰기의 무대 뒤",
     "categories": "생각",
     "tags": [],
-    "content_length": 3987,
+    "content_length": 3984,
     "is_short": false,
     "book_citations": [
       "거인의 노트",
@@ -203,16 +193,6 @@
       "달리기를 말할 때 내가 하고 싶은 이야기",
       "단 한 번의 삶"
     ]
-  },
-  "writing-model": {
-    "filename": "2025-08-31-writing-model",
-    "date": "2025-08-31",
-    "title": "글쓰기",
-    "categories": "효과적_모형",
-    "tags": [],
-    "content_length": 0,
-    "is_short": true,
-    "book_citations": []
   },
   "grow-together": {
     "filename": "2025-09-08-grow-together",
@@ -236,7 +216,7 @@
     "title": "디테일의 발견",
     "categories": "책",
     "tags": [],
-    "content_length": 4968,
+    "content_length": 4966,
     "is_short": false,
     "book_citations": [
       "실용주의 사고와 학습",
@@ -244,6 +224,50 @@
       "안다는 착각",
       "INFJ 의사의 병원 일기"
     ]
+  },
+  "moma-pictures": {
+    "filename": "2025-09-20-moma-pictures",
+    "date": "2025-09-20",
+    "title": "그림들",
+    "categories": "책",
+    "tags": [],
+    "content_length": 1888,
+    "is_short": false,
+    "book_citations": [
+      "모든 것은 예측 가능하다",
+      "디테일의 발견",
+      "INFJ 의사의 병원 일기"
+    ]
+  },
+  "recency-bias": {
+    "filename": "2025-09-20-recency-bias",
+    "date": "2025-09-20",
+    "title": "방금 본게 최고야! - 인지적 편향 부수기 (3)",
+    "categories": "생각",
+    "tags": [],
+    "content_length": 19,
+    "is_short": true,
+    "book_citations": []
+  },
+  "os-apps": {
+    "filename": "_useful-macos-apps",
+    "date": "_useful-ma",
+    "title": "유용한 맥OS 앱들",
+    "categories": "생각",
+    "tags": [],
+    "content_length": 1509,
+    "is_short": false,
+    "book_citations": []
+  },
+  "del": {
+    "filename": "_writing-model",
+    "date": "_writing-m",
+    "title": "글쓰기",
+    "categories": "효과적_모형",
+    "tags": [],
+    "content_length": 0,
+    "is_short": true,
+    "book_citations": []
   },
   "_book_citation_stats": {
     "책 잘 읽는 방법": 1,
@@ -262,6 +286,8 @@
     "단 한 번의 삶": 1,
     "제텔카스텐": 2,
     "피플웨어": 1,
-    "INFJ 의사의 병원 일기": 1
+    "INFJ 의사의 병원 일기": 2,
+    "모든 것은 예측 가능하다": 1,
+    "디테일의 발견": 1
   }
 }
