@@ -1,9 +1,8 @@
 // ========================================
-// Writing Mode Theme (default mode)
+// Global theme styles
 // ========================================
 
-html[data-mode='writing'],
-html:not([data-mode]) {
+html {
 
     // Global text/link accent - 글쓰기 모드 더 연한 하늘색 계열
     a {

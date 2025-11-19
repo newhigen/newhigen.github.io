@@ -31,10 +31,7 @@ header_pages:
   - index.md
   - thought.md
   - book.md
-  - books_read.md
   - about.md
-  - projects.md
-  - tech.md
 
 # Build settings
 plugins:
@@ -59,32 +56,7 @@ drafts_dir: _drafts
 # Future posts configuration
 future: true
 
-# Collections for Projects and Tech articles
-collections:
-  projects:
-    output: true
-    permalink: /projects/:slug/
-  tech:
-    output: true
-    permalink: /tools/:slug/
-
-defaults:
-  - scope:
-      path: ""
-      type: "projects"
-    values:
-      layout: project
-  - scope:
-      path: ""
-      type: "tech"
-    values:
-      layout: tech
-
-# jekyll-feed: also generate feeds for custom collections
-feed:
-  collections:
-    - projects
-    - tech
+defaults: []
 
 # Exclude from processing.
 # The following items will not be processed, by default.
