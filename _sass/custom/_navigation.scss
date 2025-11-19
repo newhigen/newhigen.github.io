@@ -688,29 +688,6 @@
   text-decoration: none !important;
 }
 
-// Books/About icon fine-tune to avoid clipping
-.books-link {
-  overflow: visible;
-  height: 36px; // 다른 버튼들과 동일한 높이
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.books-link svg {
-  width: 18px;
-  height: 18px;
-  transform: none; // transform 제거
-}
-
-.books-link i.fa-book-open {
-  font-size: 22px; // 18px → 22px
-  line-height: 1;
-  transform: none; // transform 제거
-  display: block;
-}
-
 .about-link {
   transform: none; // transform 제거하여 다른 버튼들과 높이 맞춤
 }
@@ -790,14 +767,9 @@
     order: 3 !important;
   }
 
-  .site-nav .nav-trigger:checked~.trigger .books-link.icon-with-label {
-    order: 4 !important;
-  }
-
   // Primary icons 가로 배치
   .home-link.icon-with-label,
   .search-icon.icon-with-label,
-  .books-link.icon-with-label,
   .about-link.icon-with-label {
     width: auto; // 자동 너비
     max-width: none; // 최대 너비 제한 해제
@@ -897,7 +869,7 @@
       overflow: hidden !important; // 오버플로우 숨김
     }
 
-    // 왼쪽 그룹: 홈, 검색, About, 읽은 책들
+    // 왼쪽 그룹: 홈, 검색, About
     .nav-group-left {
       display: flex !important;
       align-items: center !important;
@@ -985,13 +957,4 @@
   display: flex !important; // flex로 변경하여 가운데 정렬 유지
   align-items: center !important;
   justify-content: center !important;
-}
-
-// "읽은 책들"은 Writing 모드에서만 표시
-.site-header[data-mode='tech'] .books-link {
-  display: none !important;
-}
-
-.site-header:not([data-mode])[data-default-mode='tech'] .books-link {
-  display: none !important;
 }

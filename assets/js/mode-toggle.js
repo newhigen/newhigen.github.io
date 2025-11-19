@@ -43,21 +43,6 @@
       labelT.setAttribute('aria-pressed', (isTech).toString());
     }
 
-    // Ensure Books link hidden in Tech mode regardless of CSS
-    var booksLinks = document.querySelectorAll('.books-link');
-    if (booksLinks && booksLinks.length) {
-      booksLinks.forEach(function (el) {
-        if (isTech) {
-          el.setAttribute('hidden', '');
-          el.setAttribute('aria-hidden', 'true');
-        } else {
-          el.removeAttribute('hidden');
-          el.setAttribute('aria-hidden', 'false');
-          // Clean any inline style from server-side default
-          if (el.style && el.style.display) el.style.display = '';
-        }
-      });
-    }
   }
 
   function goToModeHome(mode) {
