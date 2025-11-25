@@ -14,7 +14,7 @@ nav_order: 1
 {:toc}
 </details>
 
-## `git checkout <branch> -- <path>`
+# `git checkout <branch> -- <path>`
 
 Branch A에서 특정 폴더의 변경된 파일들만 커밋하고 싶을 때.
 
