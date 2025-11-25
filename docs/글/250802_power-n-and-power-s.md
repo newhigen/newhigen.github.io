@@ -1,9 +1,11 @@
 ---
+parent: 글
 layout: default
-title: 파워 N과 파워 S가 결혼하면
-date: 2025-08-02
-parent: 심리
+title: 파워 N과 파워 S이 만나면
 permalink: power-n-and-power-s
+published_date: 2025-08-02
+nav_order: 2
+nav_exclude: true
 ---
 
 # 소개팅 시절

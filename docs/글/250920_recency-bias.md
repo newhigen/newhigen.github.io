@@ -1,10 +1,11 @@
 ---
+parent: 글
 layout: default
 title: 방금 본게 최고야! - 인지적 편향 부수기 (3)
-date: 2025-09-20
-parent: 심리
 permalink: recency-bias
-hidden: true
+published_date: 2025-09-20
+nav_order: 5
+nav_exclude: true
 ---
 
 신근성 편향

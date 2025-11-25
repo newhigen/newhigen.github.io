@@ -1,9 +1,10 @@
 ---
+parent: 글
 layout: default
 title: 불확실성과 개인의 한계에서의 도덕적 선택
-date: 2025-07-31
-parent: 철학
 permalink: moral-uncertainty
+published_date: 2025-07-31
+nav_order: 1
 ---
 
 # 도덕적 선택과 미래 예측

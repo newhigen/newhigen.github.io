@@ -1,5 +1,5 @@
 ---
-title: 일
+title: 글
 layout: default
-nav_order: 8
+nav_order: 9
 ---

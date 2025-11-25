@@ -1,9 +1,10 @@
 ---
+parent: 글
 layout: default
 title: 책을 고르는 시야 - 인지적 편향 부수기 (1)
-date: 2025-08-04
-parent: 심리
 permalink: breaking-bias
+published_date: 2025-08-04
+nav_order: 3
 ---
 
 # 좁은 시야로 책 고르기

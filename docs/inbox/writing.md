@@ -2,7 +2,7 @@
 layout: default
 title: 내 글쓰기의 무대 뒤
 date: 2025-08-31
-categories: 생각
+nav_exclude: true
 permalink: writing-behind-the-scene
 ---
 

@@ -1,9 +1,10 @@
 ---
+parent: 글
 layout: default
 title: 시니어처럼 보이고 싶은 주니어 - 인지적 편향 부수기 (2)
-date: 2025-08-31
-parent: 일
 permalink: fake-senior-junior
+published_date: 2025-08-31
+nav_order: 4
 ---
 
 # 전문가란

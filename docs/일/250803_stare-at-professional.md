@@ -1,9 +1,10 @@
 ---
-title: 전문가의 표정
 parent: 일
 layout: default
-date: 2025-08-03
+title: 전문가의 표정
 permalink: stare-at-professional
+published_date: 2025-08-03
+nav_order: 2
 ---
 
 # 전문가

@@ -1,9 +1,10 @@
 ---
+parent: 일
 layout: default
 title: Appreciation as Word
-date: 2025-08-14
-parent: 일
 permalink: appreciation-as-word
+published_date: 2025-08-14
+nav_order: 3
 ---
 
 # Appreciation이란?
