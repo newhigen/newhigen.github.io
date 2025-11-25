@@ -1,5 +1,5 @@
 ---
-parent: 글
+# parent: 글
 layout: default
 title: 파워 N과 파워 S이 만나면
 permalink: power-n-and-power-s
