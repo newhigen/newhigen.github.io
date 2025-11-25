@@ -1,0 +1,54 @@
+---
+---
+
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans+Mono:wght@400;500;700&display=swap");
+
+:root {
+  --code-font-family: "Google Sans Code", "Google Sans Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+code,
+pre,
+kbd,
+samp,
+.text-mono,
+.highlight,
+.highlight code,
+pre.highlight code,
+div.highlighter-rouge code {
+  font-family: var(--code-font-family) !important;
+}
+
+.main-content img {
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+}
+
+.main-content li {
+  margin: 0.1em 0;
+}
+
+
+.main-content th,
+.main-content td {
+  vertical-align: top;
+}
+
+.main-content .footnotes {
+  border-top: 1px solid #e5e7eb;
+  margin-top: 1.5rem;
+  padding-top: 0.75rem;
+}
+
+.main-content .footnotes ol {
+  margin: 0.15em 0 0.15em 1.2em;
+  padding: 0;
+}
+
+.main-content .footnotes ol > li {
+  margin: 0.05em 0 !important;
+}
+
+.main-content .footnotes p {
+  margin: 0.05em 0;
+}

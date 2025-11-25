@@ -1,6 +1,6 @@
 ---
 parent: 일
-layout: default
+layout: default-with-date
 title: 전문가의 표정
 permalink: stare-at-professional
 published_date: 2025-08-03

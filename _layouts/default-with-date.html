@@ -1,0 +1,11 @@
+---
+layout: default
+---
+
+{{ content }}
+
+{% if page.published_date %}
+<p class="text-small text-mono" style="color: gray; font-size: 0.8em; text-align: right;">
+    published: {{page.published_date | date: "%Y-%m-%d" }}
+</p>
+{% endif %}
