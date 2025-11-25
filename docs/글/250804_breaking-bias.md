@@ -7,6 +7,15 @@ published_date: 2025-08-04
 nav_order: 3
 ---
 
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
+
 # 좁은 시야로 책 고르기
 
 이전에는 내가 궁금했던 주제에 대한 책을 찾으면 안 나올 때가 많았다. 지금 생각해보면 그때는 내 생각이 더 편향되어 있었다. 주제 뿐만 아니라 그 주제에 대해서 어떻게 사고해야하는지도 미리 정해두고 책을 찾다보니, 목차를 조금만 훑어도 '이건 안 맞네'하고 덮었었다. 그렇게 하다보니 좋은 책이어도 놓치게 되었다. # 조금 넓어진 시야

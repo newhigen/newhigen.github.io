@@ -8,5 +8,14 @@ nav_order: 5
 nav_exclude: true
 ---
 
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
+
 신근성 편향
 recency bias
