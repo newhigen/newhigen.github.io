@@ -28,6 +28,12 @@ div.highlighter-rouge code {
   margin: 0.1em 0;
 }
 
+
+.main-content th,
+.main-content td {
+  vertical-align: top;
+}
+
 .main-content .footnotes {
   border-top: 1px solid #e5e7eb;
   margin-top: 1.5rem;

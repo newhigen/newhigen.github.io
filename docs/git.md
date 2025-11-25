@@ -33,8 +33,6 @@ git checkout branch-a -- folderA
 </tr>
 <tr>
 <td>
-
-
 <pre>
 # branch-a
 
@@ -51,7 +49,6 @@ folderB/
 
 </td>
 <td>
-
 <pre>
 # branch-b
 
