@@ -1,6 +1,6 @@
 ---
 parent:
-layout: default
+layout: default-with-date
 title: Template
 permalink: template
 published_date: 2025-00-00

@@ -1,6 +1,6 @@
 ---
 parent: 일
-layout: default
+layout: default-with-date
 title: 경험 + 지식 = 숙련
 permalink: experience-and-knowledge
 published_date: 2025-07-28

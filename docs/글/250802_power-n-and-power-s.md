@@ -1,6 +1,6 @@
 ---
 # parent: 글
-layout: default
+layout: default-with-date
 title: 파워 N과 파워 S이 만나면
 permalink: power-n-and-power-s
 published_date: 2025-08-02
