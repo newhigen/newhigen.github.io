@@ -5,4 +5,14 @@ theme: just-the-docs
 url: https://newhigen.github.io
 
 aux_links:
-  읽은 책 🌐: https://newhigen.github.io/books
+
+color_scheme: custom
+
+nav_external_links:
+  - title: 읽은 책
+    url: https://newhigen.github.io/books
+    hide_icon: false # set to true to hide the external link icon - defaults to false
+    opens_in_new_tab: false # set to true to open this link in a new tab - defaults to false
+
+back_to_top: true
+back_to_top_text: "Back to top"
