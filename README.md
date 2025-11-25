@@ -1,190 +1,174 @@
-# newhigen.github.io
+# just-the-docs-template
 
-개인 블로그 프로젝트입니다. Jekyll을 기반으로 구축되었으며, 다양한 유지보수 도구들이 포함되어 있습니다.
+This is a *bare-minimum* template to create a [Jekyll] site that:
 
-## 🏗️ 프로젝트 구조
+- uses the [Just the Docs] theme;
+- can be built and published on [GitHub Pages];
+- can be built and previewed locally, and published on other platforms.
 
-```
-newhigen.github.io/
-├── _posts/           # 블로그 포스트
-├── _drafts/          # 초안 포스트
-├── _layouts/         # Jekyll 레이아웃
-├── _includes/        # Jekyll 포함 파일
-├── _sass/           # SCSS 스타일
-├── assets/          # 정적 파일 (CSS, JS, 이미지)
-│   └── data/        # 데이터 파일 (리포트 등)
-├── _tools/          # 블로그 유지보수 도구
-├── _scripts/        # 실행 스크립트
-├── _site/           # 빌드된 사이트 (자동 생성)
-├── Makefile         # 프로젝트 관리 명령어
-└── _config.yml      # Jekyll 설정
-```
+More specifically, the created site:
 
-## 🚀 빠른 시작
+- uses a gem-based approach, i.e. uses a `Gemfile` and loads the `just-the-docs` gem;
+- uses the [GitHub Pages / Actions workflow] to build and publish the site on GitHub Pages.
 
-### 1. 환경 설정
-```bash
-# 의존성 설치
-make install
+To get started with creating a site, simply:
 
-# 또는
-bundle install
-```
+1. click "[use this template]" to create a GitHub repository
+2. go to Settings > Pages > Build and deployment > Source, and select GitHub Actions
 
-### 2. 로컬 개발
-```bash
-# 로컬 서버 실행
-make serve
+If you want to maintain your docs in the `docs` directory of an existing project repo, see [Hosting your docs from an existing project repo](#hosting-your-docs-from-an-existing-project-repo).
 
-# 또는
-bundle exec jekyll serve
-```
+After completing the creation of your new site on GitHub, update it as needed:
 
-### 3. 블로그 관리
-```bash
-# 새 포스트 작성
-make new-post
+## Replace the content of the template pages
 
-# 블로그 상태 확인
-make monitor
+Update the following files to your own content:
 
-# 전체 테스트
-make test
-```
+- `index.md` (your new home page)
+- `README.md` (information for those who access your site repo on GitHub)
 
-## 🛠️ 유지보수 도구
+## Changing the version of the theme and/or Jekyll
 
-### _tools/ 디렉토리
-- **test_suite.rb**: 종합 테스트 스위트 (14개 테스트 항목)
-- **blog_monitor.rb**: 블로그 상태 모니터링 및 건강도 분석
-- **new_post.rb**: 포스트 생성 도우미
+Simply edit the relevant line(s) in the `Gemfile`.
 
-### _scripts/ 디렉토리
-- **ci_check.sh**: 배포 전 CI/CD 체크
+## Adding a plugin
 
-## 📋 Makefile 명령어
+The Just the Docs theme automatically includes the [`jekyll-seo-tag`] plugin.
 
-```bash
-make help          # 도움말 보기
-make install       # 의존성 설치
-make build         # 블로그 빌드
-make serve         # 로컬 서버 실행
-make clean         # 빌드 파일 정리
-make test          # 전체 테스트 실행
-make monitor       # 블로그 상태 모니터링
-make ci            # CI 체크 실행
-make new-post      # 새 포스트 생성
-make deploy        # 배포 준비 및 체크
-make quick-check   # 빠른 체크 (테스트 + 모니터링)
-make full-check    # 전체 점검 (모든 도구 실행)
-```
+To add an extra plugin, you need to add it in the `Gemfile` *and* in `_config.yml`. For example, to add [`jekyll-default-layout`]:
 
-## 📊 현재 상태
+- Add the following to your site's `Gemfile`:
 
-- **건강도**: 🟢 EXCELLENT
-- **총 포스트**: 15개
-- **테스트 통과율**: 100%
-- **빌드 상태**: ✅ 성공
+  ```ruby
+  gem "jekyll-default-layout"
+  ```
 
-## 🔧 개발 환경
+- And add the following to your site's `_config.yml`:
 
-- **Ruby**: 3.3.5+
-- **Jekyll**: 4.3.3
-- **테마**: minima
-- **플러그인**: jekyll-feed, jekyll-paginate-v2, jekyll-sitemap, jekyll-seo-tag
+  ```yaml
+  plugins:
+    - jekyll-default-layout
+  ```
 
-## 📝 포스트 작성
+Note: If you are using a Jekyll version less than 3.5.0, use the `gems` key instead of `plugins`.
 
-### 새 포스트 생성
-```bash
-make new-post
-```
+## Publishing your site on GitHub Pages
 
-### 포스트 형식
-- 파일명: `YYYY-MM-DD-title.md`
-- Front matter 필수: `title`, `date`, `layout`
-- 지원 형식: Markdown
+1.  If your created site is `YOUR-USERNAME/YOUR-SITE-NAME`, update `_config.yml` to:
 
-### 초안 작성
-```bash
-# 초안으로 생성
-make new-post
-# 초안 완성 후 _posts/ 디렉토리로 이동
-```
+    ```yaml
+    title: YOUR TITLE
+    description: YOUR DESCRIPTION
+    theme: just-the-docs
 
-## 🚀 배포
+    url: https://YOUR-USERNAME.github.io/YOUR-SITE-NAME
 
-### GitHub Pages 배포
-```bash
-# 배포 준비
-make deploy
+    aux_links: # remove if you don't want this link to appear on your pages
+      Template Repository: https://github.com/YOUR-USERNAME/YOUR-SITE-NAME
+    ```
 
-# Git 커밋 및 푸시
-git add .
-git commit -m "Update blog"
-git push
-```
+2.  Push your updated `_config.yml` to your site on GitHub.
 
-### 수동 배포
-```bash
-# 빌드
-make build
+3.  In your newly created repo on GitHub:
+    - go to the `Settings` tab -> `Pages` -> `Build and deployment`, then select `Source`: `GitHub Actions`.
+    - if there were any failed Actions, go to the `Actions` tab and click on `Re-run jobs`.
 
-# 테스트
-make test
+## Building and previewing your site locally
 
-# 배포
-git add . && git commit -m "Update blog" && git push
-```
+Assuming [Jekyll] and [Bundler] are installed on your computer:
 
-## 🔍 모니터링
+1.  Change your working directory to the root directory of your site.
 
-### 정기적인 상태 확인
-```bash
-# 빠른 체크
-make quick-check
+2.  Run `bundle install`.
 
-# 상세 분석
-make monitor
-```
+3.  Run `bundle exec jekyll serve` to build your site and preview it at `localhost:4000`.
 
-### 리포트 확인
-- 콘솔 출력: 실시간 상태
-- JSON 리포트: `assets/data/blog_health_report.json`
+    The built site is stored in the directory `_site`.
 
-## 🤝 문제 해결
+## Publishing your built site on a different platform
 
-### 일반적인 문제들
+Just upload all the files in the directory `_site`.
 
-**빌드 실패**
-```bash
-make clean
-make install
-make build
-```
+## Customization
 
-**테스트 실패**
-```bash
-make test
-# 실패한 항목 확인 후 수정
-```
+You're free to customize sites that you create with this template, however you like!
 
-**의존성 문제**
-```bash
-bundle install
-bundle update
-```
+[Browse our documentation][Just the Docs] to learn more about how to use this theme.
 
-## 📚 추가 문서
+## Hosting your docs from an existing project repo
 
-- **유지보수 도구**: `_tools/README.md`
-- **스크립트**: `_scripts/README.md`
-- **상세 가이드**: `_tools/BLOG_MAINTENANCE.md`
+You might want to maintain your docs in an existing project repo. Instead of creating a new repo using the [just-the-docs template](https://github.com/just-the-docs/just-the-docs-template), you can copy the template files into your existing repo and configure the template's Github Actions workflow to build from a `docs` directory. You can clone the template to your local machine or download the `.zip` file to access the files.
 
-## 📄 라이선스
+### Copy the template files
 
-개인 블로그 프로젝트입니다.
+1.  Create a `.github/workflows` directory at your project root if your repo doesn't already have one. Copy the `pages.yml` file into this directory. GitHub Actions searches this directory for workflow files.
 
----
+2.  Create a `docs` directory at your project root and copy all remaining template files into this directory.
 
-**💡 팁**: 정기적으로 `make quick-check`를 실행하여 블로그 상태를 모니터링하세요!
+### Modify the GitHub Actions workflow
+
+The GitHub Actions workflow that builds and deploys your site to Github Pages is defined by the `pages.yml` file. You'll need to edit this file to that so that your build and deploy steps look to your `docs` directory, rather than the project root.
+
+1.  Set the default `working-directory` param for the build job.
+
+    ```yaml
+    build:
+      runs-on: ubuntu-latest
+      defaults:
+        run:
+          working-directory: docs
+    ```
+
+2.  Set the `working-directory` param for the Setup Ruby step.
+
+    ```yaml
+    - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+          cache-version: 0
+          working-directory: '${{ github.workspace }}/docs'
+    ```
+
+3.  Set the path param for the Upload artifact step:
+
+    ```yaml
+    - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/_site/
+    ```
+
+4.  Modify the trigger so that only changes within the `docs` directory start the workflow. Otherwise, every change to your project (even those that don't affect the docs) would trigger a new site build and deploy.
+
+    ```yaml
+    on:
+      push:
+        branches:
+          - "main"
+        paths:
+          - "docs/**"
+    ```
+
+## Licensing and Attribution
+
+This repository is licensed under the [MIT License]. You are generally free to reuse or extend upon this code as you see fit; just include the original copy of the license (which is preserved when you "make a template"). While it's not necessary, we'd love to hear from you if you do use this template, and how we can improve it for future use!
+
+The deployment GitHub Actions workflow is heavily based on GitHub's mixed-party [starter workflows]. A copy of their MIT License is available in [actions/starter-workflows].
+
+----
+
+[^1]: [It can take up to 10 minutes for changes to your site to publish after you push the changes to GitHub](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll#creating-your-site).
+
+[Jekyll]: https://jekyllrb.com
+[Just the Docs]: https://just-the-docs.github.io/just-the-docs/
+[GitHub Pages]: https://docs.github.com/en/pages
+[GitHub Pages / Actions workflow]: https://github.blog/changelog/2022-07-27-github-pages-custom-github-actions-workflows-beta/
+[Bundler]: https://bundler.io
+[use this template]: https://github.com/just-the-docs/just-the-docs-template/generate
+[`jekyll-default-layout`]: https://github.com/benbalter/jekyll-default-layout
+[`jekyll-seo-tag`]: https://jekyll.github.io/jekyll-seo-tag
+[MIT License]: https://en.wikipedia.org/wiki/MIT_License
+[starter workflows]: https://github.com/actions/starter-workflows/blob/main/pages/jekyll.yml
+[actions/starter-workflows]: https://github.com/actions/starter-workflows/blob/main/LICENSE
