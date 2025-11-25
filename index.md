@@ -9,10 +9,12 @@ nav_order: 0
   | where_exp: "p", "p.parent == nil or p.parent == ''"
   | sort: "nav_order" %}
 
-## Top Level Pages
+Top Pages
 
+<ul>
 {% for p in top_pages %}
 {% unless p.url == "/" or p.url == "" %}
-- [{{ p.title | default: p.name }}]({{ p.url | relative_url }})
+<li><a href="{{ p.url | relative_url }}">{{ p.title | default: p.name }}</a></li>
 {% endunless %}
 {% endfor %}
+</ul>
