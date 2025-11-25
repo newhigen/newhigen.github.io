@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: default
 title: 경험 + 지식 = 숙련
 date: 2025-07-28 22:35:00 +0900
-categories: 생각
+parent: 일
 permalink: experience-and-knowledge
 ---
 

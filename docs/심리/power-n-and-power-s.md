@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: default
 title: 파워 N과 파워 S가 결혼하면
 date: 2025-08-02
-categories: 생각
+parent: 심리
 permalink: power-n-and-power-s
 ---
 

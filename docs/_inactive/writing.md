@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: 내 글쓰기의 무대 뒤
 date: 2025-08-31
 categories: 생각
@@ -74,13 +74,13 @@ permalink: writing-behind-the-scene
 
 <emphasis><b>나는 글쓰기를 통해 더 생각하고 효과적으로 학습하며, 공개하여 한 번 더 생각하기를</b></emphasis> 기대하고, <emphasis><b>타인은 고민의 실마리를, 실수에서 용기를 얻기를</b></emphasis> 바란다.[^11]
 
-[^1]: [[생각] 파워 N과 파워 S가 결혼하면, 2025]({% post_url 2025-08-02-power-n-and-power-s %})
+[^1]: [[생각] 파워 N과 파워 S가 결혼하면, 2025](2025-08-02-power-n-and-power-s)
 [^2]: [[도서] 거인의 노트, 김병완, 2023](https://product.kyobobook.co.kr/detail/S000001953766)
 [^3]: [[도서] 1만 시간의 재발견, 안데르스 에릭슨, 2016](https://product.kyobobook.co.kr/detail/S000001892497)
 [^4]: [[도서] 함께 자라기, 김창준, 2018](https://product.kyobobook.co.kr/detail/S000001033071)
-[^5]: [[책] 안다는 착각, 2025]({% post_url 2025-08-09-did-i-understand %})
-[^6]: [[책] 달리기를 말할 때 내가 하고 싶은 이야기, 2025]({% post_url 2025-08-12-running-story %})
-[^7]: [[책] 단 한 번의 삶, 2025]({% post_url 2025-08-10-one-life %})
+[^5]: [[책] 안다는 착각, 2025](2025-08-09-did-i-understand)
+[^6]: [[책] 달리기를 말할 때 내가 하고 싶은 이야기, 2025](2025-08-12-running-story)
+[^7]: [[책] 단 한 번의 삶, 2025](2025-08-10-one-life)
 [^8]: [[도서] 완벽한 선택은 없다, 안도 고다이, 2025](https://product.kyobobook.co.kr/detail/S000216497148)
 [^9]: [[도서] 왜 나는 항상 결심만 할까?, 켈리 맥고니걸, 2012](https://product.kyobobook.co.kr/detail/S000000733034)
 [^10]: [[유튜브] 인플루언서는 왜 죽을 수밖에 없는가?, 너진똑, 2025](https://www.youtube.com/watch?v=X_qqqRO280s)

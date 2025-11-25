@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: 유용한 맥OS 앱들
 date: 2024-10-05 13:06:00 +0900
 categories: 생각

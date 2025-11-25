@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: default
 title: Appreciation as Word
 date: 2025-08-14
-categories: 생각
+parent: 일
 permalink: appreciation-as-word
 ---
 
