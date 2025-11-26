@@ -35,7 +35,7 @@ nav_order: 251126
 
 주변 사람(회사 동료든 친구든)에게 피드백을 받은 것은 아니었다.
 
-기억을 되짚어보면 그보다는 근 4개월간 읽었던 책들의 내용들이 머릿속에 쌓이고 경험적으로 인식하는 소화의 과정을 거치면서 그랬던 것 같다.
+기억을 되짚어보면 그보다는 근 4개월간 읽었던 책들의 내용들이 머릿속에 쌓이고 경험적으로 인식하는 소화의 과정을 거치면서 그랬던 것 같다. (참고: [읽은 책](https://newhigen.github.io/books/))
 
 - 7월: 『왜 나는 항상 결심만 할까?[^why-decide]』
 - 8월: 『완벽한 선택은 없다[^no-perfect-choice]』, 『실용주의 사고와 학습[^pragmatic-learning]』, 『린 소프트웨어 개발[^lean-sw]』
@@ -116,7 +116,7 @@ nav_order: 251126
 [^tech-resume]: [도서] The Tech Resume Inside Out
 [^brag-doc]: [글] Get your work recognized: write a brag document
 [^gtd]: [도서] Getting Things Done
-[^fake-senior]: [글] 시니어처럼 보이고 싶은 주니어 - 인지적 편향 부수기 (2)
+[^fake-senior]: [글] [시니어처럼 보이고 싶은 주니어 - 인지적 편향 부수기 (2)](https://newhigen.github.io/fake-senior-junior/)
 [^ten-thousand-hours]: [도서] 1만 시간의 재발견
 [^about-perfect]: [도서] 완벽에 관하여
 [^best-judgement]: [영상] 토스 대표 이승건, 속도 vs 마음가짐 - YouTube
