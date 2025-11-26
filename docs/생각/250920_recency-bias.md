@@ -1,5 +1,5 @@
 ---
-# parent: 글
+# parent: 생각
 layout: default-with-date
 title: 방금 본게 최고야! - 인지적 편향 부수기 (3)
 permalink: recency-bias
