@@ -5,15 +5,6 @@ permalink: git
 nav_order: 1
 ---
 
-<details close markdown="block">
-  <summary>
-    Table of contents
-  </summary>
-  {: .text-delta }
-1. TOC
-{:toc}
-</details>
-
 # `git checkout <branch> -- <path>`
 
 Branch A에서 특정 폴더의 변경된 파일들만 커밋하고 싶을 때.

@@ -4,17 +4,8 @@ layout: default-with-date
 title: 책을 고르는 시야 - 인지적 편향 부수기 (1)
 permalink: breaking-bias
 published_date: 2025-08-04
-nav_order: 3
+nav_order: 250804
 ---
-
-<details open markdown="block">
-  <summary>
-    Table of contents
-  </summary>
-  {: .text-delta }
-1. TOC
-{:toc}
-</details>
 
 # 좁은 시야로 책 고르기
 

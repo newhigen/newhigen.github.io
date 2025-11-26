@@ -4,17 +4,8 @@ layout: default-with-date
 title: 경험 + 지식 = 숙련
 permalink: experience-and-knowledge
 published_date: 2025-07-28
-nav_order: 1
+nav_order: 250728
 ---
-
-<details open markdown="block">
-  <summary>
-    Table of contents
-  </summary>
-  {: .text-delta }
-1. TOC
-{:toc}
-</details>
 
 특정 기술에 숙련되려면 지식과 그 지식을 적용하는 경험 둘 다 필요하다.
 

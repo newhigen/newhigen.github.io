@@ -4,17 +4,8 @@ layout: default-with-date
 title: Appreciation as Word
 permalink: appreciation-as-word
 published_date: 2025-08-14
-nav_order: 3
+nav_order: 250814
 ---
-
-<details open markdown="block">
-  <summary>
-    Table of contents
-  </summary>
-  {: .text-delta }
-1. TOC
-{:toc}
-</details>
 
 # Appreciation이란?
 
