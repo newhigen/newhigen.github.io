@@ -1,6 +1,5 @@
 ---
 ---
-
 @import url("https://fonts.googleapis.com/css2?family=Google+Sans+Mono:wght@400;500;700&display=swap");
 
 :root {
@@ -28,14 +27,63 @@ div.highlighter-rouge code {
   margin: 0.1em 0;
 }
 
-.main-content h1 {
-  margin-top: 0.35em;
+.main-content {
+  font-size: 0.95rem !important;
 }
 
+.main-content h1 {
+  margin-top: 0.45em;
+  margin-bottom: 0.65em;
+  font-size: 2.2rem !important;
+}
+
+.main-content h2 {
+  margin-top: 1.4em;
+  margin-bottom: 0.55em;
+  font-size: 1.65rem !important;
+}
+
+.main-content h3 {
+  margin-top: 1.15em;
+  margin-bottom: 0.45em;
+  font-size: 1.25rem !important;
+}
+
+.main-content p,
+.main-content ul,
+.main-content ol {
+  margin-top: 0.6em;
+  margin-bottom: 0.6em;
+}
 
 .main-content th,
 .main-content td {
   vertical-align: top;
+}
+
+.page-header-centered {
+  position: relative;
+  text-align: center;
+  padding-top: 1.5rem;
+  padding-right: 0;
+  padding-bottom: 0.15rem;
+  margin: 0 0 0.7rem;
+}
+
+.page-title-centered {
+  margin: 0 0.05rem;
+  line-height: 1.02;
+}
+
+.page-date-text {
+  position: absolute;
+  top: 0.15rem;
+  right: 0;
+  display: block;
+  color: #9ca3af;
+  font-size: 0.85rem;
+  text-align: right;
+  padding-bottom: 0;
 }
 
 .main-content .footnotes {
@@ -168,5 +216,36 @@ div.highlighter-rouge code {
 @media (max-width: 1100px) {
   .floating-toc {
     display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content h1 {
+    margin-top: 0.35em;
+    margin-bottom: 0.7em;
+    font-size: 2rem !important;
+  }
+
+  .main-content h2 {
+    margin-top: 1.2em;
+    margin-bottom: 0.6em;
+    font-size: 1.5rem !important;
+  }
+
+  .main-content h3 {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    font-size: 1.2rem !important;
+  }
+
+  .main-content p,
+  .main-content ul,
+  .main-content ol {
+    margin-top: 0.55em;
+    margin-bottom: 0.55em;
+  }
+
+  .main-content {
+    font-size: 0.94rem !important;
   }
 }
