@@ -1,11 +1,12 @@
 ---
-layout: default
+layout: default-with-date
 title: Git
 permalink: git
+published_date: 2025-11-25
 nav_order: 1
 ---
 
-# `git checkout <branch> -- <path>`
+## `git checkout <branch> -- <path>`
 
 Branch A에서 특정 폴더의 변경된 파일들만 커밋하고 싶을 때.
 
