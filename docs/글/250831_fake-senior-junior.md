@@ -4,7 +4,7 @@ layout: default-with-date
 title: 시니어처럼 보이고 싶은 주니어 - 인지적 편향 부수기 (2)
 permalink: fake-senior-junior
 published_date: 2025-08-31
-nav_order: 4
+nav_order: 250831
 ---
 
 <details open markdown="block">

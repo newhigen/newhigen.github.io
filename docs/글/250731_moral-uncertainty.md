@@ -4,7 +4,7 @@ layout: default-with-date
 title: 불확실성과 개인의 한계에서의 도덕적 선택
 permalink: moral-uncertainty
 published_date: 2025-07-31
-nav_order: 1
+nav_order: 250731
 ---
 
 <details open markdown="block">

@@ -4,7 +4,7 @@ layout: default-with-date
 title: 경험 + 지식 = 숙련
 permalink: experience-and-knowledge
 published_date: 2025-07-28
-nav_order: 1
+nav_order: 250728
 ---
 
 <details open markdown="block">

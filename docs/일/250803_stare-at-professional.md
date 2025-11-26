@@ -4,7 +4,7 @@ layout: default-with-date
 title: 전문가의 표정
 permalink: stare-at-professional
 published_date: 2025-08-03
-nav_order: 2
+nav_order: 250803
 ---
 
 <details open markdown="block">
