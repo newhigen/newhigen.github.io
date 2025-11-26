@@ -7,15 +7,6 @@ published_date: 2025-08-31
 nav_order: 250831
 ---
 
-<details open markdown="block">
-  <summary>
-    Table of contents
-  </summary>
-  {: .text-delta }
-1. TOC
-{:toc}
-</details>
-
 # 전문가란
 
 지금의 나에게는 전문가에 대한 로망이 있고, 전문가가 되고 싶다는 욕구가 있다. 내가 생각하는 '전문가'의 정의는 일을 할 수 있는 사람을 넘어 '일을 아주 잘하는 사람'이다.

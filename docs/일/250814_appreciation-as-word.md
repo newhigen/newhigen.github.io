@@ -7,15 +7,6 @@ published_date: 2025-08-14
 nav_order: 250814
 ---
 
-<details open markdown="block">
-  <summary>
-    Table of contents
-  </summary>
-  {: .text-delta }
-1. TOC
-{:toc}
-</details>
-
 # Appreciation이란?
 
 '인정'이라고 번역 될 수도 있지만, 인정은 acknowledge에 조금 더 가까운 느낌이다. Acknowledgement에 gratitude가 후추후추된 느낌 또는 acknowledge는 T적 표현이고 appreciate은 F적 표현이라고 할 수 있을까? 인정과 칭찬 그 사이 어딘가?

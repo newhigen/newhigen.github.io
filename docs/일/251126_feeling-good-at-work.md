@@ -7,15 +7,6 @@ published_date: 2025-11-26
 nav_order: 251126
 ---
 
-<details open markdown="block">
-  <summary>
-    Table of contents
-  </summary>
-  {: .text-delta }
-1. TOC
-{:toc}
-</details>
-
 최근 들어서 '일을 잘한다'는 것이 어떤 느낌인지 어렴풋이 느껴지는 것 같다.
 
 점진적이기보다 단계적인 느낌이다.

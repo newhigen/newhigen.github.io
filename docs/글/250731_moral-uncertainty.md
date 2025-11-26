@@ -7,15 +7,6 @@ published_date: 2025-07-31
 nav_order: 250731
 ---
 
-<details open markdown="block">
-  <summary>
-    Table of contents
-  </summary>
-  {: .text-delta }
-1. TOC
-{:toc}
-</details>
-
 # 도덕적 선택과 미래 예측
 
 도덕적 선택을 할 때는 내가 취하기로 하는 또는 취하지 않기로 하는 행동의 미래 결과를 예상하고 행동한다.미래 결과를 예상하려면 미래를 예측할 수 있는 지성이 갖춰야하고 현재 상황에서 일어날 확률[^1]을 파악해야한다.

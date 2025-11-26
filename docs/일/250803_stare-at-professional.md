@@ -7,15 +7,6 @@ published_date: 2025-08-03
 nav_order: 250803
 ---
 
-<details open markdown="block">
-  <summary>
-    Table of contents
-  </summary>
-  {: .text-delta }
-1. TOC
-{:toc}
-</details>
-
 # 전문가
 
 자신의 일을 좋아하는 전문가를 볼 때 일를 하는 모습과 표정을 유심히 바라본다. 전문가들 중에서 미디어에서 자주 볼 수 있는 가수들이 주로 눈에 들어온다. 일을 하면서 즐기는 모습, 차분히 집중하는 모습, 무엇보다 본인의 일을 잘하는 모습을 보면 이런저런 생각이 든다.
