@@ -36,7 +36,7 @@ nav_order: 251126
 
 게임으로 치면 이제야 1차 전직을 한 또는 했다는 것을 깨달은 느낌이다.
 
-[일을 잘한다는 것](https://app.capacities.io/1dd79981-4ca1-4dd5-9913-6bc2a60551ac/aa8f1bbf-6486-4c1c-a861-596c70c4f60c)에서 말하는 것처럼 그런 변화를 깨닫기는 쉽지 않다.
+『일을 잘한다는 것』[^workwell]에서 말하는 것처럼 그런 변화를 깨닫기는 쉽지 않다.
 
 왜냐하면 내가 하고 있는 방식은 나에게는 당연한 느낌이고 외부에서 평가해 주지 않는 이상 내 관점에서 벗어나기 쉽지는 않다.
 
@@ -46,21 +46,21 @@ nav_order: 251126
 
 기억을 되짚어보면 그보다는 근 4개월간 읽었던 책들의 내용들이 머릿속에 쌓이고 경험적으로 인식하는 소화의 과정을 거치면서 그랬던 것 같다.
 
-- 7월: [왜 나는 항상 결심만 할까?](https://app.capacities.io/1dd79981-4ca1-4dd5-9913-6bc2a60551ac/1a6d296c-392a-483a-8d81-b7c568561ff0)
-- 8월: [완벽한 선택은 없다](https://app.capacities.io/1dd79981-4ca1-4dd5-9913-6bc2a60551ac/af7988c8-7952-48ce-b2d7-01445541ad99), [실용주의 사고와 학습](https://app.capacities.io/1dd79981-4ca1-4dd5-9913-6bc2a60551ac/e29bada3-5b47-4057-8e27-9125b07973b0), [린 소프트웨어 개발](https://app.capacities.io/1dd79981-4ca1-4dd5-9913-6bc2a60551ac/68f6c0a4-9a82-402a-a8df-95120c119126)
-- 9월: [함께 자라기 (김창준, 2018)](https://app.capacities.io/1dd79981-4ca1-4dd5-9913-6bc2a60551ac/2b746a0d-68bd-43ed-a97a-a61c5fc34e64), [자기만의 트랙](https://app.capacities.io/1dd79981-4ca1-4dd5-9913-6bc2a60551ac/8693fa49-d9e1-4854-a8a3-16b51a5ff9cd)
-- 10월: [The Tech Resume Inside Out](https://app.capacities.io/1dd79981-4ca1-4dd5-9913-6bc2a60551ac/a1fe3133-d604-4c07-914e-6595a4d5b12c) (+ [Get your work recognized: write a brag document](https://app.capacities.io/1dd79981-4ca1-4dd5-9913-6bc2a60551ac/90baf35c-1105-496a-bb91-523891076457)), [Getting Things Done](https://app.capacities.io/1dd79981-4ca1-4dd5-9913-6bc2a60551ac/18a41713-ce78-4157-89e4-0ae45b5b19d8) (읽는 중)
+- 7월: 『왜 나는 항상 결심만 할까?』[^why-decide]
+- 8월: 『완벽한 선택은 없다』[^no-perfect-choice], 『실용주의 사고와 학습』[^pragmatic-learning], 『린 소프트웨어 개발』[^lean-sw]
+- 9월: 『함께 자라기 (김창준, 2018)』[^grow-together], 『자기만의 트랙』[^track]
+- 10월: 『The Tech Resume Inside Out』[^tech-resume] (+ 『Get your work recognized: write a brag document』[^brag-doc]), 『Getting Things Done』[^gtd] (아직 읽는 중)
 
 핵심적으로 책의 내용들을 말하자면
 
 1. 선택에 대해서 알기
-    1. [왜 나는 항상 결심만 할까?](https://app.capacities.io/1dd79981-4ca1-4dd5-9913-6bc2a60551ac/1a6d296c-392a-483a-8d81-b7c568561ff0)에서 심리적인 부담을 내려놓는 방법을 알게 되었다. (모든 것에 옳고/그름의 잣대가 아니라고 어떤 것은 좋고/싫음으로 판단해도 된다.)
-    2. [완벽한 선택은 없다](https://app.capacities.io/1dd79981-4ca1-4dd5-9913-6bc2a60551ac/af7988c8-7952-48ce-b2d7-01445541ad99)에서 결정을 무작정 미루지 않고 결정 후 실행하고 검토하고 수정하는 방법을 알게 되었다.
+    1. 『왜 나는 항상 결심만 할까?』[^why-decide]에서 심리적인 부담을 내려놓는 방법을 알게 되었다. (모든 것에 옳고/그름의 잣대가 아니라고 어떤 것은 좋고/싫음으로 판단해도 된다.)
+    2. 『완벽한 선택은 없다』[^no-perfect-choice]에서 결정을 무작정 미루지 않고 결정 후 실행하고 검토하고 수정하는 방법을 알게 되었다.
 2. 일을 잘한다는 것에 대해서 알기
-    1. [함께 자라기 (김창준, 2018)](https://app.capacities.io/1dd79981-4ca1-4dd5-9913-6bc2a60551ac/2b746a0d-68bd-43ed-a97a-a61c5fc34e64), [실용주의 사고와 학습](https://app.capacities.io/1dd79981-4ca1-4dd5-9913-6bc2a60551ac/e29bada3-5b47-4057-8e27-9125b07973b0), [린 소프트웨어 개발](https://app.capacities.io/1dd79981-4ca1-4dd5-9913-6bc2a60551ac/68f6c0a4-9a82-402a-a8df-95120c119126)에서 전문가가 일하는 방식에 대해서 알게 되었다.
-    2. [자기만의 트랙](https://app.capacities.io/1dd79981-4ca1-4dd5-9913-6bc2a60551ac/8693fa49-d9e1-4854-a8a3-16b51a5ff9cd)에서 일을 잘한다는 것은 문제를 해결하는 것이라고 알게 되었다.
+    1. 『함께 자라기 (김창준, 2018)』[^grow-together], 『실용주의 사고와 학습』[^pragmatic-learning], 『린 소프트웨어 개발』[^lean-sw]에서 전문가가 일하는 방식에 대해서 알게 되었다.
+    2. 『자기만의 트랙』[^track]에서 일을 잘한다는 것은 문제를 해결하는 것이라고 알게 되었다.
 3. 내가 한 일들을 다른 관점으로 돌아보기
-    1. [Get your work recognized: write a brag document](https://app.capacities.io/1dd79981-4ca1-4dd5-9913-6bc2a60551ac/90baf35c-1105-496a-bb91-523891076457)를 토대로 나의 성과를 과장하지 않되 가치 있는 일로 여기는 마음으로 기록하는 것을 알게 되었고 [The Tech Resume Inside Out](https://app.capacities.io/1dd79981-4ca1-4dd5-9913-6bc2a60551ac/a1fe3133-d604-4c07-914e-6595a4d5b12c)을 토대로 이력서를 업데이트해 보면서 내 성과들을 전체적으로 다른 관점에서 다시 생각해 보게 되었다.
+    1. 『Get your work recognized: write a brag document』[^brag-doc]를 토대로 나의 성과를 과장하지 않되 가치 있는 일로 여기는 마음으로 기록하는 것을 알게 되었고 『The Tech Resume Inside Out』[^tech-resume]을 토대로 이력서를 업데이트해 보면서 내 성과들을 전체적으로 다른 관점에서 다시 생각해 보게 되었다.
 
 하지만, 이 책들을 다 읽은 시점에서 일을 잘한다는 느낌이 바로 온 건 아니다.
 
@@ -70,11 +70,11 @@ nav_order: 251126
 
 ### 버림의 효과성
 
-그리고 직접적으로 떠오르는 지식은 [Getting Things Done](https://app.capacities.io/1dd79981-4ca1-4dd5-9913-6bc2a60551ac/18a41713-ce78-4157-89e4-0ae45b5b19d8)의 내용이었는데, 인생은 새로운 것들이 끊임없이 추가되고 그것들을 내가 다 해낼 수는 없다는 것이다.
+그리고 직접적으로 떠오르는 지식은 『Getting Things Done』[^gtd]의 내용이었는데, 인생은 새로운 것들이 끊임없이 추가되고 그것들을 내가 다 해낼 수는 없다는 것이다.
 
 그런 상황에서 중요한 것은 내가 무엇을 선택하고 무엇을 포기할지 선택하는 것이다.
 
-이를 [왜 나는 항상 결심만 할까?](https://app.capacities.io/1dd79981-4ca1-4dd5-9913-6bc2a60551ac/1a6d296c-392a-483a-8d81-b7c568561ff0)의 내용과 결합하여 옳고 그름으로 모든 것을 판단하여 붙잡기보다 어떤 것들은 좋음과 싫음으로 인식하여서 과감하게 포기 또는 열정적으로 선택하는 연습을 하였다.
+이를 『왜 나는 항상 결심만 할까?』[^why-decide]의 내용과 결합하여 옳고 그름으로 모든 것을 판단하여 붙잡기보다 어떤 것들은 좋음과 싫음으로 인식하여서 과감하게 포기 또는 열정적으로 선택하는 연습을 하였다.
 
 그러다보니 일에서도 선택과 집중을 적용하고 무엇보다 버려진 요소들에 집착하기보다 선택한 핵심에 대해서 최선인지 생각했다.
 
@@ -84,20 +84,20 @@ nav_order: 251126
 
 하지만 나는 조급함을 덜 가지고 싶다.
 
-[시니어처럼 보이고 싶은 주니어 - 인지적 편향 부수기 (2)](https://app.capacities.io/1dd79981-4ca1-4dd5-9913-6bc2a60551ac/aa47c0d1-e762-47e5-9722-acd2bb1a4bca)에서 말했던 것처럼 지금의 단계를 충실히 지내고, 아직 어렴풋이 느껴지는 이 일을 잘한다는 느낌을 더 정확하게 인지하는 훈련의 과정을 거치는 것이 어떨까?
+『시니어처럼 보이고 싶은 주니어 - 인지적 편향 부수기 (2)』[^fake-senior]에서 말했던 것처럼 지금의 단계를 충실히 지내고, 아직 어렴풋이 느껴지는 이 일을 잘한다는 느낌을 더 정확하게 인지하는 훈련의 과정을 거치는 것이 어떨까?
 
 다만 말했다시피 지금의 일을 잘한다는 느낌은 1차 전직 수준일 수 있다.
 
-다음 단계인 2차 전직을 염두해 두면서 성장해야 한다. _ 노력의 방향이 중요하다. [1만 시간의 재발견](https://app.capacities.io/1dd79981-4ca1-4dd5-9913-6bc2a60551ac/5a87ac1c-af80-44f2-a8cc-256ea66394dc)
+다음 단계인 2차 전직을 염두해 두면서 성장해야 한다. _ 노력의 방향이 중요하다. 『1만 시간의 재발견』[^ten-thousand-hours]
 
 하지만 지금 내 방식이 최고로 여기면서 일에 적용하는 것과 방식 자체를 의심하며 더 나은 방식을 고민하는 것을 동시에 하기는 어렵다.
 
-[완벽에 관하여](https://app.capacities.io/1dd79981-4ca1-4dd5-9913-6bc2a60551ac/afd5b951-6f9e-4f7f-a575-ebdfef066930)에서 말하는 것처럼 계획을 정했으면 일단 그 계획에 따라 생각하지 않고 최선을 다해 실행한다.
+『완벽에 관하여』[^about-perfect]에서 말하는 것처럼 계획을 정했으면 일단 그 계획에 따라 생각하지 않고 최선을 다해 실행한다.
 
 따라서 현재의 시점에서 내가 일을 대하는 방식이 최선이라고 여기고 실행을 하되 그 이후에는 이 방향이 최선이었는지 돌아보는 것이다.
 
-- 전자는 [토스 대표 이승건, 속도 vs 마음가짐 - YouTube](https://www.youtube.com/shorts/AhWdy6E14Og)에서 말하는 것처럼 'Use your best judgement'이다. 그리고 [완벽한 선택은 없다](https://app.capacities.io/1dd79981-4ca1-4dd5-9913-6bc2a60551ac/af7988c8-7952-48ce-b2d7-01445541ad99)에서 말하는 것처럼 실행 후 수정한다는 자세로 루프를 빠르게 돌리는 것이다.
-- 후자는 [1만 시간의 재발견](https://app.capacities.io/1dd79981-4ca1-4dd5-9913-6bc2a60551ac/5a87ac1c-af80-44f2-a8cc-256ea66394dc) 같은 책들에서 말하는 것처럼 피드백을 받는 것이다. 이를 위해서는 비교 대상 즉 best practice에 해당하는 모델(전문가이든 더 효과적으로 일을 해결한 기록이든)이 필요하다.
+- 전자는 『속도 vs 마음가짐』[^best-judgement]에서 말하는 것처럼 'Use your best judgement'이다. 그리고 『완벽한 선택은 없다』[^no-perfect-choice]에서 말하는 것처럼 실행 후 수정한다는 자세로 루프를 빠르게 돌리는 것이다.
+- 후자는 『1만 시간의 재발견』[^ten-thousand-hours] 같은 책들에서 말하는 것처럼 피드백을 받는 것이다. 이를 위해서는 비교 대상 즉 best practice에 해당하는 모델(전문가이든 더 효과적으로 일을 해결한 기록이든)이 필요하다.
 
 ## 이 글을 돌아보며
 
@@ -115,3 +115,17 @@ nav_order: 251126
 
 놓지 않은 구름 같은 꿈에 현실적인 노력을 채워간다면 언젠간 만져지라리는 것을.
 
+[^workwell]: [도서] 일을 잘한다는 것
+[^why-decide]: [도서] 왜 나는 항상 결심만 할까?
+[^no-perfect-choice]: [도서] 완벽한 선택은 없다
+[^pragmatic-learning]: [도서] 실용주의 사고와 학습
+[^lean-sw]: [도서] 린 소프트웨어 개발
+[^grow-together]: [도서] 함께 자라기 (김창준, 2018)
+[^track]: [도서] 자기만의 트랙
+[^tech-resume]: [도서] The Tech Resume Inside Out
+[^brag-doc]: [글] Get your work recognized: write a brag document
+[^gtd]: [도서] Getting Things Done
+[^fake-senior]: [글] 시니어처럼 보이고 싶은 주니어 - 인지적 편향 부수기 (2)
+[^ten-thousand-hours]: [도서] 1만 시간의 재발견
+[^about-perfect]: [도서] 완벽에 관하여
+[^best-judgement]: [영상] 토스 대표 이승건, 속도 vs 마음가짐 - YouTube
