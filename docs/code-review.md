@@ -2,7 +2,7 @@
 layout: default
 title: Code Review
 permalink: code-review
-nav_order:
+nav_order: 1
 nav_exclude: true
 ---
 
