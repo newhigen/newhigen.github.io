@@ -6,7 +6,51 @@ published_date: 2025-11-29
 nav_order: 5
 ---
 
-## VScode 계열 IDE `settings.json`
+## VScode 계열 IDE
+
+### 확장
+
+Git
+
+* `Git Graph`
+* `GitHub Actions`
+* `GitHub Pull Requests`
+* (optional) `GitLens` - `compare with` 기능은 좋은데 나머지 딸려오는 기능들이 너무 많고 유료인 것들도 있긴함
+
+Python
+
+* `autopep8`
+* `isort`
+* `Python`
+* `Python Indent`
+* `Pylance`
+* `Jupyter`
+
+Development Environment
+
+* `Remote - SSH`
+* `Remote Developement`
+
+CSV
+* `Rainbow CSV`
+* `Edit CSV`
+
+Markdown
+* `Markdown All in One`
+* `GitHUb Markdown Preview`
+
+Etc.
+* `Project Manager`
+* `TODO Highlight`
+* `Korean Language Pack for Visual Studio Code`
+
+내가 사용하는 테마 (가끔씩 바뀝니다.)
+
+* Color Theme: `Gruvbox` or `Bearded Theme`
+* File Icon Theme: `Bearded Icons`
+* Product Icon Theme: `Material Product Icons`
+
+### 설정: `settings.json`
 
 ```JSON
 // Minimap 설정
