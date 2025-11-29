@@ -18,6 +18,29 @@ div.highlighter-rouge code {
   font-family: var(--code-font-family) !important;
 }
 
+.main-content div.highlighter-rouge,
+.main-content figure.highlight,
+.main-content div.listingblock > div.content {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #f8fafc;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+}
+
+.main-content div.highlighter-rouge div.highlight,
+.main-content figure.highlight div.highlight,
+.main-content div.listingblock > div.content {
+  padding: 0.9rem 1rem;
+}
+
+.main-content pre:not(.highlight) {
+  padding: 0.9rem 1rem;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
 .main-content img {
   border: 1px solid #e5e7eb;
   border-radius: 6px;
