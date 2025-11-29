@@ -206,6 +206,12 @@ div.highlighter-rouge code {
   font-size: 0.9em;
 }
 
+.home-ago {
+  display: inline-block;
+  min-width: 4em;
+  text-align: center;
+}
+
 @media (max-width: 1150px) {
   .content-with-toc {
     display: block;

@@ -12,11 +12,12 @@ nav_order: 0
   | sort: "published_date"
   | reverse %}
 
-## 최신 글
+## 최근 업데이트
 
 {% if latest_pages != empty %}
-{% for p in latest_pages limit:3 %}
-  {% assign pub_s = p.published_date | date: '%s' %}
+{% for p in latest_pages limit:5 %}
+  {% assign pub = p.published_date | default: p.date %}
+  {% assign pub_s = pub | date: '%s' %}
   {% assign diff_s = now_s | minus: pub_s %}
   {% assign days = diff_s | divided_by: 86400 %}
   {% if days < 1 %}
@@ -33,8 +34,8 @@ nav_order: 0
     {% assign years = days | divided_by: 365 %}
     {% assign ago = years | append: '년 전' %}
   {% endif %}
-[{{ p.title | default: p.name }}]({{ p.url | relative_url }}) <span class="text-small">{{ ago }}</span>
+<span class="home-ago text-small">{{ ago }}</span> [{{ p.title | default: p.name }}]({{ p.url | relative_url }})
 {% endfor %}
 {% else %}
-<p class="text-small">최근 포스트가 없습니다.</p>
+<p class="text-small">최근 업데이트가 없습니다.</p>
 {% endif %}
