@@ -1,5 +1,5 @@
 ---
-parent: 생각
+parent: '글 #생각'
 layout: default-with-date
 title: 불확실성과 개인의 한계에서의 도덕적 선택
 permalink: moral-uncertainty

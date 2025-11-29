@@ -1,5 +1,5 @@
 ---
-parent: 생각
+parent: '글 #생각'
 layout: default-with-date
 title: 시니어처럼 보이고 싶은 주니어 - 인지적 편향 부수기 (2)
 permalink: fake-senior-junior

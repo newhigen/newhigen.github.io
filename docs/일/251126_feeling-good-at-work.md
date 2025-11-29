@@ -1,5 +1,5 @@
 ---
-parent: 일
+parent: '글 #일'
 layout: default-with-date
 title: 일을 잘하는 느낌?
 permalink: feeling-good-at-work
