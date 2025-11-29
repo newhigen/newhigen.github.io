@@ -1,24 +1,23 @@
 ---
+parent: 개발 환경
 layout: default-with-date
 title: IDE
 permalink: ide
 published_date: 2025-11-29
-nav_order: 5
+nav_order: 1
 ---
 
 ## VScode 계열 IDE
 
 ### 확장
 
-Git
-
+#### Git
 * `Git Graph`
 * `GitHub Actions`
 * `GitHub Pull Requests`
 * (optional) `GitLens` - `compare with` 기능은 좋은데 나머지 딸려오는 기능들이 너무 많고 유료인 것들도 있긴함
 
-Python
-
+#### Python
 * `autopep8`
 * `isort`
 * `Python`
@@ -26,25 +25,24 @@ Python
 * `Pylance`
 * `Jupyter`
 
-Development Environment
-
+#### Development Environment
 * `Remote - SSH`
 * `Remote Developement`
 
-CSV
+#### CSV
 * `Rainbow CSV`
 * `Edit CSV`
 
-Markdown
+#### Markdown
 * `Markdown All in One`
 * `GitHUb Markdown Preview`
 
-Etc.
+#### Etc.
 * `Project Manager`
 * `TODO Highlight`
 * `Korean Language Pack for Visual Studio Code`
 
-내가 사용하는 테마 (가끔씩 바뀝니다.)
+#### 내가 사용하는 테마 (가끔씩 바뀝니다.)
 
 * Color Theme: `Gruvbox` or `Bearded Theme`
 * File Icon Theme: `Bearded Icons`
