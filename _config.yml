@@ -21,3 +21,6 @@ ga_tracking: G-1LV633QRNR
 ga_tracking_anonymize_ip: true
 
 search_enabled: false
+
+plugins:
+  - jekyll-sitemap
