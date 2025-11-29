@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const path = window.location.pathname.replace(/index\.html$/, "");
+  if (path === "/" || path === "") return;
+
   const mainContent = document.querySelector(".main-content");
   const mainWrap = document.querySelector(".main-content-wrap");
   if (!mainContent || !mainWrap) return;
