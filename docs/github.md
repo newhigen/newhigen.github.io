@@ -21,4 +21,10 @@ Pull Requests
 Add branch ruleset
 - ☑ Enable `Require a pull request before merging`
 
-## GitHub 웹 UI 개선: `Refined GitHub` Browser Extension
+## `github.dev`
+
+GitHub에서 `.`만 누르면 웹 VSCode가 켜짐. 코드 리뷰하기 좋음. (모두는 아니지만 웬만한 PC VSCode 확장이 지원 및 동기화됨.)
+
+## GitHub 웹 UI 개선: `Refined GitHub`
+
+> [IDE](https://newhigen.github.io/ide)의 `Refined GitHub` 섹션에서 이 항목을 참고합니다.
