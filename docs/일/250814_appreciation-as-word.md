@@ -1,5 +1,5 @@
 ---
-parent: 일
+parent: '글 #일'
 layout: default-with-date
 title: Appreciation as Word
 permalink: appreciation-as-word

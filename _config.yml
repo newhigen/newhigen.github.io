@@ -5,14 +5,12 @@ theme: just-the-docs
 url: https://newhigen.github.io
 
 aux_links:
+  "About": /about.html
+  "읽은 책": https://newhigen.github.io/books
 
 color_scheme: custom
 
 nav_external_links:
-  - title: 읽은 책
-    url: https://newhigen.github.io/books
-    hide_icon: false
-    opens_in_new_tab: true
 
 back_to_top: true
 back_to_top_text: "Back to top"
@@ -21,3 +19,8 @@ enable_copy_code_button: true
 
 ga_tracking: G-1LV633QRNR
 ga_tracking_anonymize_ip: true
+
+search_enabled: false
+
+plugins:
+  - jekyll-sitemap

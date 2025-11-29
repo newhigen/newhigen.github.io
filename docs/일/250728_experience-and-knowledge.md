@@ -1,5 +1,5 @@
 ---
-parent: 일
+parent: '글 #일'
 layout: default-with-date
 title: 경험 + 지식 = 숙련
 permalink: experience-and-knowledge
