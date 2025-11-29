@@ -1,7 +1,7 @@
 ---
 title: About
 layout: default
-nav_order: 1
+nav_exclude: true
 ---
 
 * [GitHub](https://github.com/newhigen)
