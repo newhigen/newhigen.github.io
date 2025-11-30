@@ -35,6 +35,16 @@ MongoDB 데이터 폴더 자체를 버저닝 해볼 수 있겠지만, WiredTiger
 ML 파이프라인 재현성을 위해서 feature engineering 후 학습 직전에 immutable(더 이상 변하지 않는) 상태에서 data versioning을 적용한다.
 * 아이디어: DB에 대한 query를 실험 configuration으로 넣고 해당 query가 동일하면 DB가 아닌 version system에서 가져오도록 한다.
 
+### 애초에 Data Versioning이라는 주제가 쉽지 않은 것이다?
+
+[Data Versioning](https://mattrickard.com/data-versioning) 글에 따르면 수많은 기업과 제품들이 Data Versioning의 보편적 해답을 찾지 못했다.
+1. `Data Volume` - 코드가 많아지는 양보다 데이터가 더 빨리 많아진다.
+2. `Needs bespoke tools` - 코드에 적합한 VCS는 데이터에 적합하지 않은데 데이터에 특성에 기인하다. (데이터 구조, 인덱스 디자인)
+3. `Data Sensivitity` - 민감한 데이터에 대한 버전 관리는 좋지 않지만 개인식별정보는 환경변수나 secret store가 아닌 주로 데이터베이스에 저장된다.
+4. `Schema Changes` - 스키마가 바뀐다.
+5. `What constitues a version` - 버전의 단위를 어떻게 정할 것인가? 새 record? 변경된 record? 변경된 필드? 스키마 변경?
+6. `Merge is not defined for many data types` - 코드 VCS와 같은 merging이 데이터 타입들에 대해서는 정해진 것이 없다.
+
 ## MongoDB GUI: MongoDB Compass
 
 [다운로드(mongodb.com/try/download/compass)](https://www.mongodb.com/try/download/compass)
