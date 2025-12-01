@@ -2,7 +2,7 @@
 parent: 개발 환경
 layout: default-with-date
 title: MacOS
-permalink: dev-env
+permalink: macos
 published_date: 2025-11-28
 nav_order: 2
 ---
