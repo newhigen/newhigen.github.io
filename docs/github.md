@@ -27,4 +27,4 @@ GitHub에서 `.`만 누르면 웹 VSCode가 켜짐. 코드 리뷰하기 좋음. 
 
 ## GitHub 웹 UI 개선: `Refined GitHub`
 
-> [IDE](https://newhigen.github.io/ide)의 `Refined GitHub` 섹션에서 이 항목을 참고합니다.
+> [MacOS](https://newhigen.github.io/macos)의 `Refined GitHub` 섹션에서 이 항목을 참고합니다.

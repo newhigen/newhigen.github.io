@@ -6,7 +6,9 @@ url: https://newhigen.github.io
 
 aux_links:
   "About": /about.html
+  "GitHub": https://github.com/newhigen
   "읽은 책": https://newhigen.github.io/books
+aux_links_new_tab: false
 
 color_scheme: custom
 
