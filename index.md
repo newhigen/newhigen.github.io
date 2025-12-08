@@ -30,6 +30,18 @@ topics:
     links:
       - permalink: github
         note: 자주 쓰는 GitHub 기능들
+  - title: 개발 환경
+    links:
+      - permalink: dev-environment
+        note: 개발 환경 설정 팁들
+  - title: 커리어
+    links:
+      - permalink: career
+        note: 커리어 패스 팁 모음
+  - title: 글
+    links:
+      - permalink: writing
+        note: 에세이
 ---
 
 {% assign featured_posts = page.featured_posts | default: site.featured_posts | default: [] %}
