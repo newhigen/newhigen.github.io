@@ -5,7 +5,9 @@ permalink: code-review
 nav_order: 1
 ---
 
-## 효과적인 코드 리뷰란
+# 효과적인 코드 리뷰란
+
+## 코드 리뷰의 본질에 대한 탐구
 
 - 맥락[^toss-cr]
 
