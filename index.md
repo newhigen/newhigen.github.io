@@ -2,40 +2,73 @@
 title: Home
 layout: home
 nav_order: 0
+featured_posts:
+  - permalink: moral-uncertainty
+    note:
+  - permalink: fake-senior-junior
+    note:
+  - permalink: feeling-good-at-work
+    note:
+  - permalink: stare-at-professional
+    note:
+  - permalink: breaking-bias
+    note:
+topics:
+  - title: 코드 리뷰
+    links:
+      - permalink: code-review
+        note: 효과적인 코드 리뷰에 대하여
+  - title: MongoDB
+    links:
+      - permalink: mongodb
+        note: MongoDB와 데이터 버저닝
+  - title: Git
+    links:
+      - permalink: git
+        note: 자주 쓰는 Git 명령어들
+  - title: GitHub
+    links:
+      - permalink: github
+        note: 자주 쓰는 GitHub 기능들
 ---
 
-{% assign now_s = 'now' | date: '%s' %}
-{% assign latest_pages = site.pages
-  | where_exp: "p", "p.published_date"
-  | where_exp: "p", "p.nav_exclude != true"
-  | where_exp: "p", "p.path contains 'docs/'"
-  | sort: "published_date"
-  | reverse %}
+{% assign featured_posts = page.featured_posts | default: site.featured_posts | default: [] %}
+{% assign topics = page.topics | default: site.topics | default: [] %}
 
-## 최근 업데이트
 
-{% if latest_pages != empty %}
-{% for p in latest_pages limit:5 %}
-  {% assign pub = p.published_date | default: p.date %}
-  {% assign pub_s = pub | date: '%s' %}
-  {% assign diff_s = now_s | minus: pub_s %}
-  {% assign days = diff_s | divided_by: 86400 %}
-  {% if days < 1 %}
-    {% assign ago = '오늘' %}
-  {% elsif days < 7 %}
-    {% assign ago = days | append: '일 전' %}
-  {% elsif days < 60 %}
-    {% assign weeks = days | divided_by: 7 %}
-    {% assign ago = weeks | append: '주 전' %}
-  {% elsif days < 730 %}
-    {% assign months = days | divided_by: 30 %}
-    {% assign ago = months | append: '개월 전' %}
-  {% else %}
-    {% assign years = days | divided_by: 365 %}
-    {% assign ago = years | append: '년 전' %}
+## 기술적 주제들
+{% if topics != empty %}
+{% assign has_topic_links = false %}
+{% for topic in topics %}
+{% if topic.links and topic.links != empty %}
+{% assign has_topic_links = true %}
+{% for link in topic.links %}
+{% assign topic_page = site.pages | where: "permalink", link.permalink | first %}
+{% assign link_url = topic_page.url | relative_url | default: link.url %}
+{% assign link_title = topic_page.title | default: link.title %}
+{% if link_url and link_title %}
+- [{{ link_title }}]({{ link_url }}){% if link.note %} — {{ link.note }}{% endif %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% unless has_topic_links %}
+링크를 추가해 주세요.
+{% endunless %}
+{% else %}
+주제별 링크를 설정해 주세요.
+{% endif %}
+
+## 대표 글
+{% if featured_posts != empty %}
+{% for item in featured_posts %}
+  {% assign featured_page = site.pages | where: "permalink", item.permalink | first %}
+  {% assign featured_url = featured_page.url | relative_url | default: item.url %}
+  {% assign featured_title = featured_page.title | default: item.title %}
+  {% if featured_url and featured_title %}
+- [{{ featured_title }}]({{ featured_url }}){% if item.note %} — {{ item.note }}{% endif %}
   {% endif %}
-<span class="home-ago text-small">{{ ago }}</span> [{{ p.title | default: p.name }}]({{ p.url | relative_url }})
 {% endfor %}
 {% else %}
-<p class="text-small">최근 업데이트가 없습니다.</p>
+표시할 글을 설정해 주세요.
 {% endif %}
