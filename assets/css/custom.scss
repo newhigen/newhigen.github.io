@@ -212,6 +212,19 @@ div.highlighter-rouge code {
   text-align: center;
 }
 
+.home-compact {
+  margin: 0.15em 0 0.35em;
+  padding-left: 1em;
+}
+
+.home-compact li {
+  margin: 0.12em 0;
+}
+
+.home-compact a {
+  font-weight: 400;
+}
+
 
 @media (max-width: 1150px) {
   .content-with-toc {

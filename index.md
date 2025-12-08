@@ -36,9 +36,10 @@ topics:
 {% assign topics = page.topics | default: site.topics | default: [] %}
 
 
-## 기술적 주제들
+## 주제들
 {% if topics != empty %}
 {% assign has_topic_links = false %}
+<ul class="home-compact">
 {% for topic in topics %}
 {% if topic.links and topic.links != empty %}
 {% assign has_topic_links = true %}
@@ -47,11 +48,12 @@ topics:
 {% assign link_url = topic_page.url | relative_url | default: link.url %}
 {% assign link_title = topic_page.title | default: link.title %}
 {% if link_url and link_title %}
-- [{{ link_title }}]({{ link_url }}){% if link.note %} — {{ link.note }}{% endif %}
+  <li><a href="{{ link_url }}">{{ link_title }}</a>{% if link.note %} — {{ link.note }}{% endif %}</li>
 {% endif %}
 {% endfor %}
 {% endif %}
 {% endfor %}
+</ul>
 {% unless has_topic_links %}
 링크를 추가해 주세요.
 {% endunless %}
@@ -61,14 +63,16 @@ topics:
 
 ## 대표 글
 {% if featured_posts != empty %}
-{% for item in featured_posts %}
-  {% assign featured_page = site.pages | where: "permalink", item.permalink | first %}
-  {% assign featured_url = featured_page.url | relative_url | default: item.url %}
-  {% assign featured_title = featured_page.title | default: item.title %}
-  {% if featured_url and featured_title %}
-- [{{ featured_title }}]({{ featured_url }}){% if item.note %} — {{ item.note }}{% endif %}
-  {% endif %}
-{% endfor %}
+<ul class="home-compact">
+  {% for item in featured_posts %}
+    {% assign featured_page = site.pages | where: "permalink", item.permalink | first %}
+    {% assign featured_url = featured_page.url | relative_url | default: item.url %}
+    {% assign featured_title = featured_page.title | default: item.title %}
+    {% if featured_url and featured_title %}
+    <li><a href="{{ featured_url }}">{{ featured_title }}</a>{% if item.note %} — {{ item.note }}{% endif %}</li>
+    {% endif %}
+  {% endfor %}
+</ul>
 {% else %}
 표시할 글을 설정해 주세요.
 {% endif %}
