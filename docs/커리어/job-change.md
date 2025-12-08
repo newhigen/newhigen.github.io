@@ -1,5 +1,5 @@
 ---
-parent: 커리어
+# parent: 커리어
 layout: default
 title: 이직
 permalink: job-change
