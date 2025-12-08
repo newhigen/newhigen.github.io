@@ -1,5 +1,5 @@
 ---
-parent: '글 #일'
+parent: '#일'
 layout: default-with-date
 title: 전문가의 표정
 permalink: stare-at-professional
