@@ -34,10 +34,10 @@ topics:
     links:
       - permalink: dev-environment
         note: 개발 환경 설정 팁들
-  # - title: 커리어
-  #   links:
-  #     - permalink: career
-  #       note: 커리어 패스 팁 모음
+  - title: 성장
+    links:
+      - permalink: growth
+        note: 성장 관련 경험 공유
   - title: 글
     links:
       - permalink: writing
