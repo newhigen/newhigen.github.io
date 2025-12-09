@@ -5,10 +5,11 @@ permalink: code-review
 nav_order: 1
 ---
 
-## 효과적인 코드 리뷰란
+# 효과적인 코드 리뷰란
 
-- 토스 저맥락, 고맥락
+## 코드 리뷰의 본질에 대한 탐구
 
+- 맥락[^toss-cr]
 
 ## 코드 리뷰 경험으로 느낀점
 
@@ -75,3 +76,4 @@ nav_order: 1
 
 
 [^context]: [도서] 실용주의 사고와 학습
+[^toss-cr]: [저맥락, 고맥락 _ 코드 리뷰할 시간이 어딨어요? 모닥불 | EP.12](https://toss.im/career/recruit/tech-blog/code-review)

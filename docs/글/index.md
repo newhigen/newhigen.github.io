@@ -1,5 +1,6 @@
 ---
-title: '글 #생각'
+title: 글
 layout: default
+permalink: writing
 nav_order: 9
 ---

@@ -1,4 +1,5 @@
 ---
+parent:
 layout: default
 title: Template2
 permalink: template2
