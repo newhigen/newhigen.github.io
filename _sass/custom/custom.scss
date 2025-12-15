@@ -1,0 +1,10 @@
+// 네비게이션 간격 조정
+// Home과 Code Review 사이 간격
+.nav-list-item:has(> .nav-list-link[href*="code-review"]) {
+  margin-top: 1.5rem;
+}
+
+// 개발 환경과 성장 사이 간격
+.nav-list-item:has(> .nav-list-expander + .nav-list-link[href*="growth"]) {
+  margin-top: 1.5rem;
+}
