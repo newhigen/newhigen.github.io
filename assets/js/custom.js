@@ -84,3 +84,39 @@ document.addEventListener("DOMContentLoaded", () => {
   layout.appendChild(mainContent);
   layout.appendChild(toc);
 });
+
+// Relative date 변환
+document.addEventListener("DOMContentLoaded", () => {
+  const metaInfos = document.querySelectorAll(".home-with-meta .meta-info");
+
+  metaInfos.forEach((element) => {
+    const dateStr = element.textContent.trim();
+    // YYYY-MM-DD 형식의 날짜만 처리
+    if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) {
+      const date = new Date(dateStr);
+      const now = new Date();
+      const diffMs = now - date;
+      const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+      let relativeDate;
+      if (diffDays === 0) {
+        relativeDate = "오늘";
+      } else if (diffDays === 1) {
+        relativeDate = "1일 전";
+      } else if (diffDays < 7) {
+        relativeDate = `${diffDays}일 전`;
+      } else if (diffDays < 30) {
+        const weeks = Math.floor(diffDays / 7);
+        relativeDate = `${weeks}주 전`;
+      } else if (diffDays < 365) {
+        const months = Math.floor(diffDays / 30);
+        relativeDate = `${months}개월 전`;
+      } else {
+        const years = Math.floor(diffDays / 365);
+        relativeDate = `${years}년 전`;
+      }
+
+      element.textContent = relativeDate;
+    }
+  });
+});

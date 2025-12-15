@@ -1,0 +1,81 @@
+// 네비게이션 간격 조정
+// Home과 Code Review 사이 간격
+.nav-list-item:has(> .nav-list-link[href*="code-review"]) {
+  margin-top: 1.5rem;
+}
+
+// 개발 환경과 성장 사이 간격
+.nav-list-item:has(> .nav-list-expander + .nav-list-link[href*="growth"]) {
+  margin-top: 1.5rem;
+}
+
+// 홈페이지 2컬럼 레이아웃
+.home-two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+
+  // 반응형: 작은 화면에서는 1컬럼으로
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+
+  .home-column {
+    h2 {
+      margin-top: 0;
+    }
+  }
+}
+
+// 링크와 메타 정보 정렬
+.home-with-meta {
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    gap: 0.5rem 0;
+    align-items: baseline;
+
+    &::before {
+      content: "•";
+      grid-column: 1;
+    }
+
+    a {
+      grid-column: 2;
+    }
+
+    .meta-info {
+      grid-column: 3;
+      color: #666;
+      font-size: 0.9em;
+    }
+  }
+}
+
+// 최신 글 - 날짜는 링크에서 약간 떨어뜨려서
+.home-recent {
+  li {
+    gap: 0.5rem 0;
+
+    a {
+      min-width: auto;
+      margin-right: 1rem;
+    }
+  }
+}
+
+// 주제들 - 설명과 링크 간격 더 넓게
+.home-topics {
+  li {
+    gap: 0.5rem 0;
+
+    a {
+      min-width: 90px;
+      margin-right: 1.25rem;
+    }
+  }
+}

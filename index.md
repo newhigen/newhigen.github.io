@@ -34,10 +34,10 @@ topics:
     links:
       - permalink: dev-environment
         note: 개발 환경 설정 팁들
-  # - title: 커리어
-  #   links:
-  #     - permalink: career
-  #       note: 커리어 패스 팁 모음
+  - title: 성장
+    links:
+      - permalink: growth
+        note: 성장 관련 경험 공유
   - title: 글
     links:
       - permalink: writing
@@ -47,31 +47,56 @@ topics:
 {% assign featured_posts = page.featured_posts | default: site.featured_posts | default: [] %}
 {% assign topics = page.topics | default: site.topics | default: [] %}
 
+{% comment %} 최신 글 5개 가져오기 {% endcomment %}
+{% assign recent_posts = site.pages | where_exp: "page", "page.published_date != nil" | sort: "published_date" | reverse %}
 
-## 주제들
-{% if topics != empty %}
-{% assign has_topic_links = false %}
-<ul class="home-compact">
-{% for topic in topics %}
-{% if topic.links and topic.links != empty %}
-{% assign has_topic_links = true %}
-{% for link in topic.links %}
-{% assign topic_page = site.pages | where: "permalink", link.permalink | first %}
-{% assign link_url = topic_page.url | relative_url | default: link.url %}
-{% assign link_title = topic_page.title | default: link.title %}
-{% if link_url and link_title %}
-  <li><a href="{{ link_url }}">{{ link_title }}</a>{% if link.note %} — {{ link.note }}{% endif %}</li>
-{% endif %}
-{% endfor %}
-{% endif %}
-{% endfor %}
-</ul>
-{% unless has_topic_links %}
-링크를 추가해 주세요.
-{% endunless %}
-{% else %}
-주제별 링크를 설정해 주세요.
-{% endif %}
+<div class="home-two-columns">
+  <div class="home-column">
+    <h2>최신 글</h2>
+    {% if recent_posts.size > 0 %}
+    <ul class="home-compact home-with-meta home-recent">
+      {% for post in recent_posts limit: 5 %}
+        <li>
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          <span class="meta-info">{{ post.published_date }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>최신 글이 없습니다.</p>
+    {% endif %}
+  </div>
+
+  <div class="home-column">
+    <h2>주제들</h2>
+    {% if topics != empty %}
+    {% assign has_topic_links = false %}
+    <ul class="home-compact home-with-meta home-topics">
+    {% for topic in topics %}
+    {% if topic.links and topic.links != empty %}
+    {% assign has_topic_links = true %}
+    {% for link in topic.links %}
+    {% assign topic_page = site.pages | where: "permalink", link.permalink | first %}
+    {% assign link_url = topic_page.url | relative_url | default: link.url %}
+    {% assign link_title = topic_page.title | default: link.title %}
+    {% if link_url and link_title %}
+      <li>
+        <a href="{{ link_url }}">{{ link_title }}</a>
+        {% if link.note %}<span class="meta-info">{{ link.note }}</span>{% endif %}
+      </li>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+    </ul>
+    {% unless has_topic_links %}
+    링크를 추가해 주세요.
+    {% endunless %}
+    {% else %}
+    주제별 링크를 설정해 주세요.
+    {% endif %}
+  </div>
+</div>
 
 ## 대표 글
 {% if featured_posts != empty %}
@@ -86,5 +111,5 @@ topics:
   {% endfor %}
 </ul>
 {% else %}
-표시할 글을 설정해 주세요.
+<p>표시할 글을 설정해 주세요.</p>
 {% endif %}

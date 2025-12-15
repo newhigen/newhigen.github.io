@@ -3,7 +3,7 @@ layout: default-with-date
 title: GitHub
 permalink: github
 published_date: 2025-11-29
-nav_order: 3
+nav_order: 5
 ---
 
 ## 개인 프로젝트 기본 설정

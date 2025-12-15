@@ -3,7 +3,7 @@ layout: default-with-date
 title: Git
 permalink: git
 published_date: 2025-11-25
-nav_order: 3
+nav_order: 4
 ---
 
 ## `git checkout <branch> -- <path>`
