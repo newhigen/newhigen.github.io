@@ -2,7 +2,7 @@
 layout: default
 title: Code Review
 permalink: code-review
-nav_order: 1
+nav_order: 2
 ---
 
 # 효과적인 코드 리뷰란

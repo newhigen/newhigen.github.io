@@ -3,7 +3,7 @@ layout: default-with-date
 title: MongoDB
 permalink: mongodb
 published_date: 2025-11-26
-nav_order: 2
+nav_order: 3
 ---
 
 ## MongoDB의 Data Versioning

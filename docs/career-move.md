@@ -3,7 +3,7 @@ layout: default-with-date
 title: 이직
 permalink: career-move
 published_date: 2025-11-28
-nav_order: 5
+nav_order: 6
 nav_exclude: true
 ---
 
