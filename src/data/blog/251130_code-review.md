@@ -1,8 +1,12 @@
 ---
-layout: default
-title: Code Review
-permalink: code-review
-nav_order: 2
+pubDatetime: 2025-11-30
+title: 효과적인 코드 리뷰란
+slug: code-review
+featured: false
+draft: false
+tags:
+  - Code Review
+description: ''
 ---
 
 # 효과적인 코드 리뷰란

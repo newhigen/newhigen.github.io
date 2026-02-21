@@ -1,10 +1,12 @@
 ---
-parent: '#생각'
-layout: default-with-date
+pubDatetime: 2025-08-04
 title: 책을 고르는 시야 - 인지적 편향 부수기 (1)
-permalink: breaking-bias
-published_date: 2025-08-04
-nav_order: 250804
+slug: breaking-bias
+featured: false
+draft: false
+tags:
+  - 생각
+description: ''
 ---
 
 # 좁은 시야로 책 고르기

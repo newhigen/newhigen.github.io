@@ -1,11 +1,12 @@
 ---
-# parent: '#생각'
-layout: default-with-date
+pubDatetime: 2025-08-02
 title: 파워 N과 파워 S이 만나면
-permalink: power-n-and-power-s
-published_date: 2025-08-02
-nav_order: 250802
-nav_exclude: true
+slug: power-n-and-power-s
+featured: true
+draft: true
+tags:
+  - 생각
+description: ''
 ---
 
 # 소개팅 시절

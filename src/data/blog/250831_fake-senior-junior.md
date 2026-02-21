@@ -1,10 +1,12 @@
 ---
-parent: '#생각'
-layout: default-with-date
+pubDatetime: 2025-08-31
 title: 시니어처럼 보이고 싶은 주니어 - 인지적 편향 부수기 (2)
-permalink: fake-senior-junior
-published_date: 2025-08-31
-nav_order: 250831
+slug: fake-senior-junior
+featured: true
+draft: false
+tags:
+  - 생각
+description: ''
 ---
 
 # 전문가란

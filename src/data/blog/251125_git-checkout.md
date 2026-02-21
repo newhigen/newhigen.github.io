@@ -1,9 +1,12 @@
 ---
-layout: default-with-date
-nav_order: 4
-permalink: git
-title: Git
-published_date: 2025-11-25
+pubDatetime: 2025-11-25
+title: git checkout <branch> -- <path>
+slug: git-checkout
+featured: false
+draft: false
+tags:
+  - git
+description: ''
 ---
 
 ## `git checkout <branch> -- <path>`
@@ -41,8 +44,8 @@ folderB/
 <td>
 <pre>
 folderA/
-  
-  
+
+
   fileA1
   fileA2
 folderB/

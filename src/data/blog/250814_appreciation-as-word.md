@@ -1,10 +1,12 @@
 ---
-parent: '#일'
-layout: default-with-date
+pubDatetime: 2025-08-14
 title: Appreciation as Word
-permalink: appreciation-as-word
-published_date: 2025-08-14
-nav_order: 250814
+slug: appreciation-as-word
+featured: false
+draft: false
+tags:
+  - 일
+description: ''
 ---
 
 # Appreciation이란?

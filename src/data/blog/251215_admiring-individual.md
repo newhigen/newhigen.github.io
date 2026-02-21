@@ -1,11 +1,12 @@
 ---
-parent: '#일'
-layout: default-with-date
+pubDatetime: 2025-12-15
 title: 멋있는 사람
-permalink: admiring individual
-published_date: 2025-12-15
-nav_order: 251215
-short: true
+slug: admiring-individual
+featured: false
+draft: false
+tags:
+  - 일
+description: ''
 ---
 
 일을 잘하는 사람은 멋있다.

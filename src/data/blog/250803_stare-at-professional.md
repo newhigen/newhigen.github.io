@@ -1,10 +1,12 @@
 ---
-parent: '#일'
-layout: default-with-date
+pubDatetime: 2025-08-03
 title: 전문가의 표정
-permalink: stare-at-professional
-published_date: 2025-08-03
-nav_order: 250803
+slug: stare-at-professional
+featured: false
+draft: false
+tags:
+  - 일
+description: ''
 ---
 
 # 전문가

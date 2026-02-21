@@ -1,10 +1,12 @@
 ---
-parent: '#일'
-layout: default-with-date
+pubDatetime: 2025-11-26
 title: 일을 잘하는 느낌?
-permalink: feeling-good-at-work
-published_date: 2025-11-26
-nav_order: 251126
+slug: feeling-good-at-work
+featured: false
+draft: false
+tags:
+  - 일
+description: ''
 ---
 
 최근 들어서 '일을 잘한다'는 것이 어떤 느낌인지 어렴풋이 느껴지는 것 같다.

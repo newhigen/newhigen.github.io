@@ -1,9 +1,12 @@
 ---
-layout: default-with-date
-title: GitHub
-permalink: github
-published_date: 2025-11-29
-nav_order: 5
+pubDatetime: 2025-11-29
+title: GitHub 개인 프로젝트 기본 설정
+slug: github-project
+featured: false
+draft: false
+tags:
+  - GitHub
+description: ''
 ---
 
 ## 개인 프로젝트 기본 설정
