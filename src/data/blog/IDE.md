@@ -1,10 +1,12 @@
 ---
-parent: 개발 환경
-layout: default-with-date
+pubDatetime: 2025-11-29
 title: IDE
-permalink: ide
-published_date: 2025-11-29
-nav_order: 1
+slug: ide
+featured: false
+draft: false
+tags:
+  - 개발 환경
+description: ''
 ---
 
 ## VScode 계열 IDE

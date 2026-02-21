@@ -23,9 +23,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
   <Header />
   <main id="main-content" data-layout="index" class="app-layout">
     <section id="hero" class:list={["pt-8 pb-4", ""]}>
-      <p>
-        Hi. I am newhigen.
-      </p>
+      <p>Hi. I am newhigen.</p>
       <p class="mt-2">
         Read the blog posts or check
         <LinkButton
@@ -41,10 +39,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
       featuredPosts.length > 0 && (
         <section
           id="featured"
-          class:list={[
-            "pt-4 pb-2",
-            { "": recentPosts.length > 0 },
-          ]}
+          class:list={["pt-4 pb-2", { "": recentPosts.length > 0 }]}
         >
           <h2 class="text-2xl font-semibold tracking-wide">Featured</h2>
           <ul>
@@ -59,7 +54,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
     {
       recentPosts.length > 0 && (
         <section id="recent-posts" class="pt-4 pb-2">
-          <h2 class="text-2xl font-semibold tracking-wide">Recent Posts</h2>
+          <h2 class="text-2xl font-semibold tracking-wide">Recent</h2>
           <ul>
             {recentPosts.map(
               (data, index) =>

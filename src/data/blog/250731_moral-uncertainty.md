@@ -1,5 +1,4 @@
 ---
-# author: newhigen
 pubDatetime: 2025-07-31
 title: 불확실성과 개인의 한계에서의 도덕적 선택
 slug: moral-uncertainty
