@@ -1,0 +1,9 @@
+{
+  "theme": "moonstone",
+  "cssTheme": "Baseline",
+  "interfaceFontFamily": "Google Sans",
+  "textFontFamily": "Google Sans",
+  "monospaceFontFamily": "Google Sans Code",
+  "baseFontSize": 14,
+  "showRibbon": false
+}

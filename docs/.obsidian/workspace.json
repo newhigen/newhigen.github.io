@@ -1,0 +1,217 @@
+{
+  "main": {
+    "id": "15105ee585a7532b",
+    "type": "split",
+    "children": [
+      {
+        "id": "e3bc236f296c87bf",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2cae80efb640379f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "01_About.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "01_About"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "ed4b08dbc429f1db",
+    "type": "split",
+    "children": [
+      {
+        "id": "970ff72519d939bd",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a5eb2291e881d1e2",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "de297f91e39d06a9",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "d050854c010784f2",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "64c8566edd8a8c0f",
+    "type": "split",
+    "children": [
+      {
+        "id": "f85b78f0154a0285",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2117f738d6423af5",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "git.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for git"
+            }
+          },
+          {
+            "id": "ef929ece20cfc8a9",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "git.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from git"
+            }
+          },
+          {
+            "id": "a53b85b66f0383c8",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "c9d4e3a8900369c2",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "7d7063c471455f29",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "git.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of git"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "obsidian-focus-mode:Toggle Focus Mode (Shift + Click to show active pane only)": false
+    }
+  },
+  "active": "2cae80efb640379f",
+  "lastOpenFiles": [
+    "02_Code Review.md",
+    "03_MongoDB.md",
+    "04_Git.md",
+    "05_GitHub.md",
+    "06_개발환경/MacOS.md",
+    "Untitled.md",
+    "06_개발환경/IDE.md",
+    "_250000_template.md",
+    "_template.md",
+    "Inbox/성장/junior-study.md",
+    "Inbox/성장/index.md",
+    "Inbox/커리어/coding-test.md",
+    "Inbox/커리어/job-change.md",
+    "Inbox/커리어/resume.md",
+    "Inbox/커리어/career-move.md",
+    "01_About.md",
+    "06_개발환경/index.md",
+    "07_글/생각/250731_moral-uncertainty.md",
+    "07_글/생각/250802_power-n-and-power-s.md",
+    "07_글/생각/250831_fake-senior-junior.md",
+    "07_글/생각/250920_recency-bias.md",
+    "07_글/생각/index.md",
+    "07_글/생각/250804_breaking-bias.md",
+    "Inbox/writing.md",
+    "Inbox/_writing-model.md",
+    "07_글/index.md"
+  ]
+}
