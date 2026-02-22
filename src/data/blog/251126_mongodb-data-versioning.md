@@ -6,7 +6,7 @@ featured: false
 draft: false
 tags:
   - 개발 환경
-description: ''
+description: ""
 ---
 
 ## MongoDB의 Data Versioning
@@ -16,7 +16,8 @@ description: ''
 ### MongoDB에 Data Versioning System은 적합하지 않다.
 
 MongoDB 데이터 폴더 자체를 버저닝 해볼 수 있겠지만, WiredTiger 파일 구조 특성상 작은 업데이트도 전체가 바뀌는 것처럼 보이게 된다고 한다. (GPT 문답을 참고함)
-* WiredTiger에 대해서 더 알아보고 싶다면: [MongoDB WiredTiger의 파일 구조](https://tech.kakao.com/posts/670)
+
+- WiredTiger에 대해서 더 알아보고 싶다면: [MongoDB WiredTiger의 파일 구조](https://tech.kakao.com/posts/670)
 
 ### MongoDB로 Data Versioning은 어떻게 구현하는가
 
@@ -27,7 +28,8 @@ MongoDB 데이터 폴더 자체를 버저닝 해볼 수 있겠지만, WiredTiger
 따라서 내부에서 버저닝 기능을 구현해야한다.
 
 여러 회사들에서도 **내부에서 구현하는 방식을 차용한다**고 하는데 소스가 많지는 않다.
-* [올리브영 전시영역 MongoDB 도입하기](https://oliveyoung.tech/2023-01-04/oliveyoung-discovery-mongodb/) 여기서도 MongoDB 공식 document versioning 패턴을 적용했다.
+
+- [올리브영 전시영역 MongoDB 도입하기](https://oliveyoung.tech/2023-01-04/oliveyoung-discovery-mongodb/) 여기서도 MongoDB 공식 document versioning 패턴을 적용했다.
 
 [How to Build an End-to-End ML Pipeline with MongoDB, DVC, and MLflow](https://www.mohamedgad.com/articles/end-to-end-heart-disease-pipeline) 이 포스팅에서는 DVC와 MongoDB 둘 다 사용했다고는 하지만, 들어가보면 MongoDB는 데이터용으로 DVC는 ML artifact용으로 서로 별개로 사용되어서 이 맥락에서는 참고가 되지 않는다.
 
@@ -36,11 +38,13 @@ MongoDB 데이터 폴더 자체를 버저닝 해볼 수 있겠지만, WiredTiger
 여기까지의 이해로는 data versioning system은 NoSQL보다는 테이블 형태의 DB에 어울려서 ML metadata용으로 사용되는 것으로 보인다.
 
 ML 파이프라인 재현성을 위해서 feature engineering 후 학습 직전에 immutable(더 이상 변하지 않는) 상태에서 data versioning을 적용한다.
-* 아이디어: DB에 대한 query를 실험 configuration으로 넣고 해당 query가 동일하면 DB가 아닌 version system에서 가져오도록 한다.
+
+- 아이디어: DB에 대한 query를 실험 configuration으로 넣고 해당 query가 동일하면 DB가 아닌 version system에서 가져오도록 한다.
 
 ### 애초에 Data Versioning이라는 주제가 쉽지 않은 것이다?
 
 [Data Versioning](https://mattrickard.com/data-versioning) 글에 따르면 수많은 기업과 제품들이 Data Versioning의 보편적 해답을 찾지 못했다.
+
 1. `Data Volume` - 코드가 많아지는 양보다 데이터가 더 빨리 많아진다.
 2. `Needs bespoke tools` - 코드에 적합한 VCS는 데이터에 적합하지 않은데 데이터에 특성에 기인하다. (데이터 구조, 인덱스 디자인)
 3. `Data Sensivitity` - 민감한 데이터에 대한 버전 관리는 좋지 않지만 개인식별정보는 환경변수나 secret store가 아닌 주로 데이터베이스에 저장된다.

@@ -6,7 +6,7 @@ featured: false
 draft: false
 tags:
   - 생각
-description: ''
+description: ""
 ---
 
 # 좁은 시야로 책 고르기

@@ -6,7 +6,7 @@ featured: false
 draft: false
 tags:
   - 일
-description: ''
+description: ""
 ---
 
 최근 들어서 '일을 잘한다'는 것이 어떤 느낌인지 어렴풋이 느껴지는 것 같다.
@@ -47,13 +47,13 @@ description: ''
 핵심적으로 책의 내용들을 말하자면
 
 1. 선택에 대해서 알기
-    1. 『왜 나는 항상 결심만 할까?[^why-decide]』에서 심리적인 부담을 내려놓는 방법을 알게 되었다. (모든 것에 옳고/그름의 잣대가 아니라고 어떤 것은 좋고/싫음으로 판단해도 된다.)
-    2. 『완벽한 선택은 없다[^no-perfect-choice]』에서 결정을 무작정 미루지 않고 결정 후 실행하고 검토하고 수정하는 방법을 알게 되었다.
+   1. 『왜 나는 항상 결심만 할까?[^why-decide]』에서 심리적인 부담을 내려놓는 방법을 알게 되었다. (모든 것에 옳고/그름의 잣대가 아니라고 어떤 것은 좋고/싫음으로 판단해도 된다.)
+   2. 『완벽한 선택은 없다[^no-perfect-choice]』에서 결정을 무작정 미루지 않고 결정 후 실행하고 검토하고 수정하는 방법을 알게 되었다.
 2. 일을 잘한다는 것에 대해서 알기
-    1. 『함께 자라기 (김창준, 2018)[^grow-together]』, 『실용주의 사고와 학습[^pragmatic-learning]』, 『린 소프트웨어 개발[^lean-sw]』에서 전문가가 일하는 방식에 대해서 알게 되었다.
-    2. 『자기만의 트랙[^track]』에서 일을 잘한다는 것은 문제를 해결하는 것이라고 알게 되었다.
+   1. 『함께 자라기 (김창준, 2018)[^grow-together]』, 『실용주의 사고와 학습[^pragmatic-learning]』, 『린 소프트웨어 개발[^lean-sw]』에서 전문가가 일하는 방식에 대해서 알게 되었다.
+   2. 『자기만의 트랙[^track]』에서 일을 잘한다는 것은 문제를 해결하는 것이라고 알게 되었다.
 3. 내가 한 일들을 다른 관점으로 돌아보기
-    1. 『Get your work recognized: write a brag document[^brag-doc]』를 토대로 나의 성과를 과장하지 않되 가치 있는 일로 여기는 마음으로 기록하는 것을 알게 되었고 『The Tech Resume Inside Out[^tech-resume]』을 토대로 이력서를 업데이트해 보면서 내 성과들을 전체적으로 다른 관점에서 다시 생각해 보게 되었다.
+   1. 『Get your work recognized: write a brag document[^brag-doc]』를 토대로 나의 성과를 과장하지 않되 가치 있는 일로 여기는 마음으로 기록하는 것을 알게 되었고 『The Tech Resume Inside Out[^tech-resume]』을 토대로 이력서를 업데이트해 보면서 내 성과들을 전체적으로 다른 관점에서 다시 생각해 보게 되었다.
 
 하지만, 이 책들을 다 읽은 시점에서 일을 잘한다는 느낌이 바로 온 건 아니다.
 
@@ -83,7 +83,7 @@ description: ''
 
 다만 말했다시피 지금의 일을 잘한다는 느낌은 1차 전직 수준일 수 있다.
 
-다음 단계인 2차 전직을 염두해 두면서 성장해야 한다. _ 노력의 방향이 중요하다. 『1만 시간의 재발견[^ten-thousand-hours]』
+다음 단계인 2차 전직을 염두해 두면서 성장해야 한다. \_ 노력의 방향이 중요하다. 『1만 시간의 재발견[^ten-thousand-hours]』
 
 하지만 지금 내 방식이 최고로 여기면서 일에 적용하는 것과 방식 자체를 의심하며 더 나은 방식을 고민하는 것을 동시에 하기는 어렵다.
 
@@ -111,16 +111,29 @@ description: ''
 놓지 않은 구름 같은 꿈에 현실적인 노력을 채워간다면 언젠간 만져지라리는 것을.
 
 [^workwell]: [도서] 일을 잘한다는 것
+
 [^why-decide]: [도서] 왜 나는 항상 결심만 할까?
+
 [^no-perfect-choice]: [도서] 완벽한 선택은 없다
+
 [^pragmatic-learning]: [도서] 실용주의 사고와 학습
+
 [^lean-sw]: [도서] 린 소프트웨어 개발
+
 [^grow-together]: [도서] 함께 자라기 (김창준, 2018)
+
 [^track]: [도서] 자기만의 트랙
+
 [^tech-resume]: [도서] The Tech Resume Inside Out
+
 [^brag-doc]: [글] Get your work recognized: write a brag document
+
 [^gtd]: [도서] Getting Things Done
+
 [^fake-senior]: [글] [시니어처럼 보이고 싶은 주니어 - 인지적 편향 부수기 (2)](https://newhigen.github.io/fake-senior-junior/)
+
 [^ten-thousand-hours]: [도서] 1만 시간의 재발견
+
 [^about-perfect]: [도서] 완벽에 관하여
+
 [^best-judgement]: [영상] 토스 대표 이승건, 속도 vs 마음가짐 - YouTube

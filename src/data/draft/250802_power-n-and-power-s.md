@@ -6,7 +6,7 @@ featured: true
 draft: true
 tags:
   - 생각
-description: ''
+description: ""
 ---
 
 # 소개팅 시절
