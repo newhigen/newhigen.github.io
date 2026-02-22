@@ -5,6 +5,5 @@ slug: default
 featured: false
 draft: true
 tags:
-  - -
 description: ""
 ---
