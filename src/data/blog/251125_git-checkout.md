@@ -6,7 +6,7 @@ featured: false
 draft: false
 tags:
   - git
-description: ''
+description: ""
 ---
 
 ## `git checkout <branch> -- <path>`
@@ -45,12 +45,12 @@ folderB/
 <pre>
 folderA/
 
-
-  fileA1
-  fileA2
+fileA1
+fileA2
 folderB/
-  fileB1
-  fileB2
+fileB1
+fileB2
+
 </pre>
 </td>
 <td>

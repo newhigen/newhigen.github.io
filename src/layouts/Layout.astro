@@ -4,7 +4,7 @@ import { ClientRouter } from "astro:transitions";
 import { PUBLIC_GOOGLE_SITE_VERIFICATION } from "astro:env/client";
 import { SITE } from "@/config";
 import "@/styles/global.css";
-import GoogleAnalytics from '@/components/GoogleAnalytics.astro'
+import GoogleAnalytics from "@/components/GoogleAnalytics.astro";
 
 type Props = {
   title?: string;
@@ -58,7 +58,7 @@ const structuredData = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <GoogleAnalytics measurementId={'G-1LV633QRNR'} />
+    <GoogleAnalytics measurementId={"G-1LV633QRNR"} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonicalURL} />
     <meta name="generator" content={Astro.generator} />

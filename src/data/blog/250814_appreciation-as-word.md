@@ -6,7 +6,7 @@ featured: false
 draft: false
 tags:
   - 일
-description: ''
+description: ""
 ---
 
 # Appreciation이란?
@@ -33,21 +33,27 @@ Appreciation은 꼭 언어의 형태일 필요는 없다. 사랑을 표현하는
 
 그런 의미에서 블로그를 시작하는데 동기부여와 좋은 레퍼런스를 제공해준 사람들에게 작은 표현이나마 appreciation을 남기려고 한다. 그러면 제공해준 사람들에게도 작은 힘이 될 수도 있고, 또 블로그를 시작하려는 사람들에게도 도움이 되었으면 한다. 블로그를 시작하는데 도움이 된 블로그들
 
-* [jbee.io](https://jbee.io/)
-* [stephango.com](https://stephango.com)
+- [jbee.io](https://jbee.io/)
+- [stephango.com](https://stephango.com)
 
 \+ 대단하다고 느끼는 Open-Sourcerer들
 
-* [sindresorhus.com](http://sindresorhus.com)
+- [sindresorhus.com](http://sindresorhus.com)
 
 # Appreciation은 어렵다
 
 ‘인간은 적응의 동물이다’라는 표현처럼 받는 것에 익숙해지면 점점 당연시하게 되는 경우들이 많다. 하지만 ‘익숙함에 속아 소중함을 잊지 말자’라는 말처럼 상황을 잘 객관화하고 감사함을 기억하고 무엇보다 표현까지 해줄 수 있는 사람이 되고 싶지만 쉽지는 않은 것 같다. 표현도 연습이 필요하다. ‘Taken for granted’하고 있는 상황들이 있지 않은지 돌아보고, 늦게나마 appreciation을 전달해보면 어떨까?
 
 [^1]: [[도서] The 5 Love Languages: The Secret to Love that Lasts, Gary Chapman, 1992](https://www.amazon.com/Love-Languages-Secret-that-Lasts/dp/080241270X)
+
 [^2]: [[도서] 거인의 리더십, 신수정, 2023](https://product.kyobobook.co.kr/detail/S000202342499)
+
 [^3]: [[도서] 1만 시간의 재발견, 안데르스 에릭슨, 2016](https://product.kyobobook.co.kr/detail/S000001892497)
+
 [^4]: [[도서] 실용주의 사고와 학습, 앤디 헌트, 1999](https://product.kyobobook.co.kr/detail/S000001766246)
+
 [^5]: [[블로그] Google Open Source Peer Bonus program recognizes first group of 2024 recipients, Google Open Source Blog, 2024](https://opensource.googleblog.com/2024/06/google-open-source-peer-bonus-program-first-group-2024-recipients.html)
+
 [^6]: [[블로그] 사내 칭찬 문화를 만드는 피어 보너스 제도, 아기고래, 2023](https://www.babywhale.io/blog/peer-bonus)
+
 [^7]: [[유튜브] How to use Praise in Microsoft Teams, Microsoft, 2023](https://www.youtube.com/watch?v=27v1PSKtTp4)

@@ -6,7 +6,7 @@ featured: false
 draft: false
 tags:
   - GitHub
-description: ''
+description: ""
 ---
 
 ## 개인 프로젝트 기본 설정
@@ -14,6 +14,7 @@ description: ''
 ### General
 
 Pull Requests
+
 - ☑ Disable `Allow merge commits`
 - ☑ `Allow squash merging` > Default commit message: `Pull request title`
 - ☑ Disable `Allow rebase commits`
@@ -22,6 +23,7 @@ Pull Requests
 ### Branches
 
 Add branch ruleset
+
 - ☑ Enable `Require a pull request before merging`
 
 ## `github.dev`

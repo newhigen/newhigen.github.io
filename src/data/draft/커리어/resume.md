@@ -7,7 +7,6 @@ nav_order:
 nav_exclude: true
 ---
 
-
 이력서를 잘 작성하는 방법
 
 - Tech Resume Inside Out

@@ -6,7 +6,7 @@ featured: false
 draft: true
 tags:
   - 생각
-description: ''
+description: ""
 ---
 
 신근성 편향

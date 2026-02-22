@@ -1,4 +1,4 @@
-import partytown from '@astrojs/partytown';
+import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
 import {
   transformerNotationDiff,
@@ -19,7 +19,7 @@ export default defineConfig({
     sitemap({
       filter: page => SITE.showArchives || !page.endsWith("/archives"),
     }),
-    partytown({ config: { forward: ['dataLayer.push'] } }),
+    partytown({ config: { forward: ["dataLayer.push"] } }),
   ],
   markdown: {
     remarkPlugins: [remarkToc, [remarkCollapse, { test: "Table of contents" }]],
