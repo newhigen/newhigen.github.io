@@ -89,6 +89,12 @@
     pre {
       @apply focus-visible:border-transparent focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-dashed;
     }
+
+    .footnotes {
+      border-top: 1px solid #ccc;
+      margin-top: 2em;
+      padding-top: 1em;
+    }
   }
 
   /* ===== Code Blocks & Syntax Highlighting ===== */
