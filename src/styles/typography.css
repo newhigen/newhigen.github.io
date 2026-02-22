@@ -24,7 +24,7 @@
     figcaption,
     table,
     code {
-      @apply mt-2 mb-2 text-foreground;
+      @apply mt-4 mb-2 text-foreground;
     }
 
     a {
@@ -32,7 +32,7 @@
     }
 
     ul {
-      @apply overflow-x-clip;
+      @apply mt-0 mb-0 overflow-x-clip;
     }
 
     li {
