@@ -13,9 +13,9 @@
       @apply mt-6 mb-4 text-foreground;
     }
 
-    h3 {
+    /* h3 {
       @apply italic;
-    }
+    } */
 
     p,
     strong,
