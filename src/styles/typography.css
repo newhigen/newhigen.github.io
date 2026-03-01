@@ -95,6 +95,11 @@
       margin-top: 2em;
       padding-top: 1em;
     }
+
+    /* Katex text color */
+    .prose .katex-display {
+      @apply text-foreground;
+    }
   }
 
   /* ===== Code Blocks & Syntax Highlighting ===== */

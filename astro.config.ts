@@ -7,7 +7,9 @@ import {
 } from "@shikijs/transformers";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, envField, fontProviders } from "astro/config";
+import rehypeKatex from "rehype-katex";
 import remarkCollapse from "remark-collapse";
+import remarkMath from "remark-math";
 import remarkToc from "remark-toc";
 import { SITE } from "./src/config";
 import { transformerFileName } from "./src/utils/transformers/fileName";
@@ -22,7 +24,8 @@ export default defineConfig({
     partytown({ config: { forward: ["dataLayer.push"] } }),
   ],
   markdown: {
-    remarkPlugins: [remarkToc, [remarkCollapse, { test: "Table of contents" }]],
+    remarkPlugins: [remarkMath, remarkToc, [remarkCollapse, { test: "Table of contents" }]],
+    rehypePlugins: [rehypeKatex],
     shikiConfig: {
       // For more themes, visit https://shiki.style/themes
       themes: { light: "min-light", dark: "night-owl" },
