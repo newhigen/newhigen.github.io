@@ -1,9 +1,9 @@
 ---
-pubDatetime: 2026-03-05
+pubDatetime: 2026-99-99
 title: 100일 글쓰기를 시작한 이유
 slug: starting-writing-challenge
 featured: false
-draft: false
+draft: true
 tags:
   - 100일글쓰기챌린지
   - 일

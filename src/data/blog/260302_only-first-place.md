@@ -1,7 +1,7 @@
 ---
 pubDatetime: 2026-03-02
 title: 1등
-slug: default
+slug: 1st-place
 featured: false
 draft: false
 tags:
