@@ -1,5 +1,5 @@
 ---
-pubDatetime: 2029-99-99
+pubDatetime: 2026-03-03
 title: 『사람은 무엇으로 사는가』
 slug: what-do-people-live-for
 featured: false
