@@ -1,14 +1,40 @@
-# Ignore everything
-/*
+# Build output
+dist/
+.output/
 
-# Except these files & folders
-!/src
-!/public
-!/.github
-!tsconfig.json
-!astro.config.ts
-!.prettierrc.mjs
-!package.json
-!.prettierrc
-!eslint.config.js
-!README.md
+# Dependencies
+node_modules/
+
+# Package manager files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Log files
+*.log
+
+# Environment variables
+.env
+.env.*
+
+# Cache directories
+.cache/
+.astro/
+
+# Others
+.DS_Store
+coverage/
+
+# Media files
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.ico
+*.webp
+*.mp4
+*.webm
+*.mp3
+*.wav
+*.pdf
