@@ -24,8 +24,8 @@ dependencies:
     specifier: ^0.10.1
     version: 0.10.1(astro@5.18.1)
   canvaskit-wasm:
-    specifier: ^0.40.0
-    version: 0.40.0
+    specifier: ^0.41.0
+    version: 0.41.0
   feed:
     specifier: ^5.2.0
     version: 5.2.0
@@ -3409,6 +3409,12 @@ packages:
 
   /canvaskit-wasm@0.40.0:
     resolution: {integrity: sha512-Od2o+ZmoEw9PBdN/yCGvzfu0WVqlufBPEWNG452wY7E9aT8RBE+ChpZF526doOlg7zumO4iCS+RAeht4P0Gbpw==}
+    dependencies:
+      '@webgpu/types': 0.1.21
+    dev: false
+
+  /canvaskit-wasm@0.41.0:
+    resolution: {integrity: sha512-cnbL02NFB3yOYMF/MtxViZHgD1vh55Pvy+zR8q4JuFvyCPejZP3eClkt2GuZ0S7jOmGMCJXaHBasbMChbR9JZg==}
     dependencies:
       '@webgpu/types': 0.1.21
     dev: false
