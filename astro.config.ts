@@ -1,82 +1,46 @@
-import partytown from "@astrojs/partytown";
-import sitemap from "@astrojs/sitemap";
-import {
-  transformerNotationDiff,
-  transformerNotationHighlight,
-  transformerNotationWordHighlight,
-} from "@shikijs/transformers";
-import tailwindcss from "@tailwindcss/vite";
-import { defineConfig, envField, fontProviders } from "astro/config";
-import rehypeKatex from "rehype-katex";
-import remarkCollapse from "remark-collapse";
-import remarkMath from "remark-math";
-import remarkToc from "remark-toc";
-import { SITE } from "./src/config";
-import { transformerFileName } from "./src/utils/transformers/fileName";
+import { defineConfig } from 'astro/config'
+import mdx from '@astrojs/mdx'
+import sitemap from '@astrojs/sitemap'
+import remarkMath from 'remark-math'
+import remarkDirective from 'remark-directive'
+import rehypeKatex from 'rehype-katex'
+import remarkEmbeddedMedia from './src/plugins/remark-embedded-media.mjs'
+import remarkReadingTime from './src/plugins/remark-reading-time.mjs'
+import rehypeCleanup from './src/plugins/rehype-cleanup.mjs'
+import rehypeImageProcessor from './src/plugins/rehype-image-processor.mjs'
+import rehypeCopyCode from './src/plugins/rehype-copy-code.mjs'
+import remarkTOC from './src/plugins/remark-toc.mjs'
+import { themeConfig } from './src/config'
+import { imageConfig } from './src/utils/image-config'
+import path from 'path'
+import netlify from '@astrojs/netlify'
 
-// https://astro.build/config
 export default defineConfig({
-  site: SITE.website,
-  integrations: [
-    sitemap({
-      filter: page => SITE.showArchives || !page.endsWith("/archives"),
-    }),
-    partytown({ config: { forward: ["dataLayer.push"] } }),
-  ],
-  markdown: {
-    remarkPlugins: [
-      remarkMath,
-      remarkToc,
-      [remarkCollapse, { test: "Table of contents" }],
-    ],
-    rehypePlugins: [rehypeKatex],
-    shikiConfig: {
-      // For more themes, visit https://shiki.style/themes
-      themes: { light: "min-light", dark: "night-owl" },
-      defaultColor: false,
-      wrap: false,
-      transformers: [
-        transformerFileName({ style: "v2", hideDot: false }),
-        transformerNotationHighlight(),
-        transformerNotationWordHighlight(),
-        transformerNotationDiff({ matchAlgorithm: "v3" }),
-      ],
-    },
-  },
-  vite: {
-    // eslint-disable-next-line
-    // @ts-ignore
-    // This will be fixed in Astro 6 with Vite 7 support
-    // See: https://github.com/withastro/astro/issues/14030
-    plugins: [tailwindcss()],
-    optimizeDeps: {
-      exclude: ["@resvg/resvg-js"],
-    },
-  },
+  adapter: netlify(), // Set adapter for deployment, or set `linkCard` to `false` in `src/config.ts`
+  site: themeConfig.site.website,
   image: {
-    responsiveStyles: true,
-    layout: "constrained",
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+      config: imageConfig
+    }
   },
-  env: {
-    schema: {
-      PUBLIC_GOOGLE_SITE_VERIFICATION: envField.string({
-        access: "public",
-        context: "client",
-        optional: true,
-      }),
+  markdown: {
+    shikiConfig: {
+      theme: 'css-variables',
+      wrap: false
     },
+    remarkPlugins: [remarkMath, remarkDirective, remarkEmbeddedMedia, remarkReadingTime, remarkTOC],
+    rehypePlugins: [rehypeKatex, rehypeCleanup, rehypeImageProcessor, rehypeCopyCode]
   },
-  experimental: {
-    preserveScriptOrder: true,
-    fonts: [
-      {
-        name: "Google Sans",
-        cssVariable: "--font-google-sans",
-        provider: fontProviders.google(),
-        fallbacks: ["sans-serif"],
-        weights: [300, 400, 500, 600, 700],
-        styles: ["normal", "italic"],
-      },
-    ],
+  integrations: [mdx(), sitemap()],
+  vite: {
+    resolve: {
+      alias: {
+        '@': path.resolve('./src')
+      }
+    }
   },
-});
+  devToolbar: {
+    enabled: false
+  }
+})
