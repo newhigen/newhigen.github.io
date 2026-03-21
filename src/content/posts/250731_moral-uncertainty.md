@@ -6,7 +6,7 @@ featured: true
 draft: false
 tags:
   - 생각
-description: ""
+description: ''
 ---
 
 ## 도덕적 선택과 미래 예측

@@ -7,7 +7,7 @@ draft: false
 tags:
   - 100일글쓰기챌린지
   - 생각
-description: ""
+description: ''
 ---
 
 ## 한 번 뿐인 인생, 열심히 살까? 열심히 즐길까?

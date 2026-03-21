@@ -6,7 +6,7 @@ featured: false
 draft: false
 tags:
   - 100일글쓰기챌린지
-description: ""
+description: ''
 ---
 
 ## 코카콜라 맛있다. Eeny, meeny, miny, moe.

@@ -7,7 +7,7 @@ draft: false
 tags:
   - 100일글쓰기챌린지
   - 생각
-description: ""
+description: ''
 ---
 
 ## "1등만 기억하는 더러운 세상!"

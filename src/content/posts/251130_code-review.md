@@ -6,7 +6,7 @@ featured: false
 draft: false
 tags:
   - Code Review
-description: ""
+description: ''
 ---
 
 # 효과적인 코드 리뷰란

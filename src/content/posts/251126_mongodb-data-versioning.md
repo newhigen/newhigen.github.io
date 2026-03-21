@@ -6,7 +6,7 @@ featured: false
 draft: false
 tags:
   - 개발 환경
-description: ""
+description: ''
 ---
 
 ## MongoDB의 Data Versioning

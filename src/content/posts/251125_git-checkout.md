@@ -6,7 +6,7 @@ featured: false
 draft: false
 tags:
   - git
-description: ""
+description: ''
 ---
 
 ## `git checkout <branch> -- <path>`

@@ -7,10 +7,9 @@ draft: false
 tags:
   - 서평
   - 100일글쓰기챌린지
-description: ""
+description: ''
 ---
+
 ## 서평
-
-
 
 ## 내용
