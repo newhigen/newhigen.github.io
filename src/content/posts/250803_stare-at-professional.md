@@ -6,7 +6,7 @@ featured: false
 draft: false
 tags:
   - 일
-description: ""
+description: ''
 ---
 
 # 전문가

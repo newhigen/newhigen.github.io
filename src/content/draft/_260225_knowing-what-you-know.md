@@ -5,7 +5,7 @@ slug: knowing-what-you-know
 featured: false
 draft: true
 tags:
-description: ""
+description: ''
 ---
 
 ## 구름 같은 목표에서 내리는 행동의 빗방울

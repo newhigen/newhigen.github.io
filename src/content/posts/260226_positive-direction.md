@@ -7,7 +7,7 @@ draft: false
 tags:
   - 100일글쓰기챌린지
   - 생각
-description: ""
+description: ''
 ---
 
 ## 회사 모니터 풍경

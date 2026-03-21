@@ -6,7 +6,7 @@ featured: false
 draft: false
 tags:
   - 일
-description: ""
+description: ''
 ---
 
 최근 들어서 '일을 잘한다'는 것이 어떤 느낌인지 어렴풋이 느껴지는 것 같다.

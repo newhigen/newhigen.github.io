@@ -6,7 +6,7 @@ featured: true
 draft: false
 tags:
   - 생각
-description: ""
+description: ''
 ---
 
 # 전문가란

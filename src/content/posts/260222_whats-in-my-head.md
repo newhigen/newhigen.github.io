@@ -7,7 +7,7 @@ draft: false
 tags:
   - 생각
   - 100일글쓰기챌린지
-description: ""
+description: ''
 ---
 
 ## 도대체 머릿속에 무엇이 든거야?

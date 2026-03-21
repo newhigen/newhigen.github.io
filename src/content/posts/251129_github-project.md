@@ -6,7 +6,7 @@ featured: false
 draft: false
 tags:
   - GitHub
-description: ""
+description: ''
 ---
 
 ## 개인 프로젝트 기본 설정

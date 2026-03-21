@@ -6,7 +6,7 @@ featured: false
 draft: false
 tags:
   - 일
-description: ""
+description: ''
 ---
 
 특정 기술에 숙련되려면 지식과 그 지식을 적용하는 경험 둘 다 필요하다.
