@@ -6,7 +6,6 @@ on:
     paths-ignore: &paths-ignore
       - 'LICENSE'
       - '.gitignore'
-      - '**/*.md'
       - '**/*.png'
       - '**/*.jpg'
       - '**/*.jpeg'
