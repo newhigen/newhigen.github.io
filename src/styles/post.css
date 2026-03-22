@@ -397,7 +397,8 @@
 }
 
 /* Highlighted text */
-.prose mark {
+.prose mark,
+.prose hi {
   background-color: var(--mark);
   color: var(--text-primary);
   padding: 3px 1px;

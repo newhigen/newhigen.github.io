@@ -1,0 +1,261 @@
+---
+import '@/styles/global.css'
+import BaseHead from '@/components/layout/BaseHead.astro'
+import Header from '@/components/layout/Header.astro'
+import Footer from '@/components/layout/Footer.astro'
+import GradientMask from '@/components/ui/GradientMask.astro'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import ReadingHeatmap from '@/components/widgets/ReadingHeatmap.astro'
+import { loadBooks, getBooksByYear } from '@/utils/books'
+import { getCollection } from 'astro:content'
+import { themeConfig } from '@/config'
+
+const books = loadBooks()
+const yearGroups = getBooksByYear(books)
+const currentYear = new Date().getFullYear()
+
+// Load posts for matching book titles to review links
+const posts = await getCollection('posts', ({ id }) => !id.startsWith('_'))
+
+function normalizeTitle(title: string): string {
+  return title.toLowerCase().replace(/[^a-z0-9가-힣ㄱ-ㅎㅏ-ㅣ]/g, '')
+}
+
+const postTitleMap = new Map<string, string>()
+for (const post of posts) {
+  const normalized = normalizeTitle(post.data.title)
+  postTitleMap.set(normalized, `/${post.id}/`)
+}
+
+function findPostUrl(bookTitle: string): string | null {
+  const normalized = normalizeTitle(bookTitle)
+  return postTitleMap.get(normalized) ?? null
+}
+
+const monthNames = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월']
+
+// Pre-compute year sections with month-grouped books and post URLs
+interface BookEntry {
+  title: string
+  month: number
+  postUrl: string | null
+  showMonth: boolean
+}
+
+interface YearSection {
+  year: number
+  total: number
+  isCurrentYear: boolean
+  entries: BookEntry[]
+}
+
+const yearSections: YearSection[] = yearGroups.map(group => {
+  const monthGroups = new Map<number, typeof group.books>()
+  for (const book of group.books) {
+    const list = monthGroups.get(book.month) ?? []
+    list.push(book)
+    monthGroups.set(book.month, list)
+  }
+  const sortedMonths = Array.from(monthGroups.entries()).sort(([a], [b]) => b - a)
+
+  const entries: BookEntry[] = []
+  for (const [month, monthBooks] of sortedMonths) {
+    monthBooks.forEach((book, idx) => {
+      entries.push({
+        title: book.title,
+        month,
+        postUrl: findPostUrl(book.title),
+        showMonth: idx === 0,
+      })
+    })
+  }
+
+  return {
+    year: group.year,
+    total: group.total,
+    isCurrentYear: group.year === currentYear,
+    entries,
+  }
+})
+---
+
+<BaseLayout title={`독서 기록 · ${themeConfig.site.title}`} description="독서 기록" type="page">
+  <BaseHead
+    title={`독서 기록 · ${themeConfig.site.title}`}
+    description="독서 기록"
+    slot="head"
+  />
+  <div class="books-page">
+    <GradientMask />
+    <Header />
+    <main>
+      <a href="/" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M2.5 6.5H9.5C11.1569 6.5 12.5 7.84315 12.5 9.5V9.5C12.5 11.1569 11.1569 12.5 9.5 12.5H7.5M2.5 6.5L5.5 9.5M2.5 6.5L5.5 3.5"
+            stroke="currentColor"
+            stroke-width="1.25"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        index
+      </a>
+
+      <ReadingHeatmap />
+
+      <section class="book-list">
+        {yearSections.map(section => (
+          <details class="year-section" open={section.isCurrentYear}>
+            <summary class="year-heading">
+              <span class="year-name">{section.year}</span>
+              <span class="year-count">{section.total}권</span>
+            </summary>
+            <ul class="year-books">
+              {section.entries.map(entry => (
+                <li class="book-entry">
+                  <span class="book-month">
+                    {entry.showMonth ? monthNames[entry.month - 1] : ''}
+                  </span>
+                  {entry.postUrl ? (
+                    <a href={entry.postUrl} class="book-title linked">{entry.title}</a>
+                  ) : (
+                    <span class="book-title">{entry.title}</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </details>
+        ))}
+      </section>
+    </main>
+    {themeConfig.general.footer && <Footer />}
+  </div>
+</BaseLayout>
+
+<style>
+  .books-page {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .books-page main {
+    flex: 1;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-family: var(--serif);
+    font-size: var(--font-size-m);
+    font-style: italic;
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin-bottom: 2.5rem;
+    transition: color 0.2s ease-out;
+  }
+
+  .back-link:hover {
+    color: var(--text-primary);
+  }
+
+  .back-link svg {
+    width: 0.8rem;
+    height: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  .book-list {
+    margin-top: 2rem;
+  }
+
+  .year-section {
+    margin-bottom: 0.25rem;
+  }
+
+  .year-heading {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    cursor: pointer;
+    list-style: none;
+    padding: 0.375rem 0;
+    transition: opacity 0.15s ease-out;
+  }
+
+  .year-heading::-webkit-details-marker {
+    display: none;
+  }
+
+  .year-heading::marker {
+    content: '';
+  }
+
+  .year-name {
+    font-size: var(--font-size-m);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: var(--spacing-s);
+  }
+
+  .year-count {
+    font-size: var(--font-size-s);
+    font-weight: var(--font-weight-light);
+    color: var(--text-tertiary);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: var(--spacing-s);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .year-heading:hover {
+      opacity: 0.6;
+    }
+  }
+
+  .year-books {
+    list-style: none;
+    padding: 0;
+    margin: 0.25rem 0 1.25rem 0;
+  }
+
+  .book-entry {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    height: 2rem;
+  }
+
+  .book-month {
+    font-size: var(--font-size-s);
+    font-weight: var(--font-weight-light);
+    color: var(--text-tertiary);
+    width: 2.25rem;
+    flex-shrink: 0;
+    text-align: right;
+    letter-spacing: var(--spacing-s);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .book-title {
+    font-size: var(--font-size-m);
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+  }
+
+  .book-title.linked {
+    text-decoration: none;
+    transition: opacity 0.15s ease-out;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .book-title.linked:hover {
+      opacity: 0.5;
+    }
+  }
+</style>
