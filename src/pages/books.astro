@@ -249,7 +249,10 @@ const yearSections: YearSection[] = yearGroups.map(group => {
   }
 
   .book-title.linked {
-    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-color: var(--text-tertiary);
+    text-decoration-style: dotted;
+    text-underline-offset: 0.25em;
     transition: opacity 0.15s ease-out;
   }
 
