@@ -140,4 +140,14 @@ const { posts } = Astro.props as PostListProps
   .placeholder {
     height: 3rem;
   }
+
+  @media (max-width: 768px) {
+    .post-item {
+      height: 2.25rem;
+    }
+
+    .placeholder {
+      height: 1.5rem;
+    }
+  }
 </style>

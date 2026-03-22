@@ -1,0 +1,486 @@
+---
+import { loadBooks, getHeatmapData, intensityLevel } from '@/utils/books'
+
+interface Props {
+  compact?: boolean
+}
+
+const { compact = false } = Astro.props
+const books = loadBooks()
+const { cells, years } = getHeatmapData(books)
+const totalBooks = books.length
+
+const now = new Date()
+const currentYear = now.getFullYear()
+const currentMonth = now.getMonth() + 1
+
+const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+const monthLabels = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+---
+
+<section class:list={['reading-heatmap', { compact }]}>
+  <div class="heatmap-header">
+    <span class="heatmap-label">독서 기록</span>
+    <span class="heatmap-total">총 {totalBooks}권</span>
+  </div>
+
+  <div class="heatmap-grid" role="grid" aria-label="독서 히트맵">
+    <!-- month labels row: all 12 always present, col 2–13 -->
+    <div class="month-labels" role="row">
+      <span class="year-label-spacer"></span>
+      {monthLabels.map((label) => <span class="month-label">{label}</span>)}
+      <span class="year-total-spacer"></span>
+    </div>
+
+    {
+      years.map((year) => {
+        const yearBooks = books.filter((b) => b.year === year)
+        const yearTotal = yearBooks.length
+        return (
+          <div class="heatmap-row" role="row">
+            <span class="year-label" style="grid-column: 1">
+              {year}
+            </span>
+            {months.map((month) => {
+              const key = `${year}-${String(month).padStart(2, '0')}`
+              const cell = cells.get(key)
+              const count = cell?.count ?? 0
+              const level = intensityLevel(count)
+              const isFuture = year > currentYear || (year === currentYear && month > currentMonth)
+              const bookTitles = cell?.books.map((b) => b.title) ?? []
+              const ariaLabel =
+                count > 0 ? `${year}년 ${month}월: ${bookTitles.join(', ')} (${count}권)` : `${year}년 ${month}월`
+              return (
+                <span
+                  class:list={['heatmap-cell', { future: isFuture, empty: !isFuture && count === 0 }]}
+                  style={`grid-column: ${month + 1}`}
+                  data-level={isFuture ? undefined : String(level)}
+                  data-year={!isFuture && count > 0 ? String(year) : undefined}
+                  data-month={!isFuture && count > 0 ? String(month) : undefined}
+                  data-books={count > 0 ? JSON.stringify(bookTitles) : undefined}
+                  role="gridcell"
+                  aria-label={isFuture ? undefined : ariaLabel}
+                />
+              )
+            })}
+            <span class="year-total" style="grid-column: 14">
+              {yearTotal}
+            </span>
+          </div>
+        )
+      })
+    }
+  </div>
+
+  <div class="heatmap-footer">
+    <div class="legend">
+      <span class="legend-label">1권</span>
+      <span class="legend-cell" data-level="1"></span>
+      <span class="legend-cell" data-level="2"></span>
+      <span class="legend-cell" data-level="3"></span>
+      <span class="legend-cell" data-level="4"></span>
+      <span class="legend-label">4권+</span>
+    </div>
+    {
+      compact && (
+        <a href="/books" class="books-link">
+          전체 기록 →
+        </a>
+      )
+    }
+  </div>
+</section>
+
+<script>
+  function initHeatmapTooltip() {
+    let tooltip: HTMLDivElement | null = null
+
+    function showTooltip(cell: HTMLElement) {
+      removeTooltip()
+
+      const year = cell.dataset.year
+      const month = cell.dataset.month
+      const booksRaw = cell.dataset.books
+      if (!year || !month || !booksRaw) return
+
+      let bookTitles: string[] = []
+      try {
+        bookTitles = JSON.parse(booksRaw)
+      } catch {
+        return
+      }
+      if (!bookTitles.length) return
+
+      tooltip = document.createElement('div')
+      tooltip.className = 'heatmap-tooltip'
+
+      const header = document.createElement('div')
+      header.className = 'heatmap-tooltip-header'
+      header.textContent = `${year}년 ${month}월 · ${bookTitles.length}권`
+      tooltip.appendChild(header)
+
+      const list = document.createElement('ul')
+      list.className = 'heatmap-tooltip-list'
+      for (const title of bookTitles) {
+        const item = document.createElement('li')
+        item.textContent = title
+        list.appendChild(item)
+      }
+      tooltip.appendChild(list)
+
+      document.body.appendChild(tooltip)
+      positionTooltip(tooltip, cell)
+    }
+
+    function positionTooltip(el: HTMLDivElement, cell: HTMLElement) {
+      const rect = cell.getBoundingClientRect()
+      const tw = el.offsetWidth || 220
+      const th = el.offsetHeight || 80
+
+      let left = rect.left + window.scrollX
+      let top = rect.bottom + window.scrollY + 6
+
+      if (left + tw > window.innerWidth - 12) {
+        left = window.innerWidth - tw - 12
+      }
+      if (rect.bottom + th + 6 > window.innerHeight) {
+        top = rect.top + window.scrollY - th - 6
+      }
+
+      el.style.left = `${left}px`
+      el.style.top = `${top}px`
+    }
+
+    function removeTooltip() {
+      tooltip?.remove()
+      tooltip = null
+    }
+
+    document.querySelectorAll('.heatmap-cell[data-books]').forEach((cell) => {
+      const el = cell as HTMLElement
+      el.addEventListener('mouseenter', () => showTooltip(el))
+      el.addEventListener('mouseleave', removeTooltip)
+    })
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeatmapTooltip)
+  } else {
+    initHeatmapTooltip()
+  }
+</script>
+
+<style is:global>
+  .heatmap-tooltip {
+    position: absolute;
+    z-index: 100;
+    background-color: var(--bg);
+    border: 1px solid color-mix(in srgb, var(--text-primary) 25%, transparent);
+    border-radius: 0.25rem;
+    padding: 0.5rem 0.625rem;
+    pointer-events: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    min-width: 10rem;
+    max-width: 16rem;
+    /* Force fully opaque even if --bg has alpha */
+    isolation: isolate;
+  }
+
+  .heatmap-tooltip-header {
+    font-size: 0.625rem;
+    font-weight: 400;
+    color: var(--text-tertiary);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.375rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .heatmap-tooltip-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1875rem;
+  }
+
+  .heatmap-tooltip-list li {
+    font-size: 0.6875rem;
+    color: var(--text-primary);
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+</style>
+
+<style>
+  .reading-heatmap {
+    margin-bottom: 1.5rem;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .heatmap-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.625rem;
+  }
+
+  .heatmap-label {
+    font-size: var(--font-size-s);
+    font-weight: var(--font-weight-regular);
+    color: var(--text-secondary);
+    letter-spacing: var(--spacing-m);
+  }
+
+  .heatmap-total {
+    font-size: var(--font-size-s);
+    font-weight: var(--font-weight-light);
+    color: var(--text-tertiary);
+    letter-spacing: var(--spacing-s);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .heatmap-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1875rem;
+  }
+
+  /* Both month-labels and heatmap-row use the same grid */
+  .month-labels,
+  .heatmap-row {
+    display: grid;
+    align-items: center;
+  }
+
+  .month-label {
+    font-size: 0.625rem;
+    color: var(--text-tertiary);
+    text-align: center;
+    letter-spacing: var(--spacing-s);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .year-label-spacer,
+  .year-label {
+    grid-column: 1;
+    flex-shrink: 0;
+  }
+
+  .year-label {
+    font-size: 0.625rem;
+    font-weight: var(--font-weight-light);
+    color: var(--text-tertiary);
+    text-align: right;
+    letter-spacing: var(--spacing-s);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .year-total-spacer,
+  .year-total {
+    grid-column: 14;
+    flex-shrink: 0;
+  }
+
+  .year-total {
+    font-size: 0.625rem;
+    font-weight: var(--font-weight-light);
+    color: var(--text-tertiary);
+    text-align: left;
+    letter-spacing: var(--spacing-s);
+    font-variant-numeric: tabular-nums;
+    opacity: 0.75;
+  }
+
+  .heatmap-cell {
+    border-radius: 0.125rem;
+    transition: opacity 0.15s ease-out;
+  }
+
+  /* 0권: 배경색과 동일, 포인터 이벤트 없음 */
+  .heatmap-cell.empty {
+    background-color: var(--bg);
+    pointer-events: none;
+  }
+
+  .heatmap-cell[data-level='1'] {
+    background-color: var(--text-primary);
+    opacity: 0.1;
+  }
+
+  .heatmap-cell[data-level='2'] {
+    background-color: var(--text-primary);
+    opacity: 0.2;
+  }
+
+  .heatmap-cell[data-level='3'] {
+    background-color: var(--text-primary);
+    opacity: 0.38;
+  }
+
+  .heatmap-cell[data-level='4'] {
+    background-color: var(--text-primary);
+    opacity: 0.62;
+  }
+
+  .heatmap-cell.future {
+    visibility: hidden;
+  }
+
+  .heatmap-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+  }
+
+  .legend {
+    display: flex;
+    align-items: center;
+    gap: 0.1875rem;
+  }
+
+  .legend-label {
+    font-size: 0.5625rem;
+    color: var(--text-tertiary);
+    letter-spacing: var(--spacing-s);
+  }
+
+  .legend-label:first-child {
+    margin-right: 0.125rem;
+  }
+
+  .legend-label:last-child {
+    margin-left: 0.125rem;
+  }
+
+  .legend-cell {
+    width: 0.6875rem;
+    height: 0.6875rem;
+    border-radius: 0.0625rem;
+  }
+
+  .legend-cell[data-level='1'] {
+    background-color: var(--text-primary);
+    opacity: 0.1;
+  }
+
+  .legend-cell[data-level='2'] {
+    background-color: var(--text-primary);
+    opacity: 0.2;
+  }
+
+  .legend-cell[data-level='3'] {
+    background-color: var(--text-primary);
+    opacity: 0.38;
+  }
+
+  .legend-cell[data-level='4'] {
+    background-color: var(--text-primary);
+    opacity: 0.62;
+  }
+
+  .books-link {
+    font-size: var(--font-size-s);
+    font-weight: var(--font-weight-light);
+    color: var(--text-secondary);
+    text-decoration: none;
+    letter-spacing: var(--spacing-m);
+    transition: color 0.15s ease-out;
+  }
+
+  .books-link:hover {
+    color: var(--text-primary);
+  }
+
+  /* Compact mode (homepage) */
+  .compact .month-labels,
+  .compact .heatmap-row {
+    grid-template-columns: 2.5rem repeat(12, 1.125rem) 1.75rem;
+    gap: 0.25rem;
+  }
+
+  .compact .heatmap-cell {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+
+  /* Full mode (/books page) */
+  .reading-heatmap:not(.compact) .month-labels,
+  .reading-heatmap:not(.compact) .heatmap-row {
+    grid-template-columns: 3rem repeat(12, 1.5rem) 2rem;
+    gap: 0.3125rem;
+  }
+
+  .reading-heatmap:not(.compact) .heatmap-cell {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  /* full mode row gap: proportional to compact (cell ratio ~1.33) */
+  .reading-heatmap:not(.compact) .heatmap-grid {
+    gap: 0.25rem;
+  }
+
+  /* Mobile (S25+/Ultra 기준 430px) */
+  @media (max-width: 430px) {
+    .reading-heatmap {
+      font-size: 0.5rem;
+    }
+
+    .month-label,
+    .year-label,
+    .year-total {
+      font-size: 0.5rem;
+    }
+
+    /* compact: 셀 줄이기 */
+    .compact .month-labels,
+    .compact .heatmap-row {
+      grid-template-columns: 1.875rem repeat(12, 0.8125rem) 1.375rem;
+      gap: 0.1875rem;
+    }
+
+    .compact .heatmap-cell {
+      width: 0.8125rem;
+      height: 0.8125rem;
+    }
+
+    .compact .heatmap-grid {
+      gap: 0.125rem;
+    }
+
+    /* full: compact 데스크탑 크기로 */
+    .reading-heatmap:not(.compact) .month-labels,
+    .reading-heatmap:not(.compact) .heatmap-row {
+      grid-template-columns: 2.25rem repeat(12, 0.9375rem) 1.625rem;
+      gap: 0.1875rem;
+    }
+
+    .reading-heatmap:not(.compact) .heatmap-cell {
+      width: 0.9375rem;
+      height: 0.9375rem;
+    }
+
+    .reading-heatmap:not(.compact) .heatmap-grid {
+      gap: 0.125rem;
+    }
+  }
+
+  /* Overflow scroll fallback */
+  @media (max-width: 430px) {
+    .reading-heatmap {
+      overflow-x: auto;
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .heatmap-cell[data-books]:hover {
+      opacity: 0.75;
+    }
+  }
+</style>
