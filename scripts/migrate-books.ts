@@ -40,7 +40,7 @@ function escapeYamlString(str: string): string {
 }
 
 function main() {
-  const files = fs.readdirSync(BOOKS_POSTS_DIR).filter(f => f.endsWith('.md'))
+  const files = fs.readdirSync(BOOKS_POSTS_DIR).filter((f) => f.endsWith('.md'))
   console.log(`Found ${files.length} posts to migrate\n`)
 
   let postCount = 0
@@ -75,11 +75,7 @@ function main() {
     const yy = yyyy.slice(2)
 
     // Determine slug: prefer permalink, fall back to filename slug
-    const slug =
-      fm.permalink ||
-      file
-        .replace(/^\d{4}-\d{2}-\d{2}-/, '')
-        .replace(/\.md$/, '')
+    const slug = fm.permalink || file.replace(/^\d{4}-\d{2}-\d{2}-/, '').replace(/\.md$/, '')
 
     const newFilename = `${yy}${mm}${dd}_${slug}.md`
 

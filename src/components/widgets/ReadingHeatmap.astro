@@ -28,45 +28,48 @@ const monthLabels = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '1
     <!-- month labels row: all 12 always present, col 2–13 -->
     <div class="month-labels" role="row">
       <span class="year-label-spacer"></span>
-      {monthLabels.map(label => (
-        <span class="month-label">{label}</span>
-      ))}
+      {monthLabels.map((label) => <span class="month-label">{label}</span>)}
       <span class="year-total-spacer"></span>
     </div>
 
-    {years.map(year => {
-      const yearBooks = books.filter(b => b.year === year)
-      const yearTotal = yearBooks.length
-      return (
-        <div class="heatmap-row" role="row">
-          <span class="year-label" style="grid-column: 1">{year}</span>
-          {months.map(month => {
-            const key = `${year}-${String(month).padStart(2, '0')}`
-            const cell = cells.get(key)
-            const count = cell?.count ?? 0
-            const level = intensityLevel(count)
-            const isFuture = year > currentYear || (year === currentYear && month > currentMonth)
-            const bookTitles = cell?.books.map(b => b.title) ?? []
-            const ariaLabel = count > 0
-              ? `${year}년 ${month}월: ${bookTitles.join(', ')} (${count}권)`
-              : `${year}년 ${month}월`
-            return (
-              <span
-                class:list={['heatmap-cell', { future: isFuture, empty: !isFuture && count === 0 }]}
-                style={`grid-column: ${month + 1}`}
-                data-level={isFuture ? undefined : String(level)}
-                data-year={(!isFuture && count > 0) ? String(year) : undefined}
-                data-month={(!isFuture && count > 0) ? String(month) : undefined}
-                data-books={count > 0 ? JSON.stringify(bookTitles) : undefined}
-                role="gridcell"
-                aria-label={isFuture ? undefined : ariaLabel}
-              />
-            )
-          })}
-          <span class="year-total" style="grid-column: 14">{yearTotal}</span>
-        </div>
-      )
-    })}
+    {
+      years.map((year) => {
+        const yearBooks = books.filter((b) => b.year === year)
+        const yearTotal = yearBooks.length
+        return (
+          <div class="heatmap-row" role="row">
+            <span class="year-label" style="grid-column: 1">
+              {year}
+            </span>
+            {months.map((month) => {
+              const key = `${year}-${String(month).padStart(2, '0')}`
+              const cell = cells.get(key)
+              const count = cell?.count ?? 0
+              const level = intensityLevel(count)
+              const isFuture = year > currentYear || (year === currentYear && month > currentMonth)
+              const bookTitles = cell?.books.map((b) => b.title) ?? []
+              const ariaLabel =
+                count > 0 ? `${year}년 ${month}월: ${bookTitles.join(', ')} (${count}권)` : `${year}년 ${month}월`
+              return (
+                <span
+                  class:list={['heatmap-cell', { future: isFuture, empty: !isFuture && count === 0 }]}
+                  style={`grid-column: ${month + 1}`}
+                  data-level={isFuture ? undefined : String(level)}
+                  data-year={!isFuture && count > 0 ? String(year) : undefined}
+                  data-month={!isFuture && count > 0 ? String(month) : undefined}
+                  data-books={count > 0 ? JSON.stringify(bookTitles) : undefined}
+                  role="gridcell"
+                  aria-label={isFuture ? undefined : ariaLabel}
+                />
+              )
+            })}
+            <span class="year-total" style="grid-column: 14">
+              {yearTotal}
+            </span>
+          </div>
+        )
+      })
+    }
   </div>
 
   <div class="heatmap-footer">
@@ -78,9 +81,13 @@ const monthLabels = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '1
       <span class="legend-cell" data-level="4"></span>
       <span class="legend-label">4권+</span>
     </div>
-    {compact && (
-      <a href="/books" class="books-link">전체 기록 →</a>
-    )}
+    {
+      compact && (
+        <a href="/books" class="books-link">
+          전체 기록 →
+        </a>
+      )
+    }
   </div>
 </section>
 
@@ -97,7 +104,11 @@ const monthLabels = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '1
       if (!year || !month || !booksRaw) return
 
       let bookTitles: string[] = []
-      try { bookTitles = JSON.parse(booksRaw) } catch { return }
+      try {
+        bookTitles = JSON.parse(booksRaw)
+      } catch {
+        return
+      }
       if (!bookTitles.length) return
 
       tooltip = document.createElement('div')
@@ -145,7 +156,7 @@ const monthLabels = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '1
       tooltip = null
     }
 
-    document.querySelectorAll('.heatmap-cell[data-books]').forEach(cell => {
+    document.querySelectorAll('.heatmap-cell[data-books]').forEach((cell) => {
       const el = cell as HTMLElement
       el.addEventListener('mouseenter', () => showTooltip(el))
       el.addEventListener('mouseleave', removeTooltip)

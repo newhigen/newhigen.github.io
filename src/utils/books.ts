@@ -24,8 +24,8 @@ export interface YearGroup {
 function parseCSV(csv: string): Book[] {
   const [, ...rows] = csv.trim().split('\n')
   return rows
-    .filter(line => line.trim())
-    .map(line => {
+    .filter((line) => line.trim())
+    .map((line) => {
       const cols = line.split(',')
       const title = (cols[0] ?? '').replace(/^"|"$/g, '').trim()
       const englishTitle = (cols[1] ?? '').replace(/^"|"$/g, '').trim()
@@ -33,15 +33,13 @@ function parseCSV(csv: string): Book[] {
       const month = parseInt(cols[3] ?? '', 10)
       return { title, englishTitle, year, month }
     })
-    .filter(b => (b.title || b.englishTitle) && b.year && b.month)
+    .filter((b) => (b.title || b.englishTitle) && b.year && b.month)
 }
 
 export function loadBooks(): Book[] {
   const csvPath = path.resolve('./src/data/books.csv')
   const csv = fs.readFileSync(csvPath, 'utf-8')
-  return parseCSV(csv).sort(
-    (a, b) => b.year - a.year || b.month - a.month || a.title.localeCompare(b.title)
-  )
+  return parseCSV(csv).sort((a, b) => b.year - a.year || b.month - a.month || a.title.localeCompare(b.title))
 }
 
 export function getHeatmapData(books: Book[]): { cells: Map<string, HeatmapCell>; years: number[] } {

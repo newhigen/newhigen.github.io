@@ -3,7 +3,6 @@ title: 독서법
 pubDate: 2025-08-03
 ---
 
-
 # 여러 책 읽는 순서: 병렬 독서? 직렬 독서?
 
 | 구분          | 병렬 독서                                                                         | 직렬 독서                                                                                                                                    |
@@ -16,13 +15,13 @@ pubDate: 2025-08-03
 
 개인적으로는 흥미를 잃지않는 것을 중요하게 생각해서 병렬독서를 주로 하되, 중요하게 여겨지는 책을 어려워도 너무 끌지않고 직렬독서로 끝내려고 한다.
 
-* 병렬독서를 하더라도 한 책을 2-3주 안에 이어서 읽거나, 그렇지 않다면 깔끔하게 읽기를 포기하는 것이 내게 맞는 페이스로 느껴진다.
-* 텀을 두고 이어 읽기를 하면 주로 적어둔 메모를 참고해서 끊긴 지점을 찾는데, 그렇지 않다면 최소한 책갈피나 마지막으로 읽었던 지점을 기록해두는 것이 좋다.
+- 병렬독서를 하더라도 한 책을 2-3주 안에 이어서 읽거나, 그렇지 않다면 깔끔하게 읽기를 포기하는 것이 내게 맞는 페이스로 느껴진다.
+- 텀을 두고 이어 읽기를 하면 주로 적어둔 메모를 참고해서 끊긴 지점을 찾는데, 그렇지 않다면 최소한 책갈피나 마지막으로 읽었던 지점을 기록해두는 것이 좋다.
 
 # 좋은 책 고르는 팁
 
 - 서론과 목차 읽기: 저자의 어떤 의도로 책을 썼는지 공력이 어느정도인지 확인하기 좋음.<br/>
-2/3 지점을 펴서 읽기: 보통 작가가 힘이 떨어지는 부분인데 여기가 좋으면 전체가 좋을 확률이 있음.[^3] [^4]
+  2/3 지점을 펴서 읽기: 보통 작가가 힘이 떨어지는 부분인데 여기가 좋으면 전체가 좋을 확률이 있음.[^3] [^4]
 - 책을 추천하는 글들을 보기. 읽던 책에서 다음 책을 찾기.[^1]
 - 영어 원서인 경우 [Goodreads](https://www.goodreads.com/)(해외 책 리뷰 사이트) 리뷰를 참고함.[^5]
 
@@ -48,14 +47,25 @@ pubDate: 2025-08-03
 - “If you want to have a deep and balanced understanding of a smaller range of topics … you should read books from the same topic until you reach a point where you get not enough new information (this is often after about 3-5 books for me). Try to pick books that represent different perspectives.”[^12]
 
 [^1]: [[도서] 책 잘 읽는 방법, 김봉진, 2020](https://product.kyobobook.co.kr/detail/S000001899585)
+
 [^2]: [[유튜브] 아직도 책을 꼭 사서 읽는 이유?, 유현준, 2023](https://www.youtube.com/watch?v=RverOA2gM6U)
+
 [^3]: [[도서] 닥치는 대로 끌리는 대로 오직 재미있게 이동진 독서법, 이동진, 2023](https://product.kyobobook.co.kr/detail/S000061352973)
+
 [^4]: [[유튜브] 돈과 시간 아깝지 않은 책 고르는 방법, 이동진, 2023](https://www.youtube.com/watch?v=iXXcbxYlVXg)
+
 [^5]: [[웹사이트] Goodreads (해외 책 리뷰 사이트)](https://www.goodreads.com/)
+
 [^6]: [[도서] 진작 이렇게 책을 읽었더라면, 장경철, 2020](https://product.kyobobook.co.kr/detail/S000001907185)
+
 [^7]: [[유튜브] 책 안 읽으니까 무식하지?!ㅋ 에 대한 솔직한 생각 털어보기, 조승연, 2023](https://www.youtube.com/watch?v=i7hILjPRBYo)
+
 [^8]: [[유튜브] 책 읽을 때 레전드 꿀팁, 너진똑, 2023](https://www.youtube.com/shorts/DWNLdtk1TcM)
+
 [^9]: [[블로그] 책에서 원하는 걸 짧은 시간 만에 얻는 법, 토스 마이루틴 개발자, 2023](https://dwan.kim/problem-oriented-reading/)
+
 [^10]: [[블로그] 1시간 만에 한 권을 읽을 수 있는 POR 독서법, 토스 UX Lead, 2023](https://brunch.co.kr/@thinkaboutlove/406)
+
 [^11]: [[유튜브] 빠르게 성장하고 싶은 주니어 개발자를 위한 소프트 스킬 5가지, 임희진 TOSS Foundation Leader, 2024](https://www.youtube.com/watch?v=JyAiWo4ghVg)
+
 [^12]: [[웹사이트] Is it better to read one book on a subject or many books on that subject?, 2021](https://www.reddit.com/r/books/comments/m8r2wv/is_it_better_to_read_one_book_on_a_subject_or/)
