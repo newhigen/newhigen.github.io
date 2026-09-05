@@ -32,8 +32,10 @@ const { title, description = '조성덕 — 소개와 만든 것들' } = Astro.p
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-ZG9YP9KQ4X');
+      gtag('config', 'G-5LN80GCB37');
       document.addEventListener('astro:page-load', () => {
         gtag('config', 'G-ZG9YP9KQ4X', { page_path: window.location.pathname });
+        gtag('config', 'G-5LN80GCB37', { page_path: window.location.pathname });
       });
     </script>
 
